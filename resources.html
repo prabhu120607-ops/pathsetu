@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verified Educational Resources — PathSetu</title>
+  <meta name="description"
+    content="Official directory of Indian government educational portals: SWAYAM, NCS, AICTE, NTA, UGC, Skill India, NCERT, and National Scholarship Portal.">
+  <link rel="icon" type="image/png" href="assets/pathsetu-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Top Sticky Site Navigation -->
+  <header class="site-header" role="banner">
+    <div class="wrap header-inner">
+      <a href="index.html" class="brand-logo-wrap" aria-label="PathSetu Home">
+        <div class="brand-icon-box">
+          <img src="assets/pathsetu-icon.png" alt="PathSetu Logo" class="brand-icon-img" width="40" height="40">
+        </div>
+        <div class="brand-text-col">
+          <div class="brand-name">Path<span class="text-gradient">Setu</span> <span
+              style="font-size:0.78rem; font-weight:600; color:var(--text-muted);">(పథసేతు)</span></div>
+          <div class="brand-tagline">Verified Educational Resources</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links-list" aria-label="Main Navigation">
+        <a href="index.html" class="site-nav-link">Home</a>
+        <a href="careers.html" class="site-nav-link">Career Tracks</a>
+        <a href="compare.html" class="site-nav-link">3-Way Compare</a>
+        <a href="budget.html" class="site-nav-link">Budget Planner</a>
+        <a href="skill-gap.html" class="site-nav-link">Skill Gap</a>
+        <a href="roadmap.html" class="site-nav-link">My Roadmap</a>
+        <a href="resources.html" class="site-nav-link active">Resources</a>
+        <a href="profile.html" class="site-nav-link">Profile</a>
+        <a href="projects.html" class="site-nav-link">Projects</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="lang-selector-btn" id="btnLangToggle">
+          🌐 తెలుగు (Telugu)
+        </button>
+        <button class="mobile-menu-btn" id="btnMobileNav" aria-label="Toggle Navigation Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <aside class="mobile-drawer-content" id="mobileDrawerContent" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <div class="brand-name">Path<span class="text-gradient">Setu</span></div>
+      <button class="btn btn-ghost" id="btnCloseMobileDrawer" style="font-size:1.25rem;">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-item">🏠 Home</a>
+      <a href="careers.html" class="mobile-nav-item">🎯 Career Tracks</a>
+      <a href="compare.html" class="mobile-nav-item">⚖️ 3-Way Compare</a>
+      <a href="budget.html" class="mobile-nav-item">💰 Budget Planner</a>
+      <a href="skill-gap.html" class="mobile-nav-item">📊 Skill Gap Matrix</a>
+      <a href="roadmap.html" class="mobile-nav-item">🗺️ Personalized Roadmap</a>
+      <a href="resources.html" class="mobile-nav-item active">🌐 Verified Resources</a>
+      <a href="profile.html" class="mobile-nav-item">✍️ Student Profile</a>
+      <a href="projects.html" class="mobile-nav-item">🛠️ Projects Hub</a>
+    </div>
+  </aside>
+
+  <!-- Page Hero Banner -->
+  <section class="page-hero">
+    <div class="wrap page-hero-content">
+      <span class="pill-badge accent">Feature D · Transparent Public Infrastructure</span>
+      <h1 class="page-hero-title">Verified Educational Resource Directory</h1>
+      <p class="page-hero-desc">
+        Direct, audited access to central government initiatives. Explore 100% free online courses, official national
+        testing registration, scholarship disbursements, and vocational training portals.
+      </p>
+      <div class="page-hero-meta-row">
+        <div class="pill-badge">✦ Official .gov.in & .ac.in Domains</div>
+        <div class="pill-badge">✦ Zero Sponsored Advertisements</div>
+        <div class="pill-badge">✦ Audited October 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Resource Catalog -->
+  <main class="wrap" style="padding-bottom: 90px;">
+
+    <!-- Filter Bar -->
+    <div class="card" style="margin-bottom: 28px; padding: 20px;">
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+        <input type="text" id="resourceSearchInput" class="form-input"
+          placeholder="Search official portals (e.g. SWAYAM, Scholarship, NTA, ITI)..."
+          style="flex: 1; min-width: 280px;">
+        <select id="resourceCategoryFilter" class="form-select" style="min-width: 220px;">
+          <option value="all">All Resource Categories</option>
+          <option value="Courses & Degrees">Courses & Degrees (SWAYAM, NPTEL)</option>
+          <option value="Career & Employment">Career & Employment (NCS)</option>
+          <option value="Technical & Vocational">Technical & Vocational (AICTE, Skill India)</option>
+          <option value="Examinations & Admissions">Examinations & Admissions (NTA)</option>
+          <option value="Scholarships & Aid">Scholarships & Aid (NSP)</option>
+          <option value="Curriculum & Textbooks">Curriculum & Textbooks (NCERT)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Resources Cards Grid -->
+    <div class="resources-grid" id="resourcesGrid">
+      <!-- Populated via JS from PATHSETU_DATA.resources -->
+    </div>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap footer-inner">
+      <div class="footer-top-row">
+        <div class="brand-logo-wrap">
+          <div class="brand-icon-box">
+            <img src="assets/pathsetu-icon.png" alt="PathSetu" class="brand-icon-img" width="36" height="36">
+          </div>
+          <div class="brand-text-col">
+            <div class="brand-name">Path<span class="text-gradient">Setu</span></div>
+            <div class="brand-tagline">Guided career intelligence for aspiring students.</div>
+          </div>
+        </div>
+        <div class="footer-links-row">
+          <a href="careers.html" class="small text-secondary">Careers</a>
+          <a href="compare.html" class="small text-secondary">3-Way Compare</a>
+          <a href="budget.html" class="small text-secondary">Budget Planner</a>
+          <a href="skill-gap.html" class="small text-secondary">Skill Gap</a>
+          <a href="roadmap.html" class="small text-secondary">Roadmap</a>
+          <a href="resources.html" class="small text-secondary">Resources</a>
+        </div>
+      </div>
+      <div class="footer-disclaimer-box">
+        <strong>Government Portal Disclaimer:</strong> PathSetu is an independent educational initiative that references
+        official Government of India portals. All logos, portal names, and examination schedules remain the property of
+        their respective ministries.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      let currentLang = localStorage.getItem('pathsetu_lang') || 'en';
+      const grid = document.getElementById('resourcesGrid');
+      const searchInput = document.getElementById('resourceSearchInput');
+      const categoryFilter = document.getElementById('resourceCategoryFilter');
+
+      // Mobile drawer
+      const btnMobileNav = document.getElementById('btnMobileNav');
+      const btnCloseMobile = document.getElementById('btnCloseMobileDrawer');
+      const drawer = document.getElementById('mobileDrawerContent');
+      const drawerOverlay = document.getElementById('mobileDrawerOverlay');
+      btnMobileNav?.addEventListener('click', () => {
+        drawer?.classList.add('active');
+        drawerOverlay?.classList.add('active');
+      });
+      btnCloseMobile?.addEventListener('click', closeMobile);
+      drawerOverlay?.addEventListener('click', closeMobile);
+      function closeMobile() {
+        drawer?.classList.remove('active');
+        drawerOverlay?.classList.remove('active');
+      }
+
+      // Language
+      const btnLang = document.getElementById('btnLangToggle');
+      function updateLangUI() {
+        btnLang.textContent = currentLang === 'te' ? '🌐 English' : '🌐 తెలుగు (Telugu)';
+      }
+      btnLang.addEventListener('click', () => {
+        currentLang = currentLang === 'en' ? 'te' : 'en';
+        localStorage.setItem('pathsetu_lang', currentLang);
+        updateLangUI();
+        renderResources();
+      });
+      updateLangUI();
+
+      // Render Resources
+      function renderResources() {
+        if (!grid || !window.PATHSETU_DATA) return;
+        const q = (searchInput?.value || '').toLowerCase().trim();
+        const cat = categoryFilter?.value || 'all';
+
+        const filtered = PATHSETU_DATA.resources.filter(r => {
+          const matchCat = (cat === 'all' || r.category === cat);
+          const matchQuery = !q || r.name.toLowerCase().includes(q) ||
+            r.desc.toLowerCase().includes(q) ||
+            r.url.toLowerCase().includes(q) ||
+            (r.category && r.category.toLowerCase().includes(q));
+          return matchCat && matchQuery;
+        });
+
+        if (filtered.length === 0) {
+          grid.innerHTML = `
+            <div class="card" style="grid-column: 1 / -1; text-align: center; padding: 48px;">
+              <h3 style="margin-bottom: 8px;">No matching educational resources found</h3>
+              <p class="text-secondary">Try searching for keywords like "SWAYAM", "Scholarship", "NTA", or "Skill India".</p>
+            </div>
+          `;
+          return;
+        }
+
+        grid.innerHTML = filtered.map(r => `
+          <div class="card resource-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <div class="resource-top" style="margin-bottom:12px;">
+                <span class="pill-badge">${r.category}</span>
+                <span class="pill-badge success">✓ Verified Official</span>
+              </div>
+              <h3 class="resource-title" style="margin-bottom:6px;">${r.name}</h3>
+              <div class="small font-bold text-accent" style="margin-bottom:12px;">
+                🔗 ${r.url.replace('https://', '')}
+              </div>
+              <p class="text-secondary small" style="line-height:1.6; margin-bottom:16px;">
+                ${r.desc}
+              </p>
+              ${r.freeBenefits ? `
+                <div style="background:var(--color-background); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:10px 14px; margin-bottom:16px;">
+                  <span class="small font-bold" style="color:var(--color-success);">Free Offerings:</span>
+                  <div class="small text-secondary">${r.freeBenefits}</div>
+                </div>
+              ` : ''}
+            </div>
+
+            <div style="border-top:1px solid var(--border-color); padding-top:16px; display:flex; justify-content:space-between; align-items:center;">
+              <span class="small text-muted">Audited: Oct 2026</span>
+              <a href="${r.url}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                Visit Official Portal ↗
+              </a>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      searchInput?.addEventListener('input', renderResources);
+      categoryFilter?.addEventListener('change', renderResources);
+
+      renderResources();
+    })();
+  </script>
+</body>
+
+</html>

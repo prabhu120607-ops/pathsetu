@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget-Friendly Career Planner — PathSetu</title>
+  <meta name="description"
+    content="Calculate and evaluate career education affordability in INR against verified Indian government college costs, scholarships, and free central alternatives.">
+  <link rel="icon" type="image/png" href="assets/pathsetu-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Top Sticky Site Navigation -->
+  <header class="site-header" role="banner">
+    <div class="wrap header-inner">
+      <a href="index.html" class="brand-logo-wrap" aria-label="PathSetu Home">
+        <div class="brand-icon-box">
+          <img src="assets/pathsetu-icon.png" alt="PathSetu Logo" class="brand-icon-img" width="40" height="40">
+        </div>
+        <div class="brand-text-col">
+          <div class="brand-name">Path<span class="text-gradient">Setu</span> <span
+              style="font-size:0.78rem; font-weight:600; color:var(--text-muted);">(పథసేతు)</span></div>
+          <div class="brand-tagline">Budget-Friendly Career Planner</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links-list" aria-label="Main Navigation">
+        <a href="index.html" class="site-nav-link">Home</a>
+        <a href="careers.html" class="site-nav-link">Career Tracks</a>
+        <a href="compare.html" class="site-nav-link">3-Way Compare</a>
+        <a href="budget.html" class="site-nav-link active">Budget Planner</a>
+        <a href="skill-gap.html" class="site-nav-link">Skill Gap</a>
+        <a href="roadmap.html" class="site-nav-link">My Roadmap</a>
+        <a href="resources.html" class="site-nav-link">Resources</a>
+        <a href="profile.html" class="site-nav-link">Profile</a>
+        <a href="projects.html" class="site-nav-link">Projects</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="lang-selector-btn" id="btnLangToggle">
+          🌐 తెలుగు (Telugu)
+        </button>
+        <button class="mobile-menu-btn" id="btnMobileNav" aria-label="Toggle Navigation Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <aside class="mobile-drawer-content" id="mobileDrawerContent" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <div class="brand-name">Path<span class="text-gradient">Setu</span></div>
+      <button class="btn btn-ghost" id="btnCloseMobileDrawer" style="font-size:1.25rem;">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-item">🏠 Home</a>
+      <a href="careers.html" class="mobile-nav-item">🎯 Career Tracks</a>
+      <a href="compare.html" class="mobile-nav-item">⚖️ 3-Way Compare</a>
+      <a href="budget.html" class="mobile-nav-item active">💰 Budget Planner</a>
+      <a href="skill-gap.html" class="mobile-nav-item">📊 Skill Gap Matrix</a>
+      <a href="roadmap.html" class="mobile-nav-item">🗺️ Personalized Roadmap</a>
+      <a href="resources.html" class="mobile-nav-item">🌐 Verified Resources</a>
+      <a href="profile.html" class="mobile-nav-item">✍️ Student Profile</a>
+      <a href="projects.html" class="mobile-nav-item">🛠️ Projects Hub</a>
+    </div>
+  </aside>
+
+  <!-- Page Hero Banner -->
+  <section class="page-hero">
+    <div class="wrap page-hero-content">
+      <span class="pill-badge accent">Feature B · Financial Reality Check</span>
+      <h1 class="page-hero-title">Budget-Friendly Career Planner</h1>
+      <p class="page-hero-desc">
+        Never let financial constraints stop your ambitions. Test your family's annual education budget in Indian Rupees
+        against verified government college fees, central scholarships, and 100% free SWAYAM alternatives.
+      </p>
+      <div class="page-hero-meta-row">
+        <div class="pill-badge">✦ All Values in INR (₹)</div>
+        <div class="pill-badge">✦ Govt Subsidies & Waivers</div>
+        <div class="pill-badge">✦ NSP Central Scholarships</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Budget Planner Form & Calculator -->
+  <main class="wrap" style="padding-bottom: 90px;">
+
+    <div class="card" style="margin-bottom: 32px; padding: 28px;">
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: flex-end;">
+        <div>
+          <label class="form-label" for="budgetInput">Your Approximate Annual Education Budget (INR):</label>
+          <div style="position: relative;">
+            <span
+              style="position: absolute; left: 16px; top: 12px; font-weight: 700; color: var(--accent-cyan);">₹</span>
+            <input type="number" id="budgetInput" class="form-input"
+              style="padding-left: 36px; font-size: 1.15rem; font-weight: 700;" value="25000" step="5000" min="0"
+              max="1000000">
+          </div>
+          <div class="budget-presets-row" style="margin-top: 10px;">
+            <span class="budget-preset-chip" onclick="setBudget(0)">₹0 (Free / Open)</span>
+            <span class="budget-preset-chip" onclick="setBudget(15000)">₹15,000 (ITI / Poly)</span>
+            <span class="budget-preset-chip" onclick="setBudget(35000)">₹35,000 (Govt College)</span>
+            <span class="budget-preset-chip" onclick="setBudget(100000)">₹1,00,000+ (Private)</span>
+          </div>
+        </div>
+
+        <div>
+          <label class="form-label" for="careerSelect">Select Target Career Pathway:</label>
+          <select id="careerSelect" class="form-select" style="font-size: 1.05rem;"></select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Output Analysis Container -->
+    <div id="budgetOutputContainer">
+      <!-- Generated via JS -->
+    </div>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap footer-inner">
+      <div class="footer-top-row">
+        <div class="brand-logo-wrap">
+          <div class="brand-icon-box">
+            <img src="assets/pathsetu-icon.png" alt="PathSetu" class="brand-icon-img" width="36" height="36">
+          </div>
+          <div class="brand-text-col">
+            <div class="brand-name">Path<span class="text-gradient">Setu</span></div>
+            <div class="brand-tagline">Guided career intelligence for aspiring students.</div>
+          </div>
+        </div>
+        <div class="footer-links-row">
+          <a href="careers.html" class="small text-secondary">Careers</a>
+          <a href="compare.html" class="small text-secondary">3-Way Compare</a>
+          <a href="budget.html" class="small text-secondary">Budget Planner</a>
+          <a href="skill-gap.html" class="small text-secondary">Skill Gap</a>
+          <a href="roadmap.html" class="small text-secondary">Roadmap</a>
+          <a href="resources.html" class="small text-secondary">Resources</a>
+        </div>
+      </div>
+      <div class="footer-disclaimer-box">
+        <strong>Educational Guidance Disclaimer:</strong> Fee approximations are based on typical state and central
+        university structures in India. Always check respective college prospectuses and official entrance portals (NTA,
+        State CETs) for exact figures.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      const params = new URLSearchParams(window.location.search);
+      const urlCareer = params.get('career');
+      let currentCareerId = urlCareer || 'software';
+      let currentLang = localStorage.getItem('pathsetu_lang') || 'en';
+
+      const budgetInput = document.getElementById('budgetInput');
+      const careerSelect = document.getElementById('careerSelect');
+      const output = document.getElementById('budgetOutputContainer');
+
+      // Mobile drawer
+      const btnMobileNav = document.getElementById('btnMobileNav');
+      const btnCloseMobile = document.getElementById('btnCloseMobileDrawer');
+      const drawer = document.getElementById('mobileDrawerContent');
+      const drawerOverlay = document.getElementById('mobileDrawerOverlay');
+      btnMobileNav?.addEventListener('click', () => {
+        drawer?.classList.add('active');
+        drawerOverlay?.classList.add('active');
+      });
+      btnCloseMobile?.addEventListener('click', closeMobile);
+      drawerOverlay?.addEventListener('click', closeMobile);
+      function closeMobile() {
+        drawer?.classList.remove('active');
+        drawerOverlay?.classList.remove('active');
+      }
+
+      // Language
+      const btnLang = document.getElementById('btnLangToggle');
+      function updateLangUI() {
+        btnLang.textContent = currentLang === 'te' ? '🌐 English' : '🌐 తెలుగు (Telugu)';
+      }
+      btnLang.addEventListener('click', () => {
+        currentLang = currentLang === 'en' ? 'te' : 'en';
+        localStorage.setItem('pathsetu_lang', currentLang);
+        updateLangUI();
+        evaluateBudget();
+      });
+      updateLangUI();
+
+      // Populate Select
+      function setupCareerSelect() {
+        if (!window.PATHSETU_DATA || !careerSelect) return;
+        careerSelect.innerHTML = PATHSETU_DATA.careers.map(c => `
+          <option value="${c.id}" ${c.id === currentCareerId ? 'selected' : ''}>
+            ${c.title} (${c.costGovt || '₹25,000/yr'})
+          </option>
+        `).join('');
+
+        careerSelect.addEventListener('change', (e) => {
+          currentCareerId = e.target.value;
+          evaluateBudget();
+        });
+      }
+
+      window.setBudget = function (amt) {
+        budgetInput.value = amt;
+        evaluateBudget();
+      };
+
+      budgetInput.addEventListener('input', evaluateBudget);
+
+      // Evaluate Budget Logic
+      function evaluateBudget() {
+        if (!output || !window.PATHSETU_DATA) return;
+        const budget = parseInt(budgetInput.value || 0, 10);
+        const career = PATHSETU_DATA.careers.find(c => c.id === currentCareerId) || PATHSETU_DATA.careers[0];
+
+        // Determine numerical cost baselines
+        let govtCostNum = 25000;
+        let privateCostNum = 180000;
+        if (career.id === 'solar_electrician') { govtCostNum = 12000; privateCostNum = 45000; }
+        else if (career.id === 'agri_scientist') { govtCostNum = 20000; privateCostNum = 120000; }
+        else if (career.id === 'medical_nurse') { govtCostNum = 28000; privateCostNum = 160000; }
+        else if (career.id === 'chartered_accountant') { govtCostNum = 15000; privateCostNum = 90000; }
+
+        let statusClass = 'success';
+        let statusTitle = '✓ Comfortably Affordable via Government College';
+        let statusDesc = `Your annual budget of ₹${budget.toLocaleString('en-IN')} fully covers the subsidized government college fees for this track.`;
+
+        if (budget === 0) {
+          statusClass = 'accent';
+          statusTitle = '✦ 100% Free Self-Study & SWAYAM Track';
+          statusDesc = `Zero tuition required! You can master this career using free central portals like SWAYAM, NPTEL, and YouTube with open-source project deliverables.`;
+        } else if (budget < govtCostNum) {
+          statusClass = 'warning';
+          statusTitle = '⚠️ Requires Government Scholarship or Fee Waiver';
+          statusDesc = `Government college fee is approximately ₹${govtCostNum.toLocaleString('en-IN')}/yr. You have a gap of ₹${(govtCostNum - budget).toLocaleString('en-IN')}, which can be covered via National Scholarship Portal (NSP) or State Post-Matric schemes.`;
+        } else if (budget >= privateCostNum) {
+          statusClass = 'success';
+          statusTitle = '✓ Both Government and Private Institutions Affordable';
+          statusDesc = `Your budget of ₹${budget.toLocaleString('en-IN')} is sufficient for either prestigious government universities or private colleges.`;
+        }
+
+        output.innerHTML = `
+          <!-- Status Banner -->
+          <div class="card" style="border-left: 5px solid ${statusClass === 'success' ? 'var(--color-success)' : statusClass === 'warning' ? 'var(--color-warning)' : 'var(--accent-cyan)'}; margin-bottom: 24px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 8px;">
+              <span class="pill-badge ${statusClass}">Affordability Assessment</span>
+              <span class="small font-bold text-muted">Target: ${career.title}</span>
+            </div>
+            <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 6px;">${statusTitle}</h3>
+            <p class="text-secondary" style="line-height: 1.6;">${statusDesc}</p>
+          </div>
+
+          <!-- Comparison Grid -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 24px;">
+            
+            <!-- Government College Route -->
+            <div class="card" style="border-color: rgba(0, 212, 255, 0.35);">
+              <span class="pill-badge">Option A · Subsidized</span>
+              <h3 style="font-size: 1.25rem; font-weight: 700; margin: 12px 0 6px;">Government College / ITI / University</h3>
+              <p class="text-secondary small" style="margin-bottom: 16px;">Merit-based admissions via state entrance tests (EAMCET, KCET, CET) or marks.</p>
+              
+              <div style="background: var(--color-background); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 16px; margin-bottom: 16px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                  <span class="text-muted">Estimated Annual Fee:</span>
+                  <span class="font-bold text-accent">${career.costGovt || '₹15,000 – ₹35,000 / yr'}</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                  <span class="text-muted">Your Annual Budget:</span>
+                  <span class="font-bold">₹${budget.toLocaleString('en-IN')}</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; border-top:1px solid var(--border-color); padding-top:8px;">
+                  <span class="text-muted">Net Out-of-Pocket / Gap:</span>
+                  <span class="font-bold" style="color:${budget >= govtCostNum ? 'var(--color-success)' : 'var(--color-warning)'};">
+                    ${budget >= govtCostNum ? '₹0 (Surplus Available)' : `Gap: ₹${(govtCostNum - budget).toLocaleString('en-IN')}`}
+                  </span>
+                </div>
+              </div>
+
+              <div class="small text-secondary" style="line-height: 1.55;">
+                <strong style="color:var(--text-primary);">Subsidies Available:</strong>
+                State full fee reimbursement schemes (e.g. JVD in AP, Post-Matric in Telangana/Karnataka/UP) cover tuition fees for eligible income groups (< ₹2.5L/yr).
+              </div>
+            </div>
+
+            <!-- Free Central Learning Route -->
+            <div class="card" style="border-color: #86EFAC;">
+              <span class="pill-badge success">Option B · Zero Cost (₹0)</span>
+              <h3 style="font-size: 1.25rem; font-weight: 700; margin: 12px 0 6px;">Free Central Portals (SWAYAM / NPTEL)</h3>
+              <p class="text-secondary small" style="margin-bottom: 16px;">Government-funded open university courses taught by IITs, IISc, and Central Faculty.</p>
+              
+              <div style="background: var(--color-background); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 16px; margin-bottom: 16px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                  <span class="text-muted">Tuition Cost:</span>
+                  <span class="font-bold" style="color:var(--color-success);">₹0 (100% Free Audit)</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                  <span class="text-muted">Exam & Certificate (Optional):</span>
+                  <span class="font-bold">₹1,000 / course (NPTEL)</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; border-top:1px solid var(--border-color); padding-top:8px;">
+                  <span class="text-muted">Transferable College Credits:</span>
+                  <span class="font-bold text-accent">Up to 20% UGC/AICTE</span>
+                </div>
+              </div>
+
+              <div class="small text-secondary" style="line-height: 1.55;">
+                <strong style="color:var(--text-primary);">Verified Open Course:</strong>
+                ${career.freeAlternative || 'SWAYAM & NPTEL foundation sequences'}
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Verified Scholarships Section -->
+          <div class="card" style="padding: 24px; margin-bottom: 24px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+              <div>
+                <span class="pill-badge">Govt Assistance</span>
+                <h3 style="font-size: 1.2rem; font-weight: 700; margin-top: 4px;">Verified Scholarships for ${career.title}</h3>
+              </div>
+              <a href="resources.html" class="btn btn-sm btn-outline">Explore All Portals →</a>
+            </div>
+            <p class="text-secondary small" style="margin-bottom: 16px;">
+              Apply directly on the official National Scholarship Portal (scholarships.gov.in) with no intermediaries.
+            </p>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+              <div style="background: #EFF6FF; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 16px;">
+                <div class="font-bold" style="margin-bottom:4px; color:var(--color-navy);">National Scholarship Portal (NSP) Central Sector Scheme</div>
+                <div class="small text-muted" style="margin-bottom:8px;">For top 20th percentile Class 12 students in state boards.</div>
+                <div class="small text-accent font-bold">Benefit: ₹12,000 / year during graduation</div>
+              </div>
+              <div style="background: #EFF6FF; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 16px;">
+                <div class="font-bold" style="margin-bottom:4px; color:var(--color-navy);">Post-Matric Scholarship Scheme for SC/ST/OBC/Minorities</div>
+                <div class="small text-muted" style="margin-bottom:8px;">State welfare departments for household income < ₹2.5L.</div>
+                <div class="small font-bold" style="color:var(--color-success);">Benefit: 100% Tuition Waiver + Maintenance Allowance</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Actions -->
+          <div style="display:flex; gap:14px; flex-wrap:wrap;">
+            <a href="roadmap.html?career=${career.id}" class="btn btn-primary">
+              Build Milestone Roadmap for ${career.title} →
+            </a>
+            <a href="compare.html?c=${career.id}" class="btn btn-outline">
+              Compare with Other Careers
+            </a>
+          </div>
+        `;
+      }
+
+      setupCareerSelect();
+      evaluateBudget();
+    })();
+  </script>
+</body>
+
+</html>

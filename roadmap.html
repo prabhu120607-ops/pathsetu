@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milestone Roadmap & Progress Tracker — PathSetu </title>
+  <meta name="description"
+    content="Personalized 6-stage career roadmap with interactive milestone checkboxes, next best action guidance, and downloadable career plan.">
+  <link rel="icon" type="image/png" href="assets/pathsetu-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Top Sticky Site Navigation -->
+  <header class="site-header" role="banner">
+    <div class="wrap header-inner">
+      <a href="index.html" class="brand-logo-wrap" aria-label="PathSetu Home">
+        <div class="brand-icon-box">
+          <img src="assets/pathsetu-icon.png" alt="PathSetu Logo" class="brand-icon-img" width="40" height="40">
+        </div>
+        <div class="brand-text-col">
+          <div class="brand-name">Path<span class="text-gradient">Setu</span> <span
+              style="font-size:0.78rem; font-weight:600; color:var(--text-muted);">(పథసేతు)</span></div>
+          <div class="brand-tagline">Personalized Milestone Roadmap</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links-list" aria-label="Main Navigation">
+        <a href="index.html" class="site-nav-link">Home</a>
+        <a href="careers.html" class="site-nav-link">Career Tracks</a>
+        <a href="compare.html" class="site-nav-link">3-Way Compare</a>
+        <a href="budget.html" class="site-nav-link">Budget Planner</a>
+        <a href="skill-gap.html" class="site-nav-link">Skill Gap</a>
+        <a href="roadmap.html" class="site-nav-link active">My Roadmap</a>
+        <a href="resources.html" class="site-nav-link">Resources</a>
+        <a href="profile.html" class="site-nav-link">Profile</a>
+        <a href="projects.html" class="site-nav-link">Projects</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="lang-selector-btn" id="btnLangToggle">
+          🌐 తెలుగు (Telugu)
+        </button>
+        <button class="mobile-menu-btn" id="btnMobileNav" aria-label="Toggle Navigation Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <aside class="mobile-drawer-content" id="mobileDrawerContent" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <div class="brand-name">Path<span class="text-gradient">Setu</span></div>
+      <button class="btn btn-ghost" id="btnCloseMobileDrawer" style="font-size:1.25rem;">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-item">🏠 Home</a>
+      <a href="careers.html" class="mobile-nav-item">🎯 Career Tracks</a>
+      <a href="compare.html" class="mobile-nav-item">⚖️ 3-Way Compare</a>
+      <a href="budget.html" class="mobile-nav-item">💰 Budget Planner</a>
+      <a href="skill-gap.html" class="mobile-nav-item">📊 Skill Gap Matrix</a>
+      <a href="roadmap.html" class="mobile-nav-item active">🗺️ Personalized Roadmap</a>
+      <a href="resources.html" class="mobile-nav-item">🌐 Verified Resources</a>
+      <a href="profile.html" class="mobile-nav-item">✍️ Student Profile</a>
+      <a href="projects.html" class="mobile-nav-item">🛠️ Projects Hub</a>
+    </div>
+  </aside>
+
+  <!-- Page Hero Banner -->
+  <section class="page-hero">
+    <div class="wrap page-hero-content">
+      <span class="pill-badge accent">Stage 06 & Feature C · Execution Blueprint</span>
+      <h1 class="page-hero-title">Personalized Milestone Roadmap</h1>
+      <p class="page-hero-desc">
+        A structured, sequential execution plan designed for student pace. Track your verified progress, execute
+        tangible proof-of-work deliverables, and see your immediate Next Best Action.
+      </p>
+      <div class="page-hero-meta-row">
+        <button class="btn btn-sm btn-outline" id="btnDownloadPlan">📥 Download Career Plan (.txt)</button>
+        <button class="btn btn-sm btn-ghost" id="btnResetPlan">↺ Reset Progress</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Roadmap Container -->
+  <main class="wrap" style="padding-bottom: 90px;">
+
+    <!-- Career Switcher & Overall Progress Bar -->
+    <div class="card" style="margin-bottom: 24px; padding: 24px;">
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 16px;">
+        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+          <label class="form-label" for="roadmapCareerSelect" style="margin-bottom:0;">Active Pathway:</label>
+          <select id="roadmapCareerSelect" class="form-select" style="min-width: 240px; font-weight: 700;"></select>
+        </div>
+        <div style="text-align: right;">
+          <span class="font-bold text-accent" id="roadmapPctText" style="font-size: 1.3rem;">0%</span>
+          <div class="small text-muted" id="roadmapCountText">0 of 6 Milestones Completed</div>
+        </div>
+      </div>
+
+      <div class="progress-bar-container" style="height: 10px;">
+        <div class="progress-bar-fill" id="roadmapProgressBar" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Next Best Action Callout Banner -->
+    <div id="nextActionContainer"></div>
+
+    <!-- Sequenced Milestone Steps List -->
+    <div id="milestonesListContainer"></div>
+
+    <!-- Add Custom Milestone Button & Modal -->
+    <div style="margin-top: 24px; text-align: center;">
+      <button class="btn btn-outline" id="btnOpenCustomModal">
+        + Add Custom Learning Milestone
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Custom Milestone Modal -->
+  <div id="customModal" class="modal-overlay hide" role="dialog" aria-modal="true">
+    <div class="modal-content-card" style="max-width: 520px;">
+      <button class="modal-close-btn" id="btnCloseCustomModal">✕</button>
+      <span class="pill-badge">Personal Goal</span>
+      <h3 style="font-size: 1.3rem; margin: 8px 0 16px;">Add Custom Milestone</h3>
+      <form id="customMilestoneForm" onsubmit="return false;">
+        <div class="form-group">
+          <label class="form-label" for="customTitle">Milestone Title:</label>
+          <input type="text" id="customTitle" class="form-input" placeholder="e.g. Build SQLite Student Directory"
+            required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="customTime">Target Timeframe:</label>
+          <input type="text" id="customTime" class="form-input" placeholder="e.g. Month 3, 2 weeks" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="customDesc">Description & Deliverable:</label>
+          <textarea id="customDesc" class="form-textarea" placeholder="Detail the hands-on project or certificate."
+            required></textarea>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:20px;">
+          <button type="button" class="btn btn-ghost" id="btnCancelCustom">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btnSaveCustom">Save Milestone</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Global Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap footer-inner">
+      <div class="footer-top-row">
+        <div class="brand-logo-wrap">
+          <div class="brand-icon-box">
+            <img src="assets/pathsetu-icon.png" alt="PathSetu" class="brand-icon-img" width="36" height="36">
+          </div>
+          <div class="brand-text-col">
+            <div class="brand-name">Path<span class="text-gradient">Setu</span></div>
+            <div class="brand-tagline">Guided career intelligence for aspiring students.</div>
+          </div>
+        </div>
+        <div class="footer-links-row">
+          <a href="careers.html" class="small text-secondary">Careers</a>
+          <a href="compare.html" class="small text-secondary">3-Way Compare</a>
+          <a href="budget.html" class="small text-secondary">Budget Planner</a>
+          <a href="skill-gap.html" class="small text-secondary">Skill Gap</a>
+          <a href="roadmap.html" class="small text-secondary">Roadmap</a>
+          <a href="resources.html" class="small text-secondary">Resources</a>
+        </div>
+      </div>
+      <div class="footer-disclaimer-box">
+        <strong>Educational Guidance Disclaimer:</strong> Roadmaps provide an actionable sequence of self-paced
+        milestones. Completion timings are estimates based on standard student study loads.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      const params = new URLSearchParams(window.location.search);
+      let currentCareerId = params.get('career') || 'software';
+      let currentLang = localStorage.getItem('pathsetu_lang') || 'en';
+
+      // Load completed milestones from localStorage (keyed by careerId)
+      let progressData = JSON.parse(localStorage.getItem('pathsetu_progress') || '{}');
+      if (!progressData[currentCareerId]) progressData[currentCareerId] = [];
+
+      let customMilestones = JSON.parse(localStorage.getItem('pathsetu_custom_milestones') || '{}');
+      if (!customMilestones[currentCareerId]) customMilestones[currentCareerId] = [];
+
+      const careerSelect = document.getElementById('roadmapCareerSelect');
+      const pctText = document.getElementById('roadmapPctText');
+      const countText = document.getElementById('roadmapCountText');
+      const progressBar = document.getElementById('roadmapProgressBar');
+      const nextActionBox = document.getElementById('nextActionContainer');
+      const listContainer = document.getElementById('milestonesListContainer');
+      const btnDownload = document.getElementById('btnDownloadPlan');
+      const btnReset = document.getElementById('btnResetPlan');
+
+      // Modal elements
+      const customModal = document.getElementById('customModal');
+      const btnOpenCustom = document.getElementById('btnOpenCustomModal');
+      const btnCloseCustom = document.getElementById('btnCloseCustomModal');
+      const btnCancelCustom = document.getElementById('btnCancelCustom');
+      const customForm = document.getElementById('customMilestoneForm');
+
+      // Mobile drawer
+      const btnMobileNav = document.getElementById('btnMobileNav');
+      const btnCloseMobile = document.getElementById('btnCloseMobileDrawer');
+      const drawer = document.getElementById('mobileDrawerContent');
+      const drawerOverlay = document.getElementById('mobileDrawerOverlay');
+      btnMobileNav?.addEventListener('click', () => {
+        drawer?.classList.add('active');
+        drawerOverlay?.classList.add('active');
+      });
+      btnCloseMobile?.addEventListener('click', closeMobile);
+      drawerOverlay?.addEventListener('click', closeMobile);
+      function closeMobile() {
+        drawer?.classList.remove('active');
+        drawerOverlay?.classList.remove('active');
+      }
+
+      // Language
+      const btnLang = document.getElementById('btnLangToggle');
+      function updateLangUI() {
+        btnLang.textContent = currentLang === 'te' ? '🌐 English' : '🌐 తెలుగు (Telugu)';
+      }
+      btnLang.addEventListener('click', () => {
+        currentLang = currentLang === 'en' ? 'te' : 'en';
+        localStorage.setItem('pathsetu_lang', currentLang);
+        updateLangUI();
+        renderRoadmap();
+      });
+      updateLangUI();
+
+      function setupCareerSelect() {
+        if (!window.PATHSETU_DATA || !careerSelect) return;
+        careerSelect.innerHTML = PATHSETU_DATA.careers.map(c => `
+          <option value="${c.id}" ${c.id === currentCareerId ? 'selected' : ''}>
+            ${c.title}
+          </option>
+        `).join('');
+
+        careerSelect.addEventListener('change', (e) => {
+          currentCareerId = e.target.value;
+          if (!progressData[currentCareerId]) progressData[currentCareerId] = [];
+          if (!customMilestones[currentCareerId]) customMilestones[currentCareerId] = [];
+          renderRoadmap();
+        });
+      }
+
+      function getCareerMilestones(career) {
+        // Base standard milestones customized for career
+        const base = (career.roadmapSteps && career.roadmapSteps.length > 0) ? career.roadmapSteps : [
+          {
+            id: 'm1',
+            num: '01',
+            title: `Foundation & Orientation in ${career.title}`,
+            time: 'Weeks 1–4',
+            desc: `Master core foundational principles and vocabulary for ${career.title}. Review entrance eligibility and government university pathways.`
+          },
+          {
+            id: 'm2',
+            num: '02',
+            title: 'Core Technical Skill Building',
+            time: 'Months 2–4',
+            desc: `Develop direct practical competencies in ${(career.skills || []).slice(0, 3).join(', ')}. Dedicate 1 hour daily to structured exercises.`
+          },
+          {
+            id: 'm3',
+            num: '03',
+            title: 'Free Certification on SWAYAM / NPTEL',
+            time: 'Months 4–6',
+            desc: `Complete free audit of ${(career.freeAlternative || 'SWAYAM Central Course')}. Optional proctored certification exam for college credit.`
+          },
+          {
+            id: 'm4',
+            num: '04',
+            title: `Proof-of-Work Project: ${career.starterProject ? career.starterProject.title : 'Practical Deliverable'}`,
+            time: 'Months 6–8',
+            desc: `Build a tangible deliverable: ${career.starterProject ? career.starterProject.deliverable : 'Complete functional portfolio item'}. Document steps and schema.`
+          },
+          {
+            id: 'm5',
+            num: '05',
+            title: 'Portfolio Documentation & Peer Review',
+            time: 'Months 8–10',
+            desc: 'Host your project code/logbook publicly on GitHub or offline print portfolio. Present findings to teachers or local mentors for critique.'
+          },
+          {
+            id: 'm6',
+            num: '06',
+            title: 'Internship / Apprenticeship / Higher Education',
+            time: 'Months 10–12',
+            desc: 'Register on National Career Service (NCS) portal (ncs.gov.in) or apply for state college counseling with completed proof-of-work portfolio.'
+          }
+        ];
+
+        // Append custom user milestones
+        const custom = customMilestones[career.id] || [];
+        return [...base, ...custom];
+      }
+
+      function renderRoadmap() {
+        if (!listContainer || !window.PATHSETU_DATA) return;
+        const career = PATHSETU_DATA.careers.find(c => c.id === currentCareerId) || PATHSETU_DATA.careers[0];
+        const milestones = getCareerMilestones(career);
+        const completed = progressData[currentCareerId] || [];
+
+        const total = milestones.length;
+        const doneCount = completed.length;
+        const pct = total ? Math.round((doneCount / total) * 100) : 0;
+
+        pctText.textContent = `${pct}%`;
+        countText.textContent = `${doneCount} of ${total} Milestones Completed`;
+        progressBar.style.width = `${pct}%`;
+
+        // Determine Next Best Action
+        const nextMilestone = milestones.find(m => !completed.includes(m.id));
+        if (nextMilestone) {
+          nextActionBox.innerHTML = `
+            <div class="next-action-card">
+              <span class="next-action-badge">🔥 Next Best Action</span>
+              <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">
+                ${nextMilestone.title} (${nextMilestone.time})
+              </h3>
+              <p class="text-secondary small" style="line-height: 1.6; margin-bottom: 14px;">
+                ${nextMilestone.desc}
+              </p>
+              <button class="btn btn-primary btn-sm" onclick="window.toggleMilestone('${nextMilestone.id}', true)">
+                Mark this Step as Completed ✓
+              </button>
+            </div>
+          `;
+        } else {
+          nextActionBox.innerHTML = `
+            <div class="next-action-card" style="border-color: #86EFAC; background: #F0FDF4;">
+              <span class="next-action-badge" style="background:var(--color-success);">🎉 Goal Achieved</span>
+              <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">
+                All Milestones Completed for ${career.title}!
+              </h3>
+              <p class="text-secondary small" style="line-height: 1.6;">
+                You have demonstrated practical competence and finished your proof-of-work project. Download your career plan below.
+              </p>
+            </div>
+          `;
+        }
+
+        // Render Milestones List
+        listContainer.innerHTML = milestones.map((m, index) => {
+          const isDone = completed.includes(m.id);
+          return `
+            <div class="milestone-step-item ${isDone ? 'completed' : ''}">
+              <div class="milestone-check-box ${isDone ? 'checked' : ''}" 
+                   onclick="window.toggleMilestone('${m.id}', ${!isDone})" 
+                   title="${isDone ? 'Mark Incomplete' : 'Mark Complete'}">
+                ${isDone ? '✓' : ''}
+              </div>
+              <div class="milestone-content-col">
+                <div class="milestone-header-row">
+                  <div>
+                    <span class="pill-badge" style="margin-right: 8px;">Step ${m.num || ('0' + (index + 1))}</span>
+                    <strong style="font-size: 1.1rem; color: ${isDone ? 'var(--color-success)' : 'var(--text-primary)'};">
+                      ${m.title}
+                    </strong>
+                  </div>
+                  <span class="small font-bold text-muted">${m.time}</span>
+                </div>
+                <p class="text-secondary small" style="line-height: 1.6; margin-bottom: 10px;">
+                  ${m.desc}
+                </p>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span class="small text-accent">${isDone ? '✓ Verified Complete' : 'In Progress'}</span>
+                  <a href="https://swayam.gov.in" target="_blank" rel="noopener noreferrer" class="small text-muted" style="text-decoration:underline;">
+                    Verified Learning Source ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      window.toggleMilestone = function (stepId, markCompleted) {
+        if (!progressData[currentCareerId]) progressData[currentCareerId] = [];
+        if (markCompleted) {
+          if (!progressData[currentCareerId].includes(stepId)) {
+            progressData[currentCareerId].push(stepId);
+          }
+        } else {
+          progressData[currentCareerId] = progressData[currentCareerId].filter(id => id !== stepId);
+        }
+        localStorage.setItem('pathsetu_progress', JSON.stringify(progressData));
+
+        // Notify API if available
+        if (window.PathSetuAPI && PathSetuAPI.toggleMilestone) {
+          PathSetuAPI.toggleMilestone(currentCareerId, stepId, markCompleted).catch(() => { });
+        }
+
+        renderRoadmap();
+      };
+
+      // Reset Roadmap
+      btnReset?.addEventListener('click', () => {
+        if (confirm('Are you sure you want to reset your milestone progress for this career?')) {
+          progressData[currentCareerId] = [];
+          localStorage.setItem('pathsetu_progress', JSON.stringify(progressData));
+          renderRoadmap();
+        }
+      });
+
+      // Download Career Plan (.txt)
+      btnDownload?.addEventListener('click', () => {
+        const career = PATHSETU_DATA.careers.find(c => c.id === currentCareerId) || PATHSETU_DATA.careers[0];
+        const milestones = getCareerMilestones(career);
+        const completed = progressData[currentCareerId] || [];
+
+        let text = `=====================================================\n`;
+        text += `PATHSETU (పథసేతు) — PERSONALIZED CAREER ROADMAP\n`;
+        text += `Target Career: ${career.title}\n`;
+        text += `Field: ${career.field ? career.field.toUpperCase() : 'CAREER'}\n`;
+        text += `Govt College Fee: ${career.costGovt || '₹15,000 – ₹35,000 / yr'}\n`;
+        text += `Private College Fee: ${career.costPrivate || '₹1,50,000+ / yr'}\n`;
+        text += `Free Alternative: ${career.freeAlternative || 'SWAYAM / NPTEL'}\n`;
+        text += `Generated: ${new Date().toLocaleDateString()}\n`;
+        text += `=====================================================\n\n`;
+
+        text += `SEQUENCED MILESTONES & PROGRESS:\n`;
+        milestones.forEach((m, idx) => {
+          const isDone = completed.includes(m.id) ? '[DONE ✓]' : '[PENDING]';
+          text += `${idx + 1}. ${isDone} ${m.title} (${m.time})\n`;
+          text += `   Description: ${m.desc}\n\n`;
+        });
+
+        text += `=====================================================\n`;
+        text += `Official Verified Resources:\n`;
+        text += `- National Career Service: https://ncs.gov.in\n`;
+        text += `- SWAYAM Free Central Portals: https://swayam.gov.in\n`;
+        text += `- National Scholarship Portal: https://scholarships.gov.in\n`;
+        text += `PathSetu — Your interest. Your path. Our support.\n`;
+
+        const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `PathSetu_${career.id}_Roadmap.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      });
+
+      // Custom Milestone Modal
+      btnOpenCustom?.addEventListener('click', () => {
+        customModal?.classList.remove('hide');
+      });
+      btnCloseCustom?.addEventListener('click', () => customModal?.classList.add('hide'));
+      btnCancelCustom?.addEventListener('click', () => customModal?.classList.add('hide'));
+
+      customForm?.addEventListener('submit', () => {
+        const title = document.getElementById('customTitle').value;
+        const time = document.getElementById('customTime').value;
+        const desc = document.getElementById('customDesc').value;
+
+        if (!title || !time) return;
+
+        const newId = 'custom_' + Date.now();
+        if (!customMilestones[currentCareerId]) customMilestones[currentCareerId] = [];
+        customMilestones[currentCareerId].push({
+          id: newId,
+          num: 'Custom',
+          title: title,
+          time: time,
+          desc: desc
+        });
+
+        localStorage.setItem('pathsetu_custom_milestones', JSON.stringify(customMilestones));
+        customModal?.classList.add('hide');
+        customForm.reset();
+        renderRoadmap();
+      });
+
+      setupCareerSelect();
+      renderRoadmap();
+    })();
+  </script>
+</body>
+
+</html>

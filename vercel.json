@@ -1,0 +1,15 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/index", "destination": "/index.html" },
+    { "source": "/careers", "destination": "/careers.html" },
+    { "source": "/compare", "destination": "/compare.html" },
+    { "source": "/budget", "destination": "/budget.html" },
+    { "source": "/skill-gap", "destination": "/skill-gap.html" },
+    { "source": "/roadmap", "destination": "/roadmap.html" },
+    { "source": "/resources", "destination": "/resources.html" },
+    { "source": "/profile", "destination": "/profile.html" },
+    { "source": "/projects", "destination": "/projects.html" }
+  ]
+}

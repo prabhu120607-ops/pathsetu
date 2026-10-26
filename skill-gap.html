@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill-Gap Matrix & Diagnostics — PathSetu</title>
+  <meta name="description"
+    content="Assess your readiness for your chosen career. Discover matched competencies, missing skills, and top 3 priority learning recommendations with free resources.">
+  <link rel="icon" type="image/png" href="assets/pathsetu-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Top Sticky Site Navigation -->
+  <header class="site-header" role="banner">
+    <div class="wrap header-inner">
+      <a href="index.html" class="brand-logo-wrap" aria-label="PathSetu Home">
+        <div class="brand-icon-box">
+          <img src="assets/pathsetu-icon.png" alt="PathSetu Logo" class="brand-icon-img" width="40" height="40">
+        </div>
+        <div class="brand-text-col">
+          <div class="brand-name">Path<span class="text-gradient">Setu</span> <span
+              style="font-size:0.78rem; font-weight:600; color:var(--text-muted);">(పథసేతు)</span></div>
+          <div class="brand-tagline">Skill Gap & Readiness Matrix</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links-list" aria-label="Main Navigation">
+        <a href="index.html" class="site-nav-link">Home</a>
+        <a href="careers.html" class="site-nav-link">Career Tracks</a>
+        <a href="compare.html" class="site-nav-link">3-Way Compare</a>
+        <a href="budget.html" class="site-nav-link">Budget Planner</a>
+        <a href="skill-gap.html" class="site-nav-link active">Skill Gap</a>
+        <a href="roadmap.html" class="site-nav-link">My Roadmap</a>
+        <a href="resources.html" class="site-nav-link">Resources</a>
+        <a href="profile.html" class="site-nav-link">Profile</a>
+        <a href="projects.html" class="site-nav-link">Projects</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="lang-selector-btn" id="btnLangToggle">
+          🌐 తెలుగు (Telugu)
+        </button>
+        <button class="mobile-menu-btn" id="btnMobileNav" aria-label="Toggle Navigation Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <aside class="mobile-drawer-content" id="mobileDrawerContent" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <div class="brand-name">Path<span class="text-gradient">Setu</span></div>
+      <button class="btn btn-ghost" id="btnCloseMobileDrawer" style="font-size:1.25rem;">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-item">🏠 Home</a>
+      <a href="careers.html" class="mobile-nav-item">🎯 Career Tracks</a>
+      <a href="compare.html" class="mobile-nav-item">⚖️ 3-Way Compare</a>
+      <a href="budget.html" class="mobile-nav-item">💰 Budget Planner</a>
+      <a href="skill-gap.html" class="mobile-nav-item active">📊 Skill Gap Matrix</a>
+      <a href="roadmap.html" class="mobile-nav-item">🗺️ Personalized Roadmap</a>
+      <a href="resources.html" class="mobile-nav-item">🌐 Verified Resources</a>
+      <a href="profile.html" class="mobile-nav-item">✍️ Student Profile</a>
+      <a href="projects.html" class="mobile-nav-item">🛠️ Projects Hub</a>
+    </div>
+  </aside>
+
+  <!-- Page Hero Banner -->
+  <section class="page-hero">
+    <div class="wrap page-hero-content">
+      <span class="pill-badge accent">Stage 05 · Competency Diagnostics</span>
+      <h1 class="page-hero-title">Skill-Gap Matrix & Readiness Diagnostics</h1>
+      <p class="page-hero-desc">
+        Bridge the distance between what you know today and what the industry expects tomorrow. View your calculated
+        readiness percentage, your validated strengths, and your top 3 high-leverage skills to learn next.
+      </p>
+      <div class="page-hero-meta-row">
+        <div class="pill-badge">✦ Transparent Matching</div>
+        <div class="pill-badge">✦ Free Learning Links</div>
+        <div class="pill-badge">✦ Top 3 Priorities</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="wrap" style="padding-bottom: 90px;">
+
+    <!-- Career Selection & Student Skills Input -->
+    <div class="card" style="margin-bottom: 30px; padding: 26px;">
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: flex-end;">
+        <div>
+          <label class="form-label" for="skillCareerSelect">Target Career Pathway:</label>
+          <select id="skillCareerSelect" class="form-select" style="font-size: 1.05rem;"></select>
+        </div>
+        <div>
+          <p class="small text-secondary" style="margin-bottom: 8px;">
+            Tip: Toggle the skills you already know below to update your readiness score in real time.
+          </p>
+        </div>
+      </div>
+
+      <!-- Skills Checkboxes -->
+      <div style="margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 18px;">
+        <label class="form-label">Check the skills you currently possess:</label>
+        <div class="checkbox-chips-grid" id="studentSkillsChips">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Diagnosis Report Output -->
+    <div id="skillGapReportContainer">
+      <!-- Generated via JS -->
+    </div>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap footer-inner">
+      <div class="footer-top-row">
+        <div class="brand-logo-wrap">
+          <div class="brand-icon-box">
+            <img src="assets/pathsetu-icon.png" alt="PathSetu" class="brand-icon-img" width="36" height="36">
+          </div>
+          <div class="brand-text-col">
+            <div class="brand-name">Path<span class="text-gradient">Setu</span></div>
+            <div class="brand-tagline">Guided career intelligence for aspiring students.</div>
+          </div>
+        </div>
+        <div class="footer-links-row">
+          <a href="careers.html" class="small text-secondary">Careers</a>
+          <a href="compare.html" class="small text-secondary">3-Way Compare</a>
+          <a href="budget.html" class="small text-secondary">Budget Planner</a>
+          <a href="skill-gap.html" class="small text-secondary">Skill Gap</a>
+          <a href="roadmap.html" class="small text-secondary">Roadmap</a>
+          <a href="resources.html" class="small text-secondary">Resources</a>
+        </div>
+      </div>
+      <div class="footer-disclaimer-box">
+        <strong>Educational Guidance Disclaimer:</strong> Readiness percentage is an exploratory guide based on
+        foundational curriculum requirements, not a certified industry accreditation.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      const params = new URLSearchParams(window.location.search);
+      let currentCareerId = params.get('career') || 'software';
+      let currentLang = localStorage.getItem('pathsetu_lang') || 'en';
+
+      // Load student profile skills or default
+      const profile = JSON.parse(localStorage.getItem('pathsetu_profile') || '{"skills": ["Python", "HTML5 & CSS3"]}');
+      let studentSkills = profile.skills || ['Python', 'HTML5 & CSS3'];
+
+      const careerSelect = document.getElementById('skillCareerSelect');
+      const skillsChips = document.getElementById('studentSkillsChips');
+      const reportContainer = document.getElementById('skillGapReportContainer');
+
+      // Mobile drawer
+      const btnMobileNav = document.getElementById('btnMobileNav');
+      const btnCloseMobile = document.getElementById('btnCloseMobileDrawer');
+      const drawer = document.getElementById('mobileDrawerContent');
+      const drawerOverlay = document.getElementById('mobileDrawerOverlay');
+      btnMobileNav?.addEventListener('click', () => {
+        drawer?.classList.add('active');
+        drawerOverlay?.classList.add('active');
+      });
+      btnCloseMobile?.addEventListener('click', closeMobile);
+      drawerOverlay?.addEventListener('click', closeMobile);
+      function closeMobile() {
+        drawer?.classList.remove('active');
+        drawerOverlay?.classList.remove('active');
+      }
+
+      // Language
+      const btnLang = document.getElementById('btnLangToggle');
+      function updateLangUI() {
+        btnLang.textContent = currentLang === 'te' ? '🌐 English' : '🌐 తెలుగు (Telugu)';
+      }
+      btnLang.addEventListener('click', () => {
+        currentLang = currentLang === 'en' ? 'te' : 'en';
+        localStorage.setItem('pathsetu_lang', currentLang);
+        updateLangUI();
+        renderReport();
+      });
+      updateLangUI();
+
+      // Common candidate skill pool
+      const COMMON_SKILLS = [
+        "Python", "HTML5 & CSS3", "JavaScript", "SQL", "Data Structures",
+        "AutoCAD", "Circuit Wiring", "Soil Science", "Crop Protection",
+        "Vital Signs", "First Aid", "Taxation Basics", "Bookkeeping",
+        "Public Speaking", "Problem Solving"
+      ];
+
+      function setupUI() {
+        if (!window.PATHSETU_DATA) return;
+
+        careerSelect.innerHTML = PATHSETU_DATA.careers.map(c => `
+          <option value="${c.id}" ${c.id === currentCareerId ? 'selected' : ''}>
+            ${c.title} (${c.field ? c.field.toUpperCase() : 'CAREER'})
+          </option>
+        `).join('');
+
+        careerSelect.addEventListener('change', (e) => {
+          currentCareerId = e.target.value;
+          renderReport();
+        });
+
+        // Populate skill toggle chips
+        skillsChips.innerHTML = COMMON_SKILLS.map(s => {
+          const isChecked = studentSkills.includes(s);
+          return `
+            <label class="chk-chip-label">
+              <input type="checkbox" value="${s}" ${isChecked ? 'checked' : ''} onchange="window.toggleSkill('${s}', this.checked)">
+              <span>${s}</span>
+            </label>
+          `;
+        }).join('');
+      }
+
+      window.toggleSkill = function (skillName, isChecked) {
+        if (isChecked) {
+          if (!studentSkills.includes(skillName)) studentSkills.push(skillName);
+        } else {
+          studentSkills = studentSkills.filter(s => s !== skillName);
+        }
+        profile.skills = studentSkills;
+        localStorage.setItem('pathsetu_profile', JSON.stringify(profile));
+        renderReport();
+      };
+
+      // Render Diagnosis Report
+      function renderReport() {
+        if (!reportContainer || !window.PATHSETU_DATA) return;
+        const career = PATHSETU_DATA.careers.find(c => c.id === currentCareerId) || PATHSETU_DATA.careers[0];
+        const required = career.skills || [];
+
+        const matched = required.filter(s => studentSkills.some(userS => userS.toLowerCase().includes(s.toLowerCase()) || s.toLowerCase().includes(userS.toLowerCase())));
+        const missing = required.filter(s => !matched.includes(s));
+
+        const pct = required.length ? Math.round((matched.length / required.length) * 100) : 0;
+        const circumference = 2 * Math.PI * 70; // r=70 -> ~439.8
+        const strokeOffset = circumference - (circumference * pct / 100);
+
+        // Top 3 priority recommendations
+        const top3 = missing.slice(0, 3).map((m, idx) => {
+          let resource = 'SWAYAM & NPTEL Foundation Portal';
+          let time = '2–3 weeks (1 hr/day)';
+          if (m.toLowerCase().includes('python') || m.toLowerCase().includes('sql') || m.toLowerCase().includes('js')) {
+            resource = 'freeCodeCamp + SWAYAM Python Course';
+          } else if (m.toLowerCase().includes('cad') || m.toLowerCase().includes('wiring')) {
+            resource = 'Skill India Digital Technical Lab';
+          }
+          return { skill: m, priority: `Priority 0${idx + 1}`, time: time, resource: resource };
+        });
+
+        reportContainer.innerHTML = `
+          <div style="display: grid; grid-template-columns: 280px 1fr; gap: 24px; align-items: start; margin-bottom: 24px;">
+            
+            <!-- Circular Readiness Gauge Card -->
+            <div class="card" style="text-align: center; padding: 32px 20px;">
+              <span class="pill-badge ${pct >= 70 ? 'success' : pct >= 40 ? 'accent' : 'warning'}" style="margin-bottom: 16px;">
+                ${pct >= 70 ? 'High Readiness' : pct >= 40 ? 'Moderate Foundation' : 'Early Stage'}
+              </span>
+
+              <div class="gauge-container">
+                <svg class="gauge-svg" viewBox="0 0 160 160">
+                  <defs>
+                    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#1D4ED8" />
+                      <stop offset="100%" stop-color="#3B82F6" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="gauge-bg" cx="80" cy="80" r="70"></circle>
+                  <circle class="gauge-fill" cx="80" cy="80" r="70" 
+                    stroke-dasharray="${circumference}" 
+                    stroke-dashoffset="${strokeOffset}">
+                  </circle>
+                </svg>
+                <div class="gauge-text-overlay">
+                  <div class="gauge-percentage">${pct}%</div>
+                  <div class="gauge-label">Readiness</div>
+                </div>
+              </div>
+
+              <p class="small text-muted" style="margin-top: 14px;">
+                ${matched.length} of ${required.length} core competencies matched
+              </p>
+            </div>
+
+            <!-- Two-Column Skills Analysis -->
+            <div class="card">
+              <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 16px;">
+                Competency Breakdown for ${career.title}
+              </h3>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+                
+                <!-- Matched Skills -->
+                <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: var(--radius-sm); padding: 18px;">
+                  <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+                    <span style="color:var(--color-success); font-weight:800;">✓</span>
+                    <h4 style="font-size: 1rem; color: var(--color-success);">Skills You Possess (${matched.length})</h4>
+                  </div>
+                  ${matched.length === 0 ?
+            '<p class="small text-muted">No skills matched yet. Select your skills above.</p>' :
+            `<div class="chips-wrap">${matched.map(s => `<span class="chip-item" style="border-color:#86EFAC; color:var(--color-success); background:#FFFFFF;">✓ ${s}</span>`).join('')}</div>`
+          }
+                </div>
+
+                <!-- Missing Skills -->
+                <div style="background: #FEF3C7; border: 1px solid #FDE68A; border-radius: var(--radius-sm); padding: 18px;">
+                  <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+                    <span style="color:var(--color-warning); font-weight:800;">!</span>
+                    <h4 style="font-size: 1rem; color: var(--color-warning);">Skills to Acquire (${missing.length})</h4>
+                  </div>
+                  ${missing.length === 0 ?
+            '<p class="small text-success">Outstanding! You meet all baseline technical criteria.</p>' :
+            `<div class="chips-wrap">${missing.map(s => `<span class="chip-item" style="border-color:#FCD34D; color:var(--color-warning); background:#FFFFFF;">✦ ${s}</span>`).join('')}</div>`
+          }
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Top 3 Priority Skills to Learn Next -->
+          <div class="card" style="margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 12px;">
+              <div>
+                <span class="pill-badge accent">Immediate Action Plan</span>
+                <h3 style="font-size: 1.3rem; font-weight: 800; margin-top: 4px;">Top 3 Priority Skills to Learn Next</h3>
+              </div>
+              <a href="roadmap.html?career=${career.id}" class="btn btn-primary btn-sm">
+                View Full 6-Stage Roadmap →
+              </a>
+            </div>
+
+            ${top3.length === 0 ? `
+              <p class="text-secondary">You have mastered all core prerequisites for this pathway!</p>
+            ` : top3.map(item => `
+              <div class="priority-skill-card">
+                <div class="priority-skill-info">
+                  <span class="pill-badge" style="margin-bottom: 6px;">${item.priority}</span>
+                  <h4>${item.skill}</h4>
+                  <p class="text-secondary">${item.resource} · Estimated: ${item.time}</p>
+                </div>
+                <div>
+                  <a href="https://swayam.gov.in" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+                    Free Course ↗
+                  </a>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+
+          <!-- Bottom Action Row -->
+          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <a href="roadmap.html?career=${career.id}" class="btn btn-primary">
+              Generate Step-by-Step Roadmap for ${career.title} →
+            </a>
+            <a href="careers.html" class="btn btn-outline">
+              Explore Alternative Careers
+            </a>
+          </div>
+        `;
+      }
+
+      setupUI();
+      renderReport();
+    })();
+  </script>
+</body>
+
+</html>

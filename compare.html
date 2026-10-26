@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3-Way Career Comparison Matrix — PathSetu</title>
+  <meta name="description"
+    content="Side-by-side comparison of 3 Indian career pathways. Compare government vs private education costs, scholarships, and free SWAYAM alternatives.">
+  <link rel="icon" type="image/png" href="assets/pathsetu-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Top Sticky Site Navigation -->
+  <header class="site-header" role="banner">
+    <div class="wrap header-inner">
+      <a href="index.html" class="brand-logo-wrap" aria-label="PathSetu Home">
+        <div class="brand-icon-box">
+          <img src="assets/pathsetu-icon.png" alt="PathSetu Logo" class="brand-icon-img" width="40" height="40">
+        </div>
+        <div class="brand-text-col">
+          <div class="brand-name">Path<span class="text-gradient">Setu</span> <span
+              style="font-size:0.78rem; font-weight:600; color:var(--text-muted);">(పథసేతు)</span></div>
+          <div class="brand-tagline">3-Way Comparison Matrix</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links-list" aria-label="Main Navigation">
+        <a href="index.html" class="site-nav-link">Home</a>
+        <a href="careers.html" class="site-nav-link">Career Tracks</a>
+        <a href="compare.html" class="site-nav-link active">3-Way Compare</a>
+        <a href="budget.html" class="site-nav-link">Budget Planner</a>
+        <a href="skill-gap.html" class="site-nav-link">Skill Gap</a>
+        <a href="roadmap.html" class="site-nav-link">My Roadmap</a>
+        <a href="resources.html" class="site-nav-link">Resources</a>
+        <a href="profile.html" class="site-nav-link">Profile</a>
+        <a href="projects.html" class="site-nav-link">Projects</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="lang-selector-btn" id="btnLangToggle">
+          🌐 తెలుగు (Telugu)
+        </button>
+        <button class="mobile-menu-btn" id="btnMobileNav" aria-label="Toggle Navigation Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <aside class="mobile-drawer-content" id="mobileDrawerContent" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <div class="brand-name">Path<span class="text-gradient">Setu</span></div>
+      <button class="btn btn-ghost" id="btnCloseMobileDrawer" style="font-size:1.25rem;">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-item">🏠 Home</a>
+      <a href="careers.html" class="mobile-nav-item">🎯 Career Tracks</a>
+      <a href="compare.html" class="mobile-nav-item active">⚖️ 3-Way Compare</a>
+      <a href="budget.html" class="mobile-nav-item">💰 Budget Planner</a>
+      <a href="skill-gap.html" class="mobile-nav-item">📊 Skill Gap Matrix</a>
+      <a href="roadmap.html" class="mobile-nav-item">🗺️ Personalized Roadmap</a>
+      <a href="resources.html" class="mobile-nav-item">🌐 Verified Resources</a>
+      <a href="profile.html" class="mobile-nav-item">✍️ Student Profile</a>
+      <a href="projects.html" class="mobile-nav-item">🛠️ Projects Hub</a>
+    </div>
+  </aside>
+
+  <!-- Page Hero Banner -->
+  <section class="page-hero">
+    <div class="wrap page-hero-content">
+      <span class="pill-badge accent">Feature A · Multi-Track Decision Intelligence</span>
+      <h1 class="page-hero-title">3-Way Side-by-Side Career Comparison</h1>
+      <p class="page-hero-desc">
+        Evaluate up to three career tracks simultaneously. Compare actual government vs private college fees, minimum
+        entry criteria, free central alternatives (SWAYAM / NPTEL), and recommended starter projects.
+      </p>
+      <div class="page-hero-meta-row">
+        <button class="btn btn-sm btn-outline" onclick="window.print()">🖨️ Print / Save Comparison</button>
+        <a href="careers.html" class="btn btn-sm btn-ghost">← Back to Career Catalog</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Matrix Content -->
+  <main class="wrap" style="padding-bottom: 90px;">
+
+    <!-- 3-Slot Selection Bar -->
+    <div class="card" style="margin-bottom: 24px; padding: 20px;">
+      <h3 style="font-size: 1.1rem; margin-bottom: 14px;">Select 3 Careers to Compare:</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
+        <div>
+          <label class="form-label" for="slotSelect0">Career Slot 1:</label>
+          <select id="slotSelect0" class="form-select"></select>
+        </div>
+        <div>
+          <label class="form-label" for="slotSelect1">Career Slot 2:</label>
+          <select id="slotSelect1" class="form-select"></select>
+        </div>
+        <div>
+          <label class="form-label" for="slotSelect2">Career Slot 3:</label>
+          <select id="slotSelect2" class="form-select"></select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparative Matrix Columns -->
+    <div class="compare-matrix-grid" id="compareMatrixContainer">
+      <!-- Generated dynamically -->
+    </div>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap footer-inner">
+      <div class="footer-top-row">
+        <div class="brand-logo-wrap">
+          <div class="brand-icon-box">
+            <img src="assets/pathsetu-icon.png" alt="PathSetu" class="brand-icon-img" width="36" height="36">
+          </div>
+          <div class="brand-text-col">
+            <div class="brand-name">Path<span class="text-gradient">Setu</span></div>
+            <div class="brand-tagline">Guided career intelligence for aspiring students.</div>
+          </div>
+        </div>
+        <div class="footer-links-row">
+          <a href="careers.html" class="small text-secondary">Careers</a>
+          <a href="compare.html" class="small text-secondary">3-Way Compare</a>
+          <a href="budget.html" class="small text-secondary">Budget Planner</a>
+          <a href="skill-gap.html" class="small text-secondary">Skill Gap</a>
+          <a href="roadmap.html" class="small text-secondary">Roadmap</a>
+          <a href="resources.html" class="small text-secondary">Resources</a>
+        </div>
+      </div>
+      <div class="footer-disclaimer-box">
+        <strong>Educational Guidance Disclaimer:</strong> Fee approximations are based on typical state and central
+        university structures in India. Always check respective college prospectuses and official entrance portals (NTA,
+        State CETs) for exact figures.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      // Read careers from query params or localStorage or defaults
+      const params = new URLSearchParams(window.location.search);
+      let queryCareers = params.get('c') ? params.get('c').split(',') : null;
+      let saved = JSON.parse(localStorage.getItem('pathsetu_compare') || '["software", "agri_scientist", "solar_electrician"]');
+      let activeSlots = queryCareers || saved;
+      if (activeSlots.length < 3) {
+        const defaults = ['software', 'agri_scientist', 'solar_electrician'];
+        for (let d of defaults) {
+          if (!activeSlots.includes(d) && activeSlots.length < 3) activeSlots.push(d);
+        }
+      }
+
+      let currentLang = localStorage.getItem('pathsetu_lang') || 'en';
+      const container = document.getElementById('compareMatrixContainer');
+      const slotSelects = [
+        document.getElementById('slotSelect0'),
+        document.getElementById('slotSelect1'),
+        document.getElementById('slotSelect2')
+      ];
+
+      // Mobile drawer
+      const btnMobileNav = document.getElementById('btnMobileNav');
+      const btnCloseMobile = document.getElementById('btnCloseMobileDrawer');
+      const drawer = document.getElementById('mobileDrawerContent');
+      const drawerOverlay = document.getElementById('mobileDrawerOverlay');
+      btnMobileNav?.addEventListener('click', () => {
+        drawer?.classList.add('active');
+        drawerOverlay?.classList.add('active');
+      });
+      btnCloseMobile?.addEventListener('click', closeMobile);
+      drawerOverlay?.addEventListener('click', closeMobile);
+      function closeMobile() {
+        drawer?.classList.remove('active');
+        drawerOverlay?.classList.remove('active');
+      }
+
+      // Language
+      const btnLang = document.getElementById('btnLangToggle');
+      function updateLangUI() {
+        btnLang.textContent = currentLang === 'te' ? '🌐 English' : '🌐 తెలుగు (Telugu)';
+      }
+      btnLang.addEventListener('click', () => {
+        currentLang = currentLang === 'en' ? 'te' : 'en';
+        localStorage.setItem('pathsetu_lang', currentLang);
+        updateLangUI();
+        renderMatrix();
+      });
+      updateLangUI();
+
+      // Populate Selectors
+      function setupSelectors() {
+        if (!window.PATHSETU_DATA) return;
+        slotSelects.forEach((sel, idx) => {
+          sel.innerHTML = PATHSETU_DATA.careers.map(c => `
+            <option value="${c.id}" ${activeSlots[idx] === c.id ? 'selected' : ''}>
+              ${c.title} (${c.field ? c.field.toUpperCase() : 'CAREER'})
+            </option>
+          `).join('');
+
+          sel.addEventListener('change', (e) => {
+            activeSlots[idx] = e.target.value;
+            localStorage.setItem('pathsetu_compare', JSON.stringify(activeSlots));
+            renderMatrix();
+          });
+        });
+      }
+
+      // Render Matrix Columns
+      function renderMatrix() {
+        if (!container || !window.PATHSETU_DATA) return;
+
+        const careers = activeSlots.map(id => PATHSETU_DATA.careers.find(c => c.id === id) || PATHSETU_DATA.careers[0]);
+
+        container.innerHTML = careers.map((c, i) => {
+          const title = currentLang === 'te' && c.title_te ? c.title_te : c.title;
+          const desc = currentLang === 'te' && c.description_te ? c.description_te : c.description;
+
+          return `
+            <div class="compare-column-card ${i === 0 ? 'highlight' : ''}">
+              <div style="border-bottom: 2px solid var(--color-light-blue); padding-bottom: 16px;">
+                <span class="pill-badge">${c.field ? c.field.toUpperCase() : 'DISCIPLINE'}</span>
+                <h3 style="font-size: 1.4rem; font-weight: 800; margin: 10px 0 6px;">${title}</h3>
+                <p class="text-secondary small">${desc}</p>
+              </div>
+
+              <!-- Eligibility -->
+              <div class="compare-cell-group">
+                <span class="compare-cell-label">Minimum Entry Eligibility</span>
+                <span class="compare-cell-value font-bold">${c.eligibility || 'Class 12 / Relevant Degree'}</span>
+              </div>
+
+              <!-- Govt Education Cost -->
+              <div class="compare-cell-group">
+                <span class="compare-cell-label">Govt College Annual Cost</span>
+                <span class="compare-cell-value font-bold text-accent">${c.costGovt || '₹15,000 – ₹35,000 / yr'}</span>
+                <span class="small text-muted">Subsidized state/central university fees</span>
+              </div>
+
+              <!-- Private College Cost -->
+              <div class="compare-cell-group">
+                <span class="compare-cell-label">Private College Annual Cost</span>
+                <span class="compare-cell-value font-bold" style="color:var(--color-danger);">${c.costPrivate || '₹1,50,000 – ₹3,00,000 / yr'}</span>
+                <span class="small text-muted">Non-subsidized private institutions</span>
+              </div>
+
+              <!-- Free Central Alternatives -->
+              <div class="compare-cell-group">
+                <span class="compare-cell-label">Free Central Learning Pathways</span>
+                <span class="compare-cell-value" style="color:var(--color-success); font-weight:600;">
+                  ${c.freeAlternative || 'SWAYAM, NPTEL, Skill India Digital (₹0)'}
+                </span>
+                <span class="small text-muted">Govt-funded online courses with free audit</span>
+              </div>
+
+              <!-- Verified Scholarships -->
+              <div class="compare-cell-group">
+                <span class="compare-cell-label">Verified Scholarships Available</span>
+                <span class="compare-cell-value">${c.scholarships || 'National Scholarship Portal (NSP), State Post-Matric'}</span>
+              </div>
+
+              <!-- Starting Salary -->
+              <div class="compare-cell-group">
+                <span class="compare-cell-label">Typical Starting Salary in India</span>
+                <span class="compare-cell-value font-bold text-accent">${c.salaryRange || '₹3.5L – ₹6.0L / yr'}</span>
+              </div>
+
+              <!-- Core Technical Skills -->
+              <div class="compare-cell-group">
+                <span class="compare-cell-label">Core Technical Competencies</span>
+                <div class="chips-wrap" style="margin-top: 4px;">
+                  ${(c.skills || []).map(s => `<span class="chip-item skill">${s}</span>`).join('')}
+                </div>
+              </div>
+
+              <!-- Starter Proof-of-Work Project -->
+              <div class="compare-cell-group">
+                <span class="compare-cell-label">Recommended Starter Project</span>
+                <span class="compare-cell-value font-bold" style="color:var(--text-primary);">
+                  🛠️ ${c.starterProject ? c.starterProject.title : 'Practical Portfolio Deliverable'}
+                </span>
+                <span class="small text-muted">${c.starterProject ? c.starterProject.deliverable : 'Tangible real-world project.'}</span>
+              </div>
+
+              <!-- Direct Actions -->
+              <div style="margin-top: auto; padding-top: 16px; display: flex; flex-direction: column; gap: 8px;">
+                <a href="roadmap.html?career=${c.id}" class="btn btn-primary btn-sm" style="width:100%;">
+                  Open Milestone Roadmap →
+                </a>
+                <a href="budget.html?career=${c.id}" class="btn btn-outline btn-sm" style="width:100%;">
+                  Evaluate in Budget Planner
+                </a>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      setupSelectors();
+      renderMatrix();
+    })();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hands-On Portfolio Projects — PathSetu</title>
+  <meta name="description"
+    content="Tangible proof-of-work starter projects for students in tech, agriculture, solar energy, healthcare, and finance. Build real deliverables before choosing a degree.">
+  <link rel="icon" type="image/png" href="assets/pathsetu-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Top Sticky Site Navigation -->
+  <header class="site-header" role="banner">
+    <div class="wrap header-inner">
+      <a href="index.html" class="brand-logo-wrap" aria-label="PathSetu Home">
+        <div class="brand-icon-box">
+          <img src="assets/pathsetu-icon.png" alt="PathSetu Logo" class="brand-icon-img" width="40" height="40">
+        </div>
+        <div class="brand-text-col">
+          <div class="brand-name">Path<span class="text-gradient">Setu</span> <span
+              style="font-size:0.78rem; font-weight:600; color:var(--text-muted);">(పథసేతు)</span></div>
+          <div class="brand-tagline">Proof-of-Work Projects Hub</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links-list" aria-label="Main Navigation">
+        <a href="index.html" class="site-nav-link">Home</a>
+        <a href="careers.html" class="site-nav-link">Career Tracks</a>
+        <a href="compare.html" class="site-nav-link">3-Way Compare</a>
+        <a href="budget.html" class="site-nav-link">Budget Planner</a>
+        <a href="skill-gap.html" class="site-nav-link">Skill Gap</a>
+        <a href="roadmap.html" class="site-nav-link">My Roadmap</a>
+        <a href="resources.html" class="site-nav-link">Resources</a>
+        <a href="profile.html" class="site-nav-link">Profile</a>
+        <a href="projects.html" class="site-nav-link active">Projects</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="lang-selector-btn" id="btnLangToggle">
+          🌐 తెలుగు (Telugu)
+        </button>
+        <button class="mobile-menu-btn" id="btnMobileNav" aria-label="Toggle Navigation Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <aside class="mobile-drawer-content" id="mobileDrawerContent" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <div class="brand-name">Path<span class="text-gradient">Setu</span></div>
+      <button class="btn btn-ghost" id="btnCloseMobileDrawer" style="font-size:1.25rem;">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-item">🏠 Home</a>
+      <a href="careers.html" class="mobile-nav-item">🎯 Career Tracks</a>
+      <a href="compare.html" class="mobile-nav-item">⚖️ 3-Way Compare</a>
+      <a href="budget.html" class="mobile-nav-item">💰 Budget Planner</a>
+      <a href="skill-gap.html" class="mobile-nav-item">📊 Skill Gap Matrix</a>
+      <a href="roadmap.html" class="mobile-nav-item">🗺️ Personalized Roadmap</a>
+      <a href="resources.html" class="mobile-nav-item">🌐 Verified Resources</a>
+      <a href="profile.html" class="mobile-nav-item">✍️ Student Profile</a>
+      <a href="projects.html" class="mobile-nav-item active">🛠️ Projects Hub</a>
+    </div>
+  </aside>
+
+  <!-- Page Hero Banner -->
+  <section class="page-hero">
+    <div class="wrap page-hero-content">
+      <span class="pill-badge accent">Proof-of-Work Learning Paradigm</span>
+      <h1 class="page-hero-title">Hands-On Portfolio Projects</h1>
+      <p class="page-hero-desc">
+        Theory without execution leads to regret. PathSetu equips every student with an industry-relevant proof-of-work
+        project to test your curiosity, build authentic confidence, and showcase tangible capability to colleges and
+        employers.
+      </p>
+      <div class="page-hero-meta-row">
+        <div class="pill-badge">✦ Free Open-Source Tools</div>
+        <div class="pill-badge">✦ 100% Tangible Deliverables</div>
+        <div class="pill-badge">✦ Step-by-Step Rubrics</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Hub Content -->
+  <main class="wrap" style="padding-bottom: 90px;">
+
+    <!-- Filter Buttons -->
+    <div class="card" style="margin-bottom: 30px; padding: 18px;">
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        <span class="small font-bold text-muted" style="margin-right: 6px;">Filter Discipline:</span>
+        <button class="hero-track-pill active btn-filter-proj" data-field="all">All Disciplines</button>
+        <button class="hero-track-pill btn-filter-proj" data-field="technology">Technology & Web</button>
+        <button class="hero-track-pill btn-filter-proj" data-field="agriculture">Agriculture & Soil</button>
+        <button class="hero-track-pill btn-filter-proj" data-field="vocational">Solar Energy</button>
+        <button class="hero-track-pill btn-filter-proj" data-field="healthcare">Healthcare</button>
+        <button class="hero-track-pill btn-filter-proj" data-field="business">Finance & Commerce</button>
+        <button class="hero-track-pill btn-filter-proj" data-field="civil">Civil Infrastructure</button>
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 28px;"
+      id="projectsGrid">
+      <!-- Populated via JS -->
+    </div>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap footer-inner">
+      <div class="footer-top-row">
+        <div class="brand-logo-wrap">
+          <div class="brand-icon-box">
+            <img src="assets/pathsetu-icon.png" alt="PathSetu" class="brand-icon-img" width="36" height="36">
+          </div>
+          <div class="brand-text-col">
+            <div class="brand-name">Path<span class="text-gradient">Setu</span></div>
+            <div class="brand-tagline">Guided career intelligence for aspiring students.</div>
+          </div>
+        </div>
+        <div class="footer-links-row">
+          <a href="careers.html" class="small text-secondary">Careers</a>
+          <a href="compare.html" class="small text-secondary">3-Way Compare</a>
+          <a href="budget.html" class="small text-secondary">Budget Planner</a>
+          <a href="skill-gap.html" class="small text-secondary">Skill Gap</a>
+          <a href="roadmap.html" class="small text-secondary">Roadmap</a>
+          <a href="resources.html" class="small text-secondary">Resources</a>
+        </div>
+      </div>
+      <div class="footer-disclaimer-box">
+        <strong>Educational Guidance Disclaimer:</strong> All project deliverables can be constructed using free,
+        open-source software (Python, VS Code, LibreCAD, Google Sheets) or low-cost physical materials available
+        locally.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      let currentLang = localStorage.getItem('pathsetu_lang') || 'en';
+      let activeFilter = 'all';
+
+      const grid = document.getElementById('projectsGrid');
+      const filterBtns = document.querySelectorAll('.btn-filter-proj');
+
+      // Mobile drawer
+      const btnMobileNav = document.getElementById('btnMobileNav');
+      const btnCloseMobile = document.getElementById('btnCloseMobileDrawer');
+      const drawer = document.getElementById('mobileDrawerContent');
+      const drawerOverlay = document.getElementById('mobileDrawerOverlay');
+      btnMobileNav?.addEventListener('click', () => {
+        drawer?.classList.add('active');
+        drawerOverlay?.classList.add('active');
+      });
+      btnCloseMobile?.addEventListener('click', closeMobile);
+      drawerOverlay?.addEventListener('click', closeMobile);
+      function closeMobile() {
+        drawer?.classList.remove('active');
+        drawerOverlay?.classList.remove('active');
+      }
+
+      // Language
+      const btnLang = document.getElementById('btnLangToggle');
+      function updateLangUI() {
+        btnLang.textContent = currentLang === 'te' ? '🌐 English' : '🌐 తెలుగు (Telugu)';
+      }
+      btnLang.addEventListener('click', () => {
+        currentLang = currentLang === 'en' ? 'te' : 'en';
+        localStorage.setItem('pathsetu_lang', currentLang);
+        updateLangUI();
+        renderProjects();
+      });
+      updateLangUI();
+
+      // Master Projects Dataset
+      const PROJECTS_DATA = [
+        {
+          id: 'proj_software',
+          field: 'technology',
+          careerId: 'software',
+          title: 'Local Village & Small Business Directory Web App',
+          deliverable: 'Responsive HTML/CSS/JS or Python SQLite database showcasing 10 local village shops, services, and contacts.',
+          tools: 'VS Code, HTML/CSS/JS or Python, SQLite',
+          time: '3–4 weeks (1 hr/day)',
+          steps: [
+            'Survey 5-10 local village or neighborhood businesses to gather phone numbers and services.',
+            'Design clean responsive directory cards with click-to-call links.',
+            'Store data in structured JSON or SQLite schema.',
+            'Host live for free on GitHub Pages, Netlify, or Vercel.'
+          ],
+          rubric: 'Working website, mobile responsive, clean readable code, real business data.'
+        },
+        {
+          id: 'proj_uiux',
+          field: 'technology',
+          careerId: 'uiux_designer',
+          title: 'Rural Micro-Finance & Savings Mobile App Prototype',
+          deliverable: 'Interactive high-fidelity Figma mobile prototype designed for low-literacy users with voice navigation icons.',
+          tools: 'Figma (Free Web App)',
+          time: '2–3 weeks',
+          steps: [
+            'Create user personas of rural self-help group members managing group savings.',
+            'Sketch wireframes using high contrast colors and large intuitive icons.',
+            'Build interactive clickable prototype in Figma with simulated deposit and loan tracking.'
+          ],
+          rubric: 'Intuitive navigation, accessible contrast, user testing feedback with 2 people.'
+        },
+        {
+          id: 'proj_agri',
+          field: 'agriculture',
+          careerId: 'agri_scientist',
+          title: 'Soil NPK & Moisture Testing Logbook & Treatment Plan',
+          deliverable: 'Standardized soil sample evaluation sheet covering 3 local farm plots with organic bio-fertilizer recommendations.',
+          tools: 'pH test strips / Soil testing kit, Google Sheets / Notebook',
+          time: '2 weeks',
+          steps: [
+            'Collect 3 soil core samples from different field zones.',
+            'Test pH and moisture drainage rates using local agricultural extension guidelines.',
+            'Record findings in structured logbook and document recommendations.'
+          ],
+          rubric: 'Accurate logging, photographic documentation, practical organic remedy notes.'
+        },
+        {
+          id: 'proj_solar',
+          field: 'vocational',
+          careerId: 'solar_electrician',
+          title: '1kW Rooftop Off-Grid Solar Sizing & Wiring Schematic',
+          deliverable: 'Complete load calculation sheet and one-line circuit diagram for a rural home powering 3 fans, 4 LED bulbs, and a TV.',
+          tools: 'LibreCAD or Hand-drafted technical drawing, Calculator',
+          time: '1–2 weeks',
+          steps: [
+            'Calculate daily watt-hour energy consumption for standard rural appliances.',
+            'Size required solar PV panel wattage and 12V/24V battery bank capacity.',
+            'Draft schematic showing safety circuit breaker (MCB) and inverter wiring.'
+          ],
+          rubric: 'Correct electrical calculations, safety compliance, clear schematic symbols.'
+        },
+        {
+          id: 'proj_nurse',
+          field: 'healthcare',
+          careerId: 'medical_nurse',
+          title: 'Community Health Vital Signs & First Aid Protocol Manual',
+          deliverable: 'Standard operating procedure guide for measuring blood pressure, temperature, pulse rate, and triaging common injuries.',
+          tools: 'Sphygmomanometer / BP monitor, Notebook',
+          time: '2 weeks',
+          steps: [
+            'Learn and practice correct blood pressure cuff placement and pulse reading.',
+            'Document emergency triage protocols for heat exhaustion, dehydration, and cuts.',
+            'Prepare a bilingual community hygiene pamphlet for local health camps.'
+          ],
+          rubric: 'Clinical accuracy according to WHO/MoHFW norms, neat structured reference charts.'
+        },
+        {
+          id: 'proj_data',
+          field: 'technology',
+          careerId: 'data_analyst',
+          title: 'District Crop Yield & Seasonal Rainfall Trends Dashboard',
+          deliverable: 'Google Sheets or Python Pandas data visualization analyzing 5 years of historical monsoon rain vs harvest yields.',
+          tools: 'Google Sheets or Python (Pandas/Matplotlib)',
+          time: '2–3 weeks',
+          steps: [
+            'Download open government data from data.gov.in for district rainfall.',
+            'Clean raw CSV tables and handle missing data points.',
+            'Generate trend charts comparing rainfall anomalies to crop harvest outcomes.'
+          ],
+          rubric: 'Clear chart labels, correlation analysis, 1-page executive summary insights.'
+        },
+        {
+          id: 'proj_finance',
+          field: 'business',
+          careerId: 'chartered_accountant',
+          title: 'Small Retailer GST & Cash Flow Accounting Ledger',
+          deliverable: 'Automated spreadsheet model tracking sales, purchase invoices, input tax credit (ITC), and monthly net profit.',
+          tools: 'Google Sheets / MS Excel',
+          time: '2 weeks',
+          steps: [
+            'Model monthly cash inflows and outflows for a neighborhood kirana or hardware store.',
+            'Include automated 5%, 12%, and 18% GST tax calculation columns.',
+            'Generate automatic monthly profit-and-loss summary report.'
+          ],
+          rubric: 'Formula accuracy, error handling, clean presentation suitable for shopkeeper review.'
+        },
+        {
+          id: 'proj_civil',
+          field: 'civil',
+          careerId: 'civil_engineer',
+          title: 'Rural Road Drainage Culvert Cross-Section Blueprint',
+          deliverable: 'Scaled cross-section technical drawing showing reinforced concrete pipe culvert, embankment slope, and stone pitching.',
+          tools: 'LibreCAD (Free) or Engineering Drawing Sheet',
+          time: '3 weeks',
+          steps: [
+            'Calculate peak runoff flow rate for a 100-meter rural catchment road.',
+            'Select standard IRC (Indian Roads Congress) culvert diameter.',
+            'Draft cross-section and elevation showing soil bedding and concrete headwall.'
+          ],
+          rubric: 'IRC compliance, clear dimensioning, scale notation, bill of quantities (BOQ).'
+        }
+      ];
+
+      function renderProjects() {
+        if (!grid) return;
+        const filtered = PROJECTS_DATA.filter(p => activeFilter === 'all' || p.field === activeFilter);
+
+        grid.innerHTML = filtered.map(p => `
+          <div class="card" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+                <span class="pill-badge">${p.field.toUpperCase()}</span>
+                <span class="pill-badge accent">${p.time}</span>
+              </div>
+              <h3 style="font-size:1.25rem; font-weight:800; margin-bottom:8px;">${p.title}</h3>
+              <p class="text-secondary small" style="line-height:1.6; margin-bottom:16px;">
+                <strong style="color:var(--text-primary);">Deliverable:</strong> ${p.deliverable}
+              </p>
+
+              <div style="background:var(--color-background); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:14px; margin-bottom:16px;">
+                <div class="small text-muted" style="margin-bottom:6px;">Required Free Tools:</div>
+                <div class="small font-bold text-accent">${p.tools}</div>
+              </div>
+
+              <div style="margin-bottom:16px;">
+                <div class="small font-bold" style="margin-bottom:8px; color:var(--text-primary);">Step-by-Step Execution:</div>
+                <ul style="padding-left:18px; list-style-type:disc;" class="small text-secondary">
+                  ${p.steps.map(s => `<li style="margin-bottom:4px;">${s}</li>`).join('')}
+                </ul>
+              </div>
+            </div>
+
+            <div style="border-top:1px solid var(--border-color); padding-top:16px; display:flex; gap:10px;">
+              <a href="roadmap.html?career=${p.careerId}" class="btn btn-primary btn-sm" style="flex:1;">
+                Start in Roadmap →
+              </a>
+              <a href="careers.html" class="btn btn-outline btn-sm">
+                Career Track
+              </a>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeFilter = btn.getAttribute('data-field');
+          renderProjects();
+        });
+      });
+
+      renderProjects();
+    })();
+  </script>
+</body>
+
+</html>

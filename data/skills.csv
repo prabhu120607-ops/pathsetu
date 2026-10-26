@@ -1,0 +1,21 @@
+skill_id,name,category,priority,prerequisite,free_resource,source_url
+sk_py,Python Programming,Technology,Core,Basic Logic,SWAYAM Python for Data Science,https://swayam.gov.in/
+sk_web,HTML5 & CSS3 Web Basics,Technology,Core,None,W3Schools & FreeCodeCamp,https://www.freecodecamp.org/
+sk_js,JavaScript & DOM,Technology,Core,HTML5 & CSS3,MDN Web Docs,https://developer.mozilla.org/
+sk_sql,SQL & Relational Databases,Data,Core,Basic Logic,Khan Academy SQL / SWAYAM,https://swayam.gov.in/
+sk_ds,Data Structures & Algorithms,Technology,Core,Python or C++,NPTEL DSA by IIT,https://nptel.ac.in/
+sk_figma,Figma & UI Layouts,Design,Core,Visual Sense,Official Figma Community Tutorials,https://www.figma.com/community/
+sk_research,User Research & Testing,Design,Essential,Empathy,Interaction Design Foundation Open Guides,https://www.interaction-design.org/
+sk_agri_soil,Soil Science & Crop Nutrition,Agriculture,Core,High School Chemistry,ICAR Farmer Portal & SWAYAM Agronomy,https://swayam.gov.in/
+sk_agri_irr,Smart Irrigation & Sensor Tech,Agriculture,Essential,Basic Physics,Skill India Precision Agriculture Course,https://www.skillindiadigital.gov.in/
+sk_anat,Human Anatomy & Physiology,Healthcare,Core,Biology (PCB),NCERT Class 11-12 Biology & SWAYAM,https://ncert.nic.in/
+sk_firstaid,Emergency First Aid & Patient Care,Healthcare,Core,None,St John Ambulance & Red Cross Modules,https://www.ncs.gov.in/
+sk_cad,AutoCAD & Engineering Drawing,Engineering,Core,High School Geometry,NPTEL Engineering Drawing,https://nptel.ac.in/
+sk_elec,Circuit Analysis & Solar Wiring,Vocational,Core,Class 10 Physics,Skill India Solar PV Installer (Suryamitra),https://www.skillindiadigital.gov.in/
+sk_mech,CNC Operation & Tooling,Vocational,Core,Class 10 Math,Directorate General of Training (DGT) ITI Modules,https://dgt.gov.in/
+sk_acc,Bookkeeping & Tally/GST,Business,Core,Basic Arithmetic,SWAYAM Accountancy & ICAI Foundation,https://swayam.gov.in/
+sk_mktg,Digital Content & Social Strategy,Business,Core,Written English/Telugu,Google Digital Garage & HubSpot Open,https://grow.google/
+sk_teach,Pedagogy & Lesson Planning,Education,Core,Subject Knowledge,NCERT Teacher Portal & SWAYAM B.Ed Modules,https://ncert.nic.in/
+sk_cloud,Linux & Cloud Fundamentals,Technology,Essential,Command Line,AWS Educate & edX Open Linux,https://www.edx.org/
+sk_stats,Probability & Applied Statistics,Data,Core,Class 12 Math,NPTEL Probability for Engineers,https://nptel.ac.in/
+sk_comm,Public Speaking & Communication,Soft Skills,Essential,None,NCS Soft Skills Toolkit,https://www.ncs.gov.in/

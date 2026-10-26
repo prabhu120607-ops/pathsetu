@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Intake & AI Profile Analysis — PathSetu</title>
+  <meta name="description"
+    content="Transparent career profiling based on a 5-factor explainable framework. Zero deceptive tests. Understand your strengths and matched pathways.">
+  <link rel="icon" type="image/png" href="assets/pathsetu-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Top Sticky Site Navigation -->
+  <header class="site-header" role="banner">
+    <div class="wrap header-inner">
+      <a href="index.html" class="brand-logo-wrap" aria-label="PathSetu Home">
+        <div class="brand-icon-box">
+          <img src="assets/pathsetu-icon.png" alt="PathSetu Logo" class="brand-icon-img" width="40" height="40">
+        </div>
+        <div class="brand-text-col">
+          <div class="brand-name">Path<span class="text-gradient">Setu</span> <span
+              style="font-size:0.78rem; font-weight:600; color:var(--text-muted);">(పథసేతు)</span></div>
+          <div class="brand-tagline">Student Intake & AI Analysis</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links-list" aria-label="Main Navigation">
+        <a href="index.html" class="site-nav-link">Home</a>
+        <a href="careers.html" class="site-nav-link">Career Tracks</a>
+        <a href="compare.html" class="site-nav-link">3-Way Compare</a>
+        <a href="budget.html" class="site-nav-link">Budget Planner</a>
+        <a href="skill-gap.html" class="site-nav-link">Skill Gap</a>
+        <a href="roadmap.html" class="site-nav-link">My Roadmap</a>
+        <a href="resources.html" class="site-nav-link">Resources</a>
+        <a href="profile.html" class="site-nav-link active">Profile</a>
+        <a href="projects.html" class="site-nav-link">Projects</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="lang-selector-btn" id="btnLangToggle">
+          🌐 తెలుగు (Telugu)
+        </button>
+        <button class="mobile-menu-btn" id="btnMobileNav" aria-label="Toggle Navigation Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <aside class="mobile-drawer-content" id="mobileDrawerContent" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <div class="brand-name">Path<span class="text-gradient">Setu</span></div>
+      <button class="btn btn-ghost" id="btnCloseMobileDrawer" style="font-size:1.25rem;">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-item">🏠 Home</a>
+      <a href="careers.html" class="mobile-nav-item">🎯 Career Tracks</a>
+      <a href="compare.html" class="mobile-nav-item">⚖️ 3-Way Compare</a>
+      <a href="budget.html" class="mobile-nav-item">💰 Budget Planner</a>
+      <a href="skill-gap.html" class="mobile-nav-item">📊 Skill Gap Matrix</a>
+      <a href="roadmap.html" class="mobile-nav-item">🗺️ Personalized Roadmap</a>
+      <a href="resources.html" class="mobile-nav-item">🌐 Verified Resources</a>
+      <a href="profile.html" class="mobile-nav-item active">✍️ Student Profile</a>
+      <a href="projects.html" class="mobile-nav-item">🛠️ Projects Hub</a>
+    </div>
+  </aside>
+
+  <!-- Page Hero Banner -->
+  <section class="page-hero">
+    <div class="wrap page-hero-content">
+      <span class="pill-badge accent">Stage 01 & 02 · Holistic Student Intake</span>
+      <h1 class="page-hero-title">Student Intake & Explainable AI Analysis</h1>
+      <p class="page-hero-desc">
+        No mysterious black-box algorithms or rigid psychometric trick tests. Tell us about your background, interests,
+        budget, and ambitions—and receive transparent career matches based on a verifiable 5-factor scoring model.
+      </p>
+      <div class="page-hero-meta-row">
+        <div class="pill-badge">✦ Interests: 35%</div>
+        <div class="pill-badge">✦ Subjects: 25%</div>
+        <div class="pill-badge">✦ Skills: 20%</div>
+        <div class="pill-badge">✦ Education: 15%</div>
+        <div class="pill-badge">✦ Workstyle: 5%</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Wizard & Analysis Container -->
+  <main class="wrap" style="padding-bottom: 90px;">
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 32px;">
+
+      <!-- Stage 01: Intake Form Wizard Card -->
+      <div class="card" style="padding: 30px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+          <span class="pill-badge">Stage 01 · Intake Form</span>
+          <span class="small text-muted" id="wizardStatusText">Step 1 of 3</span>
+        </div>
+
+        <form id="studentIntakeForm" onsubmit="return false;">
+
+          <!-- Section A: Student Background -->
+          <div style="margin-bottom: 24px;">
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; color: var(--accent-cyan);">
+              1. Background & Education
+            </h3>
+
+            <div class="form-group">
+              <label class="form-label" for="studentNameInput">Student Name / విద్యార్థి పేరు:</label>
+              <input type="text" id="studentNameInput" class="form-input" value="Ananya" placeholder="Your name"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="educationLevelSelect">Current Education Level:</label>
+              <select id="educationLevelSelect" class="form-select">
+                <option value="Class 9–10">Class 9–10 (Secondary School)</option>
+                <option value="Class 11–12 (Science / PCM)" selected>Class 11–12 (Science / PCM)</option>
+                <option value="Class 11–12 (Science / PCB)">Class 11–12 (Science / PCB / Biology)</option>
+                <option value="Class 11–12 (Commerce / Arts)">Class 11–12 (Commerce / Arts / Humanities)</option>
+                <option value="Diploma / ITI">Diploma / ITI Technical</option>
+                <option value="College Undergraduate (Tech/B.Tech/BCA)">College Undergraduate (Tech / Engineering)
+                </option>
+                <option value="College Undergraduate (Non-tech/B.Sc/B.Com)">College Undergraduate (Non-tech / Degree)
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="budgetINRInput">Annual Education Budget (INR):</label>
+              <input type="number" id="budgetINRInput" class="form-input" value="25000" step="5000" min="0">
+              <span class="small text-muted">Used to filter subsidized government options and scholarships.</span>
+            </div>
+          </div>
+
+          <!-- Section B: Interests & Skills -->
+          <div style="margin-bottom: 24px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; color: var(--accent-cyan);">
+              2. Core Interests & Current Skills
+            </h3>
+
+            <div class="form-group">
+              <label class="form-label">Primary Career Interests:</label>
+              <div class="checkbox-chips-grid" id="intakeInterests">
+                <label class="chk-chip-label"><input type="checkbox" value="technology" checked><span>💻 Technology &
+                    Software</span></label>
+                <label class="chk-chip-label"><input type="checkbox" value="problem-solving" checked><span>🧩 Logic &
+                    Problem Solving</span></label>
+                <label class="chk-chip-label"><input type="checkbox" value="building" checked><span>🛠️ Engineering &
+                    Solar</span></label>
+                <label class="chk-chip-label"><input type="checkbox" value="creativity"><span>🎨 Visual Arts &
+                    Design</span></label>
+                <label class="chk-chip-label"><input type="checkbox" value="nature"><span>🌱 Agriculture &
+                    Nature</span></label>
+                <label class="chk-chip-label"><input type="checkbox" value="helping"><span>🩺 Healthcare &
+                    Helping</span></label>
+                <label class="chk-chip-label"><input type="checkbox" value="business"><span>📈 Commerce &
+                    Finance</span></label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Existing Skills:</label>
+              <div class="checkbox-chips-grid" id="intakeSkills">
+                <label class="chk-chip-label"><input type="checkbox" value="Python" checked><span>Python
+                    Programming</span></label>
+                <label class="chk-chip-label"><input type="checkbox" value="HTML5 & CSS3" checked><span>Web Basics
+                    (HTML/CSS)</span></label>
+                <label class="chk-chip-label"><input type="checkbox" value="AutoCAD"><span>AutoCAD / Technical
+                    Drawing</span></label>
+                <label class="chk-chip-label"><input type="checkbox" value="Circuit Wiring"><span>Basic Electrical
+                    Wiring</span></label>
+                <label class="chk-chip-label"><input type="checkbox" value="Soil Science"><span>Agriculture / Soil
+                    Science</span></label>
+                <label class="chk-chip-label"><input type="checkbox" value="Bookkeeping"><span>Bookkeeping &
+                    Excel</span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section C: Ambition & Workstyle -->
+          <div style="margin-bottom: 24px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; color: var(--accent-cyan);">
+              3. Ambition & Preferred Workstyle
+            </h3>
+
+            <div class="form-group">
+              <label class="form-label" for="workstyleSelect">Preferred Work Environment:</label>
+              <select id="workstyleSelect" class="form-select">
+                <option value="Desk / Digital (Software, Design, Analytics)" selected>Desk / Digital (Software, Design,
+                  Analytics)</option>
+                <option value="Outdoor / Field (Agriculture, Surveying, Infrastructure)">Outdoor / Field (Agriculture,
+                  Surveying, Infrastructure)</option>
+                <option value="Hands-On Workshop (Solar, Electrician, Technical)">Hands-On Workshop (Solar, Electrician,
+                  Technical)</option>
+                <option value="Clinical / Community (Healthcare, Nursing)">Clinical / Community (Healthcare, Nursing)
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="studentGoalInput">Primary Career Goal:</label>
+              <textarea id="studentGoalInput" class="form-textarea"
+                rows="2">Build real software solutions, gain financial independence, and support my community.</textarea>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-primary" id="btnRecalculateProfile" style="width: 100%;">
+            Save Profile & Update AI Analysis ✓
+          </button>
+        </form>
+      </div>
+
+      <!-- Stage 02: AI Analysis & Recommendations Card -->
+      <div id="aiAnalysisResultsContainer">
+        <!-- Generated via JS -->
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap footer-inner">
+      <div class="footer-top-row">
+        <div class="brand-logo-wrap">
+          <div class="brand-icon-box">
+            <img src="assets/pathsetu-icon.png" alt="PathSetu" class="brand-icon-img" width="36" height="36">
+          </div>
+          <div class="brand-text-col">
+            <div class="brand-name">Path<span class="text-gradient">Setu</span></div>
+            <div class="brand-tagline">Guided career intelligence for aspiring students.</div>
+          </div>
+        </div>
+        <div class="footer-links-row">
+          <a href="careers.html" class="small text-secondary">Careers</a>
+          <a href="compare.html" class="small text-secondary">3-Way Compare</a>
+          <a href="budget.html" class="small text-secondary">Budget Planner</a>
+          <a href="skill-gap.html" class="small text-secondary">Skill Gap</a>
+          <a href="roadmap.html" class="small text-secondary">Roadmap</a>
+          <a href="resources.html" class="small text-secondary">Resources</a>
+        </div>
+      </div>
+      <div class="footer-disclaimer-box">
+        <strong>Scoring Explainability:</strong> PathSetu adheres to transparent algorithmic decision-making. No secret
+        weights or psychological profiling tests are used. All factor weights are publicly documented and inspectable.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      let currentLang = localStorage.getItem('pathsetu_lang') || 'en';
+
+      // Load saved profile or defaults
+      let profile = JSON.parse(localStorage.getItem('pathsetu_profile') || JSON.stringify({
+        name: 'Ananya',
+        education: 'Class 11–12 (Science / PCM)',
+        budget: 25000,
+        interests: ['technology', 'problem-solving', 'building'],
+        skills: ['Python', 'HTML5 & CSS3'],
+        workstyle: 'Desk / Digital (Software, Design, Analytics)',
+        goal: 'Build software solutions and achieve financial independence.'
+      }));
+
+      const form = document.getElementById('studentIntakeForm');
+      const nameInput = document.getElementById('studentNameInput');
+      const eduSelect = document.getElementById('educationLevelSelect');
+      const budgetInput = document.getElementById('budgetINRInput');
+      const workstyleSelect = document.getElementById('workstyleSelect');
+      const goalInput = document.getElementById('studentGoalInput');
+      const btnSave = document.getElementById('btnRecalculateProfile');
+      const resultsContainer = document.getElementById('aiAnalysisResultsContainer');
+
+      // Mobile drawer
+      const btnMobileNav = document.getElementById('btnMobileNav');
+      const btnCloseMobile = document.getElementById('btnCloseMobileDrawer');
+      const drawer = document.getElementById('mobileDrawerContent');
+      const drawerOverlay = document.getElementById('mobileDrawerOverlay');
+      btnMobileNav?.addEventListener('click', () => {
+        drawer?.classList.add('active');
+        drawerOverlay?.classList.add('active');
+      });
+      btnCloseMobile?.addEventListener('click', closeMobile);
+      drawerOverlay?.addEventListener('click', closeMobile);
+      function closeMobile() {
+        drawer?.classList.remove('active');
+        drawerOverlay?.classList.remove('active');
+      }
+
+      // Language
+      const btnLang = document.getElementById('btnLangToggle');
+      function updateLangUI() {
+        btnLang.textContent = currentLang === 'te' ? '🌐 English' : '🌐 తెలుగు (Telugu)';
+      }
+      btnLang.addEventListener('click', () => {
+        currentLang = currentLang === 'en' ? 'te' : 'en';
+        localStorage.setItem('pathsetu_lang', currentLang);
+        updateLangUI();
+        renderAnalysis();
+      });
+      updateLangUI();
+
+      // Populate form from saved profile
+      function initForm() {
+        if (profile.name) nameInput.value = profile.name;
+        if (profile.education) eduSelect.value = profile.education;
+        if (profile.budget !== undefined) budgetInput.value = profile.budget;
+        if (profile.workstyle) workstyleSelect.value = profile.workstyle;
+        if (profile.goal) goalInput.value = profile.goal;
+
+        // Interests checkboxes
+        document.querySelectorAll('#intakeInterests input').forEach(chk => {
+          chk.checked = (profile.interests || []).includes(chk.value);
+        });
+
+        // Skills checkboxes
+        document.querySelectorAll('#intakeSkills input').forEach(chk => {
+          chk.checked = (profile.skills || []).includes(chk.value);
+        });
+      }
+
+      function gatherFormProfile() {
+        const selectedInterests = Array.from(document.querySelectorAll('#intakeInterests input:checked')).map(i => i.value);
+        const selectedSkills = Array.from(document.querySelectorAll('#intakeSkills input:checked')).map(s => s.value);
+
+        return {
+          name: nameInput.value.trim() || 'Student',
+          education: eduSelect.value,
+          budget: parseInt(budgetInput.value || 0, 10),
+          interests: selectedInterests,
+          skills: selectedSkills,
+          workstyle: workstyleSelect.value,
+          goal: goalInput.value.trim()
+        };
+      }
+
+      btnSave?.addEventListener('click', () => {
+        profile = gatherFormProfile();
+        localStorage.setItem('pathsetu_profile', JSON.stringify(profile));
+
+        // Sync with API if running
+        if (window.PathSetuAPI && PathSetuAPI.saveProfile) {
+          PathSetuAPI.saveProfile(profile).catch(() => { });
+        }
+
+        renderAnalysis();
+        alert('Profile saved successfully! Explainable AI recommendations updated.');
+      });
+
+      // Render Stage 02: Explainable AI Diagnosis
+      function renderAnalysis() {
+        if (!resultsContainer || !window.PATHSETU_DATA) return;
+
+        // 5-Factor Scoring Heuristic
+        // Weights: Interest 35%, Subject 25%, Skill 20%, Education 15%, Workstyle 5%
+        const careersWithScores = PATHSETU_DATA.careers.map(c => {
+          let interestScore = 0;
+          if (c.field === 'technology' && profile.interests.includes('technology')) interestScore = 100;
+          else if (c.field === 'agriculture' && profile.interests.includes('nature')) interestScore = 100;
+          else if (c.field === 'vocational' && profile.interests.includes('building')) interestScore = 100;
+          else if (c.field === 'healthcare' && profile.interests.includes('helping')) interestScore = 100;
+          else if (c.field === 'business' && profile.interests.includes('business')) interestScore = 100;
+          else if (profile.interests.length > 0) interestScore = 65;
+
+          let skillScore = 0;
+          const reqSkills = c.skills || [];
+          const matchedSkills = reqSkills.filter(s => (profile.skills || []).some(us => us.toLowerCase().includes(s.toLowerCase()) || s.toLowerCase().includes(us.toLowerCase())));
+          skillScore = reqSkills.length ? Math.round((matchedSkills.length / reqSkills.length) * 100) : 50;
+
+          let eduScore = 85;
+          let workstyleScore = profile.workstyle.toLowerCase().includes(c.field) ? 95 : 75;
+          let subjectScore = 80;
+
+          const totalScore = Math.round(
+            (interestScore * 0.35) +
+            (subjectScore * 0.25) +
+            (skillScore * 0.20) +
+            (eduScore * 0.15) +
+            (workstyleScore * 0.05)
+          );
+
+          return { ...c, totalScore, interestScore, skillScore, eduScore, subjectScore, workstyleScore };
+        });
+
+        careersWithScores.sort((a, b) => b.totalScore - a.totalScore);
+        const top3 = careersWithScores.slice(0, 3);
+
+        resultsContainer.innerHTML = `
+          <!-- AI Synthesis Radar & Factor Breakdown -->
+          <div class="card" style="padding: 30px; margin-bottom: 24px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+              <span class="pill-badge success">Stage 02 · Explainable AI Analysis</span>
+              <span class="small font-bold text-accent">Student: ${profile.name}</span>
+            </div>
+            <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 8px;">
+              Explainable Scoring Model Breakdown
+            </h3>
+            <p class="text-secondary small" style="line-height: 1.6; margin-bottom: 20px;">
+              PathSetu uses a deterministic 5-factor scoring model. Below is how your inputs translate into your pathway readiness.
+            </p>
+
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 24px;">
+              <div style="background:var(--color-background); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:14px;">
+                <span class="small text-muted">1. Interest Synergy (35%)</span>
+                <div class="font-bold text-accent" style="font-size:1.2rem; margin-top:4px;">${profile.interests.length ? 'Strong Match' : 'Neutral'}</div>
+              </div>
+              <div style="background:var(--color-background); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:14px;">
+                <span class="small text-muted">2. Skill Foundations (20%)</span>
+                <div class="font-bold text-accent" style="font-size:1.2rem; margin-top:4px;">${profile.skills.length} Skills Logged</div>
+              </div>
+              <div style="background:var(--color-background); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:14px;">
+                <span class="small text-muted">3. Annual Budget (INR)</span>
+                <div class="font-bold text-accent" style="font-size:1.2rem; margin-top:4px;">₹${(profile.budget || 0).toLocaleString('en-IN')}</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top Recommended Matches -->
+          <div class="card" style="padding: 30px;">
+            <span class="pill-badge accent">Top Pathways For You</span>
+            <h3 style="font-size: 1.35rem; font-weight: 800; margin: 8px 0 16px;">
+              Top 3 Recommended Career Pathways
+            </h3>
+
+            <div style="display:flex; flex-direction:column; gap: 18px;">
+              ${top3.map((c, idx) => `
+                <div style="background: var(--color-white); border: 1px solid var(--border-color); border-left: 4px solid var(--color-primary); border-radius: var(--radius-sm); padding: 18px; box-shadow: var(--shadow-xs);">
+                  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px;">
+                    <div>
+                      <span class="pill-badge" style="margin-right:6px;">#0${idx + 1} Best Fit</span>
+                      <strong style="font-size: 1.15rem; color: var(--color-navy);">${c.title}</strong>
+                    </div>
+                    <span class="pill-badge success" style="font-size:0.85rem;">${c.totalScore}% Fit</span>
+                  </div>
+                  <p class="text-secondary small" style="margin-bottom:12px; line-height:1.5;">${c.description}</p>
+                  
+                  <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                    <div class="small text-muted">
+                      Govt Cost: <strong class="text-accent">${c.costGovt || '₹25,000/yr'}</strong> · Salary: <strong style="color:var(--color-success);">${c.salaryRange || '₹4L/yr'}</strong>
+                    </div>
+                    <div style="display:flex; gap:8px;">
+                      <a href="roadmap.html?career=${c.id}" class="btn btn-primary btn-sm">
+                        Start Roadmap →
+                      </a>
+                      <a href="budget.html?career=${c.id}" class="btn btn-outline btn-sm">
+                        Check Budget
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      initForm();
+      renderAnalysis();
+    })();
+  </script>
+</body>
+
+</html>

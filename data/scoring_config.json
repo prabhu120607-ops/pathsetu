@@ -1,0 +1,12 @@
+{
+  "weights": {
+    "interest_alignment": 0.35,
+    "subject_alignment": 0.25,
+    "skill_alignment": 0.20,
+    "education_compatibility": 0.15,
+    "workstyle_preference": 0.05
+  },
+  "max_score": 100,
+  "min_exploratory_score": 30,
+  "disclaimer": "These compatibility weights are prototype assumptions based on educational heuristics, not scientifically validated destiny predictors."
+}

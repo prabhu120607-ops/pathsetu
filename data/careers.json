@@ -1,0 +1,587 @@
+[
+  {
+    "id": "software_dev",
+    "name": "Software Developer",
+    "name_te": "సాఫ్ట్‌వేర్ డెవలపర్",
+    "category": "Technology",
+    "emoji": "💻",
+    "badge": "High Demand",
+    "desc": "Designs, writes, tests, and maintains applications, web services, and digital software solutions.",
+    "desc_te": "అప్లికేషన్లు, వెబ్‌సైట్లు మరియు సాఫ్ట్‌వేర్ ఉత్పత్తులను కోడింగ్ ద్వారా నిర్మించి నిర్వహించే సాంకేతిక నిపుణులు.",
+    "target_interests": ["technology", "problem-solving", "building", "logic"],
+    "target_subjects": ["Computer Science", "Mathematics", "Physics"],
+    "target_education_levels": ["Class 11–12 (Science / PCM)", "Diploma / ITI", "College Undergraduate (Tech/BCA/B.Tech)", "Graduate / Career Pivot"],
+    "typical_workstyle": "Deep Focus (Solo analytical / coding focus)",
+    "verified_education_pathways": [
+      "B.Tech / B.E. in Computer Science or IT (4 years)",
+      "BCA (Bachelor of Computer Applications, 3 years) followed by MCA",
+      "Polytechnic Diploma in Computer Engineering (3 years) + Lateral B.Tech entry",
+      "Self-directed portfolio learning via FreeCodeCamp, Odin Project, and SWAYAM CS courses"
+    ],
+    "eligibility_conditions": "10+2 with Mathematics/Physics for engineering degree; direct admission in BCA/B.Sc CS across state colleges.",
+    "relevant_entrance_exams": ["JEE Main", "State EAPCET / CET", "CUET UG"],
+    "estimated_education_cost_inr": {
+      "government_route": "₹15,000 - ₹60,000 / year (Govt engineering or BCA)",
+      "private_route": "₹80,000 - ₹2,50,000 / year",
+      "self_taught_open_route": "₹0 - ₹5,000 (Internet + optional certification fees)"
+    },
+    "free_learning_alternatives": [
+      "SWAYAM / NPTEL Computer Science courses by IIT Madras",
+      "FreeCodeCamp Responsive Web & JavaScript Foundations",
+      "CS50 Introduction to Computer Science (Harvard OpenCourseWare)"
+    ],
+    "scholarship_opportunities": [
+      "National Scholarship Portal (NSP) Post-Matric Schemes",
+      "AICTE Pragati Scholarship for Girl Students (₹50,000/yr)",
+      "State Government Fee Reimbursement schemes"
+    ],
+    "entry_salary_range_inr": "₹3.5L - ₹9L / year (Entry-level India)",
+    "study_duration": "3 to 4 years (degree) or 6–12 months (intensive portfolio learning)",
+    "required_skills": [
+      {"name": "Python or JavaScript", "level": "Core", "priority": 1},
+      {"name": "Data Structures & Algorithms", "level": "Core", "priority": 2},
+      {"name": "Git & GitHub Version Control", "level": "Essential", "priority": 1},
+      {"name": "SQL & Relational Databases", "level": "Essential", "priority": 2}
+    ],
+    "starter_projects": [
+      "Student Task & Attendance Tracker with Local Storage",
+      "Weather & Crop Commodity Price Web App with Free REST API"
+    ],
+    "roadmap_milestones": [
+      "Understand developer workflows and terminal basics",
+      "Learn core programming foundations (loops, functions, data structures)",
+      "Build interactive frontend pages with semantic HTML and CSS",
+      "Construct a full-stack CRUD application with database persistence",
+      "Contribute to an open-source tool and push code to GitHub",
+      "Research junior roles, tech internships, and off-campus hiring drives"
+    ],
+    "official_reference_links": [
+      {"title": "National Career Service — Software Developer Profile", "url": "https://www.ncs.gov.in/"},
+      {"title": "SWAYAM Computer Science Catalogue", "url": "https://swayam.gov.in/"}
+    ]
+  },
+  {
+    "id": "ui_ux_designer",
+    "name": "UI/UX & Product Designer",
+    "name_te": "యూఐ/యూఎక్స్ డిజైనర్",
+    "category": "Creative & Design",
+    "emoji": "🎨",
+    "badge": "High Impact",
+    "desc": "Crafts accessible, intuitive, and visually engaging interfaces for digital applications.",
+    "desc_te": "మొబైల్ మరియు వెబ్ యాప్‌లను సులభంగా, అందంగా ఉపయోగించేలా డిజైన్ చేసే నిపుణులు.",
+    "target_interests": ["creativity", "technology", "helping", "communication"],
+    "target_subjects": ["Arts", "Computer Science", "Social Studies"],
+    "target_education_levels": ["Class 11–12 (Commerce / Arts)", "Class 11–12 (Science / PCM)", "College Undergraduate (Non-tech)", "College Undergraduate (Tech/BCA/B.Tech)"],
+    "typical_workstyle": "Balanced (Hybrid collaborative & solo deep work)",
+    "verified_education_pathways": [
+      "Bachelor of Design (B.Des in Interaction/Communication Design, 4 years)",
+      "Degree in Visual Arts, Psychology, or Computer Science",
+      "Self-directed portfolio learning with Figma Community and Google UX Design Certificate"
+    ],
+    "eligibility_conditions": "10+2 from any recognized stream (Science, Commerce, Arts); design aptitude test for top institutes.",
+    "relevant_entrance_exams": ["UCEED (IITs)", "NID DAT", "NIFT Entrance"],
+    "estimated_education_cost_inr": {
+      "government_route": "₹40,000 - ₹1,20,000 / year (Govt universities/NID)",
+      "private_route": "₹1,50,000 - ₹3,50,000 / year",
+      "self_taught_open_route": "₹0 - ₹8,000 (Figma free tier + open case studies)"
+    },
+    "free_learning_alternatives": [
+      "Interaction Design Foundation Open Guides",
+      "Figma YouTube Tutorials & UI Design Sandbox",
+      "Open Accessibility Audits with WCAG Guidelines"
+    ],
+    "scholarship_opportunities": [
+      "National Scholarship Portal Merit-cum-Means",
+      "State Post-Matric Welfare Scholarships"
+    ],
+    "entry_salary_range_inr": "₹3.5L - ₹8.5L / year",
+    "study_duration": "4 years (B.Des) or 4–8 months (portfolio path)",
+    "required_skills": [
+      {"name": "Figma & Auto-Layout", "level": "Core", "priority": 1},
+      {"name": "User Research & Usability Testing", "level": "Core", "priority": 1},
+      {"name": "Visual Hierarchy & Typography", "level": "Core", "priority": 2},
+      {"name": "Web Accessibility Standards", "level": "Essential", "priority": 2}
+    ],
+    "starter_projects": [
+      "Local Bus Transit App Redesign for Rural Commuters",
+      "Farmer Market Commodity Price Interface Audit"
+    ],
+    "roadmap_milestones": [
+      "Study daily apps and document usability frustrations",
+      "Master Figma layout grids, component states, and design tokens",
+      "Conduct user interviews with 3 real users on an everyday task",
+      "Publish a comprehensive Figma case study documenting decisions",
+      "Assemble a personal web portfolio explaining design rationale"
+    ],
+    "official_reference_links": [
+      {"title": "National Institute of Design (NID)", "url": "https://www.nid.edu/"},
+      {"title": "National Career Service — Graphic & Web Designer", "url": "https://www.ncs.gov.in/"}
+    ]
+  },
+  {
+    "id": "agri_scientist",
+    "name": "Agricultural Scientist & Agronomist",
+    "name_te": "వ్యవసాయ శాస్త్రవేత్త / ఆగ్రోనమిస్ట్",
+    "category": "Agriculture & Rural",
+    "emoji": "🌱",
+    "badge": "High Purpose",
+    "desc": "Improves crop yield, soil health, and climate resilience through agricultural biotechnology and smart farming.",
+    "desc_te": "పంట దిగుబడిని పెంచడం, నేల సారాన్ని రక్షించడం మరియు నూతన వ్యవసాయ పద్ధతులను పరిశోధించే నిపుణులు.",
+    "target_interests": ["nature", "science", "helping", "problem-solving"],
+    "target_subjects": ["Agriculture", "Biology", "Chemistry"],
+    "target_education_levels": ["Class 11–12 (Science / PCB)", "Diploma / ITI", "College Undergraduate (Non-tech)"],
+    "typical_workstyle": "Hands-on Practical (Physical lab, clinical, or field work)",
+    "verified_education_pathways": [
+      "B.Sc (Hons) Agriculture / Horticulture (4 years accredited by ICAR)",
+      "B.Tech in Agricultural Engineering (4 years)",
+      "Diploma in Agriculture (2–3 years) + Lateral B.Sc entry",
+      "M.Sc in Agronomy / Soil Science for research positions"
+    ],
+    "eligibility_conditions": "10+2 with Physics, Chemistry, Biology/Mathematics or Agriculture stream.",
+    "relevant_entrance_exams": ["ICAR AIEEA (CUET UG)", "State EAPCET / Agriculture CET"],
+    "estimated_education_cost_inr": {
+      "government_route": "₹10,000 - ₹35,000 / year (State Agri Universities)",
+      "private_route": "₹60,000 - ₹1,50,000 / year",
+      "self_taught_open_route": "₹0 (ICAR e-Courseware & Krishi Vigyan Kendra workshops)"
+    },
+    "free_learning_alternatives": [
+      "ICAR Agricultural Education Portal (Free Courseware)",
+      "SWAYAM Agronomy and Organic Farming Courses",
+      "Kisan Call Centre & Krishi Vigyan Kendra Extension Bulletins"
+    ],
+    "scholarship_opportunities": [
+      "ICAR National Talent Scholarship (₹3,000/month)",
+      "Post-Matric Scholarships for Rural Farmers' Children"
+    ],
+    "entry_salary_range_inr": "₹3.2L - ₹7L / year",
+    "study_duration": "4 years (B.Sc Agri)",
+    "required_skills": [
+      {"name": "Soil Fertility & Chemistry", "level": "Core", "priority": 1},
+      {"name": "Crop Protection & Pest Management", "level": "Core", "priority": 1},
+      {"name": "Smart Drip Irrigation & Sensors", "level": "Essential", "priority": 2},
+      {"name": "Field Data Collection", "level": "Essential", "priority": 2}
+    ],
+    "starter_projects": [
+      "Village Soil Quality & Water pH Testing Logbook",
+      "Organic Pesticide Cost vs Yield Comparison Study"
+    ],
+    "roadmap_milestones": [
+      "Understand seasonal crop patterns and regional soil classifications",
+      "Complete 10+2 PCB or Agriculture stream prerequisites",
+      "Enroll in an ICAR-accredited State Agricultural University",
+      "Participate in Rural Agricultural Work Experience (RAWE)",
+      "Conduct field trial experiments on climate-resilient seeds"
+    ],
+    "official_reference_links": [
+      {"title": "Indian Council of Agricultural Research (ICAR)", "url": "https://icar.org.in/"},
+      {"title": "National Career Service — Agronomist Profile", "url": "https://www.ncs.gov.in/"}
+    ]
+  },
+  {
+    "id": "solar_electrician",
+    "name": "Solar Energy & Electrical Technician",
+    "name_te": "సోలార్ మరియు ఎలక్ట్రికల్ టెక్నీషియన్",
+    "category": "Vocational & Skilled Trades",
+    "emoji": "☀️",
+    "badge": "Immediate Job Readiness",
+    "desc": "Installs, tests, and repairs rooftop solar panels, inverters, storage batteries, and residential electrical wiring.",
+    "desc_te": "సౌర విద్యుత్ ప్యానెల్స్, ఇన్వర్టర్లు మరియు గృహ విద్యుత్ వ్యవస్థలను అమర్చే నిపుణులు.",
+    "target_interests": ["building", "problem-solving", "nature", "technology"],
+    "target_subjects": ["Physics", "Mathematics"],
+    "target_education_levels": ["Class 9–10", "Diploma / ITI", "Class 11–12 (Science / PCM)"],
+    "typical_workstyle": "Hands-on Practical (Physical lab, clinical, or field work)",
+    "verified_education_pathways": [
+      "ITI Certificate in Electrician / Wireman (2 years)",
+      "Suryamitra Skill Development Program (Govt subsidized, 3 months)",
+      "Polytechnic Diploma in Electrical Engineering (3 years)"
+    ],
+    "eligibility_conditions": "Class 10 pass with Science and Mathematics.",
+    "relevant_entrance_exams": ["State ITI Admissions", "Polytechnic POLYCET / CEET"],
+    "estimated_education_cost_inr": {
+      "government_route": "₹2,000 - ₹10,000 total (Govt ITI)",
+      "private_route": "₹25,000 - ₹60,000 total",
+      "self_taught_open_route": "₹0 (Skill India Digital Hub Suryamitra Free Modules)"
+    },
+    "free_learning_alternatives": [
+      "Skill India Digital Hub Solar PV Installer modules",
+      "National Institute of Solar Energy (NISE) Free Guidelines",
+      "Bharat Skills ITI Electrician Question Bank"
+    ],
+    "scholarship_opportunities": [
+      "PMKVY Free Training and Stipend",
+      "State Directorate of Training ITI Stipend"
+    ],
+    "entry_salary_range_inr": "₹2.2L - ₹4.5L / year (Plus self-employment earning)",
+    "study_duration": "3 months (Suryamitra) to 2 years (ITI)",
+    "required_skills": [
+      {"name": "Circuit Wiring & Safety Standards", "level": "Core", "priority": 1},
+      {"name": "Solar PV Panel Inverter Connection", "level": "Core", "priority": 1},
+      {"name": "Multimeter & Diagnostic Testing", "level": "Core", "priority": 1},
+      {"name": "Battery Maintenance & Storage", "level": "Essential", "priority": 2}
+    ],
+    "starter_projects": [
+      "Design a 1kW Off-Grid Rooftop Solar Load Calculation Plan",
+      "Wiring Schematic for Domestic Solar Inverter Backup"
+    ],
+    "roadmap_milestones": [
+      "Complete Class 10 with strong physics foundations",
+      "Join a recognized Govt ITI or Suryamitra training center",
+      "Gain hands-on certification in high-voltage electrical safety",
+      "Complete 300 hours of rooftop installation apprenticeship",
+      "Register as a certified installer on the National Solar Rooftop Portal"
+    ],
+    "official_reference_links": [
+      {"title": "Skill India Digital Hub — Solar Electrician", "url": "https://www.skillindiadigital.gov.in/"},
+      {"title": "National Institute of Solar Energy (NISE)", "url": "https://nise.res.in/"}
+    ]
+  },
+  {
+    "id": "medical_nurse",
+    "name": "Clinical Nurse & Healthcare Specialist",
+    "name_te": "నర్సింగ్ మరియు ఆరోగ్య సంరక్షణ నిపుణులు",
+    "category": "Healthcare",
+    "emoji": "🩺",
+    "badge": "High Purpose",
+    "desc": "Delivers patient care, administers clinical medications, monitors vitals, and assists medical doctors in hospitals.",
+    "desc_te": "రోగులకు చికిత్స, మందులు మరియు వైద్య సేవలను అందించే వృత్తి.",
+    "target_interests": ["helping", "science", "problem-solving"],
+    "target_subjects": ["Biology", "Chemistry", "Physics"],
+    "target_education_levels": ["Class 11–12 (Science / PCB)", "Diploma / ITI"],
+    "typical_workstyle": "Hands-on Practical (Physical lab, clinical, or field work)",
+    "verified_education_pathways": [
+      "B.Sc Nursing (4 years course recognized by Indian Nursing Council)",
+      "GNM (General Nursing and Midwifery, 3 years diploma)",
+      "ANM (Auxiliary Nurse Midwife, 2 years for rural clinics)"
+    ],
+    "eligibility_conditions": "10+2 with Physics, Chemistry, Biology and English with minimum 45% aggregate.",
+    "relevant_entrance_exams": ["NEET UG (in select states/central institutes)", "State Nursing Entrance Tests"],
+    "estimated_education_cost_inr": {
+      "government_route": "₹12,000 - ₹40,000 / year (Govt nursing colleges)",
+      "private_route": "₹70,000 - ₹1,80,000 / year",
+      "self_taught_open_route": "Not applicable (Regulated mandatory hospital training)"
+    },
+    "free_learning_alternatives": [
+      "World Health Organization (WHO) Open Clinical Safety Modules",
+      "SWAYAM Basics of Health Sciences",
+      "St John Ambulance First Aid Digital Certification"
+    ],
+    "scholarship_opportunities": [
+      "Post-Matric Scholarship for Girls in Nursing",
+      "Central Sector Scheme of Scholarships for College Students"
+    ],
+    "entry_salary_range_inr": "₹2.8L - ₹6L / year (National & global opportunities)",
+    "study_duration": "3 to 4 years",
+    "required_skills": [
+      {"name": "Patient Assessment & Vital Signs", "level": "Core", "priority": 1},
+      {"name": "Medication Dosage & Hygiene Protocols", "level": "Core", "priority": 1},
+      {"name": "Emergency Triage & Patient Empathy", "level": "Core", "priority": 1},
+      {"name": "Electronic Health Record Documentation", "level": "Essential", "priority": 2}
+    ],
+    "starter_projects": [
+      "Create a Patient Vital Signs Charting Simulation",
+      "Compile a Standard Rural Clinic Sanitation Checklist"
+    ],
+    "roadmap_milestones": [
+      "Score 50%+ in 10+2 PCB subjects",
+      "Clear state nursing entrance examination",
+      "Undergo hospital clinical rotations across ICU, pediatrics, and surgery",
+      "Register with State Nursing Council as Registered Nurse (RN/RM)",
+      "Pursue specialized certifications (Critical Care, Oncology)"
+    ],
+    "official_reference_links": [
+      {"title": "Indian Nursing Council (INC)", "url": "https://www.indiannursingcouncil.org/"},
+      {"title": "National Career Service — Nursing Profile", "url": "https://www.ncs.gov.in/"}
+    ]
+  },
+  {
+    "id": "data_analyst",
+    "name": "Data Analyst & Business Intelligence",
+    "name_te": "డేటా అనలిస్ట్ మరియు బిజినెస్ ఇంటెలిజెన్స్",
+    "category": "Technology",
+    "emoji": "📊",
+    "badge": "High Demand",
+    "desc": "Analyzes raw numbers and company metrics using SQL, Python, and dashboards to guide strategic decisions.",
+    "desc_te": "గణాంకాలు మరియు సమాచారాన్ని విశ్లేషించి వ్యాపార నిర్ణయాలకు తోడ్పడే నిపుణులు.",
+    "target_interests": ["problem-solving", "data", "business", "technology"],
+    "target_subjects": ["Mathematics", "Computer Science", "Economics"],
+    "target_education_levels": ["Class 11–12 (Commerce / Arts)", "Class 11–12 (Science / PCM)", "College Undergraduate (Non-tech)", "College Undergraduate (Tech/BCA/B.Tech)"],
+    "typical_workstyle": "Deep Focus (Solo analytical / coding focus)",
+    "verified_education_pathways": [
+      "B.Sc in Statistics, Mathematics, or Data Science (3 years)",
+      "B.Com with Computer Applications or BBA Analytics (3 years)",
+      "B.Tech in Computer Science / IT (4 years)",
+      "Google Data Analytics Certificate + Portfolio on Kaggle"
+    ],
+    "eligibility_conditions": "10+2 with Mathematics/Statistics preferred.",
+    "relevant_entrance_exams": ["CUET UG", "State University Admissions"],
+    "estimated_education_cost_inr": {
+      "government_route": "₹10,000 - ₹30,000 / year (Govt degree colleges)",
+      "private_route": "₹60,000 - ₹1,80,000 / year",
+      "self_taught_open_route": "₹0 - ₹4,000 (Open datasets + free SQL sandboxes)"
+    },
+    "free_learning_alternatives": [
+      "SWAYAM Data Analytics with Python (IIT Roorkee)",
+      "Kaggle Free Micro-Courses in Python, Pandas, and SQL",
+      "Microsoft Power BI Official Community Training"
+    ],
+    "scholarship_opportunities": [
+      "National Scholarship Portal Merit Schemes",
+      "AICTE Scholarships for Technical Degrees"
+    ],
+    "entry_salary_range_inr": "₹3.8L - ₹8L / year",
+    "study_duration": "3 years (degree) or 4–6 months (hands-on transition)",
+    "required_skills": [
+      {"name": "Advanced SQL & Database Queries", "level": "Core", "priority": 1},
+      {"name": "Excel Pivot Tables & VLOOKUP", "level": "Core", "priority": 1},
+      {"name": "Power BI or Tableau Dashboards", "level": "Core", "priority": 2},
+      {"name": "Python Pandas for Data Cleaning", "level": "Essential", "priority": 2}
+    ],
+    "starter_projects": [
+      "Analysis of Public State Bus Transport Efficiency using Open Data",
+      "District Health Center Medicine Inventory Dashboard in Excel/SQL"
+    ],
+    "roadmap_milestones": [
+      "Master spreadsheet functions, pivot tables, and conditional formatting",
+      "Learn relational database design and write multi-table SQL joins",
+      "Create an interactive dashboard with clear KPI metrics in Power BI",
+      "Clean dirty datasets with Python Pandas and document insights",
+      "Publish 2 analytical case studies on GitHub or Kaggle"
+    ],
+    "official_reference_links": [
+      {"title": "SWAYAM Data Analytics", "url": "https://swayam.gov.in/"},
+      {"title": "National Career Service — Data Analyst", "url": "https://www.ncs.gov.in/"}
+    ]
+  },
+  {
+    "id": "school_teacher",
+    "name": "High School STEM Teacher",
+    "name_te": "పాఠశాల ఉపాధ్యాయులు (STEM)",
+    "category": "Education",
+    "emoji": "📚",
+    "badge": "High Fulfillment",
+    "desc": "Educates secondary school students in Mathematics, Science, and Social Studies, preparing them for higher studies.",
+    "desc_te": "పాఠశాల విద్యార్థులకు గణితం మరియు సైన్స్ బోధించే నిపుణులు.",
+    "target_interests": ["helping", "communication", "science", "creativity"],
+    "target_subjects": ["Mathematics", "Physics", "Chemistry", "Biology"],
+    "target_education_levels": ["College Undergraduate (Non-tech)", "College Undergraduate (Tech/BCA/B.Tech)", "Graduate / Career Pivot"],
+    "typical_workstyle": "Highly Social (Team discussions, presenting, client interaction)",
+    "verified_education_pathways": [
+      "B.Sc followed by Bachelor of Education (B.Ed, 2 years)",
+      "4-year Integrated B.Sc-B.Ed (ITEP under NEP 2020)",
+      "Mandatory Central/State Teacher Eligibility Test (CTET / TET) qualification"
+    ],
+    "eligibility_conditions": "Bachelor's degree with minimum 50% marks + B.Ed from an NCTE-recognized institution.",
+    "relevant_entrance_exams": ["CTET (Central Teacher Eligibility Test)", "State TET / DSC"],
+    "estimated_education_cost_inr": {
+      "government_route": "₹8,000 - ₹25,000 / year (Govt teacher training colleges)",
+      "private_route": "₹40,000 - ₹90,000 / year",
+      "self_taught_open_route": "₹0 (NCERT Free Pedagogical Material + DIKSHA platform)"
+    },
+    "free_learning_alternatives": [
+      "DIKSHA National Portal for School Education",
+      "NCERT Exemplar and Curriculum Training Modules",
+      "SWAYAM Pedagogical Courses for Secondary Teachers"
+    ],
+    "scholarship_opportunities": [
+      "UGC Post-Graduate Merit Scholarships",
+      "State Teacher Education Welfare Aid"
+    ],
+    "entry_salary_range_inr": "₹3L - ₹6.5L / year (State/Central pay scales)",
+    "study_duration": "4 years (Integrated B.Ed) or 3+2 years (Degree + B.Ed)",
+    "required_skills": [
+      {"name": "Subject Mastery (Maths/Physics)", "level": "Core", "priority": 1},
+      {"name": "Lesson Planning & Pedagogy", "level": "Core", "priority": 1},
+      {"name": "Classroom Management & Empathy", "level": "Core", "priority": 1},
+      {"name": "Digital Blackboard & ICT Tools", "level": "Essential", "priority": 2}
+    ],
+    "starter_projects": [
+      "Prepare a 5-Day Interactive Lesson Plan on Gravity with Real Experiments",
+      "Create a Bilingual (English-Telugu) Science Glossary for Rural Students"
+    ],
+    "roadmap_milestones": [
+      "Complete Bachelor's degree in your chosen subject stream",
+      "Enroll in an NCTE-approved B.Ed program",
+      "Complete mandatory 16-week classroom student teaching internship",
+      "Clear CTET Paper II (Upper Primary / High School)",
+      "Apply to State Teacher Recruitment or Central Schools (KVS/NVS)"
+    ],
+    "official_reference_links": [
+      {"title": "National Council for Teacher Education (NCTE)", "url": "https://ncte.gov.in/"},
+      {"title": "Central Teacher Eligibility Test (CTET)", "url": "https://ctet.nic.in/"}
+    ]
+  },
+  {
+    "id": "chartered_accountant",
+    "name": "Chartered Accountant & Financial Auditor",
+    "name_te": "చార్టర్డ్ అకౌంటెంట్ (CA)",
+    "category": "Business",
+    "emoji": "📈",
+    "badge": "High Prestige",
+    "desc": "Audits corporate accounts, manages direct/indirect tax compliance, and advises on financial management.",
+    "desc_te": "పన్నులు, ఆడిటింగ్ మరియు కంపెనీల ఆర్థిక లావాదేవీలను నిర్వహించే ప్రొఫెషనల్.",
+    "target_interests": ["data", "business", "problem-solving", "logic"],
+    "target_subjects": ["Commerce", "Economics", "Mathematics"],
+    "target_education_levels": ["Class 11–12 (Commerce / Arts)", "Class 11–12 (Science / PCM)", "College Undergraduate (Non-tech)"],
+    "typical_workstyle": "Deep Focus (Solo analytical / coding focus)",
+    "verified_education_pathways": [
+      "ICAI Foundation Course (after 10+2) → Intermediate → 2-year Articleship → CA Final",
+      "Direct Entry Scheme for Commerce Graduates with 55%+ marks",
+      "Concurrent B.Com degree alongside professional ICAI examinations"
+    ],
+    "eligibility_conditions": "10+2 in any stream; registration with Institute of Chartered Accountants of India (ICAI).",
+    "relevant_entrance_exams": ["ICAI CA Foundation Examination"],
+    "estimated_education_cost_inr": {
+      "government_route": "₹35,000 - ₹60,000 total ICAI registration fees over 4 years",
+      "private_route": "₹1,00,000 - ₹2,50,000 (Private coaching fees)",
+      "self_taught_open_route": "₹35,000 (ICAI official study material is provided upon registration)"
+    },
+    "free_learning_alternatives": [
+      "ICAI BoS Knowledge Portal (Free Live Lectures & Modules)",
+      "SWAYAM Accountancy & Tax Basics",
+      "Income Tax Department e-Filing Tutorials"
+    ],
+    "scholarship_opportunities": [
+      "ICAI Need-Based and Merit Scholarships (₹1,500 - ₹2,500/month)",
+      "National Overseas and Post-Matric Scholarships"
+    ],
+    "entry_salary_range_inr": "₹7L - ₹15L / year",
+    "study_duration": "4.5 to 5 years (including mandatory articleship)",
+    "required_skills": [
+      {"name": "Financial Accounting & GST Compliance", "level": "Core", "priority": 1},
+      {"name": "Income Tax Laws & Corporate Auditing", "level": "Core", "priority": 1},
+      {"name": "Analytical Auditing & Excel Modeling", "level": "Core", "priority": 2},
+      {"name": "Ethical Financial Governance", "level": "Essential", "priority": 2}
+    ],
+    "starter_projects": [
+      "Prepare a Sample GST Return Filing Sheet for a Local Kirana Store",
+      "Create a Personal Income Tax Calculator with New vs Old Tax Regime Comparison"
+    ],
+    "roadmap_milestones": [
+      "Register for ICAI CA Foundation after Class 12 exams",
+      "Clear Foundation examination and enroll in CA Intermediate",
+      "Complete 4 weeks of Information Technology & Soft Skills Training (ICITSS)",
+      "Complete 2 years of practical articleship under a practicing CA firm",
+      "Clear CA Final Examination and obtain ICAI Membership"
+    ],
+    "official_reference_links": [
+      {"title": "Institute of Chartered Accountants of India (ICAI)", "url": "https://www.icai.org/"},
+      {"title": "National Career Service — Chartered Accountant", "url": "https://www.ncs.gov.in/"}
+    ]
+  },
+  {
+    "id": "civil_engineer",
+    "name": "Civil & Infrastructure Engineer",
+    "name_te": "సివిల్ మరియు ఇన్‌ఫ్రాస్ట్రక్చర్ ఇంజనీర్",
+    "category": "Engineering",
+    "emoji": "🏗️",
+    "badge": "Core Engineering",
+    "desc": "Plans, designs, and oversees construction of roads, bridges, irrigation canals, and sustainable buildings.",
+    "desc_te": "వంతెనలు, రోడ్లు, భవనాలు మరియు నీటిపారుదల ప్రాజెక్టులను నిర్మించే ఇంజనీర్లు.",
+    "target_interests": ["building", "problem-solving", "nature", "science"],
+    "target_subjects": ["Physics", "Mathematics", "Chemistry"],
+    "target_education_levels": ["Class 11–12 (Science / PCM)", "Diploma / ITI"],
+    "typical_workstyle": "Hands-on Practical (Physical lab, clinical, or field work)",
+    "verified_education_pathways": [
+      "B.Tech / B.E. in Civil Engineering (4 years)",
+      "Polytechnic Diploma in Civil Engineering (3 years) + Lateral Entry B.Tech",
+      "M.Tech in Structural / Transportation Engineering for senior consulting"
+    ],
+    "eligibility_conditions": "10+2 with Physics, Chemistry, and Mathematics (PCM).",
+    "relevant_entrance_exams": ["JEE Main", "State EAPCET / CET", "GATE (for PSU / Masters)"],
+    "estimated_education_cost_inr": {
+      "government_route": "₹20,000 - ₹50,000 / year (Govt engineering colleges)",
+      "private_route": "₹70,000 - ₹2,00,000 / year",
+      "self_taught_open_route": "₹0 (NPTEL Civil Engineering courses by IIT Bombay/Madras)"
+    },
+    "free_learning_alternatives": [
+      "NPTEL Structural Analysis & Surveying by IIT Roorkee",
+      "AutoCAD Student Community Free License",
+      "BIS (Bureau of Indian Standards) Construction Code Summaries"
+    ],
+    "scholarship_opportunities": [
+      "AICTE Tuition Fee Waiver (TFW) Scheme",
+      "State Post-Matric Engineering Fee Reimbursement"
+    ],
+    "entry_salary_range_inr": "₹3.2L - ₹7L / year (Government PSU opportunities up to ₹12L)",
+    "study_duration": "4 years (B.Tech) or 3 years (Diploma)",
+    "required_skills": [
+      {"name": "Structural Analysis & RCC Design", "level": "Core", "priority": 1},
+      {"name": "AutoCAD & 2D/3D Drafting", "level": "Core", "priority": 1},
+      {"name": "Quantity Surveying & Estimation", "level": "Core", "priority": 2},
+      {"name": "Site Safety & Construction Management", "level": "Essential", "priority": 2}
+    ],
+    "starter_projects": [
+      "Design a Low-Cost Rainwater Harvesting Reservoir for a Village School",
+      "Draft a 2-Story Residential Structural Floor Plan in CAD"
+    ],
+    "roadmap_milestones": [
+      "Clear 10+2 PCM with strong mechanics and calculus foundation",
+      "Enroll in an AICTE-approved Civil Engineering program",
+      "Learn AutoCAD, surveying instruments (Total Station), and soil testing in labs",
+      "Complete an on-site summer construction internship",
+      "Prepare for GATE for PSU careers (NHAI, NTPC, BHEL) or state engineering services"
+    ],
+    "official_reference_links": [
+      {"title": "AICTE Civil Engineering Portal", "url": "https://www.aicte-india.org/"},
+      {"title": "National Career Service — Civil Engineer", "url": "https://www.ncs.gov.in/"}
+    ]
+  },
+  {
+    "id": "microfinance_officer",
+    "name": "Rural Banking & Microfinance Officer",
+    "name_te": "గ్రామీణ బ్యాంకింగ్ మరియు మైక్రోఫైనాన్స్ ఆఫీసర్",
+    "category": "Business",
+    "emoji": "🏦",
+    "badge": "High Social Impact",
+    "desc": "Facilitates agricultural credit, Self-Help Group (SHG) micro-loans, and financial literacy in rural communities.",
+    "desc_te": "గ్రామీణ స్వయం సహాయక సంఘాలు మరియు రైతులకు బ్యాంకింగ్ రుణాలు మరియు ఆర్థిక సేవలను అందించే వృత్తి.",
+    "target_interests": ["helping", "business", "data", "communication"],
+    "target_subjects": ["Commerce", "Economics", "Social Studies"],
+    "target_education_levels": ["Class 11–12 (Commerce / Arts)", "College Undergraduate (Non-tech)", "College Undergraduate (Tech/BCA/B.Tech)"],
+    "typical_workstyle": "Highly Social (Team discussions, presenting, client interaction)",
+    "verified_education_pathways": [
+      "Bachelor's degree in any discipline (B.Com, B.A., BBA, B.Sc)",
+      "Institute of Banking Personnel Selection (IBPS) RRB Exam qualification",
+      "Diploma in Rural Development / Microfinance"
+    ],
+    "eligibility_conditions": "Bachelor's degree from any recognized university; proficiency in local state language (e.g. Telugu).",
+    "relevant_entrance_exams": ["IBPS RRB (Regional Rural Banks) Scale I & Office Assistant"],
+    "estimated_education_cost_inr": {
+      "government_route": "₹6,000 - ₹20,000 / year (Govt degree colleges)",
+      "private_route": "₹30,000 - ₹80,000 / year",
+      "self_taught_open_route": "₹0 (RBI Financial Literacy material + IBPS syllabus online)"
+    },
+    "free_learning_alternatives": [
+      "Reserve Bank of India (RBI) Financial Education Guides",
+      "NABARD Microfinance and SHG Bank Linkage Publications",
+      "SWAYAM Rural Development Courses"
+    ],
+    "scholarship_opportunities": [
+      "State Post-Matric Scholarships",
+      "National Scholarship Portal Merit-cum-Means"
+    ],
+    "entry_salary_range_inr": "₹3.5L - ₹6.5L / year",
+    "study_duration": "3 years (Undergraduate Degree)",
+    "required_skills": [
+      {"name": "Local Language Communication (Telugu/Hindi)", "level": "Core", "priority": 1},
+      {"name": "Basic Accounting & Credit Appraisal", "level": "Core", "priority": 1},
+      {"name": "SHG & Microfinance Principles", "level": "Essential", "priority": 2},
+      {"name": "Digital Banking & Biometric KYC Tools", "level": "Core", "priority": 2}
+    ],
+    "starter_projects": [
+      "Conduct a Financial Literacy Survey of 10 Rural Households",
+      "Map Loan Repayment Cycles for a Local Farmer Produce Group"
+    ],
+    "roadmap_milestones": [
+      "Complete recognized Bachelor's degree in any stream",
+      "Prepare for IBPS RRB Quantitative Aptitude, Reasoning, and Banking Awareness",
+      "Learn agricultural credit schemes (Kisan Credit Card, Mudra Loans)",
+      "Clear IBPS RRB Preliminary and Main examinations",
+      "Undergo Regional Rural Bank probationary officer training"
+    ],
+    "official_reference_links": [
+      {"title": "IBPS Official Portal", "url": "https://www.ibps.in/"},
+      {"title": "NABARD Rural Development", "url": "https://www.nabard.org/"}
+    ]
+  }
+]
