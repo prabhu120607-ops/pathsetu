@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real People, Real Career Experiences — PathSetu (పథసేతు)</title>
+  <meta name="description"
+    content="Explore genuine career stories, interviews, and day-in-the-life walkthroughs from working professionals across India.">
+  <link rel="icon" type="image/png" href="assets/pathsetu-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Top Sticky Site Navigation -->
+  <header class="site-header" role="banner">
+    <div class="wrap header-inner">
+      <a href="/dashboard" class="brand-logo-wrap" aria-label="PathSetu Dashboard Home">
+        <div class="brand-icon-box">
+          <img src="assets/pathsetu-icon.png" alt="PathSetu Logo" class="brand-icon-img" width="40" height="40">
+        </div>
+        <div class="brand-text-col">
+          <div class="brand-name">Path<span class="text-gradient">Setu</span> <span
+              style="font-size:0.78rem; font-weight:600; color:var(--text-muted);">(పథసేతు)</span></div>
+          <div class="brand-tagline">Real Career Experiences</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links-list" aria-label="Main Navigation">
+        <a href="/" class="site-nav-link">Home</a>
+        <a href="/dashboard" class="site-nav-link">Dashboard</a>
+        <a href="/careers" class="site-nav-link">Career Tracks</a>
+        <a href="/stories" class="site-nav-link active">Real Stories</a>
+        <a href="/skill-gap" class="site-nav-link">Skill Gap</a>
+        <a href="/roadmap" class="site-nav-link">My Roadmap</a>
+        <a href="/compare" class="site-nav-link">Compare</a>
+        <a href="/budget" class="site-nav-link">Budget</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="lang-selector-btn" id="btnLangToggle" title="Switch Language / భాష మార్చండి">
+          🌐 తెలుగు (Telugu)
+        </button>
+        <div id="topNavUserContainer" class="user-menu-container"></div>
+        <button class="mobile-menu-btn" id="btnMobileNav" aria-label="Toggle Navigation Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <aside class="mobile-drawer-content" id="mobileDrawerContent" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <div class="brand-name">Path<span class="text-gradient">Setu</span></div>
+      <button class="btn btn-ghost" id="btnCloseMobileDrawer" style="font-size:1.25rem;">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="/" class="mobile-nav-item">🏠 Home</a>
+      <a href="/dashboard" class="mobile-nav-item">📊 Dashboard</a>
+      <a href="/careers" class="mobile-nav-item">🎯 Career Tracks</a>
+      <a href="/stories" class="mobile-nav-item active">🎥 Real Stories</a>
+      <a href="/skill-gap" class="mobile-nav-item">📊 Skill Gap Matrix</a>
+      <a href="/roadmap" class="mobile-nav-item">🗺️ Personalized Roadmap</a>
+      <a href="/compare" class="mobile-nav-item">⚖️ 3-Way Compare</a>
+      <a href="/budget" class="mobile-nav-item">💰 Budget Planner</a>
+    </div>
+  </aside>
+
+  <!-- Page Hero Banner -->
+  <section class="page-hero">
+    <div class="wrap page-hero-content">
+      <span class="pill-badge accent">Feature Two · Signature Explorer</span>
+      <h1 class="page-hero-title">Real People, Real Career Experiences</h1>
+      <p class="page-hero-desc">
+        "Learn from people who have lived them." Understand what daily work, struggles, entry salaries, and real growth feel like—before you commit years of education to a pathway.
+      </p>
+      <div class="page-hero-meta-row">
+        <div class="pill-badge">✦ 10+ Diverse Indian Tracks</div>
+        <div class="pill-badge">✦ Day-in-the-Life Walkthroughs</div>
+        <div class="pill-badge">✦ Transparent Challenges</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="wrap" style="padding-bottom: 90px;">
+
+    <!-- Filters & Search Bar -->
+    <div class="card" style="margin-bottom: 30px; padding: 22px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
+        <div style="flex: 1; min-width: 240px;">
+          <label class="form-label" for="storiesSearch" style="font-size:0.8rem;">Search Stories & Practitioners</label>
+          <input type="text" id="storiesSearch" class="form-input" placeholder="🔍 Search by contributor name, role, challenges..." style="margin-bottom:0;">
+        </div>
+
+        <div style="min-width: 180px;">
+          <label class="form-label" for="storiesCareerFilter" style="font-size:0.8rem;">Career Pathway</label>
+          <select id="storiesCareerFilter" class="form-select" style="margin-bottom:0;">
+            <option value="all">All Pathways</option>
+            <option value="software_dev">Software Developer</option>
+            <option value="ui_ux_designer">UI/UX Designer</option>
+            <option value="agri_scientist">Agronomist & Agriculture</option>
+            <option value="solar_electrician">Solar Energy Technician</option>
+            <option value="medical_nurse">Clinical Nurse & Healthcare</option>
+            <option value="data_analyst">Data Analyst & BI</option>
+            <option value="civil_engineer">Civil Infrastructure</option>
+            <option value="chartered_accountant">Chartered Accountant</option>
+            <option value="school_teacher">High School STEM Teacher</option>
+            <option value="microfinance_officer">Rural Banking Officer</option>
+          </select>
+        </div>
+
+        <div style="min-width: 140px;">
+          <label class="form-label" for="storiesLanguageFilter" style="font-size:0.8rem;">Language</label>
+          <select id="storiesLanguageFilter" class="form-select" style="margin-bottom:0;">
+            <option value="all">All Languages</option>
+            <option value="en">English</option>
+            <option value="te">తెలుగు (Telugu)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stories Grid -->
+    <div class="stories-cards-grid" id="fullStoriesContainer">
+      <div style="padding: 40px; text-align: center; color: var(--color-text-secondary); grid-column: 1 / -1;">
+        Loading practitioner stories...
+      </div>
+    </div>
+
+    <!-- Contributor Invitation Note -->
+    <div style="margin-top: 50px; background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%); color: var(--color-white); border-radius: var(--radius-lg); padding: 36px; text-align: center;">
+      <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--color-white); margin-bottom: 8px;">
+        Are you a working practitioner from a Tier-2/3 or rural background?
+      </h3>
+      <p class="small" style="color: #CBD5E1; max-width: 620px; margin: 0 auto 20px; line-height: 1.55;">
+        Your story can inspire thousands of students seeking guidance. Share your daily reality, mistakes to avoid, and the resources that made a difference.
+      </p>
+      <a href="mailto:stories@pathsetu.org?subject=Contributing%20My%20Career%20Story%20to%20PathSetu" class="btn btn-outline" style="border-color: #93C5FD; color: var(--color-white);">
+        ✉️ Contact Our Story Editorial Team
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Story Detail Modal -->
+  <div class="story-modal-overlay" id="storyModalOverlay" role="dialog" aria-modal="true">
+    <div class="story-modal-window">
+      <div class="story-modal-header">
+        <div>
+          <span class="section-number-pill" id="modalStoryField">Career Field</span>
+          <h3 id="modalStoryName" style="font-size: 1.25rem; font-weight: 800; color: var(--color-navy); margin-top: 2px;">
+            Career Journey
+          </h3>
+          <span class="small text-muted" id="modalStoryRole">Role</span>
+        </div>
+        <button class="btn btn-ghost" id="btnCloseStoryModal" style="font-size: 1.4rem; padding: 4px 10px;" aria-label="Close modal">
+          ✕
+        </button>
+      </div>
+
+      <div class="story-modal-body">
+        <div id="modalVideoContainer" class="story-video-embed-wrap">
+          <iframe id="modalVideoIframe" src="" title="Career Interview Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div id="modalVideoFallback" style="display:none; position:absolute; inset:0; background:#0F172A; color:#E2E8F0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px; text-align:center;">
+            <span style="font-size: 2.2rem; margin-bottom: 10px;">🎥</span>
+            <strong style="font-size: 1.1rem; color: #93C5FD;">Interview Video Coming Soon</strong>
+            <p class="small text-secondary" style="max-width: 440px; margin-top: 6px;">
+              Our verified practitioner transcript and daily walkthrough are available below.
+            </p>
+          </div>
+        </div>
+
+        <blockquote style="font-size: 1.15rem; font-weight: 700; color: var(--color-navy); border-left: 4px solid var(--color-primary); padding-left: 14px; margin-bottom: 20px;" id="modalStoryHeadline">
+          Headline
+        </blockquote>
+
+        <div style="margin-bottom: 20px;">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--color-primary); text-transform: uppercase; margin-bottom: 6px;">
+            The Career Journey
+          </h4>
+          <p class="small text-secondary" id="modalStoryJourney" style="line-height: 1.6;"></p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 20px;">
+          <div style="background: var(--color-background); padding: 14px; border-radius: var(--radius-sm);">
+            <strong class="small" style="color: var(--color-navy); display:block; margin-bottom: 4px;">📅 Typical Working Day:</strong>
+            <p class="small text-secondary" id="modalStoryDailyLife" style="line-height: 1.5; margin-bottom:0;"></p>
+          </div>
+          <div style="background: #FEF3C7; padding: 14px; border-radius: var(--radius-sm); border: 1px solid #FDE68A;">
+            <strong class="small" style="color: #92400E; display:block; margin-bottom: 4px;">⚠️ Real Challenges & Setbacks:</strong>
+            <p class="small" id="modalStoryChallenges" style="color: #78350F; line-height: 1.5; margin-bottom:0;"></p>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <strong class="small" style="color: var(--color-navy); display:block; margin-bottom: 6px;">💡 Advice for Beginners:</strong>
+          <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: var(--radius-sm); padding: 14px; color: #166534; font-size: 0.88rem; line-height: 1.5;" id="modalStoryAdvice"></div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--color-border); padding-top: 16px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <span class="small text-muted" style="display:block; margin-bottom: 4px;">Skills used in actual work:</span>
+            <div id="modalStorySkills" class="story-tags-row"></div>
+          </div>
+          <a href="/skill-gap" class="btn btn-primary" id="btnModalToSkillGap">
+            Analyze My Skill Gap for This Role →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script Modules -->
+  <script src="js/auth.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      let allStories = [];
+
+      async function fetchStories() {
+        const container = document.getElementById('fullStoriesContainer');
+        const career = document.getElementById('storiesCareerFilter').value;
+        const lang = document.getElementById('storiesLanguageFilter').value;
+        const search = document.getElementById('storiesSearch').value.trim();
+
+        const params = new URLSearchParams();
+        if (career && career !== 'all') params.set('career_id', career);
+        if (lang && lang !== 'all') params.set('language', lang);
+        if (search) params.set('search', search);
+
+        try {
+          const res = await fetch(`/api/stories?${params.toString()}`);
+          const stories = await res.json();
+          allStories = stories;
+
+          if (!stories || !stories.length) {
+            container.innerHTML = `
+              <div style="grid-column: 1 / -1; padding: 40px; text-align: center; background: #F8FAFC; border: 1px dashed var(--color-border); border-radius: var(--radius-md);">
+                <p class="text-secondary">No stories found matching your filter criteria.</p>
+              </div>
+            `;
+            return;
+          }
+
+          container.innerHTML = stories.map(s => `
+            <div class="story-card-item">
+              <div class="story-card-video-box" onclick="window.openStoryModal('${s.id}')">
+                <div class="story-video-thumb" style="display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%); color:#93C5FD; font-size:2rem;">
+                  <span>${s.career_id === 'software_dev' ? '💻' : s.career_id === 'ui_ux_designer' ? '🎨' : s.career_id === 'agri_scientist' ? '🌱' : s.career_id === 'solar_electrician' ? '⚡' : '🧭'}</span>
+                </div>
+                <div class="story-play-overlay-btn" title="Watch Career Story">▶</div>
+              </div>
+
+              <div class="story-card-body">
+                <div class="story-contributor-header">
+                  <div class="story-avatar-initial">${s.contributor_name[0]}</div>
+                  <div class="story-name-title">
+                    <strong>${s.contributor_name}</strong>
+                    <span>${s.role}</span>
+                  </div>
+                </div>
+
+                <p class="story-headline-quote">"${s.headline}"</p>
+                <p class="story-snippet-text">${s.intro}</p>
+
+                <div class="story-tags-row">
+                  <span class="story-tag-chip" style="background:#EFF6FF; color:#1D4ED8;">🎓 ${s.experience_level}</span>
+                  <span class="story-tag-chip">${s.career_field}</span>
+                </div>
+
+                <div style="margin-top:auto; padding-top:12px; border-top:1px solid var(--color-border); display:flex; justify-content:space-between; align-items:center;">
+                  <button type="button" class="btn btn-sm btn-outline" onclick="window.openStoryModal('${s.id}')">
+                    Read Story & Video →
+                  </button>
+                  <a href="/skill-gap?career_id=${s.career_id}" class="btn btn-sm btn-ghost">
+                    Skill Gap
+                  </a>
+                </div>
+              </div>
+            </div>
+          `).join('');
+
+        } catch (e) {
+          container.innerHTML = '<p class="text-danger">Failed to load stories.</p>';
+        }
+      }
+
+      document.getElementById('storiesCareerFilter').onchange = fetchStories;
+      document.getElementById('storiesLanguageFilter').onchange = fetchStories;
+      document.getElementById('storiesSearch').oninput = () => {
+        clearTimeout(window._st);
+        window._st = setTimeout(fetchStories, 250);
+      };
+
+      window.openStoryModal = (id) => {
+        const s = allStories.find(item => item.id === id);
+        if (!s) return;
+
+        document.getElementById('modalStoryName').textContent = `${s.contributor_name}'s Career Experience`;
+        document.getElementById('modalStoryRole').textContent = `${s.role} · ${s.education_route}`;
+        document.getElementById('modalStoryField').textContent = s.career_field;
+        document.getElementById('modalStoryHeadline').textContent = `"${s.headline}"`;
+        document.getElementById('modalStoryJourney').textContent = s.journey;
+        document.getElementById('modalStoryDailyLife').textContent = s.daily_life;
+        document.getElementById('modalStoryChallenges').textContent = s.challenges;
+        document.getElementById('modalStoryAdvice').textContent = s.advice_for_beginners;
+
+        const skillsWrap = document.getElementById('modalStorySkills');
+        skillsWrap.innerHTML = (s.skills_used || []).map(sk => `<span class="story-tag-chip">${sk}</span>`).join('');
+
+        const iframe = document.getElementById('modalVideoIframe');
+        const fallback = document.getElementById('modalVideoFallback');
+        if (s.video_embed_url) {
+          iframe.src = s.video_embed_url;
+          iframe.style.display = 'block';
+          fallback.style.display = 'none';
+        } else {
+          iframe.src = '';
+          iframe.style.display = 'none';
+          fallback.style.display = 'flex';
+        }
+
+        document.getElementById('btnModalToSkillGap').href = `/skill-gap?career_id=${s.career_id}`;
+
+        document.getElementById('storyModalOverlay').classList.add('show');
+        document.body.style.overflow = 'hidden';
+      };
+
+      document.getElementById('btnCloseStoryModal').onclick = () => {
+        document.getElementById('storyModalOverlay').classList.remove('show');
+        document.getElementById('modalVideoIframe').src = '';
+        document.body.style.overflow = '';
+      };
+
+      document.getElementById('storyModalOverlay').onclick = (e) => {
+        if (e.target.id === 'storyModalOverlay') {
+          document.getElementById('storyModalOverlay').classList.remove('show');
+          document.getElementById('modalVideoIframe').src = '';
+          document.body.style.overflow = '';
+        }
+      };
+
+      // Mobile nav
+      const btnMobile = document.getElementById('btnMobileNav');
+      const drawer = document.getElementById('mobileDrawerContent');
+      const overlay = document.getElementById('mobileDrawerOverlay');
+      const btnClose = document.getElementById('btnCloseMobileDrawer');
+      if (btnMobile && drawer && overlay && btnClose) {
+        btnMobile.onclick = () => { drawer.classList.add('open'); overlay.classList.add('open'); };
+        btnClose.onclick = () => { drawer.classList.remove('open'); overlay.classList.remove('open'); };
+        overlay.onclick = () => { drawer.classList.remove('open'); overlay.classList.remove('open'); };
+      }
+
+      // Initial load
+      fetchStories();
+    })();
+  </script>
+</body>
+
+</html>
+

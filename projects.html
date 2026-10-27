@@ -33,21 +33,21 @@
 
       <!-- Desktop Nav -->
       <nav class="nav-links-list" aria-label="Main Navigation">
-        <a href="index.html" class="site-nav-link">Home</a>
-        <a href="careers.html" class="site-nav-link">Career Tracks</a>
-        <a href="compare.html" class="site-nav-link">3-Way Compare</a>
-        <a href="budget.html" class="site-nav-link">Budget Planner</a>
-        <a href="skill-gap.html" class="site-nav-link">Skill Gap</a>
-        <a href="roadmap.html" class="site-nav-link">My Roadmap</a>
-        <a href="resources.html" class="site-nav-link">Resources</a>
-        <a href="profile.html" class="site-nav-link">Profile</a>
-        <a href="projects.html" class="site-nav-link active">Projects</a>
+        <a href="/" class="site-nav-link">Home</a>
+        <a href="/dashboard" class="site-nav-link">Dashboard</a>
+        <a href="/careers" class="site-nav-link">Career Tracks</a>
+        <a href="/stories" class="site-nav-link">Real Stories</a>
+        <a href="/skill-gap" class="site-nav-link">Skill Gap</a>
+        <a href="/roadmap" class="site-nav-link">My Roadmap</a>
+        <a href="/compare" class="site-nav-link">Compare</a>
+        <a href="/budget" class="site-nav-link">Budget</a>
       </nav>
 
       <div class="header-actions">
         <button class="lang-selector-btn" id="btnLangToggle">
           🌐 తెలుగు (Telugu)
         </button>
+        <div id="topNavUserContainer" class="user-menu-container"></div>
         <button class="mobile-menu-btn" id="btnMobileNav" aria-label="Toggle Navigation Menu">
           ☰
         </button>
@@ -149,6 +149,7 @@
   </footer>
 
   <!-- Scripts -->
+  <script src="js/auth.js"></script>
   <script src="js/data.js"></script>
   <script src="js/api.js"></script>
   <script>

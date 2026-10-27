@@ -33,21 +33,21 @@
 
       <!-- Desktop Nav -->
       <nav class="nav-links-list" aria-label="Main Navigation">
-        <a href="index.html" class="site-nav-link">Home</a>
-        <a href="careers.html" class="site-nav-link">Career Tracks</a>
-        <a href="compare.html" class="site-nav-link">3-Way Compare</a>
-        <a href="budget.html" class="site-nav-link">Budget Planner</a>
-        <a href="skill-gap.html" class="site-nav-link">Skill Gap</a>
-        <a href="roadmap.html" class="site-nav-link active">My Roadmap</a>
-        <a href="resources.html" class="site-nav-link">Resources</a>
-        <a href="profile.html" class="site-nav-link">Profile</a>
-        <a href="projects.html" class="site-nav-link">Projects</a>
+        <a href="/" class="site-nav-link">Home</a>
+        <a href="/dashboard" class="site-nav-link">Dashboard</a>
+        <a href="/careers" class="site-nav-link">Career Tracks</a>
+        <a href="/stories" class="site-nav-link">Real Stories</a>
+        <a href="/skill-gap" class="site-nav-link">Skill Gap</a>
+        <a href="/roadmap" class="site-nav-link active">My Roadmap</a>
+        <a href="/compare" class="site-nav-link">Compare</a>
+        <a href="/budget" class="site-nav-link">Budget</a>
       </nav>
 
       <div class="header-actions">
         <button class="lang-selector-btn" id="btnLangToggle">
           🌐 తెలుగు (Telugu)
         </button>
+        <div id="topNavUserContainer" class="user-menu-container"></div>
         <button class="mobile-menu-btn" id="btnMobileNav" aria-label="Toggle Navigation Menu">
           ☰
         </button>
@@ -85,7 +85,7 @@
         tangible proof-of-work deliverables, and see your immediate Next Best Action.
       </p>
       <div class="page-hero-meta-row">
-        <button class="btn btn-sm btn-outline" id="btnDownloadPlan">📥 Download Career Plan (.txt)</button>
+        <a href="/api/roadmap/download-pdf" class="btn btn-sm btn-primary" id="btnDownloadPlan" download>📥 Download My Roadmap (PDF)</a>
         <button class="btn btn-sm btn-ghost" id="btnResetPlan">↺ Reset Progress</button>
       </div>
     </div>
@@ -187,6 +187,7 @@
   </footer>
 
   <!-- Scripts -->
+  <script src="js/auth.js"></script>
   <script src="js/data.js"></script>
   <script src="js/api.js"></script>
   <script>
@@ -425,43 +426,10 @@
         }
       });
 
-      // Download Career Plan (.txt)
-      btnDownload?.addEventListener('click', () => {
-        const career = PATHSETU_DATA.careers.find(c => c.id === currentCareerId) || PATHSETU_DATA.careers[0];
-        const milestones = getCareerMilestones(career);
-        const completed = progressData[currentCareerId] || [];
-
-        let text = `=====================================================\n`;
-        text += `PATHSETU (పథసేతు) — PERSONALIZED CAREER ROADMAP\n`;
-        text += `Target Career: ${career.title}\n`;
-        text += `Field: ${career.field ? career.field.toUpperCase() : 'CAREER'}\n`;
-        text += `Govt College Fee: ${career.costGovt || '₹15,000 – ₹35,000 / yr'}\n`;
-        text += `Private College Fee: ${career.costPrivate || '₹1,50,000+ / yr'}\n`;
-        text += `Free Alternative: ${career.freeAlternative || 'SWAYAM / NPTEL'}\n`;
-        text += `Generated: ${new Date().toLocaleDateString()}\n`;
-        text += `=====================================================\n\n`;
-
-        text += `SEQUENCED MILESTONES & PROGRESS:\n`;
-        milestones.forEach((m, idx) => {
-          const isDone = completed.includes(m.id) ? '[DONE ✓]' : '[PENDING]';
-          text += `${idx + 1}. ${isDone} ${m.title} (${m.time})\n`;
-          text += `   Description: ${m.desc}\n\n`;
-        });
-
-        text += `=====================================================\n`;
-        text += `Official Verified Resources:\n`;
-        text += `- National Career Service: https://ncs.gov.in\n`;
-        text += `- SWAYAM Free Central Portals: https://swayam.gov.in\n`;
-        text += `- National Scholarship Portal: https://scholarships.gov.in\n`;
-        text += `PathSetu — Your interest. Your path. Our support.\n`;
-
-        const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = `PathSetu_${career.id}_Roadmap.txt`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+      // Download Career Plan (Vector PDF via ReportLab)
+      btnDownload?.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = `/api/roadmap/download-pdf?career_id=${encodeURIComponent(currentCareerId)}`;
       });
 
       // Custom Milestone Modal

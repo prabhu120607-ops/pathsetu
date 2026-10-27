@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Decision Dashboard — PathSetu (పథసేతు)</title>
+  <meta name="description"
+    content="Personalized Career Exploration & Decision Intelligence Dashboard. Career matching, real-world practitioner stories, intelligent skill-gap analysis, and milestone roadmap.">
+  <link rel="icon" type="image/png" href="assets/pathsetu-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Section Smooth Scrolling & Nav Active Highlights */
+    html {
+      scroll-padding-top: 80px;
+    }
+    .badge-match {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-weight: 800;
+      font-size: 0.88rem;
+    }
+    .badge-match.high {
+      background: #DCFCE7;
+      color: #15803D;
+      border: 1px solid #86EFAC;
+    }
+    .badge-match.mid {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border: 1px solid #BFDBFE;
+    }
+    .active-nav-pill {
+      color: var(--color-primary) !important;
+      font-weight: 700 !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========================================================================= -->
+  <!-- CRITICAL REQUIREMENT: TOP HORIZONTAL STICKY NAVIGATION BAR                -->
+  <!-- ========================================================================= -->
+  <header class="site-header" role="banner">
+    <div class="wrap header-inner">
+      <a href="/dashboard" class="brand-logo-wrap" aria-label="PathSetu Dashboard Home">
+        <div class="brand-icon-box">
+          <img src="assets/pathsetu-icon.png" alt="PathSetu Logo" class="brand-icon-img" width="40" height="40">
+        </div>
+        <div class="brand-text-col">
+          <div class="brand-name">Path<span class="text-gradient">Setu</span> <span
+              style="font-size:0.78rem; font-weight:600; color:var(--text-muted);">(పథసేతు)</span></div>
+          <div class="brand-tagline">Decision Intelligence Platform</div>
+        </div>
+      </a>
+
+      <!-- Desktop Horizontal Top Nav -->
+      <nav class="nav-links-list" aria-label="Main Navigation">
+        <a href="#viewWelcome" class="site-nav-link active-nav-pill" id="navDashboard">Dashboard</a>
+        <a href="#sectionMatches" class="site-nav-link" id="navMatches">Career Matches</a>
+        <a href="#sectionStories" class="site-nav-link" id="navStories">Real Stories</a>
+        <a href="#sectionSkillGap" class="site-nav-link" id="navSkillGap">Skill Gap</a>
+        <a href="#sectionRoadmap" class="site-nav-link" id="navRoadmap">My Roadmap</a>
+        
+        <!-- Supporting Tools Dropdown -->
+        <div style="position: relative; display: inline-block;">
+          <button class="site-nav-link" id="btnToolsDropdown" style="display:inline-flex; align-items:center; gap:4px;">
+            Explore Tools <span style="font-size:0.7rem;">▼</span>
+          </button>
+          <div class="user-dropdown-menu" id="toolsDropdownMenu" style="left: 0; right: auto; min-width: 190px;">
+            <a href="/compare" class="user-dropdown-item">⚖️ 3-Way Compare</a>
+            <a href="/budget" class="user-dropdown-item">💰 Budget Planner</a>
+            <a href="/resources" class="user-dropdown-item">🌐 Verified Resources</a>
+            <a href="/projects" class="user-dropdown-item">🛠️ Projects Hub</a>
+            <a href="/careers" class="user-dropdown-item">🎯 All 10 Career Tracks</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Switcher -->
+        <button class="lang-selector-btn" id="btnLangToggle" title="Switch Language / భాష మార్చండి">
+          🌐 తెలుగు (Telugu)
+        </button>
+
+        <!-- Dynamic User Profile Menu rendered by auth.js -->
+        <div id="topNavUserContainer" class="user-menu-container"></div>
+
+        <button class="mobile-menu-btn" id="btnMobileNav" aria-label="Toggle Navigation Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <aside class="mobile-drawer-content" id="mobileDrawerContent" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <div class="brand-name">Path<span class="text-gradient">Setu</span></div>
+      <button class="btn btn-ghost" id="btnCloseMobileDrawer" style="font-size:1.25rem;">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="#viewWelcome" class="mobile-nav-item active">🏠 Dashboard Overview</a>
+      <a href="#sectionMatches" class="mobile-nav-item">🎯 Section 1: Career Matches</a>
+      <a href="#sectionStories" class="mobile-nav-item">🎥 Section 2: Real Career Stories</a>
+      <a href="#sectionSkillGap" class="mobile-nav-item">📊 Section 3: Skill Gap Matrix</a>
+      <a href="#sectionRoadmap" class="mobile-nav-item">🗺️ Section 4: Personalized Roadmap</a>
+      <div style="border-top: 1px solid var(--color-border); margin: 8px 0;"></div>
+      <a href="/compare" class="mobile-nav-item">⚖️ 3-Way Career Compare</a>
+      <a href="/budget" class="mobile-nav-item">💰 Education Budget Planner</a>
+      <a href="/resources" class="mobile-nav-item">🌐 Government Portals</a>
+      <a href="/profile" class="mobile-nav-item">✍️ Update Student Profile</a>
+      <button class="mobile-nav-item text-danger" id="btnMobileLogout" style="width:100%; text-align:left;">🚪 Log Out</button>
+    </div>
+  </aside>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN DASHBOARD CONTENT (VERTICALLY STACKED SECTIONS)                      -->
+  <!-- ========================================================================= -->
+  <main class="wrap" style="padding-top: 32px; padding-bottom: 90px;">
+
+    <!-- ===================================================================== -->
+    <!-- DASHBOARD WELCOME & PROFILE SUMMARY INTRODUCTION                      -->
+    <!-- ===================================================================== -->
+    <section id="viewWelcome" class="dashboard-welcome-banner" aria-labelledby="userGreeting">
+      <div style="position: relative; z-index: 2;">
+        <span class="auth-story-badge" style="background: rgba(255,255,255,0.18); color: #BAE6FD;">
+          ✦ Student Decision Intelligence
+        </span>
+        <h1 class="dashboard-user-greeting" id="userGreeting">
+          Welcome back, <span id="dashStudentName">Student</span>!
+        </h1>
+        <p class="dashboard-quote-text">
+          "Your future is not one fixed path. Explore the possibilities, understand the reality, and choose with confidence."
+        </p>
+
+        <!-- Compact Profile Summary Badges -->
+        <div class="dashboard-summary-chips" id="dashSummaryChips">
+          <div class="summary-chip-item">
+            🎓 Education: <strong id="chipEducation">Class 11–12 (Science)</strong>
+          </div>
+          <div class="summary-chip-item">
+            💡 Interests: <strong id="chipInterests">Technology, Problem-Solving</strong>
+          </div>
+          <div class="summary-chip-item">
+            💰 Budget: <strong id="chipBudget">₹25,000 / yr</strong>
+          </div>
+          <div class="summary-chip-item" style="background: rgba(34, 197, 94, 0.2); border: 1px solid rgba(74, 222, 128, 0.4);">
+            🧭 Exploring Path: <strong id="chipExploringCareer" style="color: #BBF7D0;">Software Developer</strong>
+          </div>
+          <a href="/onboarding" class="summary-chip-item" style="background: rgba(255, 255, 255, 0.25); text-decoration: underline;" title="Edit your background questionnaire">
+            ✏️ Edit Profile
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 1 — CAREER PATHWAY MATCHING                                   -->
+    <!-- ===================================================================== -->
+    <section id="sectionMatches" class="stacked-dashboard-section" aria-labelledby="headingMatches">
+      <div class="section-title-row">
+        <div>
+          <span class="section-number-pill">SECTION 1 OF 4</span>
+          <h2 class="section-main-heading" id="headingMatches">Personalized Career Pathway Matching</h2>
+          <p class="section-sub-desc">
+            Matches calculated using PathSetu's explainable 5-factor scoring model. No mysterious algorithms: see the exact breakdown of how your declared interests, strengths, skills, and academic background align.
+          </p>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <a href="/compare" class="btn btn-sm btn-outline">⚖️ Compare Pathways</a>
+        </div>
+      </div>
+
+      <!-- Recommendation Cards Grid -->
+      <div id="careerMatchesGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px;">
+        <div style="padding: 30px; text-align: center; color: var(--color-text-secondary);">
+          Loading your personalized matches...
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 2 — REAL PEOPLE, REAL CAREER EXPERIENCES (THE SIGNATURE FEATURE) -->
+    <!-- ===================================================================== -->
+    <section id="sectionStories" class="stacked-dashboard-section" aria-labelledby="headingStories" style="background: #FDFEFE; border-color: #DBEAFE;">
+      <div class="section-title-row">
+        <div>
+          <span class="section-number-pill" style="background: #EFF6FF; color: var(--color-primary); border-color: #93C5FD;">
+            SECTION 2 OF 4 · SIGNATURE FEATURE
+          </span>
+          <h2 class="section-main-heading" id="headingStories">Real People, Real Career Experiences</h2>
+          <p class="section-sub-desc">
+            Understand what pursuing a career actually feels like before choosing it. Watch authentic interviews and read honest accounts from practitioners who started from Tier-2/3 towns and rural backgrounds.
+          </p>
+        </div>
+        <a href="/stories" class="btn btn-sm btn-primary">
+          Explore All Stories →
+        </a>
+      </div>
+
+      <!-- Filters & Search Bar -->
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; background: var(--color-background); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--color-border); align-items: center;">
+        <div style="flex: 1; min-width: 220px;">
+          <input type="text" id="storySearchInput" class="form-input" placeholder="🔍 Search stories by role, challenges, or practitioner name..." style="background: var(--color-white); margin-bottom:0;">
+        </div>
+
+        <div style="min-width: 170px;">
+          <select id="storyCareerFilter" class="form-select" style="background: var(--color-white); margin-bottom:0;">
+            <option value="all">All Career Pathways</option>
+            <option value="software_dev">Software Developer</option>
+            <option value="ui_ux_designer">UI/UX Designer</option>
+            <option value="agri_scientist">Agronomist & Agriculture</option>
+            <option value="solar_electrician">Solar Energy Technician</option>
+            <option value="medical_nurse">Clinical Nurse & Healthcare</option>
+            <option value="data_analyst">Data Analyst & BI</option>
+            <option value="civil_engineer">Civil Infrastructure</option>
+            <option value="chartered_accountant">Chartered Accountant</option>
+            <option value="school_teacher">High School STEM Teacher</option>
+            <option value="microfinance_officer">Rural Banking Officer</option>
+          </select>
+        </div>
+
+        <div style="min-width: 130px;">
+          <select id="storyLangFilter" class="form-select" style="background: var(--color-white); margin-bottom:0;">
+            <option value="all">All Languages</option>
+            <option value="en">English</option>
+            <option value="te">తెలుగు (Telugu)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Stories Cards Grid -->
+      <div class="stories-cards-grid" id="storiesCardsContainer">
+        <div style="padding: 30px; text-align: center; color: var(--color-text-secondary);">
+          Loading real career journeys...
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 3 — CAREER READINESS AND SKILL-GAP ANALYSIS                   -->
+    <!-- ===================================================================== -->
+    <section id="sectionSkillGap" class="stacked-dashboard-section" aria-labelledby="headingSkillGap">
+      <div class="section-title-row">
+        <div>
+          <span class="section-number-pill">SECTION 3 OF 4</span>
+          <h2 class="section-main-heading" id="headingSkillGap">Intelligent Career Skill-Gap Analysis</h2>
+          <p class="section-sub-desc">
+            Bridge the gap between what you already know and what your target profession requires. Review calculated readiness, understand why each skill matters, and access free national learning portals.
+          </p>
+        </div>
+
+        <!-- Target Pathway Selector -->
+        <div style="display:flex; align-items:center; gap:10px;">
+          <label class="form-label" for="selectTargetCareerGap" style="margin-bottom:0; font-weight:600; white-space:nowrap;">Analyze Pathway:</label>
+          <select id="selectTargetCareerGap" class="form-select" style="margin-bottom:0; min-width: 200px;">
+            <option value="software_dev">Software Developer</option>
+            <option value="ui_ux_designer">UI/UX Designer</option>
+            <option value="agri_scientist">Agricultural Scientist</option>
+            <option value="solar_electrician">Solar Energy Technician</option>
+            <option value="medical_nurse">Clinical Nurse & Healthcare</option>
+            <option value="data_analyst">Data Analyst & BI</option>
+            <option value="civil_engineer">Civil Engineer</option>
+            <option value="chartered_accountant">Chartered Accountant</option>
+            <option value="school_teacher">High School STEM Teacher</option>
+            <option value="microfinance_officer">Rural Banking Officer</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Overall Readiness Gauge & Explanation Banner -->
+      <div style="background: var(--color-background); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 24px; margin-bottom: 28px; display: grid; grid-template-columns: 240px 1fr auto; gap: 24px; align-items: center;">
+        <div style="text-align: center; border-right: 1px solid var(--color-border); padding-right: 20px;">
+          <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 4px;">
+            Estimated Readiness
+          </div>
+          <div style="font-size: 3.2rem; font-weight: 900; color: var(--color-primary); line-height: 1;" id="readinessScoreBig">
+            --%
+          </div>
+          <span class="small text-muted" style="font-size: 0.74rem;">Self-reported benchmark</span>
+        </div>
+
+        <div>
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--color-navy); margin-bottom: 4px;" id="readinessTitleText">
+            Competency Diagnostic for <span id="readinessCareerName">Software Developer</span>
+          </h4>
+          <p class="small text-secondary" id="readinessFormulaExplainer" style="line-height: 1.5; margin-bottom: 10px;">
+            Calculated from your reported baseline competencies and self-assessment ratings.
+          </p>
+          <div style="display:flex; gap:16px; flex-wrap:wrap;">
+            <span class="small" style="color: var(--color-success); font-weight: 600;" id="countPossessedSkills">✓ 0 Possessed</span>
+            <span class="small" style="color: #2563EB; font-weight: 600;" id="countInProgressSkills">⏳ 0 In Progress</span>
+            <span class="small" style="color: #D97706; font-weight: 600;" id="countMissingSkills">⚠️ 0 Identified Gaps</span>
+          </div>
+        </div>
+
+        <div>
+          <button type="button" class="btn btn-sm btn-outline" id="btnAddGapsToRoadmap" style="white-space: nowrap;">
+            + Add Gaps to Roadmap
+          </button>
+        </div>
+      </div>
+
+      <!-- Competency Tabs & Detailed Cards -->
+      <div style="margin-bottom: 16px;">
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--color-navy); margin-bottom: 12px;">
+          Target Competencies & Learning Blueprint
+        </h3>
+        <p class="small text-secondary">
+          Click the rating buttons to update your self-assessment. Updates persist directly to your profile.
+        </p>
+      </div>
+
+      <div class="competency-cards-container" id="competencyCardsGrid">
+        <div style="padding: 24px; text-align: center; color: var(--color-text-secondary);">
+          Loading competency analysis...
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 4 — YOUR PERSONALIZED CAREER ROADMAP                          -->
+    <!-- ===================================================================== -->
+    <section id="sectionRoadmap" class="stacked-dashboard-section" aria-labelledby="headingRoadmap">
+      <div class="section-title-row">
+        <div>
+          <span class="section-number-pill">SECTION 4 OF 4</span>
+          <h2 class="section-main-heading" id="headingRoadmap">Your Personalized Career Roadmap</h2>
+          <p class="section-sub-desc">
+            A practical, phased action plan tailored to your educational stage and career choice. Check off milestones as you accomplish them, add personal steps, and download your verified PDF plan.
+          </p>
+        </div>
+
+        <div style="display:flex; gap:10px; align-items:center;">
+          <!-- PROMINENT DOWNLOAD PDF ACTION -->
+          <a id="btnDownloadPdfRoadmap" href="/api/roadmap/download-pdf?career_id=software_dev" class="btn btn-primary" download>
+            📥 Download My Roadmap (PDF)
+          </a>
+          <button type="button" class="btn btn-outline" onclick="window.print()" title="Open browser print dialog">
+            🖨️ Print View
+          </button>
+        </div>
+      </div>
+
+      <!-- Roadmap Header Stats: Progress Bar & Recommended Next Action -->
+      <div style="background: var(--color-background); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 22px; margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <span class="small font-bold" style="color: var(--color-navy);">Overall Milestone Progress:</span>
+            <span class="small text-muted" id="roadmapProgressCount">0 of 6 milestones completed</span>
+          </div>
+          <span class="small font-bold" id="roadmapProgressPctBadge" style="color: var(--color-primary); font-size: 1rem;">0%</span>
+        </div>
+
+        <div class="wizard-progress-bar-wrap" style="height: 10px; margin-bottom: 18px;">
+          <div class="wizard-progress-fill" id="roadmapProgressBar" style="width: 0%;"></div>
+        </div>
+
+        <!-- Prominent Next Recommended Action Box -->
+        <div id="nextActionCallout" style="background: #EFF6FF; border: 1.5px solid #93C5FD; border-radius: var(--radius-sm); padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+          <div>
+            <span class="small font-bold" style="color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 2px;">
+              ⚡ Recommended Immediate Action
+            </span>
+            <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--color-navy); margin-bottom: 4px;" id="nextActionTitle">
+              Phase 1 Milestone
+            </h4>
+            <p class="small text-secondary" id="nextActionDesc" style="margin-bottom: 0;">
+              Loading next best step...
+            </p>
+          </div>
+          <button type="button" class="btn btn-sm btn-primary" id="btnMarkNextDone">
+            Mark Completed ✓
+          </button>
+        </div>
+      </div>
+
+      <!-- Phased Roadmap Timeline List -->
+      <div class="phased-roadmap-timeline" id="phasedRoadmapTimeline">
+        <div style="padding: 24px; text-align: center; color: var(--color-text-secondary);">
+          Loading customized roadmap milestones...
+        </div>
+      </div>
+
+      <!-- Add Custom Milestone -->
+      <div style="margin-top: 24px; padding: 20px; border: 1px dashed var(--color-border); border-radius: var(--radius-md); background: #FAFBFD;">
+        <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--color-navy); margin-bottom: 10px;">
+          + Add Personal Goal or Target Milestone
+        </h4>
+        <form id="formAddCustomMilestone" onsubmit="return false;" style="display:grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 10px; align-items:center;">
+          <input type="text" id="customMilestoneTitle" class="form-input" placeholder="e.g. Build portfolio project / Apply for Pragati Scholarship" required style="margin-bottom:0;">
+          <input type="text" id="customMilestoneTime" class="form-input" placeholder="e.g. By Week 3" required style="margin-bottom:0;">
+          <input type="text" id="customMilestoneDesc" class="form-input" placeholder="Optional notes" style="margin-bottom:0;">
+          <button type="submit" class="btn btn-outline" style="white-space:nowrap;">+ Add Step</button>
+        </form>
+      </div>
+
+      <!-- Educational Guidance Notice -->
+      <div style="margin-top: 32px; padding: 14px 18px; background: #F8FAFC; border-left: 4px solid #CBD5E1; font-size: 0.8rem; color: #64748B; line-height: 1.5;">
+        <strong>Educational Guidance Notice:</strong> PathSetu recommendations, readiness percentages, and milestone roadmaps are decision intelligence estimates designed to empower student exploration and practical learning. They do not guarantee university admission, examination ranks, or employment placement. Please verify competitive test schedules and college criteria through official central and state portals.
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- STORY VIDEO & JOURNEY DETAIL MODAL                                        -->
+  <!-- ========================================================================= -->
+  <div class="story-modal-overlay" id="storyModalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalStoryName">
+    <div class="story-modal-window">
+      <div class="story-modal-header">
+        <div>
+          <span class="section-number-pill" id="modalStoryField">Technology & Engineering</span>
+          <h3 id="modalStoryName" style="font-size: 1.25rem; font-weight: 800; color: var(--color-navy); margin-top: 2px;">
+            Practitioner Career Journey
+          </h3>
+          <span class="small text-muted" id="modalStoryRole">Role</span>
+        </div>
+        <button class="btn btn-ghost" id="btnCloseStoryModal" style="font-size: 1.4rem; padding: 4px 10px;" aria-label="Close modal">
+          ✕
+        </button>
+      </div>
+
+      <div class="story-modal-body">
+        <!-- Video Player / Fallback -->
+        <div id="modalVideoContainer" class="story-video-embed-wrap">
+          <iframe id="modalVideoIframe" src="" title="Career Interview Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div id="modalVideoFallback" style="display:none; position:absolute; inset:0; background:#0F172A; color:#E2E8F0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px; text-align:center;">
+            <span style="font-size: 2.2rem; margin-bottom: 10px;">🎥</span>
+            <strong style="font-size: 1.1rem; color: #93C5FD;">Career Interview Video in Production</strong>
+            <p class="small text-secondary" style="max-width: 440px; margin-top: 6px;">
+              Our field team is recording verified interviews with rural practitioners. In the meantime, read the authenticated transcript and daily breakdown below!
+            </p>
+          </div>
+        </div>
+
+        <!-- Headline & Journey Tabs -->
+        <blockquote style="font-size: 1.15rem; font-weight: 700; color: var(--color-navy); border-left: 4px solid var(--color-primary); padding-left: 14px; margin-bottom: 20px;" id="modalStoryHeadline">
+          Headline
+        </blockquote>
+
+        <div style="margin-bottom: 20px;">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--color-primary); text-transform: uppercase; margin-bottom: 6px;">
+            The Career Journey
+          </h4>
+          <p class="small text-secondary" id="modalStoryJourney" style="line-height: 1.6;"></p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 20px;">
+          <div style="background: var(--color-background); padding: 14px; border-radius: var(--radius-sm);">
+            <strong class="small" style="color: var(--color-navy); display:block; margin-bottom: 4px;">📅 A Typical Working Day:</strong>
+            <p class="small text-secondary" id="modalStoryDailyLife" style="line-height: 1.5; margin-bottom:0;"></p>
+          </div>
+          <div style="background: #FEF3C7; padding: 14px; border-radius: var(--radius-sm); border: 1px solid #FDE68A;">
+            <strong class="small" style="color: #92400E; display:block; margin-bottom: 4px;">⚠️ Real Challenges & Setbacks:</strong>
+            <p class="small" id="modalStoryChallenges" style="color: #78350F; line-height: 1.5; margin-bottom:0;"></p>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <strong class="small" style="color: var(--color-navy); display:block; margin-bottom: 6px;">💡 Advice for Beginners:</strong>
+          <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: var(--radius-sm); padding: 14px; color: #166534; font-size: 0.88rem; line-height: 1.5;" id="modalStoryAdvice">
+          </div>
+        </div>
+
+        <!-- Related Skills & CTA to Skill-Gap -->
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--color-border); padding-top: 16px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <span class="small text-muted" style="display:block; margin-bottom: 4px;">Skills used in this actual work:</span>
+            <div id="modalStorySkills" class="story-tags-row"></div>
+          </div>
+          <button type="button" class="btn btn-primary" id="btnModalJumpToGap">
+            Analyze My Skill Gap for This Role →
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Script Modules -->
+  <script src="js/auth.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      let currentProfile = null;
+      let activeCareerId = 'software_dev';
+      let allCareers = [];
+      let allStories = [];
+
+      // Tools dropdown toggle
+      const btnTools = document.getElementById('btnToolsDropdown');
+      const menuTools = document.getElementById('toolsDropdownMenu');
+      if (btnTools && menuTools) {
+        btnTools.onclick = (e) => {
+          e.stopPropagation();
+          menuTools.classList.toggle('show');
+        };
+      }
+      window.addEventListener('click', () => {
+        if (menuTools && menuTools.classList.contains('show')) menuTools.classList.remove('show');
+      });
+
+      // Mobile nav
+      const btnMobile = document.getElementById('btnMobileNav');
+      const drawer = document.getElementById('mobileDrawerContent');
+      const overlay = document.getElementById('mobileDrawerOverlay');
+      const btnClose = document.getElementById('btnCloseMobileDrawer');
+      if (btnMobile && drawer && overlay && btnClose) {
+        btnMobile.onclick = () => { drawer.classList.add('open'); overlay.classList.add('open'); };
+        btnClose.onclick = () => { drawer.classList.remove('open'); overlay.classList.remove('open'); };
+        overlay.onclick = () => { drawer.classList.remove('open'); overlay.classList.remove('open'); };
+      }
+      document.getElementById('btnMobileLogout').onclick = () => PathSetuAuth.logout();
+
+      // Ensure authenticated access
+      PathSetuAuth.requireAuth().then(async (isAuth) => {
+        if (!isAuth) return;
+
+        // Load student profile
+        try {
+          const res = await fetch('/api/profile');
+          if (res.ok) {
+            const data = await res.json();
+            if (data && data.profile) {
+              currentProfile = data.profile;
+              activeCareerId = currentProfile.selected_career || 'software_dev';
+              updateProfileHeader(currentProfile);
+            }
+          }
+        } catch (e) {
+          console.warn('Profile fetch warning:', e);
+        }
+
+        // Load all careers & execute matching
+        await loadCareerMatches();
+
+        // Load real stories
+        await loadRealStories();
+
+        // Load skill gap for active career
+        await loadSkillGap(activeCareerId);
+
+        // Load roadmap
+        await loadRoadmap(activeCareerId);
+      });
+
+      function updateProfileHeader(p) {
+        document.getElementById('dashStudentName').textContent = p.name || 'Student';
+        document.getElementById('chipEducation').textContent = p.education || 'High School / Inter';
+        if (p.interests && p.interests.length) {
+          document.getElementById('chipInterests').textContent = p.interests.slice(0, 2).join(', ');
+        }
+        if (p.budget_inr) {
+          document.getElementById('chipBudget').textContent = `₹${Number(p.budget_inr).toLocaleString()} / yr`;
+        }
+      }
+
+      // =====================================================================
+      // 1. CAREER MATCHING LOGIC
+      // =====================================================================
+      async function loadCareerMatches() {
+        const grid = document.getElementById('careerMatchesGrid');
+        try {
+          const res = await fetch('/api/analyze', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(currentProfile || {})
+          });
+          const matches = await res.json();
+          allCareers = matches;
+
+          if (!matches || !matches.length) {
+            grid.innerHTML = '<p class="text-secondary">No careers found matching your profile.</p>';
+            return;
+          }
+
+          // Update exploring chip
+          const topCareer = matches.find(c => c.career_id === activeCareerId) || matches[0];
+          document.getElementById('chipExploringCareer').textContent = topCareer.title;
+          document.getElementById('selectTargetCareerGap').value = activeCareerId;
+
+          grid.innerHTML = matches.map(c => {
+            const isSelected = c.career_id === activeCareerId;
+            const scoreClass = c.compatibility_score >= 70 ? 'high' : 'mid';
+            const matchedSkillsList = c.existing_relevant_skills && c.existing_relevant_skills.length
+              ? c.existing_relevant_skills.map(s => `<span class="story-tag-chip" style="background:#DCFCE7; color:#15803D;">✓ ${s}</span>`).join('')
+              : '<span class="small text-muted">Learn foundational skills from zero</span>';
+
+            const toLearnList = c.skills_to_develop && c.skills_to_develop.length
+              ? c.skills_to_develop.slice(0, 2).map(s => `<span class="story-tag-chip" style="background:#FEF3C7; color:#92400E;">🎯 ${s}</span>`).join('')
+              : '';
+
+            return `
+              <div class="card" style="border: ${isSelected ? '2px solid var(--color-primary)' : '1px solid var(--color-border)'}; display:flex; flex-direction:column; padding:24px; position:relative;">
+                ${isSelected ? '<span class="pill-badge accent" style="position:absolute; top:14px; right:14px;">Active Focus</span>' : ''}
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+                  <span style="font-size:2rem;">${c.emoji || '🎯'}</span>
+                  <span class="badge-match ${scoreClass}">${c.compatibility_score}% Compatibility</span>
+                </div>
+
+                <h3 style="font-size:1.2rem; font-weight:700; color:var(--color-navy); margin-bottom:4px;">
+                  ${c.title}
+                </h3>
+                <span class="small text-muted" style="margin-bottom:10px; display:block;">${c.category} · ${c.study_duration || '6-12 months'}</span>
+
+                <p class="small text-secondary" style="margin-bottom:14px; line-height:1.45; flex:1;">
+                  ${c.explanation}
+                </p>
+
+                <div style="margin-bottom:14px;">
+                  <strong class="small" style="color:var(--color-navy); display:block; margin-bottom:4px;">Skills You Possess:</strong>
+                  <div class="story-tags-row" style="margin-bottom:8px;">${matchedSkillsList}</div>
+                  <strong class="small" style="color:var(--color-navy); display:block; margin-bottom:4px;">Next Skills to Build:</strong>
+                  <div class="story-tags-row">${toLearnList}</div>
+                </div>
+
+                <div style="display:flex; gap:8px; margin-top:auto; padding-top:14px; border-top:1px solid var(--color-border); flex-wrap:wrap;">
+                  <button type="button" class="btn btn-sm ${isSelected ? 'btn-primary' : 'btn-outline'}" onclick="window.selectCareer('${c.career_id}', '${c.title}')">
+                    ${isSelected ? '✓ Current Focus' : 'Explore This Pathway'}
+                  </button>
+                  <button type="button" class="btn btn-sm btn-ghost" onclick="window.jumpToStories('${c.career_id}')" title="See practitioner stories">
+                    🎥 Real Stories
+                  </button>
+                  <button type="button" class="btn btn-sm btn-ghost" onclick="window.jumpToSkillGap('${c.career_id}')" title="Check skill gaps">
+                    📊 Skill Gap
+                  </button>
+                </div>
+              </div>
+            `;
+          }).join('');
+
+        } catch (e) {
+          grid.innerHTML = '<p class="text-danger">Failed loading career matches. Please refresh.</p>';
+        }
+      }
+
+      window.selectCareer = async (careerId, careerName) => {
+        activeCareerId = careerId;
+        document.getElementById('chipExploringCareer').textContent = careerName;
+        document.getElementById('selectTargetCareerGap').value = careerId;
+        document.getElementById('btnDownloadPdfRoadmap').href = `/api/roadmap/download-pdf?career_id=${careerId}`;
+
+        // Update backend
+        try {
+          await fetch('/api/user/select-career', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ career_id: careerId })
+          });
+        } catch (e) {
+          console.warn('Select career sync notice:', e);
+        }
+
+        // Re-render other sections
+        await loadCareerMatches();
+        await loadRealStories(careerId);
+        await loadSkillGap(careerId);
+        await loadRoadmap(careerId);
+      };
+
+      window.jumpToStories = (careerId) => {
+        document.getElementById('storyCareerFilter').value = careerId;
+        loadRealStories(careerId);
+        document.getElementById('sectionStories').scrollIntoView({ behavior: 'smooth' });
+      };
+
+      window.jumpToSkillGap = (careerId) => {
+        document.getElementById('selectTargetCareerGap').value = careerId;
+        loadSkillGap(careerId);
+        document.getElementById('sectionSkillGap').scrollIntoView({ behavior: 'smooth' });
+      };
+
+      // =====================================================================
+      // 2. REAL CAREER STORIES LOGIC (FEATURE TWO)
+      // =====================================================================
+      async function loadRealStories(careerIdFilter = null) {
+        const container = document.getElementById('storiesCardsContainer');
+        const filterVal = careerIdFilter || document.getElementById('storyCareerFilter').value;
+        const langVal = document.getElementById('storyLangFilter').value;
+        const searchVal = document.getElementById('storySearchInput').value.trim();
+
+        let url = '/api/stories?';
+        const params = new URLSearchParams();
+        if (filterVal && filterVal !== 'all') params.set('career_id', filterVal);
+        if (langVal && langVal !== 'all') params.set('language', langVal);
+        if (searchVal) params.set('search', searchVal);
+
+        try {
+          const res = await fetch(`/api/stories?${params.toString()}`);
+          const stories = await res.json();
+          allStories = stories;
+
+          if (!stories || !stories.length) {
+            container.innerHTML = `
+              <div style="grid-column: 1 / -1; padding: 40px 20px; text-align: center; background: #F8FAFC; border: 1px dashed var(--color-border); border-radius: var(--radius-md);">
+                <span style="font-size:2rem; display:block; margin-bottom:8px;">🎥</span>
+                <strong style="color:var(--color-navy); font-size:1.1rem;">Interviews in production for this filter</strong>
+                <p class="small text-secondary" style="max-width:440px; margin: 6px auto 14px;">
+                  We are recording authentic career journeys directly with regional practitioners. Check out other pathways or view our verified learning guides.
+                </p>
+                <button type="button" class="btn btn-sm btn-outline" onclick="document.getElementById('storyCareerFilter').value='all'; window.loadRealStories();">
+                  View All Stories
+                </button>
+              </div>
+            `;
+            return;
+          }
+
+          container.innerHTML = stories.map(s => {
+            const hasVideo = !!s.video_embed_url;
+            return `
+              <div class="story-card-item">
+                <div class="story-card-video-box" onclick="window.openStoryModal('${s.id}')">
+                  <div class="story-video-thumb" style="display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%); color:#93C5FD; font-size:2rem;">
+                    <span>${s.career_id === 'software_dev' ? '💻' : s.career_id === 'ui_ux_designer' ? '🎨' : s.career_id === 'agri_scientist' ? '🌱' : s.career_id === 'solar_electrician' ? '⚡' : '🧭'}</span>
+                  </div>
+                  <div class="story-play-overlay-btn" title="Watch Career Journey">
+                    ▶
+                  </div>
+                </div>
+
+                <div class="story-card-body">
+                  <div class="story-contributor-header">
+                    <div class="story-avatar-initial">${s.contributor_name[0]}</div>
+                    <div class="story-name-title">
+                      <strong>${s.contributor_name}</strong>
+                      <span>${s.role}</span>
+                    </div>
+                  </div>
+
+                  <p class="story-headline-quote">
+                    "${s.headline}"
+                  </p>
+
+                  <p class="story-snippet-text">
+                    ${s.intro}
+                  </p>
+
+                  <div class="story-tags-row">
+                    <span class="story-tag-chip" style="background:#EFF6FF; color:#1D4ED8;">🎓 ${s.experience_level}</span>
+                    <span class="story-tag-chip">${s.career_field}</span>
+                  </div>
+
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:12px; border-top:1px solid var(--color-border);">
+                    <button type="button" class="btn btn-sm btn-outline" onclick="window.openStoryModal('${s.id}')">
+                      Read Full Story & Video →
+                    </button>
+                    <button type="button" class="btn btn-sm btn-ghost" onclick="window.selectCareer('${s.career_id}', '${s.role}')" title="Explore this career path">
+                      Explore Track
+                    </button>
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('');
+
+        } catch (e) {
+          container.innerHTML = '<p class="text-danger">Failed loading career stories.</p>';
+        }
+      }
+      window.loadRealStories = loadRealStories;
+
+      // Filter change listeners
+      document.getElementById('storyCareerFilter').onchange = () => loadRealStories();
+      document.getElementById('storyLangFilter').onchange = () => loadRealStories();
+      document.getElementById('storySearchInput').oninput = () => {
+        clearTimeout(window._searchTimer);
+        window._searchTimer = setTimeout(() => loadRealStories(), 250);
+      };
+
+      // Modal open/close
+      window.openStoryModal = (storyId) => {
+        const story = allStories.find(s => s.id === storyId);
+        if (!story) return;
+
+        document.getElementById('modalStoryName').textContent = `${story.contributor_name}'s Career Journey`;
+        document.getElementById('modalStoryRole').textContent = `${story.role} · ${story.education_route}`;
+        document.getElementById('modalStoryField').textContent = story.career_field;
+        document.getElementById('modalStoryHeadline').textContent = `"${story.headline}"`;
+        document.getElementById('modalStoryJourney').textContent = story.journey;
+        document.getElementById('modalStoryDailyLife').textContent = story.daily_life;
+        document.getElementById('modalStoryChallenges').textContent = story.challenges;
+        document.getElementById('modalStoryAdvice').textContent = story.advice_for_beginners;
+
+        const skillsWrap = document.getElementById('modalStorySkills');
+        skillsWrap.innerHTML = (story.skills_used || []).map(sk => `<span class="story-tag-chip">${sk}</span>`).join('');
+
+        // Handle Video Embed vs Fallback
+        const iframe = document.getElementById('modalVideoIframe');
+        const fallback = document.getElementById('modalVideoFallback');
+        if (story.video_embed_url) {
+          iframe.src = story.video_embed_url;
+          iframe.style.display = 'block';
+          fallback.style.display = 'none';
+        } else {
+          iframe.src = '';
+          iframe.style.display = 'none';
+          fallback.style.display = 'flex';
+        }
+
+        document.getElementById('btnModalJumpToGap').onclick = () => {
+          window.closeStoryModal();
+          window.jumpToSkillGap(story.career_id);
+        };
+
+        const modalOverlay = document.getElementById('storyModalOverlay');
+        modalOverlay.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.closeStoryModal = () => {
+        const modalOverlay = document.getElementById('storyModalOverlay');
+        modalOverlay.classList.remove('show');
+        document.getElementById('modalVideoIframe').src = '';
+        document.body.style.overflow = '';
+      };
+
+      document.getElementById('btnCloseStoryModal').onclick = window.closeStoryModal;
+      document.getElementById('storyModalOverlay').onclick = (e) => {
+        if (e.target.id === 'storyModalOverlay') window.closeStoryModal();
+      };
+
+      // =====================================================================
+      // 3. SKILL GAP ANALYSIS LOGIC (FEATURE THREE)
+      // =====================================================================
+      async function loadSkillGap(careerId) {
+        const grid = document.getElementById('competencyCardsGrid');
+        try {
+          const res = await fetch('/api/skill-gap', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ career_id: careerId, profile: currentProfile })
+          });
+          const diag = await res.json();
+
+          document.getElementById('readinessScoreBig').textContent = `${diag.readiness_percentage}%`;
+          document.getElementById('readinessCareerName').textContent = diag.career_name;
+          document.getElementById('readinessFormulaExplainer').textContent = diag.readiness_formula;
+
+          const poss = diag.skills_possessed || [];
+          const inProg = diag.skills_in_progress || [];
+          const missing = diag.skills_missing || [];
+
+          document.getElementById('countPossessedSkills').textContent = `✓ ${poss.length} Possessed`;
+          document.getElementById('countInProgressSkills').textContent = `⏳ ${inProg.length} In Progress`;
+          document.getElementById('countMissingSkills').textContent = `⚠️ ${missing.length} Identified Gaps`;
+
+          const allItems = [...poss, ...inProg, ...missing];
+          if (!allItems.length) {
+            grid.innerHTML = '<p class="text-secondary">No specific skills listed for this career.</p>';
+            return;
+          }
+
+          grid.innerHTML = allItems.map(item => {
+            const statusClass = item.is_possessed ? (item.confidence === 'Beginner' ? 'status-inprogress' : 'status-possessed') : 'status-missing';
+            const statusBadge = item.is_possessed
+              ? (item.confidence === 'Beginner' ? '<span class="pill-badge" style="background:#EFF6FF; color:#1D4ED8;">In Progress</span>' : '<span class="pill-badge" style="background:#DCFCE7; color:#15803D;">Validated Strength</span>')
+              : '<span class="pill-badge" style="background:#FEF3C7; color:#92400E;">High-Leverage Gap</span>';
+
+            return `
+              <div class="competency-detail-card ${statusClass}">
+                <div class="competency-header-row">
+                  <div>
+                    <h4 class="competency-name-title">${item.name}</h4>
+                    <span class="competency-meta-line">${item.classification} · ${item.estimated_time}</span>
+                  </div>
+                  ${statusBadge}
+                </div>
+
+                <div class="competency-why-box">
+                  <strong>Why it matters:</strong> ${item.why_matters}
+                </div>
+
+                <p class="small text-secondary" style="margin-bottom:12px; line-height:1.45;">
+                  <strong>Impact if missing:</strong> ${item.gap_impact}
+                </p>
+
+                <!-- Interactive Confidence Rating Buttons -->
+                <div style="margin-top:auto; padding-top:10px; border-top:1px dashed var(--color-border);">
+                  <span class="small text-muted" style="display:block; font-size:0.75rem; margin-bottom:4px;">Update Your Self-Assessment:</span>
+                  <div class="confidence-pill-row">
+                    <button type="button" class="confidence-btn ${item.confidence === 'Beginner' ? 'active' : ''}" onclick="window.rateSkill('${careerId}', '${item.name}', 'Beginner')">Beginner</button>
+                    <button type="button" class="confidence-btn ${item.confidence === 'Intermediate' ? 'active' : ''}" onclick="window.rateSkill('${careerId}', '${item.name}', 'Intermediate')">Intermediate</button>
+                    <button type="button" class="confidence-btn ${item.confidence === 'Proficient' ? 'active' : ''}" onclick="window.rateSkill('${careerId}', '${item.name}', 'Proficient')">Proficient</button>
+                  </div>
+                </div>
+
+                <div style="margin-top:10px;">
+                  <a href="${item.recommended_resource.url}" target="_blank" rel="noopener" class="competency-resource-link">
+                    🔗 Free Course: ${item.recommended_resource.title} ↗
+                  </a>
+                </div>
+              </div>
+            `;
+          }).join('');
+
+          // Wire up "Add Gaps to Roadmap" button
+          document.getElementById('btnAddGapsToRoadmap').onclick = async () => {
+            const gapNames = missing.map(m => m.name);
+            if (!gapNames.length) {
+              alert('You have already validated all core competencies for this track!');
+              return;
+            }
+            try {
+              const addRes = await fetch('/api/roadmap/add-skill-milestones', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ career_id: careerId, skills: gapNames })
+              });
+              const addData = await addRes.json();
+              alert(`Added ${addData.added_count || 'skills'} actionable development steps to your roadmap!`);
+              await loadRoadmap(careerId);
+              document.getElementById('sectionRoadmap').scrollIntoView({ behavior: 'smooth' });
+            } catch (e) {
+              alert('Error syncing skill gaps to roadmap.');
+            }
+          };
+
+        } catch (e) {
+          grid.innerHTML = '<p class="text-danger">Failed loading skill gap analysis.</p>';
+        }
+      }
+
+      window.rateSkill = async (careerId, skillName, rating) => {
+        try {
+          await fetch('/api/skill-gap/rate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ career_id: careerId, skill_name: skillName, rating: rating })
+          });
+          await loadSkillGap(careerId);
+        } catch (e) {
+          console.warn('Skill rating sync error:', e);
+        }
+      };
+
+      document.getElementById('selectTargetCareerGap').onchange = (e) => {
+        loadSkillGap(e.target.value);
+      };
+
+      // =====================================================================
+      // 4. ROADMAP TIMELINE & PROGRESS LOGIC (FEATURE FOUR)
+      // =====================================================================
+      async function loadRoadmap(careerId) {
+        const timeline = document.getElementById('phasedRoadmapTimeline');
+        document.getElementById('btnDownloadPdfRoadmap').href = `/api/roadmap/download-pdf?career_id=${careerId}`;
+
+        try {
+          const res = await fetch(`/api/roadmap/${careerId}`);
+          const road = await res.json();
+
+          const allMilestones = [...(road.milestones || []), ...(road.custom_milestones || [])];
+          document.getElementById('roadmapProgressBar').style.width = `${road.progress_percentage}%`;
+          document.getElementById('roadmapProgressPctBadge').textContent = `${road.progress_percentage}% Completed`;
+          document.getElementById('roadmapProgressCount').textContent = `${road.completed_count} of ${road.total_milestones} milestones completed`;
+
+          // Recommended Next Action
+          if (road.next_action) {
+            document.getElementById('nextActionTitle').textContent = road.next_action.title;
+            document.getElementById('nextActionDesc').textContent = `${road.next_action.timeframe} · ${road.next_action.desc}`;
+            document.getElementById('nextActionCallout').style.display = 'flex';
+            document.getElementById('btnMarkNextDone').onclick = () => window.toggleMilestone(careerId, road.next_action.step_id, true);
+          } else {
+            document.getElementById('nextActionTitle').textContent = "All milestones completed! 🎉";
+            document.getElementById('nextActionDesc').textContent = "You have completed every milestone in this blueprint. Review your deliverables or explore an adjacent pathway!";
+            document.getElementById('btnMarkNextDone').style.display = 'none';
+          }
+
+          if (!allMilestones.length) {
+            timeline.innerHTML = '<p class="text-secondary">No milestones generated.</p>';
+            return;
+          }
+
+          timeline.innerHTML = allMilestones.map((m, idx) => {
+            const isDone = !!m.is_completed;
+            const phaseNum = m.phase_num || (idx + 1);
+            return `
+              <div class="roadmap-phase-row ${isDone ? 'completed' : ''}">
+                <div class="phase-number-box">
+                  <div class="phase-num-circle">${isDone ? '✓' : phaseNum}</div>
+                  <span class="small text-muted" style="font-size:0.72rem; display:block; margin-top:4px;">${m.timeframe || 'Month'}</span>
+                </div>
+
+                <div class="phase-info-col">
+                  <h4>${m.title}</h4>
+                  <p>${m.desc}</p>
+                  <span class="small text-muted" style="font-size:0.78rem; display:block; margin-top:4px;">Competency: <b>${m.skill || 'Core Skill'}</b> · Prerequisite: ${m.prerequisite || 'None'}</span>
+                </div>
+
+                <div class="phase-deliverable-col">
+                  <strong>Expected Deliverable:</strong>
+                  ${m.deliverable || 'Verified exercise output'}
+                </div>
+
+                <div class="phase-action-col">
+                  <label class="checkbox-action-label">
+                    <input type="checkbox" ${isDone ? 'checked' : ''} onchange="window.toggleMilestone('${careerId}', '${m.step_id}', this.checked)">
+                    <span>${isDone ? 'Completed' : 'Mark Done'}</span>
+                  </label>
+                </div>
+              </div>
+            `;
+          }).join('');
+
+        } catch (e) {
+          timeline.innerHTML = '<p class="text-danger">Failed loading roadmap milestones.</p>';
+        }
+      }
+
+      window.toggleMilestone = async (careerId, stepId, completed) => {
+        try {
+          await fetch('/api/roadmap/toggle', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ career_id: careerId, step_id: stepId, completed: completed })
+          });
+          await loadRoadmap(careerId);
+        } catch (e) {
+          alert('Error updating milestone status.');
+        }
+      };
+
+      // Add custom personal milestone
+      document.getElementById('formAddCustomMilestone').onsubmit = async (e) => {
+        e.preventDefault();
+        const title = document.getElementById('customMilestoneTitle').value.trim();
+        const time = document.getElementById('customMilestoneTime').value.trim();
+        const desc = document.getElementById('customMilestoneDesc').value.trim();
+
+        try {
+          await fetch('/api/roadmap/custom', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              career_id: activeCareerId,
+              title: title,
+              timeframe: time,
+              desc: desc || 'Personal student goal'
+            })
+          });
+          document.getElementById('customMilestoneTitle').value = '';
+          document.getElementById('customMilestoneTime').value = '';
+          document.getElementById('customMilestoneDesc').value = '';
+          await loadRoadmap(activeCareerId);
+        } catch (err) {
+          alert('Error adding custom milestone.');
+        }
+      };
+
+    })();
+  </script>
+</body>
+
+</html>
+
