@@ -1,47 +1,55 @@
-# PathSetu (పథసేతు) — AI Career Guidance Platform
+# PathSetu (పథసేతు) — A Bridge to Your Career Future
 
 > **"Your interest. Your path. Our support."**  
 > **"మీ ఆసక్తి. మీ మార్గం. మా మార్గదర్శకత్వం."**  
-> AI-powered, explainable career guidance designed especially for school, Intermediate, and college students from rural areas, Tier-2, and Tier-3 cities in India.
+> An explainable, data-driven, and affordable career guidance platform tailored for Indian students after Class 10, Intermediate, and College—with a special focus on rural, Tier-2, and Tier-3 communities in both **English and Telugu (తెలుగు)**.
+
+Live Deployment: [https://pathsetu-eight.vercel.app/](https://pathsetu-eight.vercel.app/)
 
 ---
 
-## 🌟 What's New in this Release
+## 🌟 What's New in this Major Full-Stack Release (v2.0)
 
-1. **GSAP + ScrollTrigger 3D Scrolling Animation**:
-   - Integrated `gsap.min.js` and `ScrollTrigger.min.js` via jsdelivr CDN.
-   - Cinematic 3D section triggers (`js/scroll-3d.js`):
-     - **Hero 3D Parallax & Depth**: As user scrolls down, the 3D card smoothly tilts along `rotateX` and `rotateY` in dimensional space.
-     - **Methodology 6-Stage 3D Flow Sequence**: Staggered 3D perspective reveals for each of the 6 methodology stages.
-     - **Pillars & Cards 3D Wave**: Smooth entry with depth elevation and glowing highlights.
-     - **Global 3D Scroll Progress Bar**: Sleek cyan-blue-purple progress indicator across the top of the viewport.
-     - Respects `prefers-reduced-motion` settings.
+1. **Modern React 18 + TypeScript + Vite SPA Architecture**:
+   - Replaced fragmented static HTML pages with a high-performance, responsive React single-page application.
+   - Componentized design system using **Tailwind CSS**, **Lucide icons**, and **Leaflet OpenStreetMap**.
+   - Strict TypeScript safety with zero build warnings.
 
-2. **Full English & Telugu (తెలుగు) Bilingual Support**:
-   - Live language switcher in the header and Streamlit sidebar.
-   - Comprehensive translation dictionary (`data/translations.json`) translating navigation, form labels, methodology descriptions, and career pathways.
+2. **Full PathSetu Brand Identity**:
+   - **Soft off-white background**: `#F5F7F2`
+   - **Forest green primary**: `#234B3D`
+   - **Sage green secondary**: `#B9C9B3`
+   - **White surfaces** with restrained neutral borders (`#DDE5DA`) and dark typography (`#162820`).
+   - Clean, high-trust aesthetic directly mirroring the 5 reference design patterns.
 
-3. **Four Mandatory Master Features Implemented**:
-   - **Feature A — Career Comparison**: Select up to 3 careers side by side to compare verified education pathways, study duration, entry salaries, eligibility, and official links.
-   - **Feature B — Budget-Friendly Career Planner**: Enter your available education budget in INR. PathSetu compares costs against government colleges, polytechnics, and ITIs, while surfacing 100% free SWAYAM/Skill India alternatives and government scholarships (NSP, Pragati).
-   - **Feature C — Student Progress Dashboard**: Real-time progress bar, completed vs pending milestones, skills currently being practiced, and a prominent **"Next Recommended Action"** card with local JSON persistence (`data/user_progress.json`).
-   - **Feature D — Verified Resource Explorer**: Searchable directory of official central portals with verification status, last-checked date, and category:
-     - National Career Service (NCS) (`https://www.ncs.gov.in/`)
-     - SWAYAM (`https://swayam.gov.in/`)
-     - Skill India Digital Hub (`https://www.skillindiadigital.gov.in/`)
-     - NCERT (`https://ncert.nic.in/`)
-     - National Testing Agency (NTA) (`https://nta.ac.in/`)
-     - AICTE (`https://www.aicte-india.org/`)
-     - UGC (`https://www.ugc.gov.in/`)
-     - National Scholarship Portal (NSP) (`https://scholarships.gov.in/`)
-     - NPTEL (`https://nptel.ac.in/`)
+3. **Complete Implementation of the 5 Reference UX Patterns**:
+   - **Reference 1 — Guided Assessment (`/assessment`)**: Step indicator progress bar, prominent question statement, Likert scale options (*Strongly Disagree* to *Strongly Agree*), Previous/Next controls, and the *"Why assessment matters"* guidance card.
+   - **Reference 2 & 4 — Student Dashboard (`/dashboard`)**: Career milestone progress bar, weekly learning time tracker, 7-day study streak flame badges, learning strands cards, and mastery summary diagnostics table.
+   - **Reference 3 — 3-Way Education & Career Comparison (`/compare`)**: Side-by-side comparison matrix with semi-circular cost gauge, 4-year stacked tuition/fee breakdowns, and recommended statutory scholarships.
+   - **Reference 5 — Career Details & Skill-Gap Matrix (`/careers/:careerId`)**: Role Summary, Key Responsibilities checkmarks, Ideal Candidate DNA card (*Mindset, Vibe, Standard*), Actionable Nudges, and interactive skill badges that update readiness scores dynamically.
 
-4. **10+ Diverse Indian Career Pathways**:
-   - Covering Technology, Agriculture, Solar Energy, Healthcare, Education, Civil Infrastructure, and Finance.
+4. **New Feature A — Real-Time Student Reviews & Interactive Path Demos (`/reviews`)**:
+   - **5 Interactive Career Demos**:
+     - *Software Development*: JavaScript sandbox task filter function execution with live console output.
+     - *Data Analytics*: Primary Health Center (PHC) medicine inventory inspection.
+     - *UI/UX Design*: Usability critique and accessibility evaluation simulator.
+     - *Agriculture*: Soil test N-P-K nutrient diagnostic and fertilizer prescription calculator.
+     - *Clean Energy*: Rooftop solar PV array and inverter capacity sizing calculator.
+   - **Authentic Student Reviews**: Peer student reviews filtered by pathway, demo attempted, and verified participation flags, with real-time updates via Supabase Realtime and BroadcastChannel sync.
 
-5. **Dual Presentation Architecture**:
-   - **Streamlit Master App** (`app.py`): Run with `streamlit run app.py` on port 8501.
-   - **FastAPI + GSAP 3D Web Platform** (`main.py`): Run with `uvicorn main:app --port 8000`.
+5. **New Feature B — Destination Discovery & Live GPS Navigation (`/navigation`)**:
+   - Curated directory of verified Indian colleges, polytechnics, ITIs, and universities with real geographic coordinates.
+   - Interactive **Leaflet + OpenStreetMap** map rendering.
+   - **Privacy-safe live geolocation tracking**: Explicit informed consent modal, live marker tracking, GPS accuracy (± meters), last update timestamp, and an obvious "Stop Navigation" button that terminates all background watches.
+   - Real route calculations via **OSRM (Open Source Routing Machine)** with distance in km, estimated driving time in minutes, plus external turn-by-turn fallback links to Google Maps and OpenStreetMap.
+
+6. **Bilingual English and Telugu (తెలుగు) Localization**:
+   - Instant header toggle preserving student preferences across sessions via `localStorage`.
+
+7. **Database & Supabase Integration**:
+   - Full PostgreSQL migration script (`supabase/migrations/20261028_init_pathsetu_schema.sql`) for profiles, assessment responses, careers, roadmaps, career demos, reviews, review reports, and destinations.
+   - Row Level Security (RLS) policies and realtime publication triggers.
+   - Complete offline fallback layer ensuring the app runs 100% reliably out of the box even before setting `.env` credentials.
 
 ---
 
@@ -49,14 +57,14 @@
 
 ```mermaid
 graph LR
-    S1["01 · Student Input<br/>Interests, Stream, Budget (INR)"] --> S2["02 · AI Analysis<br/>Interpretable Profile Synthesis"]
+    S1["01 · Student Input<br/>Interests, Stream, Budget (INR)"] --> S2["02 · Profile Synthesis<br/>Transparent Rule-Based Intake"]
     S2 --> S3["03 · Recommendation Engine<br/>5-Factor Weighted Scoring"]
-    S3 --> S4["04 · Real-World Guidance<br/>Official Portals & Real Stories"]
-    S4 --> S5["05 · Skill-Gap Matrix<br/>Readiness Gauge & Next 3 Skills"]
-    S5 --> S6["06 · Personalized Roadmap<br/>Milestones & JSON Persistence"]
+    S3 --> S4["04 · Real-World Guidance<br/>Statutory Portals & Demos"]
+    S4 --> S5["05 · Skill-Gap Matrix<br/>Readiness Gauge & Priorities"]
+    S5 --> S6["06 · Milestone Roadmap<br/>Progress Tracking & PDF Export"]
 ```
 
-### Configurable 5-Factor Recommendation Weights (`data/scoring_config.json`)
+### Configurable 5-Factor Recommendation Weights
 - **Interest alignment**: 35%
 - **Subject alignment**: 25%
 - **Skill alignment**: 20%
@@ -67,19 +75,33 @@ graph LR
 
 ## 💻 How to Run Locally
 
-Both servers can run simultaneously or independently:
+### Prerequisites
+- Node.js (v18 or higher; tested on v24.15.0)
+- npm (v9 or higher)
 
-### Option 1: Run the Streamlit Application (Port 8501)
+### 1. Install Dependencies
 ```bash
-streamlit run app.py
+npm install
 ```
-Open your browser at `http://localhost:8501`.
 
-### Option 2: Run the FastAPI + GSAP 3D Web App (Port 8000)
+### 2. Configure Environment (Optional)
+Copy the template file to `.env`:
 ```bash
-python -m uvicorn main:app --port 8000
+cp .env.example .env
 ```
-Open your browser at `http://localhost:8000`.
+Add your Supabase project URL and anon public key if connecting to a cloud database. *(If omitted, PathSetu automatically operates in offline mode with complete local storage persistence).*
+
+### 3. Run Development Server
+```bash
+npm run dev
+```
+Open your browser at `http://localhost:5173/`.
+
+### 4. Build for Production
+```bash
+npm run build
+```
+Builds the optimized production bundle in `dist/`.
 
 ---
 
@@ -87,68 +109,64 @@ Open your browser at `http://localhost:8000`.
 
 ```text
 pathsethuv2/
-├── app.py                      # Complete Streamlit 6-Day Master Application (Port 8501)
-├── main.py                     # FastAPI server hosting REST API and dedicated page routes (Port 8000)
-├── index.html                  # Flagship Cinematic 3D Scroll Landing Page (GSAP ScrollTrigger)
-├── careers.html                # Dedicated Career Pathways Explorer (10+ Indian tracks)
-├── compare.html                # Dedicated 3-Way Side-by-Side Career Comparison Matrix
-├── budget.html                 # Dedicated Budget-Friendly Career Planner (INR)
-├── skill-gap.html              # Dedicated Skill-Gap Diagnostics & Readiness Matrix
-├── roadmap.html                # Dedicated Milestone Roadmap & Progress Dashboard
-├── resources.html              # Dedicated Verified Educational Resources Directory
-├── profile.html                # Dedicated Student Intake & Explainable AI Analysis
-├── projects.html               # Dedicated Hands-On Proof-of-Work Projects Hub
-├── requirements.txt            # Python dependencies (fastapi, uvicorn, streamlit, pandas)
-├── README.md                   # Complete architectural and operational documentation
-├── assets/
-│   ├── pathsetu-icon.png       # Square brand icon (header & favicon)
-│   ├── pathsetu-logo.jpg       # Master brand artwork
-│   └── pathsetu-methodology.jpg # Official 6-stage workflow diagram
-├── css/
-│   └── style.css               # Modern dark-mode design system with 3D perspective
-├── data/
-│   ├── careers.json            # 10+ Diverse Indian career records with verified data
-│   ├── skills.csv              # Skills taxonomy mapped to prerequisites & free courses
-│   ├── resources.json          # Verified Indian government educational portals
-│   ├── scoring_config.json     # 5-factor weighted recommendation configuration
-│   ├── translations.json       # English and Telugu translation dictionary
-│   └── user_progress.json      # Local student milestone progress persistence
-├── js/
-│   ├── data.js                 # Shared frontend data store & taxonomy
-│   ├── api.js                  # Dual-mode API client (FastAPI + offline fallback)
-│   ├── hero-3d.js              # Canvas constellation & interactive mouse tilt
-│   ├── scroll-3d.js            # GSAP + ScrollTrigger 3D scrolling animations
-│   └── app.js                  # Application controller & bilingual UI logic
-└── modules/
-    ├── data_loader.py          # Shared JSON/CSV loader
-    ├── recommendation_engine.py# 5-factor weighted matching algorithm
-    ├── career_comparison.py    # Side-by-side comparison of up to 3 careers
-    ├── budget_planner.py       # INR budget affordability and scholarship matching
-    ├── skill_gap.py            # Skill-gap matrix isolating top 3 priorities
-    └── roadmap_generator.py    # Milestone generator & JSON progress tracking
+├── src/
+│   ├── components/
+│   │   ├── common/
+│   │   │   ├── Navbar.tsx             # Responsive header with Telugu/English toggle & mobile drawer
+│   │   │   ├── Footer.tsx             # Statutory links, ethics statement, and disclaimers
+│   │   │   └── CircularGauge.tsx      # SVG semi-circular and full circular gauges
+│   │   └── layout/
+│   │       └── AppLayout.tsx          # Shell layout wrapper
+│   ├── context/
+│   │   ├── LanguageContext.tsx        # English/Telugu state & dictionary access
+│   │   └── AuthProgressContext.tsx    # User profile, active career, milestones, budget state
+│   ├── data/
+│   │   ├── careers.ts                 # 10 comprehensive verified Indian career tracks
+│   │   ├── destinations.ts            # Verified Indian colleges/ITIs with coordinates
+│   │   ├── demos.ts                   # 5 interactive career simulations
+│   │   ├── resources.ts               # Statutory government educational portals
+│   │   ├── sampleReviews.ts           # Authentic demo student reviews
+│   │   └── translations.ts            # Localization dictionary (EN / TE)
+│   ├── pages/
+│   │   ├── HomePage.tsx               # Landing page, quick actions, 6-stage methodology
+│   │   ├── AssessmentPage.tsx         # Guided assessment wizard (Reference 1)
+│   │   ├── DashboardPage.tsx          # Student dashboard & streak tracking (Reference 4)
+│   │   ├── CareersPage.tsx            # Career catalog with keyword and category filters
+│   │   ├── CareerDetailPage.tsx       # Deep dive, DNA card, skill gap (Reference 5)
+│   │   ├── ComparePage.tsx            # 3-way compare & scholarships (Reference 3)
+│   │   ├── BudgetPage.tsx             # INR affordability planner vs govt fees
+│   │   ├── SkillGapPage.tsx           # Interactive readiness diagnostics
+│   │   ├── RoadmapPage.tsx            # Milestone checklist with PDF export
+│   │   ├── ResourcesPage.tsx          # Audited statutory directory
+│   │   ├── ReviewsDemoPage.tsx        # Feature A: Realtime reviews & path demos
+│   │   └── NavigationPage.tsx         # Feature B: Destination discovery & live GPS
+│   ├── services/
+│   │   ├── supabaseClient.ts          # Supabase client with safe fallback
+│   │   ├── recommendationService.ts   # 5-factor scoring engine
+│   │   ├── reviewService.ts           # Realtime reviews & broadcast channel sync
+│   │   └── navigationService.ts       # OSRM routing & geocoding helper
+│   ├── styles/
+│   │   └── index.css                  # Tailwind base & utilities, Leaflet map styling
+│   ├── types/
+│   │   └── index.ts                   # Core TypeScript domain models
+│   ├── App.tsx                        # Application routing
+│   └── main.tsx                       # React 18 entry point
+├── supabase/
+│   └── migrations/
+│       └── 20261028_init_pathsetu_schema.sql # PostgreSQL DDL, RLS policies, Realtime triggers
+├── .env.example                       # Environment variables template
+├── package.json                       # Dependencies & build scripts
+├── tailwind.config.js                 # Brand palette & typography configuration
+├── tsconfig.json                      # Strict TypeScript compiler options
+├── vercel.json                        # Vercel deployment rewrite configuration
+└── vite.config.ts                     # Vite bundler configuration
 ```
 
 ---
 
-## 🌐 Dedicated Multi-Page Endpoints & Features
+## ⚖️ Ethics, Transparency & Privacy
 
-| Page | URL Path | Purpose & Master Feature |
-| :--- | :--- | :--- |
-| **Landing Page** | `http://127.0.0.1:8000/` | Cinematic 3D scroll experience with GSAP ScrollTrigger, constellation canvas, and methodology workflow |
-| **Career Tracks** | `http://127.0.0.1:8000/careers` | Filterable 10+ career pathways with salary, eligibility, and govt vs private costs |
-| **3-Way Compare** | `http://127.0.0.1:8000/compare` | **Feature A**: Side-by-side comparative matrix of up to 3 selected careers |
-| **Budget Planner**| `http://127.0.0.1:8000/budget` | **Feature B**: Annual INR budget evaluation vs government colleges and free SWAYAM tracks |
-| **Skill Gap** | `http://127.0.0.1:8000/skill-gap`| **Stage 05**: Circular SVG readiness gauge, matched vs missing skills, and top 3 priorities |
-| **My Roadmap** | `http://127.0.0.1:8000/roadmap` | **Feature C**: 6-step milestone checklist with "Next Best Action" callout, custom steps, and text export |
-| **Resources** | `http://127.0.0.1:8000/resources` | **Feature D**: Audited central government educational directory (NCS, SWAYAM, AICTE, NTA, NSP) |
-| **Profile Intake**| `http://127.0.0.1:8000/profile` | **Stage 01 & 02**: Multi-step student intake with transparent 5-factor scoring explanation |
-| **Projects Hub** | `http://127.0.0.1:8000/projects` | Proof-of-work tangible deliverables (rural web apps, soil testing logs, solar schematics) |
-
-
----
-
-## ⚖️ Ethics & Prototype Transparency
-
-- **No Paid APIs or Artificial Walls**: Built entirely using Python, Streamlit, and vanilla web standards.
-- **Explainable Rule-Based Logic**: Explicitly labeled as transparent educational matching rather than claiming to be a mysterious black-box AI model.
-- **Official Government Sources**: Direct links to statutory bodies (NCS, SWAYAM, AICTE, NTA, UGC, Skill India, NCERT) with verified dates.
+- **Transparent Rule-Based Logic**: Explicitly derived from documented heuristics (35% Interests, 25% Subjects, 20% Skills, 15% Education, 5% Workstyle) rather than black-box AI claims.
+- **Statutory Indian Data**: All educational fees, scholarships, and entrance exams are mapped to statutory Indian bodies (NCS, AICTE, UGC, ICAR, NTA, NSP, Skill India).
+- **Privacy-First Geolocation**: Location tracking is never started automatically; it requires explicit student consent, never persists raw coordinates to analytics, and stops immediately when requested.
+- **Authentic Reviews**: Demo records are clearly badged as sample data, and verified participation is explicitly separated from unverified claims.

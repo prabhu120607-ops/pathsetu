@@ -27,3 +27,9 @@ $RECYCLE.BIN/
 
 # Temporary files
 *.log
+
+# Node & Build artifacts
+node_modules/
+dist/
+.DS_Store
+
