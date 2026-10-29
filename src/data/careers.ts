@@ -64,7 +64,7 @@ export const CAREERS: Career[] = [
       { id: "sw_2", title: "Core Programming Foundations", time: "Month 1–2", desc: "Understand variables, conditionals, loops, functions, and data structures (arrays, dictionaries, maps)." },
       { id: "sw_3", title: "Interactive Web Development", time: "Month 3–4", desc: "Build responsive, accessible user interfaces using semantic HTML5, CSS Grid/Flexbox, and JavaScript DOM manipulation." },
       { id: "sw_4", title: "Backend & Database APIs", time: "Month 5", desc: "Create RESTful API endpoints with Node.js/Python, connect to PostgreSQL/SQLite, and implement user authentication." },
-      { id: "sw_5", title: "Full-Stack Portfolio Project", time: "Month 6", desc: "Deploy a full-stack CRUD application to Vercel/Render with continuous integration and documentation." },
+      { id: "sw_5", title: "Full-Stack Portfolio Project", time: "Month 6", desc: "Deploy a full-stack CRUD application to Netlify/Render with continuous integration and documentation." },
       { id: "sw_6", title: "Internship Prep & Open Source", time: "Month 7+", desc: "Contribute bugfixes to an open-source project, practice interview problems on free portals, and prepare your tech CV." }
     ],
     official_reference_links: [

@@ -27,6 +27,9 @@ $RECYCLE.BIN/
 
 # Temporary files
 *.log
+*.db
+*.sqlite
+*.sqlite3
 
 # Node & Build artifacts
 node_modules/

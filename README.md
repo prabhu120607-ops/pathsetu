@@ -4,7 +4,7 @@
 > **"మీ ఆసక్తి. మీ మార్గం. మా మార్గదర్శకత్వం."**  
 > An explainable, data-driven, and affordable career guidance platform tailored for Indian students after Class 10, Intermediate, and College—with a special focus on rural, Tier-2, and Tier-3 communities in both **English and Telugu (తెలుగు)**.
 
-Live Deployment: [https://pathsetu-eight.vercel.app/](https://pathsetu-eight.vercel.app/)
+Deployment: Ready for **Netlify**, **Render**, **GitHub Pages**, and **Cloudflare Pages** (Configuration included).
 
 ---
 
@@ -158,7 +158,10 @@ pathsethuv2/
 ├── package.json                       # Dependencies & build scripts
 ├── tailwind.config.js                 # Brand palette & typography configuration
 ├── tsconfig.json                      # Strict TypeScript compiler options
-├── vercel.json                        # Vercel deployment rewrite configuration
+├── netlify.toml                       # Netlify deployment & SPA rewrite configuration
+├── render.yaml                        # Render static site deployment configuration
+├── public/                            # Static public assets & Jamstack _redirects
+│   └── _redirects                     # SPA catch-all redirect rule for static hosts
 └── vite.config.ts                     # Vite bundler configuration
 ```
 
