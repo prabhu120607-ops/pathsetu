@@ -30,9 +30,9 @@ $RECYCLE.BIN/
 *.db
 *.sqlite
 *.sqlite3
+*.bak
 
 # Node & Build artifacts
 node_modules/
 dist/
 .DS_Store
-

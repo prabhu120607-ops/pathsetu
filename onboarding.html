@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guided Student Onboarding — PathSetu (పథసేతు)</title>
+  <meta name="description"
+    content="Guided 6-step personalized student onboarding. Build your career profile with transparent, explainable recommendations.">
+  <link rel="icon" type="image/png" href="assets/pathsetu-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Top Sticky Site Navigation (Preserved Horizontal Top Nav) -->
+  <header class="site-header" role="banner">
+    <div class="wrap header-inner">
+      <a href="/" class="brand-logo-wrap" aria-label="PathSetu Home">
+        <div class="brand-icon-box">
+          <img src="assets/pathsetu-icon.png" alt="PathSetu Logo" class="brand-icon-img" width="40" height="40">
+        </div>
+        <div class="brand-text-col">
+          <div class="brand-name">Path<span class="text-gradient">Setu</span> <span
+              style="font-size:0.78rem; font-weight:600; color:var(--text-muted);">(పథసేతు)</span></div>
+          <div class="brand-tagline">Guided Student Onboarding</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links-list" aria-label="Main Navigation">
+        <a href="/" class="site-nav-link">Home</a>
+        <a href="/dashboard" class="site-nav-link">Dashboard</a>
+        <a href="/careers" class="site-nav-link">Career Tracks</a>
+        <a href="/stories" class="site-nav-link">Real Stories</a>
+        <a href="/skill-gap" class="site-nav-link">Skill Gap</a>
+        <a href="/roadmap" class="site-nav-link">My Roadmap</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="lang-selector-btn" id="btnLangToggle" title="Switch Language / భాష మార్చండి">
+          🌐 తెలుగు (Telugu)
+        </button>
+        <button class="mobile-menu-btn" id="btnMobileNav" aria-label="Toggle Navigation Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <aside class="mobile-drawer-content" id="mobileDrawerContent" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <div class="brand-name">Path<span class="text-gradient">Setu</span></div>
+      <button class="btn btn-ghost" id="btnCloseMobileDrawer" style="font-size:1.25rem;">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="/" class="mobile-nav-item">🏠 Home</a>
+      <a href="/dashboard" class="mobile-nav-item">📊 Dashboard</a>
+      <a href="/careers" class="mobile-nav-item">🎯 Career Tracks</a>
+      <a href="/stories" class="mobile-nav-item">🎥 Real Stories</a>
+      <a href="/skill-gap" class="mobile-nav-item">📊 Skill Gap Matrix</a>
+      <a href="/roadmap" class="mobile-nav-item">🗺️ Personalized Roadmap</a>
+    </div>
+  </aside>
+
+  <!-- Main Wizard Container -->
+  <main class="wrap" style="padding-top: 36px; padding-bottom: 90px; max-width: 900px;">
+
+    <!-- Wizard Stepper Header -->
+    <div class="wizard-header-box">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+        <div>
+          <span class="section-number-pill" id="stepPillText">Step 1 of 6</span>
+          <h1 style="font-size: 1.4rem; font-weight: 800; color: var(--color-navy); margin-top: 2px;" id="stepHeaderTitle">
+            Basic Student Background
+          </h1>
+        </div>
+        <span class="small font-bold" id="stepProgressPct" style="color: var(--color-primary);">16% Completed</span>
+      </div>
+
+      <div class="wizard-progress-bar-wrap">
+        <div class="wizard-progress-fill" id="wizardProgressBar" style="width: 16.6%;"></div>
+      </div>
+
+      <!-- 6 Node Indicators -->
+      <div class="wizard-steps-indicators">
+        <div class="wizard-step-node active" id="nodeStep1">
+          <div class="wizard-step-circle">1</div>
+          <span class="wizard-step-title">Basics</span>
+        </div>
+        <div class="wizard-step-node" id="nodeStep2">
+          <div class="wizard-step-circle">2</div>
+          <span class="wizard-step-title">Interests</span>
+        </div>
+        <div class="wizard-step-node" id="nodeStep3">
+          <div class="wizard-step-circle">3</div>
+          <span class="wizard-step-title">Strengths</span>
+        </div>
+        <div class="wizard-step-node" id="nodeStep4">
+          <div class="wizard-step-circle">4</div>
+          <span class="wizard-step-title">Skills</span>
+        </div>
+        <div class="wizard-step-node" id="nodeStep5">
+          <div class="wizard-step-circle">5</div>
+          <span class="wizard-step-title">Goals</span>
+        </div>
+        <div class="wizard-step-node" id="nodeStep6">
+          <div class="wizard-step-circle">6</div>
+          <span class="wizard-step-title">Synthesis</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alert / Validation Banner -->
+    <div id="wizardAlertBox" style="display: none; padding: 12px 18px; border-radius: var(--radius-sm); margin-bottom: 20px; font-size: 0.9rem;"></div>
+
+    <!-- Wizard Step Cards Container -->
+    <div class="card" style="padding: 36px;">
+
+      <!-- ===================================================================== -->
+      <!-- STEP 1: BASIC STUDENT INFORMATION                                     -->
+      <!-- ===================================================================== -->
+      <section id="step1Section" class="wizard-step-panel">
+        <div style="margin-bottom: 24px;">
+          <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--color-navy); margin-bottom: 6px;">
+            Tell Us About Your Academic Stage
+          </h2>
+          <p class="small text-secondary">
+            PathSetu tailors guidance to where you are right now—whether in secondary school, intermediate college, diploma, or undergraduate studies.
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="obStudentName">Full Name / మీ పేరు *</label>
+          <input type="text" id="obStudentName" class="form-input" placeholder="e.g. Ananya Sharma" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="obEducationLevel">Current Education Level *</label>
+          <select id="obEducationLevel" class="form-select">
+            <option value="Class 9–10">Class 9–10 (Secondary School)</option>
+            <option value="Class 11–12 (Science / PCM)" selected>Class 11–12 (Science / PCM - Mathematics & Physics)</option>
+            <option value="Class 11–12 (Science / PCB)">Class 11–12 (Science / PCB - Biology & Chemistry)</option>
+            <option value="Class 11–12 (Commerce / Arts)">Class 11–12 (Commerce / Arts / Humanities)</option>
+            <option value="Diploma / ITI">Diploma / Polytechnic / Government ITI</option>
+            <option value="College Undergraduate (Tech/BCA/B.Tech)">College Undergraduate (Engineering / BCA / B.Tech)</option>
+            <option value="College Undergraduate (Degree/B.Sc/B.Com)">College Undergraduate (Degree / B.Sc / B.Com / B.A)</option>
+            <option value="Graduate / Career Pivot">Graduate / Looking to Transition</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="obAcademicStream">Current Academic Stream / Subject Focus</label>
+          <input type="text" id="obAcademicStream" class="form-input" placeholder="e.g. MPC (Maths, Physics, Chemistry) or CEC or ITI Electrician">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label" for="obPreferredLang">Preferred Language for Guidance</label>
+            <select id="obPreferredLang" class="form-select">
+              <option value="en" selected>English</option>
+              <option value="te">తెలుగు (Telugu)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="obLocation">Location (District / State, Optional)</label>
+            <input type="text" id="obLocation" class="form-input" placeholder="e.g. Guntur, AP or Nizamabad, TS">
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- STEP 2: INTERESTS                                                     -->
+      <!-- ===================================================================== -->
+      <section id="step2Section" class="wizard-step-panel" style="display: none;">
+        <div style="margin-bottom: 20px;">
+          <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--color-navy); margin-bottom: 6px;">
+            What Truly Sparks Your Curiosity?
+          </h2>
+          <p class="small text-secondary">
+            Select the domains that naturally excite you when reading, watching, or creating. Pick as many as you like.
+          </p>
+        </div>
+
+        <div class="selectable-chips-grid" id="interestsChipGrid">
+          <label class="selectable-chip-card selected">
+            <input type="checkbox" value="technology" checked>
+            <span class="selectable-chip-icon">💻</span>
+            <span class="selectable-chip-text">Technology & Computers</span>
+          </label>
+          <label class="selectable-chip-card selected">
+            <input type="checkbox" value="problem-solving" checked>
+            <span class="selectable-chip-icon">🧩</span>
+            <span class="selectable-chip-text">Logic & Problem Solving</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="science">
+            <span class="selectable-chip-icon">🔬</span>
+            <span class="selectable-chip-text">Science & Research</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="creativity">
+            <span class="selectable-chip-icon">🎨</span>
+            <span class="selectable-chip-text">Art, Design & Creativity</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="business">
+            <span class="selectable-chip-icon">📈</span>
+            <span class="selectable-chip-text">Business & Entrepreneurship</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="helping">
+            <span class="selectable-chip-icon">🩺</span>
+            <span class="selectable-chip-text">Healthcare & Helping People</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="nature">
+            <span class="selectable-chip-icon">🌱</span>
+            <span class="selectable-chip-text">Agriculture & Environment</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="finance">
+            <span class="selectable-chip-icon">💰</span>
+            <span class="selectable-chip-text">Finance & Economics</span>
+          </label>
+          <label class="selectable-chip-card selected">
+            <input type="checkbox" value="building" checked>
+            <span class="selectable-chip-icon">🛠️</span>
+            <span class="selectable-chip-text">Engineering & Hands-on Work</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="infrastructure">
+            <span class="selectable-chip-icon">🏗️</span>
+            <span class="selectable-chip-text">Construction & Infrastructure</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="teaching">
+            <span class="selectable-chip-icon">📚</span>
+            <span class="selectable-chip-text">Teaching & Mentorship</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="data">
+            <span class="selectable-chip-icon">📊</span>
+            <span class="selectable-chip-text">Data & Analytics</span>
+          </label>
+        </div>
+
+        <!-- Custom Interest Input -->
+        <div style="margin-top: 24px; padding-top: 16px; border-top: 1px dashed var(--color-border);">
+          <label class="form-label" for="customInterestInput">Have a unique interest not listed above?</label>
+          <div style="display:flex; gap:10px;">
+            <input type="text" id="customInterestInput" class="form-input" placeholder="e.g. Astronomy, Drone flying, Video editing">
+            <button type="button" class="btn btn-outline" id="btnAddCustomInterest">+ Add</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- STEP 3: ACADEMIC STRENGTHS & SUBJECTS                                 -->
+      <!-- ===================================================================== -->
+      <section id="step3Section" class="wizard-step-panel" style="display: none;">
+        <div style="margin-bottom: 20px;">
+          <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--color-navy); margin-bottom: 6px;">
+            Academic Strengths & Subject Enjoyment
+          </h2>
+          <p class="small text-secondary">
+            Tell us which subjects energize you and which ones feel challenging. Remember: marks alone do not define career potential.
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Subjects You Enjoy Most or Score Well In (Select 2 or more):</label>
+          <div class="selectable-chips-grid" id="strongSubjectsGrid">
+            <label class="selectable-chip-card selected">
+              <input type="checkbox" value="Mathematics" checked>
+              <span class="selectable-chip-text">📐 Mathematics</span>
+            </label>
+            <label class="selectable-chip-card selected">
+              <input type="checkbox" value="Computer Science" checked>
+              <span class="selectable-chip-text">💻 Computer Science</span>
+            </label>
+            <label class="selectable-chip-card selected">
+              <input type="checkbox" value="Physics" checked>
+              <span class="selectable-chip-text">⚡ Physics</span>
+            </label>
+            <label class="selectable-chip-card">
+              <input type="checkbox" value="Biology">
+              <span class="selectable-chip-text">🧬 Biology / Life Sciences</span>
+            </label>
+            <label class="selectable-chip-card">
+              <input type="checkbox" value="Chemistry">
+              <span class="selectable-chip-text">🧪 Chemistry</span>
+            </label>
+            <label class="selectable-chip-card">
+              <input type="checkbox" value="Accountancy">
+              <span class="selectable-chip-text">📑 Accountancy & Commerce</span>
+            </label>
+            <label class="selectable-chip-card">
+              <input type="checkbox" value="Economics">
+              <span class="selectable-chip-text">📊 Economics</span>
+            </label>
+            <label class="selectable-chip-card">
+              <input type="checkbox" value="English & Languages">
+              <span class="selectable-chip-text">🗣️ English & Languages</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 24px;">
+          <label class="form-label" for="difficultSubjectSelect">Subjects You Find Difficult or Would Prefer to Avoid:</label>
+          <input type="text" id="obDifficultSubjects" class="form-input" placeholder="e.g. Organic Chemistry, High-volume rote memorization">
+        </div>
+
+        <div class="form-group" style="margin-top: 20px;">
+          <label class="form-label">Self-Reported Academic Confidence / Learning Style:</label>
+          <select id="obAcademicConfidence" class="form-select">
+            <option value="curious_hands_on" selected>Practical & Hands-On (Learn best by building and seeing practical results)</option>
+            <option value="analytical_problem_solver">Analytical Problem Solver (Love formulas, logic puzzles, and reasoning)</option>
+            <option value="creative_expressive">Creative & Visual (Learn through diagramming, sketching, and concepts)</option>
+            <option value="collaborative_verbal">Social & Empathetic (Learn through discussions, teaching, and human interaction)</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- STEP 4: CURRENT SKILLS AND EXPERIENCE                                 -->
+      <!-- ===================================================================== -->
+      <section id="step4Section" class="wizard-step-panel" style="display: none;">
+        <div style="margin-bottom: 20px;">
+          <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--color-navy); margin-bottom: 6px;">
+            Your Current Skills & Practical Experience
+          </h2>
+          <p class="small text-secondary">
+            Select any skills you have practiced, even at a basic level. If you have zero formal experience, that is completely fine—our roadmaps begin from fundamentals!
+          </p>
+        </div>
+
+        <div class="selectable-chips-grid" id="skillsChipGrid">
+          <label class="selectable-chip-card selected">
+            <input type="checkbox" value="Python" checked>
+            <span class="selectable-chip-text">🐍 Python Basics</span>
+          </label>
+          <label class="selectable-chip-card selected">
+            <input type="checkbox" value="HTML5 & CSS3" checked>
+            <span class="selectable-chip-text">🌐 Web Basics (HTML/CSS)</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="Git & GitHub Version Control">
+            <span class="selectable-chip-text">📦 Git & Version Control</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="SQL & Relational Databases">
+            <span class="selectable-chip-text">🗄️ SQL & Databases</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="Figma & Wireframing">
+            <span class="selectable-chip-text">🎨 Figma & UI Layouts</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="Spreadsheet Mastery (Excel/Sheets)">
+            <span class="selectable-chip-text">📊 Excel & Google Sheets</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="AutoCAD & Structural Blueprint Reading">
+            <span class="selectable-chip-text">📐 AutoCAD / Technical Drawing</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="Circuit Wiring & Conduit Work">
+            <span class="selectable-chip-text">⚡ Basic Electrical Wiring</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="Soil Science & Nutrient Testing">
+            <span class="selectable-chip-text">🌱 Agriculture / Soil Testing</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="Emergency First Aid & Patient Care">
+            <span class="selectable-chip-text">🩹 First Aid / Health Basics</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="Bookkeeping & Accounting">
+            <span class="selectable-chip-text">📑 Bookkeeping & Tally</span>
+          </label>
+          <label class="selectable-chip-card">
+            <input type="checkbox" value="Public Speaking & Communication">
+            <span class="selectable-chip-text">🗣️ Presentation & Speaking</span>
+          </label>
+        </div>
+
+        <!-- Custom Skill Input -->
+        <div style="margin-top: 24px; padding-top: 16px; border-top: 1px dashed var(--color-border);">
+          <label class="form-label" for="customSkillInput">Have another skill or hobby project?</label>
+          <div style="display:flex; gap:10px;">
+            <input type="text" id="customSkillInput" class="form-input" placeholder="e.g. Canva design, Soldering, Robotics kit, Video editing">
+            <button type="button" class="btn btn-outline" id="btnAddCustomSkill">+ Add Skill</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- STEP 5: GOALS AND PREFERENCES                                         -->
+      <!-- ===================================================================== -->
+      <section id="step5Section" class="wizard-step-panel" style="display: none;">
+        <div style="margin-bottom: 20px;">
+          <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--color-navy); margin-bottom: 6px;">
+            Aspirations, Preferences & Real Circumstances
+          </h2>
+          <p class="small text-secondary">
+            Career planning must fit your actual circumstances. PathSetu connects your goals with affordable government colleges, ITIs, or open learning.
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="obCareerAspiration">Career Aspiration (if known)</label>
+          <input type="text" id="obCareerAspiration" class="form-input" placeholder="e.g. Software Engineer, Solar Specialist, or 'I am still exploring'">
+          <span class="small text-muted">You can write "I'm still exploring" if you aren't sure yet!</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="obPersonalGoal">Your Primary Personal Goal / Mission</label>
+          <input type="text" id="obPersonalGoal" class="form-input" value="Build practical skills that lead to financial independence and community impact.">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label" for="obWorkstyle">Preferred Work Environment</label>
+            <select id="obWorkstyle" class="form-select">
+              <option value="Desk / Digital (Software, Design, Analytics)" selected>Desk / Digital (Coding, Design, Analytics)</option>
+              <option value="Field / Outdoor (Agriculture, Solar, Civil Infrastructure)">Field / Outdoor (Agriculture, Solar, Site Work)</option>
+              <option value="Laboratory / Clinical (Healthcare, Research)">Laboratory / Clinical (Healthcare, Research)</option>
+              <option value="Social / People (Teaching, Banking, Public Service)">Social / People (Teaching, Banking, Mentorship)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="obBudgetINR">Annual Education Budget (INR)</label>
+            <input type="number" id="obBudgetINR" class="form-input" value="25000" step="5000" min="0">
+            <span class="small text-muted">Used to highlight government quotas and scholarships.</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label" for="obLearningPace">Available Learning Pace</label>
+            <select id="obLearningPace" class="form-select">
+              <option value="Full-time student (20+ hrs/wk)">Full-time student (20+ hrs/wk)</option>
+              <option value="Moderate (10-15 hrs/wk alongside classes)" selected>Moderate (10–15 hrs/wk alongside college)</option>
+              <option value="Light / Flexible (5-8 hrs/wk)">Light / Flexible (5–8 hrs/wk)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="obFurtherEdu">Higher Education Plan</label>
+            <select id="obFurtherEdu" class="form-select">
+              <option value="Planning for B.Tech / BCA / Govt Technical College" selected>Planning for Degree / Technical College</option>
+              <option value="Govt Polytechnic / ITI Technical Certification">Polytechnic / ITI Route</option>
+              <option value="Self-directed portfolio learning + Open Degree">Self-Taught Portfolio + Open University</option>
+              <option value="Immediate job readiness needed">Need quick employment within 6–9 months</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- STEP 6: PROFILE SYNTHESIS & TRANSPARENT CONFIRMATION                   -->
+      <!-- ===================================================================== -->
+      <section id="step6Section" class="wizard-step-panel" style="display: none;">
+        <div style="margin-bottom: 24px;">
+          <span class="pill-badge accent">Stage 02 · Holistic Profile Synthesis</span>
+          <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--color-navy); margin-top: 6px; margin-bottom: 6px;">
+            Review & Confirm Your Exploration Profile
+          </h2>
+          <p class="small text-secondary">
+            Here is a synthesis of your background. PathSetu uses this transparent 5-factor scoring model (Interests 35%, Subjects 25%, Skills 20%, Education 15%, Workstyle 5%) to generate explainable recommendations.
+          </p>
+        </div>
+
+        <!-- Synthesis Summary Card -->
+        <div style="background: var(--color-background); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 24px; margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border); padding-bottom: 12px; margin-bottom: 16px;">
+            <div>
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--color-navy);" id="synthStudentName">Student</h3>
+              <span class="small text-muted" id="synthEducationLevel">Education Level</span>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline" id="btnEditFromSynthesis">
+              ✏️ Edit Info
+            </button>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px;">
+            <div>
+              <strong class="small" style="color: var(--color-text-secondary); display:block; margin-bottom:4px;">Core Interests:</strong>
+              <div id="synthInterestsList" class="story-tags-row"></div>
+            </div>
+
+            <div>
+              <strong class="small" style="color: var(--color-text-secondary); display:block; margin-bottom:4px;">Academic Strengths:</strong>
+              <div id="synthStrengthsList" class="story-tags-row"></div>
+            </div>
+
+            <div>
+              <strong class="small" style="color: var(--color-text-secondary); display:block; margin-bottom:4px;">Existing Skills:</strong>
+              <div id="synthSkillsList" class="story-tags-row"></div>
+            </div>
+
+            <div>
+              <strong class="small" style="color: var(--color-text-secondary); display:block; margin-bottom:4px;">Education Budget & Preferences:</strong>
+              <p class="small text-secondary" id="synthBudgetPace"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Explainability Callout Box -->
+        <div style="padding: 16px; background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: var(--radius-sm); margin-bottom: 24px;">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">
+            ✦ How Your Recommendations Are Generated
+          </h4>
+          <p class="small" style="color: #1E3A8A; line-height: 1.5;">
+            PathSetu does not use secretive black-box prediction. Each career compatibility score shows the exact points contributed by your interests, subject synergy, baseline skills, and pathway affordability. You can revise this anytime.
+          </p>
+        </div>
+      </section>
+
+      <!-- Navigation Controls (Back & Continue) -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--color-border);">
+        <button type="button" class="btn btn-ghost" id="btnWizardBack" style="visibility: hidden;">
+          ← Back
+        </button>
+        <button type="button" class="btn btn-primary" id="btnWizardNext">
+          Continue to Interests →
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Script Modules -->
+  <script src="js/auth.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      let currentStep = 1;
+      const totalSteps = 6;
+
+      const stepTitles = [
+        "Basic Student Background",
+        "Curiosity & Career Interests",
+        "Academic Strengths & Subjects",
+        "Current Skills & Experience",
+        "Goals & Real Circumstances",
+        "Profile Review & Confirmation"
+      ];
+
+      const btnNext = document.getElementById('btnWizardNext');
+      const btnBack = document.getElementById('btnWizardBack');
+      const progressBar = document.getElementById('wizardProgressBar');
+      const stepPill = document.getElementById('stepPillText');
+      const stepHeaderTitle = document.getElementById('stepHeaderTitle');
+      const stepProgressPct = document.getElementById('stepProgressPct');
+      const alertBox = document.getElementById('wizardAlertBox');
+
+      // Checkbox chip click interaction
+      function setupChips(containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.addEventListener('click', (e) => {
+          const card = e.target.closest('.selectable-chip-card');
+          if (card) {
+            const chk = card.querySelector('input[type="checkbox"]');
+            if (chk) {
+              if (e.target !== chk) chk.checked = !chk.checked;
+              card.classList.toggle('selected', chk.checked);
+            }
+          }
+        });
+      }
+      setupChips('interestsChipGrid');
+      setupChips('strongSubjectsGrid');
+      setupChips('skillsChipGrid');
+
+      // Add Custom Interest
+      document.getElementById('btnAddCustomInterest').onclick = () => {
+        const input = document.getElementById('customInterestInput');
+        const val = input.value.trim();
+        if (val) {
+          const grid = document.getElementById('interestsChipGrid');
+          const label = document.createElement('label');
+          label.className = 'selectable-chip-card selected';
+          label.innerHTML = `
+            <input type="checkbox" value="${val.toLowerCase()}" checked>
+            <span class="selectable-chip-icon">✨</span>
+            <span class="selectable-chip-text">${val}</span>
+          `;
+          grid.appendChild(label);
+          input.value = '';
+        }
+      };
+
+      // Add Custom Skill
+      document.getElementById('btnAddCustomSkill').onclick = () => {
+        const input = document.getElementById('customSkillInput');
+        const val = input.value.trim();
+        if (val) {
+          const grid = document.getElementById('skillsChipGrid');
+          const label = document.createElement('label');
+          label.className = 'selectable-chip-card selected';
+          label.innerHTML = `
+            <input type="checkbox" value="${val}" checked>
+            <span class="selectable-chip-text">⭐ ${val}</span>
+          `;
+          grid.appendChild(label);
+          input.value = '';
+        }
+      };
+
+      function showAlert(msg) {
+        alertBox.style.display = 'block';
+        alertBox.style.background = '#FEE2E2';
+        alertBox.style.color = '#B91C1C';
+        alertBox.style.border = '1px solid #FCA5A5';
+        alertBox.textContent = msg;
+        window.scrollTo({ top: 120, behavior: 'smooth' });
+      }
+
+      function hideAlert() {
+        alertBox.style.display = 'none';
+      }
+
+      function getSelectedValues(containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return [];
+        const chks = container.querySelectorAll('input[type="checkbox"]:checked');
+        return Array.from(chks).map(c => c.value);
+      }
+
+      function updateStepView() {
+        hideAlert();
+        for (let i = 1; i <= totalSteps; i++) {
+          const panel = document.getElementById(`step${i}Section`);
+          if (panel) panel.style.display = (i === currentStep) ? 'block' : 'none';
+
+          const node = document.getElementById(`nodeStep${i}`);
+          if (node) {
+            node.classList.remove('active', 'completed');
+            if (i === currentStep) node.classList.add('active');
+            else if (i < currentStep) node.classList.add('completed');
+          }
+        }
+
+        const pct = Math.round((currentStep / totalSteps) * 100);
+        progressBar.style.width = `${pct}%`;
+        stepProgressPct.textContent = `${pct}% Completed`;
+        stepPill.textContent = `Step ${currentStep} of ${totalSteps}`;
+        stepHeaderTitle.textContent = stepTitles[currentStep - 1];
+
+        btnBack.style.visibility = (currentStep === 1) ? 'hidden' : 'visible';
+
+        if (currentStep === totalSteps) {
+          btnNext.textContent = 'Confirm Profile & Go to Dashboard →';
+          populateSynthesis();
+        } else {
+          const nextLabels = [
+            'Continue to Interests →',
+            'Continue to Strengths →',
+            'Continue to Skills →',
+            'Continue to Goals →',
+            'Review Profile Synthesis →'
+          ];
+          btnNext.textContent = nextLabels[currentStep - 1] || 'Continue →';
+        }
+
+        window.scrollTo({ top: 100, behavior: 'smooth' });
+      }
+
+      function populateSynthesis() {
+        const name = document.getElementById('obStudentName').value.trim() || 'Student';
+        const edu = document.getElementById('obEducationLevel').value;
+        const interests = getSelectedValues('interestsChipGrid');
+        const subjects = getSelectedValues('strongSubjectsGrid');
+        const skills = getSelectedValues('skillsChipGrid');
+        const budget = document.getElementById('obBudgetINR').value || '25000';
+        const pace = document.getElementById('obLearningPace').value;
+
+        document.getElementById('synthStudentName').textContent = name;
+        document.getElementById('synthEducationLevel').textContent = edu;
+
+        const makeChips = (arr) => arr.length ? arr.map(item => `<span class="story-tag-chip">${item}</span>`).join('') : '<span class="small text-muted">None specified</span>';
+        document.getElementById('synthInterestsList').innerHTML = makeChips(interests);
+        document.getElementById('synthStrengthsList').innerHTML = makeChips(subjects);
+        document.getElementById('synthSkillsList').innerHTML = makeChips(skills);
+        document.getElementById('synthBudgetPace').innerHTML = `Budget: <b>₹${Number(budget).toLocaleString()} / yr</b><br/>Pace: <b>${pace}</b>`;
+      }
+
+      document.getElementById('btnEditFromSynthesis').onclick = () => {
+        currentStep = 1;
+        updateStepView();
+      };
+
+      btnBack.onclick = () => {
+        if (currentStep > 1) {
+          currentStep--;
+          updateStepView();
+        }
+      };
+
+      btnNext.onclick = async () => {
+        // Validation per step
+        if (currentStep === 1) {
+          const name = document.getElementById('obStudentName').value.trim();
+          if (!name) {
+            showAlert('Please enter your full name to personalize your guidance.');
+            return;
+          }
+        } else if (currentStep === 2) {
+          const interests = getSelectedValues('interestsChipGrid');
+          if (interests.length === 0) {
+            showAlert('Please select at least 1 interest to help us match career pathways.');
+            return;
+          }
+        } else if (currentStep === 3) {
+          const subjects = getSelectedValues('strongSubjectsGrid');
+          if (subjects.length === 0) {
+            showAlert('Please select at least 1 subject you enjoy or feel confident in.');
+            return;
+          }
+        }
+
+        if (currentStep < totalSteps) {
+          currentStep++;
+          updateStepView();
+        } else {
+          // Final Submit
+          btnNext.disabled = true;
+          btnNext.textContent = 'Saving Profile & Generating Matches...';
+
+          const profileData = {
+            name: document.getElementById('obStudentName').value.trim(),
+            education: document.getElementById('obEducationLevel').value,
+            academic_stream: document.getElementById('obAcademicStream').value.trim() || 'General',
+            location: document.getElementById('obLocation').value.trim(),
+            preferred_language: document.getElementById('obPreferredLang').value,
+            interests: getSelectedValues('interestsChipGrid'),
+            subjects: getSelectedValues('strongSubjectsGrid'),
+            strong_subjects: getSelectedValues('strongSubjectsGrid'),
+            difficult_subjects: document.getElementById('obDifficultSubjects').value ? [document.getElementById('obDifficultSubjects').value.trim()] : [],
+            skills: getSelectedValues('skillsChipGrid'),
+            skill_confidence: {},
+            strengths: ["Logic", "Curiosity"],
+            goal: document.getElementById('obPersonalGoal').value.trim(),
+            career_aspirations: document.getElementById('obCareerAspiration').value.trim(),
+            workstyle: document.getElementById('obWorkstyle').value,
+            priority: "interest",
+            budget_inr: parseFloat(document.getElementById('obBudgetINR').value) || 25000,
+            learning_pace: document.getElementById('obLearningPace').value,
+            further_education: document.getElementById('obFurtherEdu').value,
+            selected_career: "software_dev"
+          };
+
+          try {
+            const res = await fetch('/api/profile', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              },
+              body: JSON.stringify(profileData)
+            });
+
+            if (!res.ok) {
+              const err = await res.json();
+              throw new Error(err.detail || 'Failed saving profile.');
+            }
+
+            // Redirect directly to the personalized dashboard!
+            window.location.href = '/dashboard';
+          } catch (e) {
+            showAlert(e.message || 'Error saving profile to server.');
+            btnNext.disabled = false;
+            btnNext.textContent = 'Confirm Profile & Go to Dashboard →';
+          }
+        }
+      };
+
+      // Load existing user profile if returning student
+      PathSetuAuth.requireAuth().then(isAuth => {
+        if (!isAuth) return;
+        fetch('/api/profile')
+          .then(r => r.ok ? r.json() : null)
+          .then(data => {
+            if (data && data.profile) {
+              const p = data.profile;
+              if (p.name) document.getElementById('obStudentName').value = p.name;
+              if (p.education) document.getElementById('obEducationLevel').value = p.education;
+              if (p.academic_stream) document.getElementById('obAcademicStream').value = p.academic_stream;
+              if (p.location) document.getElementById('obLocation').value = p.location;
+              if (p.preferred_language) document.getElementById('obPreferredLang').value = p.preferred_language;
+              if (p.goal) document.getElementById('obPersonalGoal').value = p.goal;
+              if (p.career_aspirations) document.getElementById('obCareerAspiration').value = p.career_aspirations;
+              if (p.workstyle) document.getElementById('obWorkstyle').value = p.workstyle;
+              if (p.budget_inr) document.getElementById('obBudgetINR').value = p.budget_inr;
+            } else {
+              const u = PathSetuAuth.getCurrentUser();
+              if (u && u.name) document.getElementById('obStudentName').value = u.name;
+            }
+          });
+      });
+
+      // Mobile nav
+      const btnMobile = document.getElementById('btnMobileNav');
+      const drawer = document.getElementById('mobileDrawerContent');
+      const overlay = document.getElementById('mobileDrawerOverlay');
+      const btnClose = document.getElementById('btnCloseMobileDrawer');
+      if (btnMobile && drawer && overlay && btnClose) {
+        btnMobile.onclick = () => { drawer.classList.add('open'); overlay.classList.add('open'); };
+        btnClose.onclick = () => { drawer.classList.remove('open'); overlay.classList.remove('open'); };
+        overlay.onclick = () => { drawer.classList.remove('open'); overlay.classList.remove('open'); };
+      }
+    })();
+  </script>
+</body>
+
+</html>
+
