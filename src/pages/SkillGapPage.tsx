@@ -52,7 +52,7 @@ export const SkillGapPage: React.FC = () => {
       {/* Page Title */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-primary-light text-brand-primary text-xs font-bold uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-elevated text-brand-primary border border-brand-border text-xs font-bold uppercase tracking-wider mb-2">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Stage 05 · Readiness Diagnostics</span>
           </div>
@@ -74,7 +74,7 @@ export const SkillGapPage: React.FC = () => {
               setSelectedCareerId(e.target.value);
               setActiveCareerId(e.target.value);
             }}
-            className="px-3 py-2 text-xs font-semibold rounded-brand-sm border border-brand-border bg-white text-brand-dark focus:border-brand-primary focus:outline-none shadow-subtle"
+            className="px-3 py-2 text-xs font-semibold rounded-brand-sm border border-brand-border bg-white text-brand-dark focus:border-brand-primary focus:outline-none "
           >
             {CAREERS.map(c => (
               <option key={c.id} value={c.id}>
@@ -86,7 +86,7 @@ export const SkillGapPage: React.FC = () => {
       </div>
 
       {/* Main Readiness Gauge Row (Mirrors Reference 5 Skill Gap Analysis) */}
-      <div className="bg-white border border-brand-border rounded-brand p-6 sm:p-8 shadow-card flex flex-col md:flex-row items-center justify-around gap-8">
+      <div className="bg-brand-surface border border-brand-border rounded-brand p-6 sm:p-8  flex flex-col md:flex-row items-center justify-around gap-8">
         <div className="text-center space-y-2">
           <CircularGauge
             value={readinessPct}
@@ -95,8 +95,8 @@ export const SkillGapPage: React.FC = () => {
             variant="semi"
             label={`${readinessPct}%`}
             sublabel="Readiness Match"
-            color="#234B3D"
-            trackColor="#E4EBDD"
+            color="#2563EB"
+            trackColor="var(--border-color)"
           />
           <div className="text-xs text-brand-muted">
             {readySkills.length} of {totalSkills} essential entry competencies verified
@@ -107,10 +107,10 @@ export const SkillGapPage: React.FC = () => {
           <div>
             <div className="flex justify-between font-bold text-brand-dark mb-1.5">
               <span>Foundational Academic Prerequisites</span>
-              <span className="text-emerald-800">80% Match</span>
+              <span className="text-brand-cyan">80% Match</span>
             </div>
             <div className="w-full bg-brand-bg rounded-full h-2.5 overflow-hidden border border-brand-border">
-              <div className="bg-emerald-600 h-2.5 rounded-full" style={{ width: '80%' }} />
+              <div className="bg-brand-primary h-2.5 rounded-full" style={{ width: '80%' }} />
             </div>
           </div>
 
@@ -133,13 +133,13 @@ export const SkillGapPage: React.FC = () => {
       {/* Interactive Skills Categorization Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Acquired Skills Card */}
-        <div className="bg-white border border-brand-border rounded-brand p-6 shadow-subtle space-y-4">
+        <div className="bg-brand-surface border border-brand-border rounded-brand p-6  space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="font-bold text-sm text-brand-dark flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
               <span>Skills You Already Have ({readySkills.length})</span>
             </h3>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-brand-cyan">
               Verified Ready
             </span>
           </div>
@@ -160,7 +160,7 @@ export const SkillGapPage: React.FC = () => {
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                     <span>{s.name}</span>
                   </div>
-                  <span className="text-[10px] text-emerald-800 font-bold uppercase">{s.level}</span>
+                  <span className="text-[10px] text-brand-cyan font-bold uppercase">{s.level}</span>
                 </div>
               ))
             )}
@@ -168,7 +168,7 @@ export const SkillGapPage: React.FC = () => {
         </div>
 
         {/* Priority Skills to Learn Next Card */}
-        <div className="bg-white border border-brand-border rounded-brand p-6 shadow-subtle space-y-4">
+        <div className="bg-brand-surface border border-brand-border rounded-brand p-6  space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="font-bold text-sm text-brand-dark flex items-center gap-2">
               <Clock className="w-4 h-4 text-amber-600" />

@@ -33,7 +33,7 @@ export const ResourcesPage: React.FC = () => {
     <div className="py-6 sm:py-8 space-y-8">
       {/* Page Title */}
       <div>
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-primary-light text-brand-primary text-xs font-bold uppercase tracking-wider mb-2">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-elevated text-brand-primary border border-brand-border text-xs font-bold uppercase tracking-wider mb-2">
           <BookOpen className="w-3.5 h-3.5" />
           <span>Stage 04 · Verified Directory</span>
         </div>
@@ -46,7 +46,7 @@ export const ResourcesPage: React.FC = () => {
       </div>
 
       {/* Filter and Search */}
-      <div className="bg-white border border-brand-border rounded-brand p-4 shadow-subtle space-y-3">
+      <div className="bg-brand-surface border border-brand-border rounded-brand p-4  space-y-3">
         <div className="relative">
           <Search className="w-4 h-4 text-brand-muted absolute left-3.5 top-1/2 transform -translate-y-1/2" />
           <input
@@ -80,7 +80,7 @@ export const ResourcesPage: React.FC = () => {
         {filteredResources.map((res, idx) => (
           <div
             key={idx}
-            className="bg-white border border-brand-border rounded-brand p-6 shadow-subtle hover:shadow-card hover:border-brand-primary transition-all flex flex-col justify-between space-y-4"
+            className="bg-brand-surface border border-brand-border rounded-brand p-6  hover: hover:border-brand-primary transition-all flex flex-col justify-between space-y-4"
           >
             <div className="space-y-3">
               <div className="flex items-start justify-between gap-3">
@@ -93,7 +93,7 @@ export const ResourcesPage: React.FC = () => {
                   </div>
                 </div>
 
-                <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold whitespace-nowrap flex items-center gap-1">
+                <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-brand-cyan text-[10px] font-bold whitespace-nowrap flex items-center gap-1">
                   <ShieldCheck className="w-3 h-3" />
                   <span>Verified</span>
                 </span>
@@ -115,7 +115,7 @@ export const ResourcesPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-brand-borderLight flex items-center justify-between text-xs">
+            <div className="pt-4 border-t border-brand-border flex items-center justify-between text-xs">
               <span className="text-[11px] text-brand-muted">
                 Last verified: {res.verified_date}
               </span>
@@ -124,7 +124,7 @@ export const ResourcesPage: React.FC = () => {
                 href={res.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3.5 py-1.5 rounded-brand-sm bg-brand-primary text-white font-bold text-xs flex items-center gap-1.5 hover:bg-brand-primary-hover shadow-subtle transition-colors"
+                className="px-3.5 py-1.5 rounded-brand-sm bg-brand-primary text-white font-bold text-xs flex items-center gap-1.5 hover:bg-brand-primary-hover  transition-colors"
               >
                 <span>Visit Official Portal</span>
                 <ExternalLink className="w-3.5 h-3.5" />

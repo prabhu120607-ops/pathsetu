@@ -37,7 +37,7 @@ export const BudgetPage: React.FC = () => {
     <div className="py-6 sm:py-8 space-y-8">
       {/* Page Title */}
       <div>
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-primary-light text-brand-primary text-xs font-bold uppercase tracking-wider mb-2">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-elevated text-brand-primary border border-brand-border text-xs font-bold uppercase tracking-wider mb-2">
           <Wallet className="w-3.5 h-3.5" />
           <span>Stage 04 · Budget Intelligence</span>
         </div>
@@ -50,7 +50,7 @@ export const BudgetPage: React.FC = () => {
       </div>
 
       {/* Main Budget Input Card */}
-      <div className="bg-white border border-brand-border rounded-brand p-6 sm:p-8 shadow-card space-y-6">
+      <div className="bg-brand-surface border border-brand-border rounded-brand p-6 sm:p-8  space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <div>
             <label className="text-xs font-bold text-brand-dark block mb-2">
@@ -70,7 +70,7 @@ export const BudgetPage: React.FC = () => {
               <button
                 type="button"
                 onClick={handleApplyBudget}
-                className="px-4 py-2.5 bg-brand-primary text-white text-xs font-bold rounded-brand-sm hover:bg-brand-primary-hover whitespace-nowrap shadow-subtle"
+                className="px-4 py-2.5 bg-brand-primary text-white text-xs font-bold rounded-brand-sm hover:bg-brand-primary-hover whitespace-nowrap "
               >
                 Save Budget
               </button>
@@ -115,9 +115,9 @@ export const BudgetPage: React.FC = () => {
       {/* Affordability Verdict Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Government Route Verdict */}
-        <div className={`p-6 rounded-brand border shadow-subtle space-y-4 ${
+        <div className={`p-6 rounded-brand border  space-y-4 ${
           govtSurplus >= 0
-            ? 'bg-emerald-50/70 border-emerald-200'
+            ? 'bg-brand-elevated/70 border-emerald-200'
             : 'bg-amber-50/70 border-amber-200'
         }`}>
           <div className="flex items-center justify-between">
@@ -145,15 +145,15 @@ export const BudgetPage: React.FC = () => {
           </p>
 
           <div className="pt-2 border-t border-emerald-200/60 text-xs text-emerald-900 font-medium flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4 text-emerald-700" />
+            <ShieldCheck className="w-4 h-4 text-brand-cyan" />
             <span>Eligible for State Government 100% fee reimbursement via CET merit</span>
           </div>
         </div>
 
         {/* Private Route Verdict */}
-        <div className={`p-6 rounded-brand border shadow-subtle space-y-4 ${
+        <div className={`p-6 rounded-brand border  space-y-4 ${
           pvtSurplus >= 0
-            ? 'bg-emerald-50/70 border-emerald-200'
+            ? 'bg-brand-elevated/70 border-emerald-200'
             : 'bg-rose-50/70 border-rose-200'
         }`}>
           <div className="flex items-center justify-between">
@@ -188,7 +188,7 @@ export const BudgetPage: React.FC = () => {
       </div>
 
       {/* Free Statutory Alternatives (SWAYAM & Skill India) */}
-      <div className="bg-white border border-brand-border rounded-brand p-6 shadow-subtle space-y-4">
+      <div className="bg-brand-surface border border-brand-border rounded-brand p-6  space-y-4">
         <h2 className="text-base font-bold text-brand-dark">
           100% Free Statutory Alternatives for {activeCareer.name}
         </h2>
@@ -197,7 +197,7 @@ export const BudgetPage: React.FC = () => {
             <div key={i} className="p-4 rounded-brand-sm border border-brand-border bg-brand-bg/40 text-xs space-y-2">
               <span className="font-bold text-brand-primary block">Verified Open Route #{i + 1}</span>
               <p className="text-brand-dark/90 leading-relaxed">{alt}</p>
-              <div className="text-[11px] text-emerald-800 font-semibold">Tuition Cost: ₹0 (Free Access)</div>
+              <div className="text-[11px] text-brand-cyan font-semibold">Tuition Cost: ₹0 (Free Access)</div>
             </div>
           ))}
         </div>

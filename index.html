@@ -15,8 +15,30 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('pathsetu-theme');
+          var theme = saved;
+          if (!theme) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+              theme = 'day';
+            } else {
+              theme = 'night'; // Default to Night Mode
+            }
+          }
+          if (theme === 'night') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'night');
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.setAttribute('data-theme', 'day');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
-  <body class="bg-[#F5F7F2] text-[#162820]">
+  <body class="bg-[var(--bg-page)] text-[var(--text-main)] transition-colors duration-200">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

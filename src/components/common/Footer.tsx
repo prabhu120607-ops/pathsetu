@@ -1,30 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Compass, ShieldCheck, ExternalLink, Heart } from 'lucide-react';
+import { ShieldCheck, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
 export const Footer: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-brand-surface border-t border-brand-border mt-auto">
+    <footer className="bg-brand-surface border-t border-brand-border mt-auto transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Col */}
           <div className="md:col-span-1 space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded-lg bg-brand-primary flex items-center justify-center text-white">
-                <Compass className="w-5 h-5 text-brand-secondary" />
-              </div>
-              <span className="text-lg font-bold text-brand-dark">
+            <div className="flex items-center space-x-2.5">
+              <img
+                src="/assets/pathsetu-icon.png"
+                alt="PathSetu Logo"
+                className="w-8 h-8 rounded-brand-sm object-cover border border-brand-border"
+              />
+              <span className="text-base font-bold text-brand-dark">
                 Path<span className="text-brand-primary">Setu</span> (పథసేతు)
               </span>
             </div>
             <p className="text-xs text-brand-muted leading-relaxed">
               Transparent, explainable career guidance and affordable education roadmaps built for school and college students in Tier-2/3 and rural India.
             </p>
-            <div className="flex items-center space-x-1.5 text-xs text-emerald-800 font-medium">
-              <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+            <div className="flex items-center space-x-1.5 text-xs text-brand-muted font-medium">
+              <ShieldCheck className="w-4 h-4 text-brand-cyan flex-shrink-0" />
               <span>100% Free & Open-Access Educational Tool</span>
             </div>
           </div>
@@ -75,15 +77,15 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link to="/reviews" className="text-brand-muted hover:text-brand-primary transition-colors flex items-center gap-1">
+                <Link to="/reviews" className="text-brand-muted hover:text-brand-primary transition-colors flex items-center gap-1.5">
                   <span>Student Reviews & Path Demos</span>
-                  <span className="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.2 rounded font-semibold">Live</span>
+                  <span className="text-[10px] bg-brand-elevated text-brand-cyan border border-brand-border px-1.5 py-0.2 rounded font-semibold">Live</span>
                 </Link>
               </li>
               <li>
-                <Link to="/navigation" className="text-brand-muted hover:text-brand-primary transition-colors flex items-center gap-1">
+                <Link to="/navigation" className="text-brand-muted hover:text-brand-primary transition-colors flex items-center gap-1.5">
                   <span>Find Institution (Live GPS)</span>
-                  <span className="text-[10px] bg-blue-100 text-blue-800 px-1.5 py-0.2 rounded font-semibold">Map</span>
+                  <span className="text-[10px] bg-brand-elevated text-brand-cyan border border-brand-border px-1.5 py-0.2 rounded font-semibold">Map</span>
                 </Link>
               </li>
               <li>
@@ -113,7 +115,7 @@ export const Footer: React.FC = () => {
                   className="text-brand-muted hover:text-brand-primary transition-colors flex items-center gap-1"
                 >
                   <span>National Career Service (NCS)</span>
-                  <ExternalLink className="w-3 h-3 text-brand-muted/70" />
+                  <ExternalLink className="w-3 h-3 text-brand-cyan" />
                 </a>
               </li>
               <li>
@@ -124,7 +126,7 @@ export const Footer: React.FC = () => {
                   className="text-brand-muted hover:text-brand-primary transition-colors flex items-center gap-1"
                 >
                   <span>SWAYAM Free Online Courses</span>
-                  <ExternalLink className="w-3 h-3 text-brand-muted/70" />
+                  <ExternalLink className="w-3 h-3 text-brand-cyan" />
                 </a>
               </li>
               <li>
@@ -135,7 +137,7 @@ export const Footer: React.FC = () => {
                   className="text-brand-muted hover:text-brand-primary transition-colors flex items-center gap-1"
                 >
                   <span>National Scholarship Portal (NSP)</span>
-                  <ExternalLink className="w-3 h-3 text-brand-muted/70" />
+                  <ExternalLink className="w-3 h-3 text-brand-cyan" />
                 </a>
               </li>
               <li>
@@ -146,7 +148,7 @@ export const Footer: React.FC = () => {
                   className="text-brand-muted hover:text-brand-primary transition-colors flex items-center gap-1"
                 >
                   <span>Skill India Digital Hub</span>
-                  <ExternalLink className="w-3 h-3 text-brand-muted/70" />
+                  <ExternalLink className="w-3 h-3 text-brand-cyan" />
                 </a>
               </li>
             </ul>

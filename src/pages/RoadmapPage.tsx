@@ -82,7 +82,7 @@ export const RoadmapPage: React.FC = () => {
       {/* Page Title & Career Selector */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-primary-light text-brand-primary text-xs font-bold uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-elevated text-brand-primary border border-brand-border text-xs font-bold uppercase tracking-wider mb-2">
             <Compass className="w-3.5 h-3.5" />
             <span>Stage 06 · Actionable Roadmap</span>
           </div>
@@ -101,7 +101,7 @@ export const RoadmapPage: React.FC = () => {
               setSelectedCareerId(e.target.value);
               setActiveCareerId(e.target.value);
             }}
-            className="px-3 py-2 text-xs font-bold rounded-brand-sm border border-brand-border bg-white text-brand-dark shadow-subtle focus:border-brand-primary focus:outline-none"
+            className="px-3 py-2 text-xs font-bold rounded-brand-sm border border-brand-border bg-white text-brand-dark  focus:border-brand-primary focus:outline-none"
           >
             {CAREERS.map(c => (
               <option key={c.id} value={c.id}>
@@ -112,7 +112,7 @@ export const RoadmapPage: React.FC = () => {
 
           <button
             onClick={handlePrint}
-            className="flex items-center gap-1 px-3 py-2 text-xs font-bold rounded-brand-sm border border-brand-border bg-white text-brand-dark hover:bg-brand-bg shadow-subtle transition-colors"
+            className="flex items-center gap-1 px-3 py-2 text-xs font-bold rounded-brand-sm border border-brand-border bg-white text-brand-dark hover:bg-brand-elevated  transition-colors"
           >
             <FileDown className="w-3.5 h-3.5 text-brand-muted" />
             <span>Export PDF</span>
@@ -123,7 +123,7 @@ export const RoadmapPage: React.FC = () => {
       {/* Progress Card + Next Recommended Action Banner */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
         {/* Progress Bar Card */}
-        <div className="md:col-span-4 bg-white border border-brand-border rounded-brand p-6 shadow-subtle flex flex-col justify-between">
+        <div className="md:col-span-4 bg-brand-surface border border-brand-border rounded-brand p-6  flex flex-col justify-between">
           <div>
             <span className="text-xs font-bold text-brand-muted uppercase tracking-wider">
               Roadmap Progress
@@ -144,9 +144,9 @@ export const RoadmapPage: React.FC = () => {
         </div>
 
         {/* Next Recommended Action Banner */}
-        <div className="md:col-span-8 bg-emerald-50 border border-emerald-200 rounded-brand p-6 shadow-subtle flex flex-col justify-between space-y-3">
+        <div className="md:col-span-8 bg-brand-elevated border border-emerald-200 rounded-brand p-6  flex flex-col justify-between space-y-3">
           <div>
-            <div className="flex items-center gap-2 text-emerald-800 text-xs font-bold uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-brand-cyan text-xs font-bold uppercase tracking-wider">
               <Sparkles className="w-4 h-4" />
               <span>Recommended Next Action</span>
             </div>
@@ -159,12 +159,12 @@ export const RoadmapPage: React.FC = () => {
           </div>
 
           <div className="flex items-center justify-between pt-2">
-            <span className="text-xs font-semibold text-emerald-800">
+            <span className="text-xs font-semibold text-brand-cyan">
               Estimated Duration: {nextAction.time}
             </span>
             <button
               onClick={() => handleToggle(nextAction.id)}
-              className="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-brand-sm shadow-subtle transition-colors"
+              className="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-brand-sm  transition-colors"
             >
               Mark Done ✓
             </button>
@@ -173,7 +173,7 @@ export const RoadmapPage: React.FC = () => {
       </div>
 
       {/* Milestones Checklist */}
-      <div className="bg-white border border-brand-border rounded-brand p-6 sm:p-8 shadow-card space-y-6">
+      <div className="bg-brand-surface border border-brand-border rounded-brand p-6 sm:p-8  space-y-6">
         <div className="flex items-center justify-between pb-3 border-b border-brand-border">
           <h2 className="text-base font-bold text-brand-dark">
             Milestone Checklist for {career.name}
@@ -225,7 +225,7 @@ export const RoadmapPage: React.FC = () => {
               </button>
               <button
                 type="submit"
-                className="px-4 py-1.5 bg-brand-primary text-white text-xs font-bold rounded-brand-sm hover:bg-brand-primary-hover shadow-subtle"
+                className="px-4 py-1.5 bg-brand-primary text-white text-xs font-bold rounded-brand-sm hover:bg-brand-primary-hover "
               >
                 Add Milestone
               </button>
@@ -243,8 +243,8 @@ export const RoadmapPage: React.FC = () => {
                 onClick={() => handleToggle(ms.id)}
                 className={`p-4 rounded-brand-sm border transition-all cursor-pointer flex items-start gap-4 ${
                   isDone
-                    ? 'bg-emerald-50/50 border-emerald-200'
-                    : 'bg-white border-brand-border hover:border-brand-primary/60 hover:bg-brand-bg/40'
+                    ? 'bg-brand-elevated/50 border-emerald-200'
+                    : 'bg-white border-brand-border hover:border-brand-primary/60 hover:bg-brand-elevated/40'
                 }`}
               >
                 <button
@@ -265,7 +265,7 @@ export const RoadmapPage: React.FC = () => {
                       Step {idx + 1} • {ms.time}
                     </span>
                     {isDone && (
-                      <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.2 rounded">
+                      <span className="text-[10px] font-bold text-brand-cyan bg-emerald-100 px-2 py-0.2 rounded">
                         Completed ✓
                       </span>
                     )}
@@ -290,8 +290,8 @@ export const RoadmapPage: React.FC = () => {
                 onClick={() => handleToggle(ms.id)}
                 className={`p-4 rounded-brand-sm border transition-all cursor-pointer flex items-start gap-4 ${
                   isDone
-                    ? 'bg-emerald-50/50 border-emerald-200'
-                    : 'bg-white border-brand-border hover:border-brand-primary/60 hover:bg-brand-bg/40'
+                    ? 'bg-brand-elevated/50 border-emerald-200'
+                    : 'bg-white border-brand-border hover:border-brand-primary/60 hover:bg-brand-elevated/40'
                 }`}
               >
                 <button type="button" className="mt-0.5 text-brand-primary flex-shrink-0">

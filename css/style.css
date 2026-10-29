@@ -1,55 +1,58 @@
 /* ==========================================================================
-   PATHSETU (పథసేతు) — PROFESSIONAL BLUE & WHITE EDUCATIONAL UI DESIGN SYSTEM
-   Clean, Modern, Accessible, Trustworthy, and Fully Responsive
+   PATHSETU (పథసేతు) — EXACT MINIMALIST SOLID COLOR SYSTEM
+   Night Mode & Day Mode CSS Custom Properties
    ========================================================================== */
 
 :root {
-  /* Exact Prompt Colors */
-  --color-primary: #1D4ED8;          /* Primary Blue */
-  --color-primary-hover: #1E40AF;    /* Darker Blue Hover */
-  --color-navy: #0F172A;             /* Dark Navy Headings & Text */
-  --color-light-blue: #DBEAFE;       /* Light Blue Badges & Info Cards */
-  --color-light-blue-hover: #BFDBFE; /* Subtle Accent Border */
-  --color-white: #FFFFFF;            /* White Background & Cards */
-  --color-background: #F8FAFC;       /* Soft Background for Alternating Sections */
-  --color-border: #E2E8F0;           /* Border Gray */
-  --color-border-hover: #CBD5E1;     /* Border Gray Hover */
-  --color-text-secondary: #64748B;   /* Secondary Slate Gray */
-  --color-success: #15803D;          /* Success Green */
-  --color-success-bg: #DCFCE7;       /* Soft Green Background */
-  --color-warning: #B45309;          /* Amber Warning */
-  --color-warning-bg: #FEF3C7;       /* Soft Amber Background */
-  --color-danger: #B91C1C;           /* Red Error */
-  --color-danger-bg: #FEE2E2;        /* Soft Red Background */
+  /* Exact Prompt Colors - Day Mode */
+  --bg-page: #F5F7FA;
+  --bg-card: #FFFFFF;
+  --bg-surface: #EEF2F7;
+  --bg-card-hover: #FFFFFF;
+  --bg-card-subtle: #EEF2F7;
 
-  /* Semantic Aliases for Global Consistency */
-  --bg-page: var(--color-background);
-  --bg-card: var(--color-white);
-  --bg-card-hover: var(--color-white);
-  --bg-card-subtle: #F1F5F9;
-  --bg-surface: var(--color-white);
+  --text-main: #171C26;
+  --text-secondary: #586273;
+  --text-muted: #586273;
+  --text-primary: var(--text-main);
 
-  --accent-cyan: var(--color-primary);
-  --primary-blue: var(--color-primary);
-  --accent-purple: #3B82F6;
+  --border-color: #DCE2EA;
+  --border-hover: #CBD5E1;
+  --border-focus: #2563EB;
+  --border-subtle: #EEF2F7;
 
-  --text-primary: var(--color-navy);
-  --text-secondary: var(--color-text-secondary);
-  --text-muted: #94A3B8;
+  /* Shared Brand Colors */
+  --color-primary: #2563EB;          /* Royal Blue */
+  --color-primary-hover: #1D4ED8;    /* Royal Blue Hover */
+  --accent-cyan: #06B6D4;            /* Cyan */
+  --accent-violet: #7C3AED;          /* Violet */
+  --accent-purple: #7C3AED;
+  --color-white: #FFFFFF;
+  --color-black: #101318;
+  --color-navy: var(--text-main);
+  --color-background: var(--bg-page);
+  --color-border: var(--border-color);
+  --color-border-hover: var(--border-hover);
+  --color-text-secondary: var(--text-secondary);
 
-  --border-color: var(--color-border);
-  --border-hover: var(--color-primary);
-  --border-focus: var(--color-primary);
-  --border-subtle: #F1F5F9;
+  --color-light-blue: #EEF2F7;
+  --color-light-blue-hover: #DCE2EA;
+  --color-success: #15803D;
+  --color-success-bg: #EEF2F7;
+  --color-warning: #B45309;
+  --color-warning-bg: #EEF2F7;
+  --color-danger: #DC2626;
+  --color-danger-bg: #EEF2F7;
 
-  --brand-gradient: linear-gradient(135deg, #1D4ED8 0%, #2563EB 50%, #3B82F6 100%);
-  --brand-gradient-hover: linear-gradient(135deg, #1E40AF 0%, #1D4ED8 100%);
+  /* Absolutely NO Gradients */
+  --brand-gradient: #2563EB;
+  --brand-gradient-hover: #1D4ED8;
 
-  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.06);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
-  --shadow-hover: 0 12px 24px -4px rgb(29 78 216 / 0.12), 0 4px 6px -2px rgb(0 0 0 / 0.04);
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-hover: none;
 
   /* Typography & Layout Tokens */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -60,8 +63,54 @@
   --radius-full: 9999px;
 
   --transition-fast: 0.15s ease-in-out;
-  --transition-smooth: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.2s ease;
   --container-max: 1240px;
+}
+
+html.dark, body.dark-theme, [data-theme="night"] {
+  /* Exact Prompt Colors - Night Mode */
+  --bg-page: #101318;
+  --bg-card: #202631;
+  --bg-surface: #282F3B;
+  --bg-card-hover: #202631;
+  --bg-card-subtle: #282F3B;
+
+  --text-main: #F8FAFC;
+  --text-secondary: #A6AFBD;
+  --text-muted: #A6AFBD;
+  --text-primary: var(--text-main);
+
+  --border-color: #343C49;
+  --border-hover: #4B5563;
+  --border-focus: #2563EB;
+  --border-subtle: #282F3B;
+
+  /* Shared Brand Colors */
+  --color-primary: #2563EB;          /* Royal Blue */
+  --color-primary-hover: #3B82F6;
+  --accent-cyan: #06B6D4;            /* Cyan */
+  --accent-violet: #7C3AED;          /* Violet */
+  --accent-purple: #7C3AED;
+  --color-white: #FFFFFF;
+  --color-black: #101318;
+  --color-navy: var(--text-main);
+  --color-background: var(--bg-page);
+  --color-border: var(--border-color);
+  --color-border-hover: var(--border-hover);
+  --color-text-secondary: var(--text-secondary);
+
+  --color-light-blue: #282F3B;
+  --color-light-blue-hover: #343C49;
+  --color-success: #10B981;
+  --color-success-bg: #282F3B;
+  --color-warning: #F59E0B;
+  --color-warning-bg: #282F3B;
+  --color-danger: #EF4444;
+  --color-danger-bg: #282F3B;
+
+  /* Absolutely NO Gradients */
+  --brand-gradient: #2563EB;
+  --brand-gradient-hover: #3B82F6;
 }
 
 /* Base Reset */
@@ -120,9 +169,7 @@ ul {
 
 .text-accent { color: var(--color-primary); }
 .text-gradient {
-  background: var(--brand-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--color-primary);
 }
 .text-secondary { color: var(--color-text-secondary); }
 .small { font-size: 0.875rem; }
@@ -1233,7 +1280,7 @@ ul {
 
 /* Closing CTA Card */
 .closing-cta-card {
-  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+  background: var(--bg-surface);
   border: 1px solid #BFDBFE;
   border-radius: var(--radius-lg);
   padding: 48px 32px;
@@ -1591,7 +1638,7 @@ ul {
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
-  background: linear-gradient(180deg, #F8FAFC 0%, #EFF6FF 100%);
+  background: var(--bg-page);
 }
 
 .auth-card-container {
@@ -1616,7 +1663,7 @@ ul {
 }
 
 .auth-story-sidebar {
-  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+  background: var(--bg-card);
   color: var(--color-white);
   padding: 44px;
   display: flex;
@@ -1885,7 +1932,7 @@ ul {
 
 /* Stacked Dashboard Sections (Top-to-Bottom Flow) */
 .dashboard-welcome-banner {
-  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+  background: var(--bg-card);
   color: var(--color-white);
   border-radius: var(--radius-lg);
   padding: 36px 40px;
@@ -1903,7 +1950,7 @@ ul {
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%);
+  background: transparent;
   pointer-events: none;
 }
 

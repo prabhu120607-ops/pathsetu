@@ -12,6 +12,28 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script id="theme-init">
+    (function() {
+      try {
+        var saved = localStorage.getItem('pathsetu-theme');
+        var theme = saved;
+        if (!theme) {
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+            theme = 'day';
+          } else {
+            theme = 'night';
+          }
+        }
+        if (theme === 'night') {
+          document.documentElement.classList.add('dark');
+          document.documentElement.setAttribute('data-theme', 'night');
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.setAttribute('data-theme', 'day');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 
 <body>
@@ -136,7 +158,7 @@
     </div>
 
     <!-- Contributor Invitation Note -->
-    <div style="margin-top: 50px; background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%); color: var(--color-white); border-radius: var(--radius-lg); padding: 36px; text-align: center;">
+    <div style="margin-top: 50px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--color-white); border-radius: var(--radius-lg); padding: 36px; text-align: center;">
       <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--color-white); margin-bottom: 8px;">
         Are you a working practitioner from a Tier-2/3 or rural background?
       </h3>
@@ -253,7 +275,7 @@
           container.innerHTML = stories.map(s => `
             <div class="story-card-item">
               <div class="story-card-video-box" onclick="window.openStoryModal('${s.id}')">
-                <div class="story-video-thumb" style="display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%); color:#93C5FD; font-size:2rem;">
+                <div class="story-video-thumb" style="display:flex; align-items:center; justify-content:center; background: var(--bg-card); border: 1px solid var(--border-color); color:#93C5FD; font-size:2rem;">
                   <span>${s.career_id === 'software_dev' ? '💻' : s.career_id === 'ui_ux_designer' ? '🎨' : s.career_id === 'agri_scientist' ? '🌱' : s.career_id === 'solar_electrician' ? '⚡' : '🧭'}</span>
                 </div>
                 <div class="story-play-overlay-btn" title="Watch Career Story">▶</div>

@@ -162,8 +162,8 @@ export const ReviewsDemoPage: React.FC = () => {
         </div>
 
         {/* Realtime Live Indicator Badge */}
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold">
-          <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-elevated border border-brand-border text-brand-cyan text-xs font-bold">
+          <span className="w-2 h-2 rounded-full bg-brand-cyan animate-pulse" />
           <span>Realtime Feed Active</span>
         </div>
       </div>
@@ -206,7 +206,7 @@ export const ReviewsDemoPage: React.FC = () => {
       {activeTab === 'reviews' && (
         <div className="space-y-6">
           {/* Filters Bar */}
-          <div className="bg-white border border-brand-border rounded-brand p-4 shadow-subtle flex flex-wrap items-center gap-4 text-xs">
+          <div className="bg-brand-surface border border-brand-border rounded-brand p-4  flex flex-wrap items-center gap-4 text-xs">
             <div className="flex items-center gap-2">
               <Filter className="w-4 h-4 text-brand-muted" />
               <span className="font-bold text-brand-dark">Filter Pathway:</span>
@@ -239,7 +239,7 @@ export const ReviewsDemoPage: React.FC = () => {
 
           {/* Reviews List */}
           {filteredReviews.length === 0 ? (
-            <div className="bg-white border border-brand-border rounded-brand p-12 text-center space-y-3">
+            <div className="bg-brand-surface border border-brand-border rounded-brand p-12 text-center space-y-3">
               <MessageSquareCode className="w-10 h-10 text-brand-muted mx-auto" />
               <h3 className="font-bold text-brand-dark">No Student Reviews Yet for this Filter</h3>
               <p className="text-xs text-brand-muted max-w-sm mx-auto">
@@ -247,7 +247,7 @@ export const ReviewsDemoPage: React.FC = () => {
               </p>
               <button
                 onClick={() => setActiveTab('try_demo')}
-                className="px-4 py-2 bg-brand-primary text-white text-xs font-bold rounded-brand-sm shadow-subtle"
+                className="px-4 py-2 bg-brand-primary text-white text-xs font-bold rounded-brand-sm "
               >
                 Try a Career Demo Now
               </button>
@@ -257,7 +257,7 @@ export const ReviewsDemoPage: React.FC = () => {
               {filteredReviews.map(review => (
                 <div
                   key={review.id}
-                  className="bg-white border border-brand-border rounded-brand p-6 shadow-subtle flex flex-col justify-between space-y-4"
+                  className="bg-brand-surface border border-brand-border rounded-brand p-6  flex flex-col justify-between space-y-4"
                 >
                   <div className="space-y-3">
                     {/* Header */}
@@ -268,7 +268,7 @@ export const ReviewsDemoPage: React.FC = () => {
                             {review.student_display_name}
                           </h3>
                           {review.is_demo_seed && (
-                            <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-100 text-amber-800 uppercase">
+                            <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-brand-elevated text-brand-dark uppercase border border-brand-border">
                               Demo Seed
                             </span>
                           )}
@@ -371,7 +371,7 @@ export const ReviewsDemoPage: React.FC = () => {
                   className={`w-full text-left p-4 rounded-brand-sm border transition-all ${
                     isSelected
                       ? 'bg-brand-primary-light border-brand-primary text-brand-primary shadow-xs'
-                      : 'bg-white border-brand-border hover:bg-brand-bg text-brand-dark'
+                      : 'bg-brand-surface border-brand-border hover:bg-brand-elevated text-brand-dark'
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -386,7 +386,7 @@ export const ReviewsDemoPage: React.FC = () => {
           </aside>
 
           {/* Demo Execution Workspace */}
-          <main className="lg:col-span-8 bg-white border border-brand-border rounded-brand p-6 sm:p-8 shadow-card space-y-6">
+          <main className="lg:col-span-8 bg-brand-surface border border-brand-border rounded-brand p-6 sm:p-8  space-y-6">
             <div>
               <span className="text-xs font-bold text-brand-primary uppercase tracking-wider">
                 Interactive Career Simulation
@@ -425,7 +425,7 @@ export const ReviewsDemoPage: React.FC = () => {
                   </span>
                   <button
                     onClick={handleRunCodeDemo}
-                    className="px-5 py-2.5 bg-brand-primary text-white text-xs font-bold rounded-brand-sm shadow-subtle hover:bg-brand-primary-hover flex items-center gap-1.5"
+                    className="px-5 py-2.5 bg-brand-primary text-white text-xs font-bold rounded-brand-sm  hover:bg-brand-primary-hover flex items-center gap-1.5"
                   >
                     <PlayCircle className="w-4 h-4" />
                     <span>Run Code Sandbox</span>
@@ -435,8 +435,8 @@ export const ReviewsDemoPage: React.FC = () => {
                 {codeExecutionOutput && (
                   <div className={`p-4 rounded-brand-sm border text-xs font-mono space-y-2 ${
                     codeIsCorrect
-                      ? 'bg-emerald-50 border-emerald-200 text-emerald-950'
-                      : 'bg-amber-50 border-amber-200 text-amber-950'
+                      ? 'bg-brand-elevated border-brand-border text-brand-dark'
+                      : 'bg-brand-elevated border-brand-border text-brand-dark'
                   }`}>
                     <div className="flex items-center justify-between font-bold">
                       <span>Console Output:</span>
@@ -477,7 +477,7 @@ export const ReviewsDemoPage: React.FC = () => {
                             <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
                               row.status.includes('CRITICAL')
                                 ? 'bg-rose-100 text-rose-800'
-                                : 'bg-emerald-100 text-emerald-800'
+                                : 'bg-brand-elevated text-brand-cyan border border-brand-border'
                             }`}>
                               {row.status}
                             </span>
@@ -488,7 +488,7 @@ export const ReviewsDemoPage: React.FC = () => {
                   </table>
                 </div>
 
-                <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-brand-sm text-xs text-emerald-950 space-y-1">
+                <div className="p-4 bg-brand-elevated border border-brand-border rounded-brand-sm text-xs text-brand-dark space-y-1">
                   <strong>Actionable Insight Generated:</strong>
                   <p>
                     Toopran PHC has only 480 ORS packets out of 2,000 required (24%). An emergency requisition should immediately be flagged to District Medical & Health Officer (DMHO) before monsoon diarrheal season.
@@ -536,7 +536,7 @@ export const ReviewsDemoPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-brand-sm text-xs text-emerald-950 space-y-1.5">
+                <div className="p-4 bg-brand-elevated border border-brand-border rounded-brand-sm text-xs text-brand-dark space-y-1.5">
                   <div className="font-bold">Calculated Agronomist Prescription (per Acre):</div>
                   <ul className="list-disc pl-5 space-y-1">
                     <li>Recommended Urea: <strong>{nitrogenVal < 280 ? '65 kg (Split in 3 doses)' : '45 kg'}</strong></li>
@@ -586,18 +586,18 @@ export const ReviewsDemoPage: React.FC = () => {
                   const inverterKva = (Math.ceil(kwNeeded * 1.25 * 10) / 10).toFixed(1);
 
                   return (
-                    <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-brand-sm text-xs text-emerald-950 space-y-2">
+                    <div className="p-4 bg-brand-elevated border border-brand-border rounded-brand-sm text-xs text-brand-dark space-y-2">
                       <div className="font-bold">Solar Array Sizing Output:</div>
                       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        <div className="p-2 bg-white rounded border border-emerald-200">
+                        <div className="p-2 bg-brand-surface rounded border border-brand-border">
                           <span className="text-[10px] text-brand-muted block">Daily Energy:</span>
                           <strong className="text-sm">{dailyWatts} Wh / day</strong>
                         </div>
-                        <div className="p-2 bg-white rounded border border-emerald-200">
+                        <div className="p-2 bg-brand-surface rounded border border-brand-border">
                           <span className="text-[10px] text-brand-muted block">330W PV Panels:</span>
                           <strong className="text-sm">{panels330W} Solar Panels</strong>
                         </div>
-                        <div className="p-2 bg-white rounded border border-emerald-200">
+                        <div className="p-2 bg-brand-surface rounded border border-brand-border">
                           <span className="text-[10px] text-brand-muted block">Inverter Sizing:</span>
                           <strong className="text-sm">{inverterKva} kVA Inverter</strong>
                         </div>
@@ -615,7 +615,7 @@ export const ReviewsDemoPage: React.FC = () => {
                   <strong>UX Inspector Task:</strong> Spot the 3 usability defects in this rural student bus pass screen.
                 </div>
 
-                <div className="max-w-xs mx-auto border-4 border-gray-800 rounded-2xl p-4 bg-white shadow-card space-y-3 text-xs">
+                <div className="max-w-xs mx-auto border-2 border-brand-border rounded-brand p-4 bg-brand-surface space-y-3 text-xs">
                   <div className="text-[10px] text-center text-gray-400">Rural Student Bus Pass</div>
                   <div className="p-2 rounded bg-yellow-100 text-yellow-300 text-[10px] font-bold">
                     Warning: Poor Contrast Text (Light yellow on yellow!)
@@ -629,7 +629,7 @@ export const ReviewsDemoPage: React.FC = () => {
                   </button>
                 </div>
 
-                <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-brand-sm text-xs text-emerald-950 space-y-1">
+                <div className="p-4 bg-brand-elevated border border-brand-border rounded-brand-sm text-xs text-brand-dark space-y-1">
                   <strong>Heuristic Findings:</strong>
                   <ul className="list-disc pl-5 space-y-1">
                     <li>Accessibility violation: Light yellow text on yellow background fails WCAG AA contrast.</li>
@@ -649,7 +649,7 @@ export const ReviewsDemoPage: React.FC = () => {
                   setFormDemoId(activeDemo.id);
                   setActiveTab('submit_review');
                 }}
-                className="px-4 py-2 bg-brand-primary text-white text-xs font-bold rounded-brand-sm hover:bg-brand-primary-hover shadow-subtle"
+                className="px-4 py-2 bg-brand-primary text-white text-xs font-bold rounded-brand-sm hover:bg-brand-primary-hover "
               >
                 Review This Demo Experience →
               </button>
@@ -660,7 +660,7 @@ export const ReviewsDemoPage: React.FC = () => {
 
       {/* TAB 3: Share Your Experience (Review Submission) */}
       {activeTab === 'submit_review' && (
-        <div className="max-w-2xl mx-auto bg-white border border-brand-border rounded-brand p-6 sm:p-8 shadow-card space-y-6">
+        <div className="max-w-2xl mx-auto bg-brand-surface border border-brand-border rounded-brand p-6 sm:p-8  space-y-6">
           <div>
             <h2 className="text-xl font-black text-brand-dark">
               Share Your Authentic Experience
@@ -671,7 +671,7 @@ export const ReviewsDemoPage: React.FC = () => {
           </div>
 
           {formSubmittedNotice && (
-            <div className="p-4 rounded-brand-sm bg-emerald-100 border border-emerald-200 text-emerald-900 text-xs font-bold flex items-center gap-2">
+            <div className="p-4 rounded-brand-sm bg-brand-elevated border border-brand-border text-brand-cyan text-xs font-bold flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-700" />
               <span>{formSubmittedNotice}</span>
             </div>
@@ -801,7 +801,7 @@ export const ReviewsDemoPage: React.FC = () => {
               </button>
               <button
                 type="submit"
-                className="px-6 py-2.5 rounded-brand-sm bg-brand-primary text-white font-bold hover:bg-brand-primary-hover shadow-subtle flex items-center gap-1.5"
+                className="px-6 py-2.5 rounded-brand-sm bg-brand-primary text-white font-bold hover:bg-brand-primary-hover  flex items-center gap-1.5"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>Publish Experience</span>

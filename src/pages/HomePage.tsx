@@ -3,46 +3,43 @@ import { Link } from 'react-router-dom';
 import {
   Compass,
   ArrowRight,
-  CheckCircle2,
+  ClipboardList,
   GitCompare,
   Wallet,
   Sparkles,
-  BookOpen,
   MapPin,
   MessageSquareCode,
   ShieldCheck,
   Award,
-  Users,
-  TrendingUp,
-  Cpu,
+  Layers,
   GraduationCap
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { CAREERS } from '../data/careers';
 
 export const HomePage: React.FC = () => {
-  const { t, language } = useLanguage();
+  const { language, t } = useLanguage();
 
   const methodologyStages = [
     {
       num: "01",
-      title: "Student Intake",
+      title: "Student Input",
       title_te: "01 · విద్యార్థి వివరాల సేకరణ",
-      desc: "Declare your academic stream, subjects, skills, education level, and realistic annual budget in INR.",
+      desc: "Structured intake for current stream, natural interests, work preferences, and realistic INR education budgets.",
       icon: ClipboardListIcon
     },
     {
       num: "02",
-      title: "Transparent Synthesis",
-      title_te: "02 · పారదర్శక విశ్లేషణ",
-      desc: "Analyze profile without hidden black-box AI heuristics. View exact weight distributions.",
-      icon: Cpu
+      title: "Profile Synthesis",
+      title_te: "02 · ప్రొఫైల్ విశ్లేషణ",
+      desc: "Transparent rule-based scoring translating your inputs into weighted aptitude and interest vector matches.",
+      icon: Layers
     },
     {
       num: "03",
-      title: "5-Factor Recommendation",
-      title_te: "03 · సిఫార్సుల ఇంజిన్",
-      desc: "Matches based on Interests (35%), Subjects (25%), Skills (20%), Education (15%), Workstyle (5%).",
+      title: "Recommendation Engine",
+      title_te: "03 · సిఫార్సు విధానం",
+      desc: "Explainable 5-factor scoring (Interest 35%, Subject 25%, Skill 20%, Pathway 15%, Work-style 5%).",
       icon: Sparkles
     },
     {
@@ -73,11 +70,11 @@ export const HomePage: React.FC = () => {
   }
 
   return (
-    <div className="space-y-16 py-6 sm:py-10">
+    <div className="space-y-16 py-6 sm:py-10 transition-colors duration-200">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-white border border-brand-border rounded-brand-lg p-6 sm:p-12 shadow-card">
+      <section className="relative overflow-hidden bg-brand-surface border border-brand-border rounded-brand-lg p-6 sm:p-12">
         <div className="max-w-3xl space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary-light text-brand-primary text-xs font-bold tracking-wide uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-elevated text-brand-cyan text-xs font-bold tracking-wide uppercase border border-brand-border">
             <Sparkles className="w-3.5 h-3.5" />
             <span>{t('hero_eyebrow')}</span>
           </div>
@@ -93,14 +90,14 @@ export const HomePage: React.FC = () => {
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <Link
               to="/assessment"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-brand bg-brand-primary text-white text-sm font-bold shadow-card hover:bg-brand-primary-hover hover:shadow-card-hover transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-brand bg-brand-primary text-white text-sm font-bold hover:bg-brand-primary-hover transition-colors"
             >
               <span>{t('btn_start_assessment')}</span>
             </Link>
 
             <Link
               to="/careers"
-              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-brand bg-brand-bg text-brand-dark text-sm font-semibold border border-brand-border hover:border-brand-primary transition-all"
+              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-brand bg-brand-elevated text-brand-dark text-sm font-semibold border border-brand-border hover:border-brand-primary transition-colors"
             >
               <span>{t('btn_explore_careers')}</span>
               <ArrowRight className="w-4 h-4 text-brand-primary" />
@@ -108,35 +105,35 @@ export const HomePage: React.FC = () => {
 
             <Link
               to="/dashboard"
-              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-brand bg-brand-surface text-brand-primary text-sm font-semibold border border-brand-secondary hover:bg-brand-primary-light transition-all"
+              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-brand bg-brand-surface text-brand-primary text-sm font-semibold border border-brand-border hover:bg-brand-elevated transition-colors"
             >
               <span>{t('btn_view_dashboard')}</span>
             </Link>
           </div>
 
-          {/* Quick Stats Grid matching Reference 2 */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-brand-borderLight">
-            <div className="p-3 bg-brand-bg rounded-brand-sm border border-brand-border">
+          {/* Quick Stats Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-brand-border">
+            <div className="p-3 bg-brand-elevated rounded-brand-sm border border-brand-border">
               <div className="text-2xl font-black text-brand-primary">10+</div>
               <div className="text-xs font-semibold text-brand-muted mt-0.5">Verified Indian Tracks</div>
             </div>
-            <div className="p-3 bg-brand-bg rounded-brand-sm border border-brand-border">
+            <div className="p-3 bg-brand-elevated rounded-brand-sm border border-brand-border">
               <div className="text-2xl font-black text-brand-primary">5-Factor</div>
               <div className="text-xs font-semibold text-brand-muted mt-0.5">Transparent Scoring</div>
             </div>
-            <div className="p-3 bg-brand-bg rounded-brand-sm border border-brand-border">
+            <div className="p-3 bg-brand-elevated rounded-brand-sm border border-brand-border">
               <div className="text-2xl font-black text-brand-primary">₹0</div>
               <div className="text-xs font-semibold text-brand-muted mt-0.5">SWAYAM / Free Tracks</div>
             </div>
-            <div className="p-3 bg-brand-bg rounded-brand-sm border border-brand-border">
-              <div className="text-2xl font-black text-brand-primary">Live GPS</div>
+            <div className="p-3 bg-brand-elevated rounded-brand-sm border border-brand-border">
+              <div className="text-2xl font-black text-brand-cyan">Live GPS</div>
               <div className="text-xs font-semibold text-brand-muted mt-0.5">Institution Navigation</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Quick Actions (Mirrors Reference 2: "Quick Actions") */}
+      {/* Quick Actions */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-bold text-brand-dark tracking-tight">
@@ -148,9 +145,9 @@ export const HomePage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           <Link
             to="/assessment"
-            className="p-5 rounded-brand bg-white border border-brand-border shadow-subtle hover:shadow-card hover:border-brand-primary transition-all flex items-start gap-4 group"
+            className="p-5 rounded-brand bg-brand-surface border border-brand-border hover:border-brand-primary transition-colors flex items-start gap-4 group"
           >
-            <div className="w-12 h-12 rounded-brand-sm bg-blue-50 text-blue-700 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+            <div className="w-12 h-12 rounded-brand-sm bg-brand-elevated text-brand-primary border border-brand-border flex items-center justify-center flex-shrink-0">
               <GraduationCap className="w-6 h-6" />
             </div>
             <div className="flex-1">
@@ -166,9 +163,9 @@ export const HomePage: React.FC = () => {
 
           <Link
             to="/navigation"
-            className="p-5 rounded-brand bg-white border border-brand-border shadow-subtle hover:shadow-card hover:border-brand-primary transition-all flex items-start gap-4 group"
+            className="p-5 rounded-brand bg-brand-surface border border-brand-border hover:border-brand-primary transition-colors flex items-start gap-4 group"
           >
-            <div className="w-12 h-12 rounded-brand-sm bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+            <div className="w-12 h-12 rounded-brand-sm bg-brand-elevated text-brand-cyan border border-brand-border flex items-center justify-center flex-shrink-0">
               <MapPin className="w-6 h-6" />
             </div>
             <div className="flex-1">
@@ -184,9 +181,9 @@ export const HomePage: React.FC = () => {
 
           <Link
             to="/reviews"
-            className="p-5 rounded-brand bg-white border border-brand-border shadow-subtle hover:shadow-card hover:border-brand-primary transition-all flex items-start gap-4 group"
+            className="p-5 rounded-brand bg-brand-surface border border-brand-border hover:border-brand-primary transition-colors flex items-start gap-4 group"
           >
-            <div className="w-12 h-12 rounded-brand-sm bg-amber-50 text-amber-700 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+            <div className="w-12 h-12 rounded-brand-sm bg-brand-elevated text-brand-violet border border-brand-border flex items-center justify-center flex-shrink-0">
               <MessageSquareCode className="w-6 h-6" />
             </div>
             <div className="flex-1">
@@ -205,7 +202,7 @@ export const HomePage: React.FC = () => {
       {/* 6-Stage PathSetu Methodology */}
       <section className="space-y-6">
         <div>
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-primary uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-cyan uppercase tracking-wider">
             <span>Transparent Methodology</span>
           </div>
           <h2 className="text-2xl font-black text-brand-dark tracking-tight mt-1">
@@ -222,14 +219,14 @@ export const HomePage: React.FC = () => {
             return (
               <div
                 key={stage.num}
-                className="bg-white border border-brand-border rounded-brand p-5 shadow-subtle hover:shadow-card hover:border-brand-primary/60 transition-all flex flex-col justify-between"
+                className="bg-brand-surface border border-brand-border rounded-brand p-5 hover:border-brand-primary transition-colors flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs font-black text-brand-primary bg-brand-primary-light px-2.5 py-1 rounded-md">
+                    <span className="text-xs font-black text-brand-primary bg-brand-elevated border border-brand-border px-2.5 py-1 rounded-md">
                       STAGE {stage.num}
                     </span>
-                    <Icon className="w-5 h-5 text-brand-muted" />
+                    <Icon className="w-5 h-5 text-brand-cyan" />
                   </div>
                   <h3 className="text-base font-bold text-brand-dark">
                     {language === 'te' ? stage.title_te : stage.title}
@@ -268,12 +265,12 @@ export const HomePage: React.FC = () => {
           {CAREERS.slice(0, 6).map(career => (
             <div
               key={career.id}
-              className="bg-white border border-brand-border rounded-brand p-5 shadow-subtle hover:shadow-card hover:border-brand-primary transition-all flex flex-col justify-between"
+              className="bg-brand-surface border border-brand-border rounded-brand p-5 hover:border-brand-primary transition-colors flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between">
                   <span className="text-2xl">{career.emoji}</span>
-                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-brand-primary-light text-brand-primary">
+                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-brand-elevated text-brand-cyan border border-brand-border">
                     {career.badge}
                   </span>
                 </div>
@@ -287,10 +284,10 @@ export const HomePage: React.FC = () => {
                   {career.desc}
                 </p>
 
-                <div className="mt-4 pt-3 border-t border-brand-borderLight text-xs space-y-1.5">
+                <div className="mt-4 pt-3 border-t border-brand-border text-xs space-y-1.5">
                   <div className="flex items-center justify-between text-brand-dark">
                     <span className="text-brand-muted">Govt Fees:</span>
-                    <span className="font-semibold text-emerald-800">
+                    <span className="font-semibold text-brand-cyan">
                       ₹{career.estimated_education_cost_inr.annual_min_govt.toLocaleString('en-IN')}/yr
                     </span>
                   </div>
@@ -304,7 +301,7 @@ export const HomePage: React.FC = () => {
               <div className="mt-5 pt-3 flex items-center gap-2">
                 <Link
                   to={`/careers/${career.id}`}
-                  className="flex-1 text-center py-2 px-3 rounded-brand-sm bg-brand-bg text-brand-dark text-xs font-bold hover:bg-brand-primary hover:text-white transition-colors"
+                  className="flex-1 text-center py-2 px-3 rounded-brand-sm bg-brand-elevated text-brand-dark text-xs font-bold hover:bg-brand-primary hover:text-white transition-colors border border-brand-border hover:border-brand-primary"
                 >
                   View Details & Skills
                 </Link>

@@ -50,7 +50,7 @@ export const CareersPage: React.FC = () => {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white border border-brand-border rounded-brand p-4 shadow-subtle space-y-3">
+      <div className="bg-brand-surface border border-brand-border rounded-brand p-4  space-y-3">
         <div className="relative">
           <Search className="w-4 h-4 text-brand-muted absolute left-3.5 top-1/2 transform -translate-y-1/2" />
           <input
@@ -71,7 +71,7 @@ export const CareersPage: React.FC = () => {
               className={`px-3 py-1.5 rounded-full font-semibold whitespace-nowrap transition-colors ${
                 selectedCategory === cat
                   ? 'bg-brand-primary text-white shadow-xs'
-                  : 'bg-brand-bg text-brand-dark/70 hover:bg-brand-borderLight'
+                  : 'bg-brand-elevated text-brand-dark/70 hover:bg-brand-borderLight'
               }`}
             >
               {cat}
@@ -89,7 +89,7 @@ export const CareersPage: React.FC = () => {
           return (
             <div
               key={career.id}
-              className={`bg-white border rounded-brand p-6 shadow-subtle hover:shadow-card transition-all flex flex-col justify-between ${
+              className={`bg-white border rounded-brand p-6  hover: transition-all flex flex-col justify-between ${
                 isActive ? 'border-brand-primary ring-1 ring-brand-primary' : 'border-brand-border'
               }`}
             >
@@ -98,11 +98,11 @@ export const CareersPage: React.FC = () => {
                   <span className="text-3xl">{career.emoji}</span>
                   <div className="flex items-center gap-1.5">
                     {isActive && (
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-brand-cyan">
                         Active Pathway
                       </span>
                     )}
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-brand-primary-light text-brand-primary">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-brand-elevated text-brand-cyan border border-brand-border">
                       {career.badge}
                     </span>
                   </div>
@@ -120,10 +120,10 @@ export const CareersPage: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-brand-borderLight text-xs space-y-1.5">
+                <div className="pt-3 border-t border-brand-border text-xs space-y-1.5">
                   <div className="flex justify-between">
                     <span className="text-brand-muted">Govt College Tuition:</span>
-                    <span className="font-bold text-emerald-800">
+                    <span className="font-bold text-brand-cyan">
                       ₹{career.estimated_education_cost_inr.annual_min_govt.toLocaleString('en-IN')}/yr
                     </span>
                   </div>
@@ -138,10 +138,10 @@ export const CareersPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-5 pt-3 border-t border-brand-borderLight flex items-center gap-2">
+              <div className="mt-5 pt-3 border-t border-brand-border flex items-center gap-2">
                 <Link
                   to={`/careers/${career.id}`}
-                  className="flex-1 text-center py-2 px-3 rounded-brand-sm bg-brand-primary text-white text-xs font-bold hover:bg-brand-primary-hover shadow-subtle transition-colors"
+                  className="flex-1 text-center py-2 px-3 rounded-brand-sm bg-brand-primary text-white text-xs font-bold hover:bg-brand-primary-hover  transition-colors"
                 >
                   View Details & Skills
                 </Link>
@@ -151,8 +151,8 @@ export const CareersPage: React.FC = () => {
                   onClick={() => toggleComparisonCareer(career.id)}
                   className={`p-2 rounded-brand-sm border transition-colors ${
                     isComparing
-                      ? 'border-brand-primary bg-brand-primary-light text-brand-primary'
-                      : 'border-brand-border text-brand-muted hover:text-brand-dark hover:bg-brand-bg'
+                      ? 'border-brand-primary bg-brand-elevated text-brand-cyan border border-brand-border'
+                      : 'border-brand-border text-brand-muted hover:text-brand-dark hover:bg-brand-elevated'
                   }`}
                   title={isComparing ? 'Remove from Compare' : 'Add to 3-Way Compare'}
                 >

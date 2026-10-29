@@ -20,8 +20,8 @@ export const CircularGauge: React.FC<CircularGaugeProps> = ({
   size = 160,
   strokeWidth = 14,
   variant = 'semi',
-  color = '#234B3D',
-  trackColor = '#E4EBDD',
+  color = '#2563EB',
+  trackColor = 'var(--border-color)',
 }) => {
   const percentage = Math.min(Math.max((value / max) * 100, 0), 100);
 

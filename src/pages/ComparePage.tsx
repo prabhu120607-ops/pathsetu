@@ -81,7 +81,7 @@ export const ComparePage: React.FC = () => {
         {selectedCareers.length < 3 && (
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-brand-sm bg-brand-primary text-white shadow-subtle hover:bg-brand-primary-hover transition-colors"
+            className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-brand-sm bg-brand-primary text-white  hover:bg-brand-primary-hover transition-colors"
           >
             <Plus className="w-4 h-4" />
             <span>Add Career to Compare</span>
@@ -91,7 +91,7 @@ export const ComparePage: React.FC = () => {
 
       {/* 3-Column Comparison Matrix (Mirrors Reference 3 "College Compare") */}
       {selectedCareers.length === 0 ? (
-        <div className="bg-white border border-brand-border rounded-brand p-12 text-center space-y-4">
+        <div className="bg-brand-surface border border-brand-border rounded-brand p-12 text-center space-y-4">
           <GitCompare className="w-12 h-12 text-brand-muted mx-auto" />
           <h3 className="font-bold text-brand-dark text-lg">No Careers Selected for Comparison</h3>
           <p className="text-xs text-brand-muted max-w-md mx-auto">
@@ -115,7 +115,7 @@ export const ComparePage: React.FC = () => {
             return (
               <div
                 key={career.id}
-                className="bg-white border border-brand-border rounded-brand p-6 shadow-subtle flex flex-col justify-between relative space-y-6"
+                className="bg-brand-surface border border-brand-border rounded-brand p-6 flex flex-col justify-between relative space-y-6"
               >
                 {/* Remove button */}
                 <button
@@ -138,7 +138,7 @@ export const ComparePage: React.FC = () => {
                 </div>
 
                 {/* Semi-Circular Cost Gauge (Mirrors Reference 3: Cost Gauge) */}
-                <div className="pt-2 pb-4 border-t border-b border-brand-borderLight text-center">
+                <div className="pt-2 pb-4 border-t border-b border-brand-border text-center">
                   <div className="text-[10px] font-bold uppercase tracking-wider text-brand-muted mb-2">
                     Estimated Annual Govt Tuition
                   </div>
@@ -156,8 +156,8 @@ export const ComparePage: React.FC = () => {
                       strokeWidth={12}
                       label={`₹${Math.round(avgGovt / 1000)}k`}
                       sublabel={`of ₹${Math.round(avgPvt / 1000)}k Pvt`}
-                      color="#234B3D"
-                      trackColor="#E4EBDD"
+                      color="#2563EB"
+                      trackColor="var(--border-color)"
                     />
                   </div>
 
@@ -203,7 +203,7 @@ export const ComparePage: React.FC = () => {
                 </div>
 
                 {/* Core Attributes */}
-                <div className="space-y-3 pt-3 border-t border-brand-borderLight text-xs">
+                <div className="space-y-3 pt-3 border-t border-brand-border text-xs">
                   <div>
                     <span className="font-bold text-brand-dark">Study Duration:</span>
                     <p className="text-brand-muted mt-0.5">{career.study_duration}</p>
@@ -223,7 +223,7 @@ export const ComparePage: React.FC = () => {
 
                   <div>
                     <span className="font-bold text-brand-dark">Entry Salary (India):</span>
-                    <p className="font-semibold text-emerald-800 mt-0.5">{career.entry_salary_range_inr}</p>
+                    <p className="font-semibold text-brand-dark mt-0.5">{career.entry_salary_range_inr}</p>
                   </div>
 
                   <div>
@@ -254,7 +254,7 @@ export const ComparePage: React.FC = () => {
       )}
 
       {/* Recommended Scholarships Section (Mirrors Reference 3 lower section) */}
-      <section className="bg-white border border-brand-border rounded-brand p-6 shadow-subtle space-y-6">
+      <section className="bg-brand-surface border border-brand-border rounded-brand p-6 space-y-6">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-lg font-bold text-brand-dark">
@@ -302,7 +302,7 @@ export const ComparePage: React.FC = () => {
                   href={sch.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-1 px-4 py-1.5 rounded-brand-sm bg-brand-primary text-white text-xs font-bold flex items-center gap-1 hover:bg-brand-primary-hover shadow-subtle"
+                  className="mt-1 px-4 py-1.5 rounded-brand-sm bg-brand-primary text-white text-xs font-bold flex items-center gap-1 hover:bg-brand-primary-hover "
                 >
                   <span>Apply</span>
                   <ExternalLink className="w-3 h-3" />
@@ -315,7 +315,7 @@ export const ComparePage: React.FC = () => {
 
       {/* Add Career Modal */}
       {isAddModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4">
           <div className="bg-white rounded-brand-lg max-w-lg w-full p-6 shadow-modal max-h-[80vh] flex flex-col">
             <div className="flex items-center justify-between pb-3 border-b border-brand-border">
               <h3 className="font-bold text-brand-dark text-base">Select Career to Compare</h3>
@@ -337,7 +337,7 @@ export const ComparePage: React.FC = () => {
                     className={`w-full text-left p-3 rounded-brand-sm border flex items-center justify-between transition-colors ${
                       isSelected
                         ? 'bg-brand-primary-light border-brand-primary text-brand-primary'
-                        : 'border-brand-border hover:bg-brand-bg text-brand-dark'
+                        : 'border-brand-border hover:bg-brand-elevated text-brand-dark'
                     }`}
                   >
                     <div className="flex items-center space-x-3">

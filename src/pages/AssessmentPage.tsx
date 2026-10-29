@@ -187,7 +187,7 @@ export const AssessmentPage: React.FC = () => {
   return (
     <div className="py-6 sm:py-8 space-y-8">
       {/* Top Banner Progress Bar (Mirrors Reference 1) */}
-      <div className="bg-white border border-brand-border rounded-brand p-4 shadow-subtle flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="bg-brand-surface border border-brand-border rounded-brand p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center space-x-3 w-full sm:w-auto">
           <div className="w-8 h-8 rounded-lg bg-brand-primary flex items-center justify-center text-white">
             <ClipboardList className="w-4 h-4 text-brand-secondary" />
@@ -215,7 +215,7 @@ export const AssessmentPage: React.FC = () => {
 
         <button
           onClick={() => navigate('/dashboard')}
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-brand-sm border border-brand-border text-brand-muted hover:text-brand-dark hover:bg-brand-bg transition-colors"
+          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-brand-sm border border-brand-border text-brand-muted hover:text-brand-dark hover:bg-brand-elevated transition-colors"
         >
           <Save className="w-3.5 h-3.5" />
           <span>Save & Exit</span>
@@ -227,28 +227,28 @@ export const AssessmentPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           {/* Left Mini Sidebar */}
           <aside className="lg:col-span-3 space-y-4">
-            <div className="bg-white border border-brand-border rounded-brand p-3 shadow-subtle space-y-1">
-              <div className="flex items-center space-x-3 px-3 py-2.5 rounded-brand-sm bg-brand-primary-light text-brand-primary font-bold text-xs">
+            <div className="bg-brand-surface border border-brand-border rounded-brand p-3 space-y-1">
+              <div className="flex items-center space-x-3 px-3 py-2.5 rounded-brand-sm bg-brand-elevated text-brand-primary border border-brand-border font-bold text-xs">
                 <ClipboardList className="w-4 h-4" />
                 <span>Assessment</span>
               </div>
               <button
                 onClick={() => finishAssessment()}
-                className="w-full flex items-center space-x-3 px-3 py-2.5 rounded-brand-sm text-brand-muted hover:text-brand-dark hover:bg-brand-bg font-semibold text-xs transition-colors"
+                className="w-full flex items-center space-x-3 px-3 py-2.5 rounded-brand-sm text-brand-muted hover:text-brand-dark hover:bg-brand-elevated font-semibold text-xs transition-colors"
               >
                 <PieChart className="w-4 h-4" />
                 <span>Results</span>
               </button>
               <Link
                 to="/careers"
-                className="flex items-center space-x-3 px-3 py-2.5 rounded-brand-sm text-brand-muted hover:text-brand-dark hover:bg-brand-bg font-semibold text-xs transition-colors"
+                className="flex items-center space-x-3 px-3 py-2.5 rounded-brand-sm text-brand-muted hover:text-brand-dark hover:bg-brand-elevated font-semibold text-xs transition-colors"
               >
                 <Briefcase className="w-4 h-4" />
                 <span>Careers</span>
               </Link>
               <Link
                 to="/resources"
-                className="flex items-center space-x-3 px-3 py-2.5 rounded-brand-sm text-brand-muted hover:text-brand-dark hover:bg-brand-bg font-semibold text-xs transition-colors"
+                className="flex items-center space-x-3 px-3 py-2.5 rounded-brand-sm text-brand-muted hover:text-brand-dark hover:bg-brand-elevated font-semibold text-xs transition-colors"
               >
                 <BookOpen className="w-4 h-4" />
                 <span>Resources</span>
@@ -256,7 +256,7 @@ export const AssessmentPage: React.FC = () => {
             </div>
 
             {/* Motivational Quote Card (Mirrors Reference 1 bottom-left quote) */}
-            <div className="bg-brand-bg border border-brand-border rounded-brand p-4 text-xs space-y-2">
+            <div className="bg-brand-elevated border border-brand-border rounded-brand p-4 text-xs space-y-2">
               <span className="text-2xl text-brand-primary font-serif">“</span>
               <p className="text-brand-dark/80 italic leading-relaxed -mt-2">
                 Your career is your journey. We're here to help you discover it with dignity and affordable opportunities.
@@ -265,7 +265,7 @@ export const AssessmentPage: React.FC = () => {
           </aside>
 
           {/* Center Main Question Card */}
-          <main className="lg:col-span-6 bg-white border border-brand-border rounded-brand p-6 sm:p-8 shadow-card space-y-6">
+          <main className="lg:col-span-6 bg-brand-surface border border-brand-border rounded-brand p-6 sm:p-8 space-y-6">
             <div>
               <span className="text-xs font-bold text-brand-primary uppercase tracking-wider">
                 Career Self-Assessment
@@ -289,8 +289,8 @@ export const AssessmentPage: React.FC = () => {
                     onClick={() => handleSelectOption(opt.value)}
                     className={`w-full text-left p-4 rounded-brand border transition-all flex items-center justify-between group ${
                       isSelected
-                        ? 'border-brand-primary bg-brand-primary-light/40 shadow-sm'
-                        : 'border-brand-border bg-white hover:border-brand-primary/50 hover:bg-brand-bg/50'
+                        ? 'border-brand-primary bg-brand-elevated'
+                        : 'border-brand-border bg-brand-surface hover:border-brand-primary/50 hover:bg-brand-elevated/50'
                     }`}
                   >
                     <div className="flex items-center space-x-3">
@@ -301,7 +301,7 @@ export const AssessmentPage: React.FC = () => {
                             : 'border-brand-border group-hover:border-brand-muted'
                         }`}
                       >
-                        {isSelected && <div className="w-2 h-2 rounded-full bg-white" />}
+                        {isSelected && <div className="w-2 h-2 rounded-full bg-brand-surface" />}
                       </div>
                       <span className={`text-sm font-semibold ${isSelected ? 'text-brand-primary' : 'text-brand-dark'}`}>
                         {language === 'te' ? opt.label_te : opt.label}
@@ -313,12 +313,12 @@ export const AssessmentPage: React.FC = () => {
             </div>
 
             {/* Bottom Navigation Buttons (Mirrors Reference 1 previous/next buttons) */}
-            <div className="flex items-center justify-between pt-6 border-t border-brand-borderLight">
+            <div className="flex items-center justify-between pt-6 border-t border-brand-border">
               <button
                 type="button"
                 onClick={handlePrevious}
                 disabled={currentIndex === 0}
-                className="flex items-center gap-1.5 px-4 py-2.5 rounded-brand-sm border border-brand-border text-xs font-semibold text-brand-muted hover:text-brand-dark hover:bg-brand-bg disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                className="flex items-center gap-1.5 px-4 py-2.5 rounded-brand-sm border border-brand-border text-xs font-semibold text-brand-muted hover:text-brand-dark hover:bg-brand-elevated disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
                 <span>Previous</span>
@@ -327,7 +327,7 @@ export const AssessmentPage: React.FC = () => {
               <button
                 type="button"
                 onClick={handleNext}
-                className="flex items-center gap-1.5 px-6 py-2.5 rounded-brand-sm bg-brand-primary text-white text-xs font-bold shadow-subtle hover:bg-brand-primary-hover transition-colors"
+                className="flex items-center gap-1.5 px-6 py-2.5 rounded-brand-sm bg-brand-primary text-white text-xs font-bold  hover:bg-brand-primary-hover transition-colors"
               >
                 <span>{currentIndex === ASSESSMENT_QUESTIONS.length - 1 ? 'View Matches →' : 'Next →'}</span>
               </button>
@@ -335,11 +335,11 @@ export const AssessmentPage: React.FC = () => {
           </main>
 
           {/* Right Context Guidance Card (Mirrors Reference 1 right card with mountain illustration) */}
-          <aside className="lg:col-span-3 bg-white border border-brand-border rounded-brand p-5 shadow-subtle space-y-6">
+          <aside className="lg:col-span-3 bg-brand-surface border border-brand-border rounded-brand p-5 space-y-6">
             {/* Mountain Graphic Badge */}
-            <div className="h-40 rounded-brand-sm bg-gradient-to-b from-brand-primary-light to-brand-bg flex items-center justify-center p-4 border border-brand-borderLight">
+            <div className="h-40 rounded-brand-sm bg-brand-elevated flex items-center justify-center p-4 border border-brand-border">
               <div className="text-center space-y-2">
-                <div className="w-14 h-14 mx-auto rounded-full bg-white shadow-sm flex items-center justify-center text-brand-primary">
+                <div className="w-14 h-14 mx-auto rounded-full bg-brand-surface border border-brand-border flex items-center justify-center text-brand-cyan">
                   <Sparkles className="w-7 h-7" />
                 </div>
                 <div className="text-xs font-bold text-brand-primary tracking-wide">
@@ -358,21 +358,21 @@ export const AssessmentPage: React.FC = () => {
             </div>
 
             {/* 3 Pillars */}
-            <div className="grid grid-cols-3 gap-2 pt-2 border-t border-brand-borderLight text-center">
+            <div className="grid grid-cols-3 gap-2 pt-2 border-t border-brand-border text-center">
               <div className="flex flex-col items-center">
-                <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center mb-1">
+                <div className="w-8 h-8 rounded-full bg-brand-elevated border border-brand-border text-brand-primary flex items-center justify-center mb-1">
                   <User className="w-4 h-4" />
                 </div>
                 <span className="text-[10px] font-semibold text-brand-dark">{t('self_awareness')}</span>
               </div>
               <div className="flex flex-col items-center">
-                <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center mb-1">
+                <div className="w-8 h-8 rounded-full bg-brand-elevated border border-brand-border text-brand-cyan flex items-center justify-center mb-1">
                   <Target className="w-4 h-4" />
                 </div>
                 <span className="text-[10px] font-semibold text-brand-dark">{t('better_choices')}</span>
               </div>
               <div className="flex flex-col items-center">
-                <div className="w-8 h-8 rounded-full bg-amber-50 text-amber-700 flex items-center justify-center mb-1">
+                <div className="w-8 h-8 rounded-full bg-brand-elevated border border-brand-border text-brand-violet flex items-center justify-center mb-1">
                   <TrendingUp className="w-4 h-4" />
                 </div>
                 <span className="text-[10px] font-semibold text-brand-dark">{t('stronger_future')}</span>
@@ -383,9 +383,9 @@ export const AssessmentPage: React.FC = () => {
       ) : (
         /* Results View */
         <div className="space-y-6">
-          <div className="bg-white border border-brand-border rounded-brand p-6 sm:p-8 shadow-card flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="bg-brand-surface border border-brand-border rounded-brand p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-elevated text-brand-cyan border border-brand-border text-xs font-bold">
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 <span>Assessment Completed</span>
               </div>
@@ -400,13 +400,13 @@ export const AssessmentPage: React.FC = () => {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setIsCompleted(false)}
-                className="px-4 py-2.5 text-xs font-bold rounded-brand-sm border border-brand-border text-brand-dark hover:bg-brand-bg transition-colors"
+                className="px-4 py-2.5 text-xs font-bold rounded-brand-sm border border-brand-border text-brand-dark hover:bg-brand-elevated transition-colors"
               >
                 Retake Assessment
               </button>
               <Link
                 to="/dashboard"
-                className="px-5 py-2.5 text-xs font-bold rounded-brand-sm bg-brand-primary text-white shadow-subtle hover:bg-brand-primary-hover transition-colors"
+                className="px-5 py-2.5 text-xs font-bold rounded-brand-sm bg-brand-primary text-white  hover:bg-brand-primary-hover transition-colors"
               >
                 Go to Dashboard →
               </Link>
@@ -420,7 +420,7 @@ export const AssessmentPage: React.FC = () => {
               return (
                 <div
                   key={career.id}
-                  className="bg-white border border-brand-border rounded-brand p-6 shadow-subtle hover:shadow-card hover:border-brand-primary transition-all flex flex-col justify-between"
+                  className="bg-brand-surface border border-brand-border rounded-brand p-6 hover:border-brand-primary transition-colors flex flex-col justify-between"
                 >
                   <div className="space-y-4">
                     <div className="flex items-start justify-between">
@@ -448,7 +448,7 @@ export const AssessmentPage: React.FC = () => {
                     </div>
 
                     {/* Breakdown Pill Row */}
-                    <div className="bg-brand-bg rounded-brand-sm p-2.5 text-[11px] grid grid-cols-2 gap-2 border border-brand-borderLight">
+                    <div className="bg-brand-elevated rounded-brand-sm p-2.5 text-[11px] grid grid-cols-2 gap-2 border border-brand-border">
                       <div>
                         <span className="text-brand-muted">Interests:</span>{' '}
                         <span className="font-semibold text-brand-dark">{breakdown.interestScore}/35</span>
@@ -472,7 +472,7 @@ export const AssessmentPage: React.FC = () => {
                         <span className="font-semibold text-brand-muted">Recommended to learn:</span>
                         <div className="flex flex-wrap gap-1 mt-1">
                           {missingSkills.slice(0, 2).map(s => (
-                            <span key={s} className="px-2 py-0.5 rounded bg-amber-50 text-amber-800 text-[10px] font-medium border border-amber-200">
+                            <span key={s} className="px-2 py-0.5 rounded bg-brand-elevated text-brand-dark text-[10px] font-medium border border-brand-border">
                               {s}
                             </span>
                           ))}
@@ -481,7 +481,7 @@ export const AssessmentPage: React.FC = () => {
                     )}
                   </div>
 
-                  <div className="pt-5 mt-4 border-t border-brand-borderLight flex items-center gap-2">
+                  <div className="pt-5 mt-4 border-t border-brand-border flex items-center gap-2">
                     <Link
                       to={`/careers/${career.id}`}
                       onClick={() => setActiveCareerId(career.id)}
@@ -492,7 +492,7 @@ export const AssessmentPage: React.FC = () => {
                     <Link
                       to="/roadmap"
                       onClick={() => setActiveCareerId(career.id)}
-                      className="py-2 px-3 rounded-brand-sm border border-brand-border text-brand-dark text-xs font-semibold hover:bg-brand-bg transition-colors"
+                      className="py-2 px-3 rounded-brand-sm border border-brand-border text-brand-dark text-xs font-semibold hover:bg-brand-elevated transition-colors"
                     >
                       Roadmap
                     </Link>

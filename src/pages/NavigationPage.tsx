@@ -106,7 +106,7 @@ export const NavigationPage: React.FC = () => {
 
     const destIcon = L.divIcon({
       className: 'custom-dest-pin',
-      html: `<div style="background-color:#234B3D; color:white; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 3px 8px rgba(0,0,0,0.3); border:2px solid white;">🏛️</div>`,
+      html: `<div style="background-color:#2563EB; color:white; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 3px 8px rgba(0,0,0,0.3); border:2px solid white;">🏛️</div>`,
       iconSize: [32, 32],
       iconAnchor: [16, 16]
     });
@@ -131,7 +131,7 @@ export const NavigationPage: React.FC = () => {
     } else {
       const userIcon = L.divIcon({
         className: 'custom-user-pin',
-        html: `<div style="background-color:#2563EB; color:white; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 6px rgba(37,99,235,0.25); border:2px solid white;">📍</div>`,
+        html: `<div style="background-color:#2563EB; color:white; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #FFFFFF;">📍</div>`,
         iconSize: [28, 28],
         iconAnchor: [14, 14]
       });
@@ -265,7 +265,7 @@ export const NavigationPage: React.FC = () => {
       {/* Page Title */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-primary-light text-brand-primary text-xs font-bold uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-elevated text-brand-primary border border-brand-border text-xs font-bold uppercase tracking-wider mb-2">
             <MapPin className="w-3.5 h-3.5" />
             <span>Feature B · Destination Discovery & Live GPS</span>
           </div>
@@ -288,7 +288,7 @@ export const NavigationPage: React.FC = () => {
 
           <button
             onClick={handleStartNavigationClick}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-brand-sm text-xs font-bold shadow-subtle transition-all ${
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-brand-sm text-xs font-bold  transition-all ${
               isTracking
                 ? 'bg-red-600 text-white hover:bg-red-700'
                 : 'bg-brand-primary text-white hover:bg-brand-primary-hover'
@@ -339,7 +339,7 @@ export const NavigationPage: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left Col: Destination Selector */}
         <aside className="lg:col-span-4 space-y-4">
-          <div className="bg-white border border-brand-border rounded-brand p-4 shadow-subtle space-y-3">
+          <div className="bg-brand-surface border border-brand-border rounded-brand p-4  space-y-3">
             <div className="relative">
               <Search className="w-4 h-4 text-brand-muted absolute left-3 top-1/2 transform -translate-y-1/2" />
               <input
@@ -347,7 +347,7 @@ export const NavigationPage: React.FC = () => {
                 placeholder="Search colleges, ITIs, cities..."
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-3 py-2 text-xs rounded-brand-sm border border-brand-border bg-brand-bg/40 text-brand-dark focus:border-brand-primary focus:outline-none"
+                className="w-full pl-9 pr-3 py-2 text-xs rounded-brand-sm border border-brand-border bg-brand-elevated/40 text-brand-dark focus:border-brand-primary focus:outline-none"
               />
             </div>
 
@@ -359,7 +359,7 @@ export const NavigationPage: React.FC = () => {
                   className={`px-2.5 py-1 rounded-full font-semibold whitespace-nowrap transition-colors ${
                     categoryFilter === cat
                       ? 'bg-brand-primary text-white'
-                      : 'bg-brand-bg text-brand-muted hover:text-brand-dark'
+                      : 'bg-brand-elevated text-brand-muted hover:text-brand-dark'
                   }`}
                 >
                   {cat}
@@ -407,7 +407,7 @@ export const NavigationPage: React.FC = () => {
         {/* Right Col: Leaflet Map & Navigation Info Box */}
         <main className="lg:col-span-8 space-y-4">
           {/* Map Container */}
-          <div className="bg-white border border-brand-border rounded-brand overflow-hidden shadow-card relative">
+          <div className="bg-brand-surface border border-brand-border rounded-brand overflow-hidden  relative">
             <div
               ref={mapContainerRef}
               className="w-full h-[450px] z-0"
@@ -416,7 +416,7 @@ export const NavigationPage: React.FC = () => {
 
             {/* GPS Telemetry Pill Overlay */}
             {isTracking && (
-              <div className="absolute top-4 right-4 z-[400] bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-brand-sm border border-brand-border shadow-card text-[11px] space-y-1">
+              <div className="absolute top-4 right-4 z-[400] bg-brand-surface px-3.5 py-2 rounded-brand-sm border border-brand-border  text-[11px] space-y-1">
                 <div className="flex items-center gap-1.5 font-bold text-emerald-800">
                   <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
                   <span>Live GPS Tracking</span>
@@ -432,7 +432,7 @@ export const NavigationPage: React.FC = () => {
           </div>
 
           {/* Destination Details & Routing Summary Box */}
-          <div className="bg-white border border-brand-border rounded-brand p-6 shadow-subtle space-y-4">
+          <div className="bg-brand-surface border border-brand-border rounded-brand p-6  space-y-4">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-3 border-b border-brand-border">
               <div>
                 <span className="text-[10px] font-bold uppercase text-brand-primary tracking-wider">
@@ -456,7 +456,7 @@ export const NavigationPage: React.FC = () => {
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-1.5 rounded-brand-sm border border-brand-border bg-brand-bg text-brand-dark text-xs font-semibold hover:border-brand-primary flex items-center gap-1"
+                  className="px-3 py-1.5 rounded-brand-sm border border-brand-border bg-brand-elevated text-brand-dark text-xs font-semibold hover:border-brand-primary flex items-center gap-1"
                 >
                   <span>Google Maps</span>
                   <ExternalLink className="w-3 h-3 text-brand-muted" />
@@ -471,7 +471,7 @@ export const NavigationPage: React.FC = () => {
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-1.5 rounded-brand-sm border border-brand-border bg-brand-bg text-brand-dark text-xs font-semibold hover:border-brand-primary flex items-center gap-1"
+                  className="px-3 py-1.5 rounded-brand-sm border border-brand-border bg-brand-elevated text-brand-dark text-xs font-semibold hover:border-brand-primary flex items-center gap-1"
                 >
                   <span>OpenStreetMap</span>
                   <ExternalLink className="w-3 h-3 text-brand-muted" />
@@ -503,7 +503,7 @@ export const NavigationPage: React.FC = () => {
                 <span className="font-bold text-brand-muted block mb-1">Key Programs & Facilities:</span>
                 <div className="flex flex-wrap gap-1.5">
                   {selectedDestination.features.map(f => (
-                    <span key={f} className="px-2 py-0.5 rounded bg-brand-bg text-[10px] font-medium border border-brand-border">
+                    <span key={f} className="px-2 py-0.5 rounded bg-brand-elevated text-[10px] font-medium border border-brand-border">
                       {f}
                     </span>
                   ))}
@@ -536,7 +536,7 @@ export const NavigationPage: React.FC = () => {
 
       {/* Explicit Geolocation Informed Consent Modal */}
       {isConsentModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4">
           <div className="bg-white rounded-brand-lg max-w-md w-full p-6 shadow-modal space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center flex-shrink-0">
@@ -551,7 +551,7 @@ export const NavigationPage: React.FC = () => {
               PathSetu uses your device's browser GPS to display your current position on the map and calculate turn-by-turn distance to <strong className="text-brand-dark">{selectedDestination.name}</strong>.
             </p>
 
-            <div className="p-3 bg-brand-bg rounded-brand-sm border border-brand-border text-xs text-brand-dark/90 space-y-1.5">
+            <div className="p-3 bg-brand-elevated rounded-brand-sm border border-brand-border text-xs text-brand-dark/90 space-y-1.5">
               <div className="font-bold flex items-center gap-1 text-emerald-800">
                 <ShieldCheck className="w-4 h-4 text-emerald-600" />
                 <span>Privacy Safeguards:</span>
@@ -574,7 +574,7 @@ export const NavigationPage: React.FC = () => {
               <button
                 type="button"
                 onClick={confirmConsentAndStartTracking}
-                className="px-5 py-2 text-xs font-bold rounded-brand-sm bg-brand-primary text-white hover:bg-brand-primary-hover shadow-subtle"
+                className="px-5 py-2 text-xs font-bold rounded-brand-sm bg-brand-primary text-white hover:bg-brand-primary-hover "
               >
                 Allow & Start Navigation
               </button>

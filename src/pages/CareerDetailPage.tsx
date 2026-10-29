@@ -77,7 +77,7 @@ export const CareerDetailPage: React.FC = () => {
       </nav>
 
       {/* Main Career Header (Mirrors Reference 5 Header) */}
-      <div className="bg-white border border-brand-border rounded-brand p-6 sm:p-8 shadow-subtle flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="bg-brand-surface border border-brand-border rounded-brand p-6 sm:p-8  flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div>
           <div className="flex items-center gap-3">
             <span className="text-3xl">{career.emoji}</span>
@@ -86,7 +86,7 @@ export const CareerDetailPage: React.FC = () => {
                 <h1 className="text-2xl sm:text-3xl font-black text-brand-dark tracking-tight">
                   {career.name}
                 </h1>
-                <span className="px-2.5 py-0.5 rounded-full bg-brand-primary-light text-brand-primary text-xs font-bold">
+                <span className="px-2.5 py-0.5 rounded-full bg-brand-elevated text-brand-primary border border-brand-border text-xs font-bold">
                   {career.badge}
                 </span>
               </div>
@@ -101,7 +101,7 @@ export const CareerDetailPage: React.FC = () => {
             <span>•</span>
             <span>Duration: <strong className="text-brand-dark">{career.study_duration}</strong></span>
             <span>•</span>
-            <span className="text-emerald-700 font-semibold">{career.typical_workstyle}</span>
+            <span className="text-brand-cyan font-semibold">{career.typical_workstyle}</span>
           </div>
         </div>
 
@@ -109,7 +109,7 @@ export const CareerDetailPage: React.FC = () => {
         <div className="flex items-center gap-2 self-stretch md:self-auto">
           <button
             onClick={handleShare}
-            className="flex-1 md:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-brand-sm border border-brand-border text-xs font-semibold text-brand-dark hover:bg-brand-bg transition-colors"
+            className="flex-1 md:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-brand-sm border border-brand-border text-xs font-semibold text-brand-dark hover:bg-brand-elevated transition-colors"
           >
             <Share2 className="w-3.5 h-3.5" />
             <span>{copyNotice ? 'Link Copied!' : 'Share'}</span>
@@ -120,7 +120,7 @@ export const CareerDetailPage: React.FC = () => {
               setActiveCareerId(career.id);
               navigate('/roadmap');
             }}
-            className="flex-1 md:flex-initial flex items-center justify-center gap-1.5 px-4 py-2 rounded-brand-sm bg-brand-primary text-white text-xs font-bold shadow-subtle hover:bg-brand-primary-hover transition-colors"
+            className="flex-1 md:flex-initial flex items-center justify-center gap-1.5 px-4 py-2 rounded-brand-sm bg-brand-primary text-white text-xs font-bold  hover:bg-brand-primary-hover transition-colors"
           >
             <Bookmark className="w-3.5 h-3.5" />
             <span>Set as My Pathway</span>
@@ -170,7 +170,7 @@ export const CareerDetailPage: React.FC = () => {
           {activeTab === 'overview' && (
             <div className="space-y-6">
               {/* Role Summary Card */}
-              <div className="bg-white border border-brand-border rounded-brand p-6 shadow-subtle space-y-4">
+              <div className="bg-brand-surface border border-brand-border rounded-brand p-6  space-y-4">
                 <h2 className="text-base font-bold text-brand-dark">
                   Role Summary
                 </h2>
@@ -178,7 +178,7 @@ export const CareerDetailPage: React.FC = () => {
                   {career.role_summary}
                 </p>
 
-                <div className="pt-4 border-t border-brand-borderLight">
+                <div className="pt-4 border-t border-brand-border">
                   <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted mb-3">
                     Key Responsibilities
                   </h3>
@@ -194,17 +194,17 @@ export const CareerDetailPage: React.FC = () => {
               </div>
 
               {/* Education & Costs Card */}
-              <div className="bg-white border border-brand-border rounded-brand p-6 shadow-subtle space-y-4">
+              <div className="bg-brand-surface border border-brand-border rounded-brand p-6  space-y-4">
                 <h2 className="text-base font-bold text-brand-dark">
                   Verified Education Pathways & Costs
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                  <div className="p-4 bg-emerald-50/60 rounded-brand-sm border border-emerald-200">
+                  <div className="p-4 bg-brand-elevated/60 rounded-brand-sm border border-emerald-200">
                     <span className="font-bold text-emerald-900 block">Government Pathway</span>
                     <span className="text-emerald-950 font-black text-base mt-1 block">
                       {career.estimated_education_cost_inr.government_route}
                     </span>
-                    <p className="text-emerald-800 text-[11px] mt-1">
+                    <p className="text-brand-dark text-[11px] mt-1">
                       Through State CET / EAPCET entrance exam merit quotas.
                     </p>
                   </div>
@@ -234,7 +234,7 @@ export const CareerDetailPage: React.FC = () => {
 
           {/* Tab 2: Skill Gap Analysis (Mirrors Reference 5 Skill Gap Analysis Card) */}
           {activeTab === 'skill_gap' && (
-            <div className="bg-white border border-brand-border rounded-brand p-6 sm:p-8 shadow-subtle space-y-6">
+            <div className="bg-brand-surface border border-brand-border rounded-brand p-6 sm:p-8  space-y-6">
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-lg font-bold text-brand-dark">Skill Gap Analysis</h2>
@@ -242,13 +242,13 @@ export const CareerDetailPage: React.FC = () => {
                     Click each skill below to toggle what you currently have and see your readiness update instantly.
                   </p>
                 </div>
-                <span className="px-3 py-1 rounded-full bg-brand-primary-light text-brand-primary font-bold text-xs uppercase tracking-wider">
+                <span className="px-3 py-1 rounded-full bg-brand-elevated text-brand-primary border border-brand-border font-bold text-xs uppercase tracking-wider">
                   YOUR PROGRESS: {matchPct}% MATCH
                 </span>
               </div>
 
               {/* Radar Gauge / Progress Row */}
-              <div className="p-6 bg-brand-bg rounded-brand border border-brand-border flex flex-col sm:flex-row items-center justify-around gap-6">
+              <div className="p-6 bg-brand-elevated rounded-brand border border-brand-border flex flex-col sm:flex-row items-center justify-around gap-6">
                 <CircularGauge
                   value={matchPct}
                   size={150}
@@ -256,18 +256,18 @@ export const CareerDetailPage: React.FC = () => {
                   variant="semi"
                   label={`${matchPct}%`}
                   sublabel="Role Match"
-                  color="#234B3D"
-                  trackColor="#E4EBDD"
+                  color="#2563EB"
+                  trackColor="var(--border-color)"
                 />
 
                 <div className="space-y-3 w-full sm:w-60 text-xs">
                   <div>
                     <div className="flex justify-between font-semibold text-brand-dark mb-1">
                       <span>Soft Skills & Empathy</span>
-                      <span className="text-emerald-700">82% Match</span>
+                      <span className="text-brand-cyan">82% Match</span>
                     </div>
-                    <div className="w-full bg-brand-borderLight rounded-full h-2 overflow-hidden">
-                      <div className="bg-emerald-600 h-2 rounded-full" style={{ width: '82%' }} />
+                    <div className="w-full bg-brand-elevated rounded-full h-2 overflow-hidden">
+                      <div className="bg-brand-primary h-2 rounded-full" style={{ width: '82%' }} />
                     </div>
                   </div>
 
@@ -276,7 +276,7 @@ export const CareerDetailPage: React.FC = () => {
                       <span>Technical Knowledge</span>
                       <span className="text-amber-700">{matchPct}% Match</span>
                     </div>
-                    <div className="w-full bg-brand-borderLight rounded-full h-2 overflow-hidden">
+                    <div className="w-full bg-brand-elevated rounded-full h-2 overflow-hidden">
                       <div className="bg-brand-primary h-2 rounded-full" style={{ width: `${matchPct}%` }} />
                     </div>
                   </div>
@@ -300,7 +300,7 @@ export const CareerDetailPage: React.FC = () => {
                         onClick={() => toggleSkill(req.name)}
                         className={`px-3 py-1.5 rounded-full text-xs font-semibold border flex items-center gap-1.5 transition-all ${
                           isChecked
-                            ? 'bg-emerald-50 text-emerald-800 border-emerald-300 shadow-xs'
+                            ? 'bg-brand-elevated text-brand-dark border-emerald-300 shadow-xs'
                             : 'bg-brand-bg text-brand-dark/70 border-brand-border hover:border-brand-primary'
                         }`}
                       >
@@ -317,7 +317,7 @@ export const CareerDetailPage: React.FC = () => {
 
           {/* Tab 3: Roadmap Milestones */}
           {activeTab === 'roadmap' && (
-            <div className="bg-white border border-brand-border rounded-brand p-6 shadow-subtle space-y-4">
+            <div className="bg-brand-surface border border-brand-border rounded-brand p-6  space-y-4">
               <h2 className="text-base font-bold text-brand-dark">
                 Learning & Career Entry Milestones
               </h2>
@@ -339,7 +339,7 @@ export const CareerDetailPage: React.FC = () => {
         {/* Right Column: Ideal Candidate DNA + Actionable Nudges (Mirrors Reference 5 right column) */}
         <aside className="lg:col-span-4 space-y-6">
           {/* Ideal Candidate DNA Card (Mirrors Reference 5 blue Ideal Candidate DNA card) */}
-          <div className="bg-blue-600 text-white rounded-brand p-6 shadow-card space-y-4">
+          <div className="bg-blue-600 text-white rounded-brand p-6  space-y-4">
             <div className="flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-amber-300" />
               <h3 className="font-bold text-base">Ideal Candidate DNA</h3>
@@ -365,7 +365,7 @@ export const CareerDetailPage: React.FC = () => {
           </div>
 
           {/* Actionable Nudges Card (Mirrors Reference 5 Actionable Nudges) */}
-          <div className="bg-white border border-brand-border rounded-brand p-6 shadow-subtle space-y-4">
+          <div className="bg-brand-surface border border-brand-border rounded-brand p-6  space-y-4">
             <div className="flex items-center gap-2">
               <TrendingUp className="w-4 h-4 text-brand-primary" />
               <h3 className="font-bold text-sm text-brand-dark">Actionable Nudges</h3>
@@ -392,7 +392,7 @@ export const CareerDetailPage: React.FC = () => {
 
             {/* Nudge 2: Hands-on Demo */}
             <div className="p-3.5 rounded-brand-sm border border-brand-border bg-brand-bg/50 space-y-1.5">
-              <span className="text-[10px] uppercase font-bold text-emerald-700 tracking-wider">
+              <span className="text-[10px] uppercase font-bold text-brand-cyan tracking-wider">
                 INTERACTIVE SIMULATION
               </span>
               <h4 className="text-xs font-bold text-brand-dark">
@@ -410,7 +410,7 @@ export const CareerDetailPage: React.FC = () => {
             </div>
 
             {/* Industry Growth & Open Roles (Mirrors Reference 5 bottom metrics) */}
-            <div className="grid grid-cols-2 gap-3 pt-3 border-t border-brand-borderLight text-center">
+            <div className="grid grid-cols-2 gap-3 pt-3 border-t border-brand-border text-center">
               <div className="p-2 bg-brand-bg rounded-lg">
                 <div className="text-lg font-black text-brand-dark">{career.industry_growth}</div>
                 <div className="text-[10px] uppercase font-bold text-brand-muted tracking-wider">Growth</div>
@@ -425,7 +425,7 @@ export const CareerDetailPage: React.FC = () => {
           {/* Export PDF Button (Mirrors Reference 5 Export PDF) */}
           <button
             onClick={handleExportPDF}
-            className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-brand-sm border border-brand-border bg-white text-brand-dark font-bold text-xs hover:bg-brand-bg shadow-subtle transition-colors"
+            className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-brand-sm border border-brand-border bg-white text-brand-dark font-bold text-xs hover:bg-brand-elevated  transition-colors"
           >
             <FileDown className="w-4 h-4 text-brand-muted" />
             <span>Export Career Profile (PDF)</span>
