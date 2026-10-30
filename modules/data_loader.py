@@ -51,3 +51,6 @@ def load_skills() -> List[Dict[str, str]]:
         for row in reader:
             skills.append(dict(row))
     return skills
+
+def load_colleges() -> List[Dict[str, Any]]:
+    return load_json("colleges.json")

@@ -10,6 +10,7 @@ import json
 import uuid
 import secrets
 import sqlite3
+import math
 from typing import List, Optional, Dict, Any
 from pathlib import Path
 from datetime import datetime, timedelta
@@ -24,7 +25,7 @@ from pydantic import BaseModel, Field
 # Internal modules
 from modules.data_loader import (
     load_careers, load_resources, load_scoring_config,
-    load_translations, load_skills
+    load_translations, load_skills, load_colleges
 )
 from modules.recommendation_engine import calculate_compatibility
 from modules.skill_gap import analyze_skill_gap
@@ -1030,6 +1031,66 @@ def get_app_translations():
     return load_translations()
 
 # -----------------------------------------------------------------------------
+# REST API: Nearby Colleges & Universities with Live GPS Tracking
+# -----------------------------------------------------------------------------
+def haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    """Calculates great-circle distance between two GPS coordinates in kilometers."""
+    R = 6371.0  # Earth's radius in kilometers
+    dlat = math.radians(lat2 - lat1)
+    dlon = math.radians(lon2 - lon1)
+    a = (math.sin(dlat / 2) ** 2 +
+         math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) *
+         math.sin(dlon / 2) ** 2)
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    return round(R * c, 1)
+
+@app.get("/api/colleges")
+def list_colleges(
+    search: Optional[str] = None,
+    category: Optional[str] = None,
+    lat: Optional[float] = None,
+    lng: Optional[float] = None
+):
+    """Returns verified colleges & universities with optional GPS proximity calculation."""
+    colleges = load_colleges()
+    if search:
+        q = search.lower().strip()
+        colleges = [
+            c for c in colleges
+            if q in c.get("name", "").lower() or
+               q in c.get("name_te", "").lower() or
+               q in c.get("city", "").lower() or
+               q in c.get("district", "").lower() or
+               q in c.get("state", "").lower() or
+               any(q in course.lower() for course in c.get("courses", []))
+        ]
+    if category and category.lower() != "all":
+        colleges = [c for c in colleges if category.lower() in c.get("category", "").lower()]
+
+    # Calculate GPS distance if coordinates provided
+    if lat is not None and lng is not None:
+        for c in colleges:
+            if "latitude" in c and "longitude" in c:
+                c["distance_km"] = haversine_distance(lat, lng, c["latitude"], c["longitude"])
+            else:
+                c["distance_km"] = None
+        colleges.sort(key=lambda x: x.get("distance_km") if x.get("distance_km") is not None else 99999)
+
+    return colleges
+
+@app.get("/api/colleges/{college_id}")
+def get_college_detail(college_id: str, lat: Optional[float] = None, lng: Optional[float] = None):
+    """Retrieves full profile for a single college/university."""
+    colleges = load_colleges()
+    college = next((c for c in colleges if c["id"] == college_id), None)
+    if not college:
+        raise HTTPException(status_code=404, detail="College not found")
+    if lat is not None and lng is not None and "latitude" in college and "longitude" in college:
+        college["distance_km"] = haversine_distance(lat, lng, college["latitude"], college["longitude"])
+    return college
+
+
+# -----------------------------------------------------------------------------
 # Static Asset Mounting & Dedicated Page Routes
 # -----------------------------------------------------------------------------
 if (BASE_DIR / "css").exists():
@@ -1158,6 +1219,16 @@ def serve_profile_page():
     if f.exists():
         return FileResponse(f)
     raise HTTPException(status_code=404, detail="profile.html not found")
+
+@app.get("/colleges")
+@app.get("/colleges.html")
+@app.get("/navigation")
+@app.get("/navigation.html")
+def serve_colleges_page():
+    f = BASE_DIR / "colleges.html"
+    if f.exists():
+        return FileResponse(f)
+    raise HTTPException(status_code=404, detail="colleges.html not found")
 
 if __name__ == "__main__":
     import uvicorn
