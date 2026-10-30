@@ -11,18 +11,30 @@
     "state": "Telangana",
     "pincode": "502284",
     "latitude": 17.5947,
-    "longitude": 78.1230,
+    "longitude": 78.123,
     "phone": "+91 40 2301 6033",
     "email": "info@iith.ac.in",
     "website": "https://www.iith.ac.in/",
     "affiliations": "Institute of National Importance (INI), MoE, NIRF Rank #8",
     "established_year": 2008,
-    "courses": ["B.Tech Computer Science", "B.Tech Electrical", "B.Tech AI & Data Science", "B.Des Design", "M.Tech / Ph.D"],
+    "courses": [
+      "B.Tech Computer Science",
+      "B.Tech Electrical",
+      "B.Tech AI & Data Science",
+      "B.Des Design",
+      "M.Tech / Ph.D"
+    ],
     "admission_mode": "JEE Advanced & UCEED",
     "fee_range_inr": "₹2,20,000 / year (100% Tuition Fee Waiver for SC/ST/PH & Family Income < ₹1 Lakh)",
     "scholarships": "Institute Merit-cum-Means (MCM), National Scholarship Portal (NSP), Free Tuition Aid",
     "hostel_available": true,
-    "facilities": ["World-Class Supercomputing Lab", "Japanese Design Center", "Hostel with High-Speed LAN", "24/7 Library", "Health Center"],
+    "facilities": [
+      "World-Class Supercomputing Lab",
+      "Japanese Design Center",
+      "Hostel with High-Speed LAN",
+      "24/7 Library",
+      "Health Center"
+    ],
     "rating": 4.8,
     "description": "Premier national research university known for cutting-edge Artificial Intelligence, 5G/6G wireless research, and rural technological outreach.",
     "verified": true
@@ -45,12 +57,23 @@
     "website": "https://www.osmania.ac.in/",
     "affiliations": "Telangana State University, UGC, NAAC A+ (Heritage University)",
     "established_year": 1918,
-    "courses": ["B.Tech CSE / AI / ECE / Civil / Mechanical", "BCA", "MCA", "M.Tech"],
+    "courses": [
+      "B.Tech CSE / AI / ECE / Civil / Mechanical",
+      "BCA",
+      "MCA",
+      "M.Tech"
+    ],
     "admission_mode": "TS EAPCET (Engineering Rank)",
     "fee_range_inr": "₹35,000 / year (Govt Regulated Subsidized Fee)",
     "scholarships": "Telangana ePass Fee Reimbursement (100% covered for eligible students)",
     "hostel_available": true,
-    "facilities": ["Heritage Central Library", "Affordable Govt Hostels", "Competitive Exam Coaching Center", "Extensive Sports Grounds", "Placement Cell"],
+    "facilities": [
+      "Heritage Central Library",
+      "Affordable Govt Hostels",
+      "Competitive Exam Coaching Center",
+      "Extensive Sports Grounds",
+      "Placement Cell"
+    ],
     "rating": 4.5,
     "description": "One of India's oldest and most prestigious state universities, offering highly subsidized engineering and sciences for students from diverse backgrounds.",
     "verified": true
@@ -73,12 +96,24 @@
     "website": "https://jntuh.ac.in/",
     "affiliations": "Telangana State Technological University, UGC, NAAC A+",
     "established_year": 1972,
-    "courses": ["B.Tech Computer Science & Engineering", "B.Tech AI & Machine Learning", "B.Tech Cyber Security", "B.Tech ECE / EEE", "M.Tech"],
+    "courses": [
+      "B.Tech Computer Science & Engineering",
+      "B.Tech AI & Machine Learning",
+      "B.Tech Cyber Security",
+      "B.Tech ECE / EEE",
+      "M.Tech"
+    ],
     "admission_mode": "TS EAPCET (Top Rankers)",
     "fee_range_inr": "₹45,000 / year (Regulated Government College Fee)",
     "scholarships": "Telangana ePass 100% Tuition Fee Reimbursement",
     "hostel_available": true,
-    "facilities": ["Center of Excellence in Artificial Intelligence", "Industry Collaboration Cells", "Modern Hostels", "Central Library & e-Resource Hub", "Top Tier Placements"],
+    "facilities": [
+      "Center of Excellence in Artificial Intelligence",
+      "Industry Collaboration Cells",
+      "Modern Hostels",
+      "Central Library & e-Resource Hub",
+      "Top Tier Placements"
+    ],
     "rating": 4.7,
     "description": "Telangana's premier state technical university campus, setting syllabus benchmarks for engineering colleges and providing direct access to HITEC City tech recruiters.",
     "verified": true
@@ -101,12 +136,24 @@
     "website": "https://gptmasabtank.ac.in/",
     "affiliations": "State Board of Technical Education & Training (SBTET), AICTE",
     "established_year": 1954,
-    "courses": ["Diploma in Computer Engineering (DCME)", "Diploma in Electrical (DEEE)", "Diploma in Civil (DCE)", "Diploma in Mechanical (DME)", "Automobile Engineering"],
+    "courses": [
+      "Diploma in Computer Engineering (DCME)",
+      "Diploma in Electrical (DEEE)",
+      "Diploma in Civil (DCE)",
+      "Diploma in Mechanical (DME)",
+      "Automobile Engineering"
+    ],
     "admission_mode": "TS POLYCET (After Class 10)",
     "fee_range_inr": "₹3,800 / year (Nominal Government Fee)",
     "scholarships": "100% Free via Telangana ePass & Post-Matric Welfare Stipend",
     "hostel_available": true,
-    "facilities": ["Modern CAD/CAM Lab", "Heavy Machinery Workshop", "Digital Electronics Testing Center", "Campus Placement Cell", "Lateral Entry B.Tech ECET Prep"],
+    "facilities": [
+      "Modern CAD/CAM Lab",
+      "Heavy Machinery Workshop",
+      "Digital Electronics Testing Center",
+      "Campus Placement Cell",
+      "Lateral Entry B.Tech ECET Prep"
+    ],
     "rating": 4.6,
     "description": "The flagship polytechnic institution of Telangana, providing high-quality practical technical education right after Class 10 with direct lateral entry into 2nd year B.Tech.",
     "verified": true
@@ -129,12 +176,23 @@
     "website": "https://iti.telangana.gov.in/",
     "affiliations": "NCVT / DGT, Ministry of Skill Development & Entrepreneurship",
     "established_year": 1958,
-    "courses": ["Solar Technician (1 Year)", "Electrician Trade (2 Years)", "Fitter / Turner", "COPA (Computer Operator)", "Electronic Mechanic"],
+    "courses": [
+      "Solar Technician (1 Year)",
+      "Electrician Trade (2 Years)",
+      "Fitter / Turner",
+      "COPA (Computer Operator)",
+      "Electronic Mechanic"
+    ],
     "admission_mode": "Direct Merit after Class 10 (Online Web Counseling)",
     "fee_range_inr": "₹600 / year (Nominal Fee, Virtually Free)",
     "scholarships": "Skill India Monthly Stipend, Free Toolkits, State Post-Matric Aid",
     "hostel_available": false,
-    "facilities": ["Rooftop Solar PV Installation Lab", "High-Voltage Electrical Switchgear Workshop", "Computer Testing Lab", "Apprenticeship Placement Cell"],
+    "facilities": [
+      "Rooftop Solar PV Installation Lab",
+      "High-Voltage Electrical Switchgear Workshop",
+      "Computer Testing Lab",
+      "Apprenticeship Placement Cell"
+    ],
     "rating": 4.4,
     "description": "A premier skill institute delivering industry-certified trades with direct job placements and MSDE Skill India certification for immediate employability.",
     "verified": true
@@ -157,12 +215,24 @@
     "website": "https://gandhi.edu.in/",
     "affiliations": "Kaloji Narayana Rao University of Health Sciences (KNRUHS), INC, NMC",
     "established_year": 1954,
-    "courses": ["MBBS", "B.Sc Nursing (4 Years)", "General Nursing & Midwifery (GNM)", "B.Sc Medical Lab Technology (MLT)", "Paramedical Diplomas"],
+    "courses": [
+      "MBBS",
+      "B.Sc Nursing (4 Years)",
+      "General Nursing & Midwifery (GNM)",
+      "B.Sc Medical Lab Technology (MLT)",
+      "Paramedical Diplomas"
+    ],
     "admission_mode": "NEET UG & State Paramedical Counseling",
     "fee_range_inr": "₹15,000 / year (Govt College Subsidized)",
     "scholarships": "Govt Nursing Stipend (₹1,500 - ₹3,000/month during clinicals), ePass",
     "hostel_available": true,
-    "facilities": ["2,000+ Bed Super-Specialty Hospital Wards", "Anatomy & Pathology Museums", "ICU Simulation Training Lab", "Govt Nursing Hostel", "Clinical Rotations"],
+    "facilities": [
+      "2,000+ Bed Super-Specialty Hospital Wards",
+      "Anatomy & Pathology Museums",
+      "ICU Simulation Training Lab",
+      "Govt Nursing Hostel",
+      "Clinical Rotations"
+    ],
     "rating": 4.7,
     "description": "Major public medical and nursing institution providing real-world clinical patient care training, subsidized fees, and recognized public health qualifications.",
     "verified": true
@@ -179,18 +249,28 @@
     "state": "Telangana",
     "pincode": "500095",
     "latitude": 17.3824,
-    "longitude": 78.4820,
+    "longitude": 78.482,
     "phone": "+91 40 2460 2167",
     "email": "osmaniamedicalcollege@telangana.gov.in",
     "website": "https://omc.telangana.gov.in/",
     "affiliations": "KNRUHS, National Medical Commission (NMC)",
     "established_year": 1846,
-    "courses": ["MBBS", "MD / MS Specializations", "B.Sc Nursing", "Diploma in Medical Imaging"],
+    "courses": [
+      "MBBS",
+      "MD / MS Specializations",
+      "B.Sc Nursing",
+      "Diploma in Medical Imaging"
+    ],
     "admission_mode": "NEET UG Counseling",
     "fee_range_inr": "₹12,000 / year (Government College Rate)",
     "scholarships": "Telangana ePass & Central Merit Scholarships",
     "hostel_available": true,
-    "facilities": ["Associated with Osmania General Hospital", "Historic Medical Library", "Dissection & Histology Labs", "Resident Hostels"],
+    "facilities": [
+      "Associated with Osmania General Hospital",
+      "Historic Medical Library",
+      "Dissection & Histology Labs",
+      "Resident Hostels"
+    ],
     "rating": 4.8,
     "description": "One of the oldest medical institutions in the world, affiliated with Osmania General Hospital, producing thousands of distinguished surgeons and physicians.",
     "verified": true
@@ -213,12 +293,23 @@
     "website": "https://pjtsau.edu.in/",
     "affiliations": "ICAR Accredited, State Agricultural University",
     "established_year": 1964,
-    "courses": ["B.Sc (Hons) Agriculture", "B.Tech Agricultural Engineering", "Diploma in Agriculture (2 Years)", "M.Sc Agronomy & Soil Science"],
+    "courses": [
+      "B.Sc (Hons) Agriculture",
+      "B.Tech Agricultural Engineering",
+      "Diploma in Agriculture (2 Years)",
+      "M.Sc Agronomy & Soil Science"
+    ],
     "admission_mode": "TS EAPCET (Agriculture Stream) & AGRICET (for Diploma holders)",
     "fee_range_inr": "₹28,000 / year (State Subsidized)",
     "scholarships": "ICAR National Talent Scholarship, State Farmer Ward Aid, ePass",
     "hostel_available": true,
-    "facilities": ["Experimental Crop Research Farms", "Soil & Seed Quality Testing Labs", "Tractor & Drone Training Center", "Agricultural Museum", "Hostel for Boys & Girls"],
+    "facilities": [
+      "Experimental Crop Research Farms",
+      "Soil & Seed Quality Testing Labs",
+      "Tractor & Drone Training Center",
+      "Agricultural Museum",
+      "Hostel for Boys & Girls"
+    ],
     "rating": 4.6,
     "description": "Premier agricultural institute advancing climate-resilient farming, precision agriculture, organic soil testing, and rural agri-entrepreneurship.",
     "verified": true
@@ -234,19 +325,30 @@
     "district": "Rangareddy",
     "state": "Telangana",
     "pincode": "500046",
-    "latitude": 17.4600,
+    "latitude": 17.46,
     "longitude": 78.3314,
     "phone": "+91 40 2313 0000",
     "email": "acadinfo@uohyd.ac.in",
     "website": "https://uohyd.ac.in/",
     "affiliations": "Central University, UGC, NAAC A++ (Institution of Eminence)",
     "established_year": 1974,
-    "courses": ["Integrated M.Sc (5 Years) in Math / Physics / Systems Biology", "Integrated M.A. Economics", "MCA", "M.Tech"],
+    "courses": [
+      "Integrated M.Sc (5 Years) in Math / Physics / Systems Biology",
+      "Integrated M.A. Economics",
+      "MCA",
+      "M.Tech"
+    ],
     "admission_mode": "CUET UG & CUET PG",
     "fee_range_inr": "₹14,000 / year (Central Subsidized)",
     "scholarships": "UGC Central Fellowship, MCM Fellowships for All Regular Students",
     "hostel_available": true,
-    "facilities": ["2,300-Acre Biodiversity Campus", "Indira Gandhi Memorial Central Library", "Advanced Research Labs", "Sports Complex", "Green Residential Hostels"],
+    "facilities": [
+      "2,300-Acre Biodiversity Campus",
+      "Indira Gandhi Memorial Central Library",
+      "Advanced Research Labs",
+      "Sports Complex",
+      "Green Residential Hostels"
+    ],
     "rating": 4.9,
     "description": "Ranked among India's top 5 central universities, offering generous fellowships, world-class professors, and diverse interdisciplinary research.",
     "verified": true
@@ -263,18 +365,30 @@
     "state": "Telangana",
     "pincode": "500001",
     "latitude": 17.3986,
-    "longitude": 78.4770,
+    "longitude": 78.477,
     "phone": "+91 40 2323 4231",
     "email": "principal@nizamcollege.ac.in",
     "website": "https://www.nizamcollege.ac.in/",
     "affiliations": "Constituent College of Osmania University, NAAC A+",
     "established_year": 1887,
-    "courses": ["B.Sc Computer Science", "B.Sc Data Science", "BCA", "B.Com Honors", "B.A. Journalism & Political Science"],
+    "courses": [
+      "B.Sc Computer Science",
+      "B.Sc Data Science",
+      "BCA",
+      "B.Com Honors",
+      "B.A. Journalism & Political Science"
+    ],
     "admission_mode": "DOST Telangana Online Degree Counseling",
     "fee_range_inr": "₹8,500 / year (Subsidized Government Fee)",
     "scholarships": "Telangana ePass Fee Reimbursement & Merit Aid",
     "hostel_available": true,
-    "facilities": ["Historic Heritage Campus", "Modern Science Laboratories", "Computer Center", "Hostel for Boys & Girls", "Civil Services Study Circle"],
+    "facilities": [
+      "Historic Heritage Campus",
+      "Modern Science Laboratories",
+      "Computer Center",
+      "Hostel for Boys & Girls",
+      "Civil Services Study Circle"
+    ],
     "rating": 4.6,
     "description": "One of South India's most celebrated liberal arts and science colleges, famous for producing national leaders, scientists, and civil servants.",
     "verified": true
@@ -297,12 +411,22 @@
     "website": "http://gdcts.cgg.gov.in/citycollege.edu",
     "affiliations": "Osmania University, UGC Autonomous, NAAC A+",
     "established_year": 1921,
-    "courses": ["B.Sc Biotechnology", "B.Sc Computer Science", "B.Com Business Analytics", "B.A. Public Administration"],
+    "courses": [
+      "B.Sc Biotechnology",
+      "B.Sc Computer Science",
+      "B.Com Business Analytics",
+      "B.A. Public Administration"
+    ],
     "admission_mode": "DOST Telangana Degree Counseling",
     "fee_range_inr": "₹4,200 / year",
     "scholarships": "100% Free via ePass & Post-Matric Welfare Scholarships",
     "hostel_available": true,
-    "facilities": ["Indo-Saracenic Heritage Building", "Modern Bio-Informatics Lab", "Free Internet Center", "Career Guidance Cell"],
+    "facilities": [
+      "Indo-Saracenic Heritage Building",
+      "Modern Bio-Informatics Lab",
+      "Free Internet Center",
+      "Career Guidance Cell"
+    ],
     "rating": 4.4,
     "description": "Historic government institution near the High Court offering affordable undergraduate education with strong faculty and competitive exam coaching.",
     "verified": true
@@ -325,12 +449,24 @@
     "website": "https://www.cbit.ac.in/",
     "affiliations": "Affiliated to Osmania University, UGC Autonomous, NBA Accredited",
     "established_year": 1979,
-    "courses": ["B.Tech Computer Science (CSE)", "B.Tech AI & Data Science", "B.Tech IT", "B.Tech ECE / EEE / Mechanical", "M.Tech / MBA"],
+    "courses": [
+      "B.Tech Computer Science (CSE)",
+      "B.Tech AI & Data Science",
+      "B.Tech IT",
+      "B.Tech ECE / EEE / Mechanical",
+      "M.Tech / MBA"
+    ],
     "admission_mode": "TS EAPCET (Top Rankers)",
     "fee_range_inr": "₹1,40,000 / year (Govt ePass fee reimbursement applies for eligible ranks)",
     "scholarships": "State Fee Reimbursement, Merit Scholarships",
     "hostel_available": true,
-    "facilities": ["State-of-the-art Innovation Center", "Modern Computer Laboratories", "High Placement Rate (>85%)", "Hostels with Mess", "Bus Transport across City"],
+    "facilities": [
+      "State-of-the-art Innovation Center",
+      "Modern Computer Laboratories",
+      "High Placement Rate (>85%)",
+      "Hostels with Mess",
+      "Bus Transport across City"
+    ],
     "rating": 4.6,
     "description": "Telangana's top private engineering institution with exceptional campus placements in Microsoft, Google, Amazon, and leading software firms.",
     "verified": true
@@ -353,12 +489,24 @@
     "website": "https://www.vce.ac.in/",
     "affiliations": "Affiliated to Osmania University, NAAC A++, NBA Accredited",
     "established_year": 1981,
-    "courses": ["B.Tech CSE", "B.Tech AI & ML", "B.Tech Information Technology", "B.Tech ECE", "B.Tech Civil / Mechanical"],
+    "courses": [
+      "B.Tech CSE",
+      "B.Tech AI & ML",
+      "B.Tech Information Technology",
+      "B.Tech ECE",
+      "B.Tech Civil / Mechanical"
+    ],
     "admission_mode": "TS EAPCET",
     "fee_range_inr": "₹1,40,000 / year (Regulated Fee)",
     "scholarships": "Telangana ePass Reimbursement & Vasavi Trust Aid",
     "hostel_available": false,
-    "facilities": ["Cisco Networking Academy", "Advanced IoT Lab", "Campus Placement Cell", "Digital Central Library", "Fleet of College Buses"],
+    "facilities": [
+      "Cisco Networking Academy",
+      "Advanced IoT Lab",
+      "Campus Placement Cell",
+      "Digital Central Library",
+      "Fleet of College Buses"
+    ],
     "rating": 4.5,
     "description": "Renowned for disciplined academics, exceptional software recruitment, and industry-oriented training programs.",
     "verified": true
@@ -381,12 +529,22 @@
     "website": "https://vnrvjiet.ac.in/",
     "affiliations": "Affiliated to JNTUH, Autonomous, NAAC A++ (CGPA 3.73)",
     "established_year": 1995,
-    "courses": ["B.Tech Computer Science & Business Systems", "B.Tech AI & Data Science", "B.Tech Cyber Security", "B.Tech ECE"],
+    "courses": [
+      "B.Tech Computer Science & Business Systems",
+      "B.Tech AI & Data Science",
+      "B.Tech Cyber Security",
+      "B.Tech ECE"
+    ],
     "admission_mode": "TS EAPCET",
     "fee_range_inr": "₹1,35,000 / year",
     "scholarships": "Telangana ePass & Vignana Jyothi Merit Grants",
     "hostel_available": true,
-    "facilities": ["Automated Driving Simulator", "VJ-Hub Incubation Garage", "TCS & Capgemini CoE", "Boys & Girls Hostels"],
+    "facilities": [
+      "Automated Driving Simulator",
+      "VJ-Hub Incubation Garage",
+      "TCS & Capgemini CoE",
+      "Boys & Girls Hostels"
+    ],
     "rating": 4.6,
     "description": "Top-tier technology institute known for experiential learning, hackathon achievements, and high-paying tech placements.",
     "verified": true
@@ -409,12 +567,21 @@
     "website": "https://www.rgukt.ac.in/",
     "affiliations": "Telangana State University (Specially Created for Rural 10th Toppers)",
     "established_year": 2008,
-    "courses": ["6-Year Integrated B.Tech (2-Year PUC + 4-Year B.Tech CSE/ECE/Mech/Civil)", "M.Tech"],
+    "courses": [
+      "6-Year Integrated B.Tech (2-Year PUC + 4-Year B.Tech CSE/ECE/Mech/Civil)",
+      "M.Tech"
+    ],
     "admission_mode": "Direct Merit on Class 10 SSC GPA (85% Rural Govt School Quota)",
     "fee_range_inr": "100% Free / Fully Subsidized by Govt of Telangana",
     "scholarships": "Free Laptops, Free Uniforms, Full Tuition & Mess Fee Reimbursement",
     "hostel_available": true,
-    "facilities": ["Individual Laptop for Every Student", "Residential Campus with Mess", "High-Speed Campus Wi-Fi", "Soft Skills & Coding Labs", "Cultural Auditorium"],
+    "facilities": [
+      "Individual Laptop for Every Student",
+      "Residential Campus with Mess",
+      "High-Speed Campus Wi-Fi",
+      "Soft Skills & Coding Labs",
+      "Cultural Auditorium"
+    ],
     "rating": 4.7,
     "description": "A pioneering initiative providing rural talent access to integrated engineering education with laptops, housing, and mentoring, transforming rural youth into tech leaders.",
     "verified": true
@@ -437,12 +604,22 @@
     "website": "https://www.nitw.ac.in/",
     "affiliations": "Institute of National Importance (INI), MoE, Established 1959",
     "established_year": 1959,
-    "courses": ["B.Tech CSE / ECE / Mechanical / Civil / Chemical", "Integrated M.Sc Chemistry / Maths", "MCA"],
+    "courses": [
+      "B.Tech CSE / ECE / Mechanical / Civil / Chemical",
+      "Integrated M.Sc Chemistry / Maths",
+      "MCA"
+    ],
     "admission_mode": "JEE Main (Home State & All India Quota)",
     "fee_range_inr": "₹1,45,000 / year (100% Tuition Waiver for SC/ST/PH & Economically Weaker Section)",
     "scholarships": "Central Sector Scholarship, Post-Matric Welfare Aid, Institute Merit Awards",
     "hostel_available": true,
-    "facilities": ["Innovation & Incubation Garage", "Asia's Largest Student Hostel Complex", "24/7 Digital Library", "Robotics & AI Center", "Placement Record > 90%"],
+    "facilities": [
+      "Innovation & Incubation Garage",
+      "Asia's Largest Student Hostel Complex",
+      "24/7 Digital Library",
+      "Robotics & AI Center",
+      "Placement Record > 90%"
+    ],
     "rating": 4.8,
     "description": "India's first Regional Engineering College (REC), now a premier NIT, providing top-tier technical education and massive multinational campus placements.",
     "verified": true
@@ -465,12 +642,24 @@
     "website": "https://www.kakatiya.ac.in/",
     "affiliations": "State Public University, UGC, NAAC A",
     "established_year": 1976,
-    "courses": ["B.Tech Engineering", "B.Pharm / M.Pharm", "BCA / MCA", "B.Sc / M.Sc Sciences", "B.Ed"],
+    "courses": [
+      "B.Tech Engineering",
+      "B.Pharm / M.Pharm",
+      "BCA / MCA",
+      "B.Sc / M.Sc Sciences",
+      "B.Ed"
+    ],
     "admission_mode": "TS EAPCET, TS PGECET & DOST",
     "fee_range_inr": "₹28,000 / year (Govt Subsidized)",
     "scholarships": "Telangana ePass Fee Reimbursement (100%)",
     "hostel_available": true,
-    "facilities": ["Sprawling Green Campus", "University Library", "Hostels with Subsidized Mess", "Competitive Exam Coaching", "Pharmacy Research Labs"],
+    "facilities": [
+      "Sprawling Green Campus",
+      "University Library",
+      "Hostels with Subsidized Mess",
+      "Competitive Exam Coaching",
+      "Pharmacy Research Labs"
+    ],
     "rating": 4.4,
     "description": "Major public university serving North Telangana districts with strong pharmaceutical, engineering, and arts departments.",
     "verified": true
@@ -493,12 +682,22 @@
     "website": "https://kmcwarangal.com/",
     "affiliations": "KNRUHS, National Medical Commission (NMC)",
     "established_year": 1959,
-    "courses": ["MBBS", "B.Sc Nursing", "MD / MS Post Graduate", "Paramedical Diplomas"],
+    "courses": [
+      "MBBS",
+      "B.Sc Nursing",
+      "MD / MS Post Graduate",
+      "Paramedical Diplomas"
+    ],
     "admission_mode": "NEET UG Counseling",
     "fee_range_inr": "₹12,000 / year (Subsidized Government Fee)",
     "scholarships": "Telangana ePass & Central Welfare Grants",
     "hostel_available": true,
-    "facilities": ["1,200-Bed MGM Hospital Clinical Training", "Regional Cancer Center", "Dissection Hall", "Hostels for Medical Students"],
+    "facilities": [
+      "1,200-Bed MGM Hospital Clinical Training",
+      "Regional Cancer Center",
+      "Dissection Hall",
+      "Hostels for Medical Students"
+    ],
     "rating": 4.6,
     "description": "A premier government medical college in Telangana with extensive clinical exposure through the famous MGM Civil Hospital.",
     "verified": true
@@ -521,12 +720,22 @@
     "website": "http://sbtet.telangana.gov.in/",
     "affiliations": "SBTET, AICTE",
     "established_year": 1955,
-    "courses": ["Diploma in Mechanical (DME)", "Diploma in Civil (DCE)", "Diploma in Electrical (DEEE)", "Diploma in Computers (DCME)"],
+    "courses": [
+      "Diploma in Mechanical (DME)",
+      "Diploma in Civil (DCE)",
+      "Diploma in Electrical (DEEE)",
+      "Diploma in Computers (DCME)"
+    ],
     "admission_mode": "TS POLYCET",
     "fee_range_inr": "₹3,800 / year",
     "scholarships": "100% Free under ePass Scheme",
     "hostel_available": true,
-    "facilities": ["Mechanical Workshop", "CAD Computer Lab", "Surveying Instruments Lab", "Placement Guidance"],
+    "facilities": [
+      "Mechanical Workshop",
+      "CAD Computer Lab",
+      "Surveying Instruments Lab",
+      "Placement Guidance"
+    ],
     "rating": 4.3,
     "description": "Oldest technical polytechnic in Warangal district providing hands-on engineering diplomas with lateral ECET entry into B.Tech.",
     "verified": true
@@ -549,12 +758,23 @@
     "website": "http://gdcts.cgg.gov.in/karimnagar.edu",
     "affiliations": "Satavahana University, UGC Autonomous, NAAC A",
     "established_year": 1956,
-    "courses": ["B.Sc Data Science", "B.Sc Computers & Maths", "B.Com Business Analytics", "B.A. Public Administration & History"],
+    "courses": [
+      "B.Sc Data Science",
+      "B.Sc Computers & Maths",
+      "B.Com Business Analytics",
+      "B.A. Public Administration & History"
+    ],
     "admission_mode": "DOST Telangana Degree Online Services (Merit)",
     "fee_range_inr": "₹4,500 / year (Nominal Govt Fee)",
     "scholarships": "100% Free under Telangana ePass Post-Matric Scheme",
     "hostel_available": true,
-    "facilities": ["District Telangana Skills & Knowledge Center (TSKC)", "Digital Language Lab", "Competitive Coaching Cell", "Affordable Hostel", "Botanical Garden"],
+    "facilities": [
+      "District Telangana Skills & Knowledge Center (TSKC)",
+      "Digital Language Lab",
+      "Competitive Coaching Cell",
+      "Affordable Hostel",
+      "Botanical Garden"
+    ],
     "rating": 4.4,
     "description": "Leading autonomous government college in North Telangana providing modern Data Science and Commerce degrees at nominal cost for rural Intermediate graduates.",
     "verified": true
@@ -570,19 +790,29 @@
     "district": "Jagtial",
     "state": "Telangana",
     "pincode": "505501",
-    "latitude": 18.7960,
-    "longitude": 78.9180,
+    "latitude": 18.796,
+    "longitude": 78.918,
     "phone": "+91 8724 229000",
     "email": "cej@jntuh.ac.in",
     "website": "https://jntuhcej.ac.in/",
     "affiliations": "JNTU Hyderabad Constituent Campus, AICTE",
     "established_year": 2007,
-    "courses": ["B.Tech Computer Science & Engineering", "B.Tech Information Technology", "B.Tech ECE / EEE", "B.Tech Mechanical"],
+    "courses": [
+      "B.Tech Computer Science & Engineering",
+      "B.Tech Information Technology",
+      "B.Tech ECE / EEE",
+      "B.Tech Mechanical"
+    ],
     "admission_mode": "TS EAPCET",
     "fee_range_inr": "₹35,000 / year (Subsidized Government Fee)",
     "scholarships": "Telangana ePass Fee Reimbursement (100%)",
     "hostel_available": true,
-    "facilities": ["Scenic Hilltop Campus at Kondagattu", "Modern Computer Networks Lab", "Campus Placements", "Boys and Girls Hostels with Solar Water"],
+    "facilities": [
+      "Scenic Hilltop Campus at Kondagattu",
+      "Modern Computer Networks Lab",
+      "Campus Placements",
+      "Boys and Girls Hostels with Solar Water"
+    ],
     "rating": 4.4,
     "description": "Government engineering college established to bring high-quality technical education directly to rural North Telangana students.",
     "verified": true
@@ -598,19 +828,30 @@
     "district": "Nizamabad",
     "state": "Telangana",
     "pincode": "503322",
-    "latitude": 18.6080,
-    "longitude": 78.2140,
+    "latitude": 18.608,
+    "longitude": 78.214,
     "phone": "+91 8461 222220",
     "email": "tu@telanganauniversity.ac.in",
     "website": "https://telanganauniversity.ac.in/",
     "affiliations": "State Public University, UGC, NAAC B+",
     "established_year": 2006,
-    "courses": ["MCA (Computer Applications)", "M.Sc Computer Science", "M.Sc Organic Chemistry", "B.Ed", "Integrated Law"],
+    "courses": [
+      "MCA (Computer Applications)",
+      "M.Sc Computer Science",
+      "M.Sc Organic Chemistry",
+      "B.Ed",
+      "Integrated Law"
+    ],
     "admission_mode": "CPGET & State Web Counseling",
     "fee_range_inr": "₹18,000 / year",
     "scholarships": "Telangana ePass Full Fee Reimbursement",
     "hostel_available": true,
-    "facilities": ["600-Acre Campus along NH-44", "Central Library", "University Hostels with Mess", "Digital Classrooms"],
+    "facilities": [
+      "600-Acre Campus along NH-44",
+      "Central Library",
+      "University Hostels with Mess",
+      "Digital Classrooms"
+    ],
     "rating": 4.2,
     "description": "Serving Nizamabad and Kamareddy districts with modern PG and undergraduate courses for rural graduates.",
     "verified": true
@@ -633,12 +874,24 @@
     "website": "https://www.andhrauniversity.edu.in/",
     "affiliations": "State University of Andhra Pradesh, UGC, NAAC A++ (CGPA 3.74)",
     "established_year": 1926,
-    "courses": ["B.Tech Engineering (All Tracks)", "B.Sc Data Science & Statistics", "B.Pharm", "BCA / MCA", "B.Sc Marine Biology"],
+    "courses": [
+      "B.Tech Engineering (All Tracks)",
+      "B.Sc Data Science & Statistics",
+      "B.Pharm",
+      "BCA / MCA",
+      "B.Sc Marine Biology"
+    ],
     "admission_mode": "AP EAPCET & State Web Counseling",
     "fee_range_inr": "₹38,000 / year (Govt Subsidized)",
     "scholarships": "Jagananna Vidya Deevena (100% full fee reimbursement by AP Govt)",
     "hostel_available": true,
-    "facilities": ["Scenic Coastal Campus", "Dr. B.R. Ambedkar Central Library", "Subsidized Hostels with Dining", "Incubation Center", "Sports Stadium"],
+    "facilities": [
+      "Scenic Coastal Campus",
+      "Dr. B.R. Ambedkar Central Library",
+      "Subsidized Hostels with Dining",
+      "Incubation Center",
+      "Sports Stadium"
+    ],
     "rating": 4.6,
     "description": "Centenary state university renowned for science, engineering, and marine research, offering fully subsidized tuition through state scholarship schemes.",
     "verified": true
@@ -654,19 +907,29 @@
     "district": "Visakhapatnam",
     "state": "Andhra Pradesh",
     "pincode": "530008",
-    "latitude": 17.7340,
-    "longitude": 83.2840,
+    "latitude": 17.734,
+    "longitude": 83.284,
     "phone": "+91 891 255 8345",
     "email": "gptvsp@gmail.com",
     "website": "http://sbtet.ap.gov.in/",
     "affiliations": "SBTET Andhra Pradesh, AICTE",
     "established_year": 1956,
-    "courses": ["Diploma in Mechanical (DME)", "Diploma in Electrical (DEEE)", "Diploma in Civil (DCE)", "Diploma in Metallurgy"],
+    "courses": [
+      "Diploma in Mechanical (DME)",
+      "Diploma in Electrical (DEEE)",
+      "Diploma in Civil (DCE)",
+      "Diploma in Metallurgy"
+    ],
     "admission_mode": "AP POLYCET",
     "fee_range_inr": "₹4,700 / year",
     "scholarships": "Jagananna Vidya Deevena 100% Reimbursement",
     "hostel_available": true,
-    "facilities": ["Metallurgy Testing Labs", "Heavy Electrical Lab", "Shipyard Apprenticeship Program", "Hostels"],
+    "facilities": [
+      "Metallurgy Testing Labs",
+      "Heavy Electrical Lab",
+      "Shipyard Apprenticeship Program",
+      "Hostels"
+    ],
     "rating": 4.5,
     "description": "Renowned polytechnic college with direct apprenticeship ties to Visakhapatnam Port, HPCL Refinery, and Hindustan Shipyard.",
     "verified": true
@@ -689,12 +952,23 @@
     "website": "https://www.nagarjunauniversity.ac.in/",
     "affiliations": "UGC, State University of AP, NAAC A",
     "established_year": 1976,
-    "courses": ["B.Tech Engineering", "BCA / MCA", "B.Sc Nanotechnology", "B.Pharm", "M.Sc Biotechnology"],
+    "courses": [
+      "B.Tech Engineering",
+      "BCA / MCA",
+      "B.Sc Nanotechnology",
+      "B.Pharm",
+      "M.Sc Biotechnology"
+    ],
     "admission_mode": "AP EAPCET & AP ICET",
     "fee_range_inr": "₹32,000 / year",
     "scholarships": "Jagananna Vidya Deevena & Vasathi Deevena",
     "hostel_available": true,
-    "facilities": ["Central Instrumentation Lab", "Buddhist Studies Center", "International Student Hostel", "Sports Complex"],
+    "facilities": [
+      "Central Instrumentation Lab",
+      "Buddhist Studies Center",
+      "International Student Hostel",
+      "Sports Complex"
+    ],
     "rating": 4.4,
     "description": "Major university in the Amaravati capital region providing diverse technical, pharmaceutical, and scientific degrees.",
     "verified": true
@@ -711,18 +985,28 @@
     "state": "Andhra Pradesh",
     "pincode": "520008",
     "latitude": 16.5062,
-    "longitude": 80.6480,
+    "longitude": 80.648,
     "phone": "+91 866 247 1823",
     "email": "gptvja@gmail.com",
     "website": "http://sbtet.ap.gov.in/",
     "affiliations": "SBTET AP, AICTE",
     "established_year": 1968,
-    "courses": ["Diploma in Computers (DCME)", "Diploma in Electronics (DECE)", "Diploma in Mechanical (DME)", "Diploma in Civil (DCE)"],
+    "courses": [
+      "Diploma in Computers (DCME)",
+      "Diploma in Electronics (DECE)",
+      "Diploma in Mechanical (DME)",
+      "Diploma in Civil (DCE)"
+    ],
     "admission_mode": "AP POLYCET",
     "fee_range_inr": "₹4,700 / year",
     "scholarships": "100% Free under State Welfare Schemes",
     "hostel_available": true,
-    "facilities": ["Computer Labs with High-Speed Internet", "Electronics Testing Kits", "Campus Placements", "Hostel"],
+    "facilities": [
+      "Computer Labs with High-Speed Internet",
+      "Electronics Testing Kits",
+      "Campus Placements",
+      "Hostel"
+    ],
     "rating": 4.4,
     "description": "Centrally located polytechnic offering technical diplomas with strong industry connections in coastal Andhra.",
     "verified": true
@@ -745,12 +1029,23 @@
     "website": "https://svuniversity.edu.in/",
     "affiliations": "State Public University, UGC, NAAC A+ (NIRF Top 50)",
     "established_year": 1954,
-    "courses": ["B.Tech CSE / EEE / Civil", "B.Sc Computer Science", "B.Com Computer Applications", "M.Tech / M.Sc"],
+    "courses": [
+      "B.Tech CSE / EEE / Civil",
+      "B.Sc Computer Science",
+      "B.Com Computer Applications",
+      "M.Tech / M.Sc"
+    ],
     "admission_mode": "AP EAPCET & AP ICET",
     "fee_range_inr": "₹32,000 / year",
     "scholarships": "Jagananna Vidya Deevena & Vasathi Deevena, National Scholarship Portal",
     "hostel_available": true,
-    "facilities": ["Sprawling Green Campus", "Oriental Research Institute", "Career Guidance & Placement Center", "Girls & Boys Hostels", "Gym & Sports Grounds"],
+    "facilities": [
+      "Sprawling Green Campus",
+      "Oriental Research Institute",
+      "Career Guidance & Placement Center",
+      "Girls & Boys Hostels",
+      "Gym & Sports Grounds"
+    ],
     "rating": 4.5,
     "description": "Renowned South Indian university situated at the foothills of Tirumala, dedicated to empowering students from Rayalaseema and rural districts.",
     "verified": true
@@ -766,19 +1061,30 @@
     "district": "Tirupati",
     "state": "Andhra Pradesh",
     "pincode": "517619",
-    "latitude": 13.6700,
-    "longitude": 79.5900,
+    "latitude": 13.67,
+    "longitude": 79.59,
     "phone": "+91 877 250 3000",
     "email": "info@iittp.ac.in",
     "website": "https://www.iittp.ac.in/",
     "affiliations": "Institute of National Importance, Ministry of Education",
     "established_year": 2015,
-    "courses": ["B.Tech CSE", "B.Tech Electrical", "B.Tech Mechanical", "B.Tech Civil", "M.Tech / M.Sc / Ph.D"],
+    "courses": [
+      "B.Tech CSE",
+      "B.Tech Electrical",
+      "B.Tech Mechanical",
+      "B.Tech Civil",
+      "M.Tech / M.Sc / Ph.D"
+    ],
     "admission_mode": "JEE Advanced",
     "fee_range_inr": "₹2,15,000 / year (Full Waiver for Eligible Income Categories)",
     "scholarships": "Central Sector MCM Scholarships, Full Tuition Aid",
     "hostel_available": true,
-    "facilities": ["Smart 500-Acre Campus", "Advanced Central Instrumentation Facility", "Digital Classrooms", "Modern Hostels"],
+    "facilities": [
+      "Smart 500-Acre Campus",
+      "Advanced Central Instrumentation Facility",
+      "Digital Classrooms",
+      "Modern Hostels"
+    ],
     "rating": 4.7,
     "description": "Fast-growing premier national institute with modern research infrastructure in computer science and smart manufacturing.",
     "verified": true
@@ -794,19 +1100,29 @@
     "district": "Anantapur",
     "state": "Andhra Pradesh",
     "pincode": "515002",
-    "latitude": 14.6540,
-    "longitude": 77.6070,
+    "latitude": 14.654,
+    "longitude": 77.607,
     "phone": "+91 8554 272098",
     "email": "principal.cea@jntua.ac.in",
     "website": "https://www.jntuacea.ac.in/",
     "affiliations": "JNTU Anantapur, UGC Autonomous, NAAC A",
     "established_year": 1946,
-    "courses": ["B.Tech Computer Science", "B.Tech AI & Data Science", "B.Tech ECE / EEE", "B.Tech Mechanical / Chemical"],
+    "courses": [
+      "B.Tech Computer Science",
+      "B.Tech AI & Data Science",
+      "B.Tech ECE / EEE",
+      "B.Tech Mechanical / Chemical"
+    ],
     "admission_mode": "AP EAPCET",
     "fee_range_inr": "₹35,000 / year (Subsidized Government Fee)",
     "scholarships": "Jagananna Vidya Deevena (100% Tuition Aid)",
     "hostel_available": true,
-    "facilities": ["Historic Engineering Campus", "High Performance Computing Lab", "Hostels with Mess", "High Placement Record"],
+    "facilities": [
+      "Historic Engineering Campus",
+      "High Performance Computing Lab",
+      "Hostels with Mess",
+      "High Placement Record"
+    ],
     "rating": 4.5,
     "description": "One of South India's oldest engineering colleges, producing generation after generation of infrastructure and software engineers.",
     "verified": true
@@ -829,14 +1145,109 @@
     "website": "https://kmckurnool.edu.in/",
     "affiliations": "Dr. YSR University of Health Sciences, NMC",
     "established_year": 1956,
-    "courses": ["MBBS", "B.Sc Nursing", "MD / MS", "Diploma in Medical Lab Technology"],
+    "courses": [
+      "MBBS",
+      "B.Sc Nursing",
+      "MD / MS",
+      "Diploma in Medical Lab Technology"
+    ],
     "admission_mode": "NEET UG",
     "fee_range_inr": "₹12,000 / year",
     "scholarships": "State Post-Matric & Health Sciences Scholarships",
     "hostel_available": true,
-    "facilities": ["1,100-Bed Kurnool General Hospital", "Anatomy Museum", "Hostels for Medical & Nursing Students"],
+    "facilities": [
+      "1,100-Bed Kurnool General Hospital",
+      "Anatomy Museum",
+      "Hostels for Medical & Nursing Students"
+    ],
     "rating": 4.6,
     "description": "Major public medical institute in Rayalaseema offering top clinical surgical training and nursing qualifications.",
+    "verified": true
+  },
+  {
+    "id": "dest_vignan_lara",
+    "name": "Vignan's Lara Institute of Technology & Science (VLITS)",
+    "name_te": "విజ్ఞాన్స్ లారా ఇన్స్టిట్యూట్ ఆఫ్ టెక్నాలజీ & సైన్స్ (వడ్లమూడి)",
+    "category": "Engineering",
+    "category_label": "Premier Autonomous Engineering College",
+    "address": "Vadlamudi, Chebrolu Mandal, Tenali-Guntur Road",
+    "city": "Vadlamudi",
+    "district": "Guntur",
+    "state": "Andhra Pradesh",
+    "pincode": "522213",
+    "latitude": 16.2334,
+    "longitude": 80.5562,
+    "phone": "+91 863 238 1200",
+    "email": "principal@vignanlara.org",
+    "website": "https://www.vignanlara.org/",
+    "affiliations": "Affiliated to JNTU Kakinada, AICTE, NAAC A+, NBA Accredited",
+    "established_year": 2007,
+    "courses": [
+      "B.Tech Computer Science & Engineering (CSE)",
+      "B.Tech AI & Machine Learning",
+      "B.Tech Data Science",
+      "B.Tech Information Technology (IT)",
+      "B.Tech Electronics & Communication (ECE)",
+      "B.Tech Electrical & Electronics (EEE)",
+      "B.Tech Mechanical Engineering",
+      "Master of Computer Applications (MCA)",
+      "M.Tech Embedded Systems & CSE"
+    ],
+    "admission_mode": "AP EAPCET (Engineering Rank) & AP ICET",
+    "fee_range_inr": "₹48,000 / year (Regulated Government Fee)",
+    "scholarships": "Jagananna Vidya Deevena (100% full fee reimbursement by AP Govt) & Vignan Merit Grants",
+    "hostel_available": true,
+    "facilities": [
+      "Advanced Coding & Cloud Computing Labs",
+      "TCS, Wipro, Infosys & Cognizant Placement Drive Center",
+      "Separate AC & Non-AC Hostels for Boys & Girls with Dining",
+      "Digital Central Library with IEEE & ScienceDirect access",
+      "Fleet of 60+ College Buses connecting Guntur, Tenali & Vijayawada"
+    ],
+    "rating": 4.6,
+    "description": "One of Coastal Andhra's most renowned engineering institutions in the Vignan educational group, recognized for disciplined academics, high placements in multinational IT companies, and innovation labs.",
+    "verified": true
+  },
+  {
+    "id": "dest_vignan_university",
+    "name": "Vignan's Foundation for Science, Technology & Research (VFSTR Deemed University)",
+    "name_te": "విజ్ఞాన్స్ విశ్వవిద్యాలయం (డీమ్డ్ యూనివర్సిటీ, వడ్లమూడి)",
+    "category": "University",
+    "category_label": "Category-1 Deemed to be University",
+    "address": "Guntur-Tenali Highway, Vadlamudi",
+    "city": "Vadlamudi",
+    "district": "Guntur",
+    "state": "Andhra Pradesh",
+    "pincode": "522213",
+    "latitude": 16.233,
+    "longitude": 80.5508,
+    "phone": "+91 863 234 4700",
+    "email": "info@vignan.ac.in",
+    "website": "https://vignan.ac.in/",
+    "affiliations": "Deemed to be University, UGC, NAAC A+ (CGPA 3.49), NIRF Rank Top 100",
+    "established_year": 1997,
+    "courses": [
+      "B.Tech CSE / AI & Robotics",
+      "B.Tech Agricultural Engineering",
+      "B.Tech Biotechnology & Bioinformatics",
+      "B.Tech Food Technology",
+      "B.Pharm",
+      "BBA / MBA",
+      "M.Tech & Ph.D Research"
+    ],
+    "admission_mode": "V-SAT & AP EAPCET / JEE Main",
+    "fee_range_inr": "₹1,80,000 / year (Merit-based Fee Concessions up to 75%)",
+    "scholarships": "Vignan V-SAT Merit Scholarships & National Scholarship Portal (NSP)",
+    "hostel_available": true,
+    "facilities": [
+      "Sprawling Lush Green 104-Acre Campus",
+      "Centre of Excellence in AI & IoT",
+      "Multi-Storey Air-Conditioned Central Library",
+      "Modern Hostels with Wi-Fi, Cafeteria & Gymnasium",
+      "International Placement Cell with Fortune 500 recruiters"
+    ],
+    "rating": 4.7,
+    "description": "Leading Deemed-to-be University offering interdisciplinary engineering, agriculture, and science research with state-of-the-art campus infrastructure and global collaborations.",
     "verified": true
   }
 ]
