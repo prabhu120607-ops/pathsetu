@@ -1050,10 +1050,18 @@ def serve_favicon():
 @app.get("/index")
 @app.get("/index.html")
 def serve_index_page():
+    # If a compiled production bundle exists, serve it
+    dist_index = BASE_DIR / "dist" / "index.html"
+    if dist_index.exists():
+        return FileResponse(dist_index)
+    # When running the FastAPI server locally, serve the complete interactive dashboard
+    dashboard_file = BASE_DIR / "dashboard.html"
+    if dashboard_file.exists():
+        return FileResponse(dashboard_file)
     f = BASE_DIR / "index.html"
     if f.exists():
         return FileResponse(f)
-    raise HTTPException(status_code=404, detail="index.html not found")
+    raise HTTPException(status_code=404, detail="Page not found")
 
 @app.get("/login")
 @app.get("/login.html")
