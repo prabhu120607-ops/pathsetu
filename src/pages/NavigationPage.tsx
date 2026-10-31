@@ -253,8 +253,10 @@ export const NavigationPage: React.FC = () => {
   const filteredDestinations = destinations.filter(d => {
     const matchesSearch =
       d.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (d.name_te && d.name_te.toLowerCase().includes(searchQuery.toLowerCase())) ||
       d.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      d.address.toLowerCase().includes(searchQuery.toLowerCase());
+      d.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      d.features.some(f => f.toLowerCase().includes(searchQuery.toLowerCase()));
     const matchesCategory =
       categoryFilter === 'All' || d.category === categoryFilter;
     return matchesSearch && matchesCategory;

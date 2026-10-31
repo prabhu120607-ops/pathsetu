@@ -181,7 +181,7 @@ export interface Destination {
   id: string;
   name: string;
   name_te: string;
-  category: 'University' | 'Polytechnic / ITI' | 'Skill Development Center' | 'Agricultural Institute' | 'Medical College';
+  category: 'University' | 'Polytechnic / ITI' | 'Skill Development Center' | 'Agricultural Institute' | 'Medical College' | 'Engineering College';
   address: string;
   city: string;
   state: string;

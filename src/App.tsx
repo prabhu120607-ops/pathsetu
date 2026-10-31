@@ -33,6 +33,7 @@ export const App: React.FC = () => {
           <Route path="reviews" element={<ReviewsDemoPage />} />
           <Route path="projects" element={<Navigate to="/reviews" replace />} />
           <Route path="navigation" element={<NavigationPage />} />
+          <Route path="colleges" element={<NavigationPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
