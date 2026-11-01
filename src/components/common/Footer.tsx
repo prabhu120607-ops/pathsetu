@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, ExternalLink } from 'lucide-react';
+import { ShieldCheck, ExternalLink, Users, Video } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
 export const Footer: React.FC = () => {
@@ -23,7 +23,7 @@ export const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-xs text-brand-muted leading-relaxed">
-              Transparent, explainable career guidance and affordable education roadmaps built for school and college students in Tier-2/3 and rural India.
+              Transparent, explainable career guidance, student peer stories, and affordable education roadmaps built for school and college students in Tier-2/3 and rural India.
             </p>
             <div className="flex items-center space-x-1.5 text-xs text-brand-muted font-medium">
               <ShieldCheck className="w-4 h-4 text-brand-cyan flex-shrink-0" />
@@ -40,6 +40,11 @@ export const Footer: React.FC = () => {
               <li>
                 <Link to="/assessment" className="text-brand-muted hover:text-brand-primary transition-colors">
                   Career Self-Assessment
+                </Link>
+              </li>
+              <li>
+                <Link to="/recommendations" className="text-brand-muted hover:text-brand-primary transition-colors">
+                  Career Recommendations
                 </Link>
               </li>
               <li>
@@ -70,16 +75,28 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* New Interactive Features */}
+          {/* Student Community & Tools */}
           <div>
             <h4 className="text-xs font-bold text-brand-dark uppercase tracking-wider mb-3">
-              Interactive & Live Tools
+              Student Community & Tools
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link to="/reviews" className="text-brand-muted hover:text-brand-primary transition-colors flex items-center gap-1.5">
-                  <span>Student Reviews & Path Demos</span>
-                  <span className="text-[10px] bg-brand-elevated text-brand-cyan border border-brand-border px-1.5 py-0.2 rounded font-semibold">Live</span>
+                <Link to="/community" className="text-brand-muted hover:text-brand-primary transition-colors flex items-center gap-1.5">
+                  <Users className="w-3.5 h-3.5 text-brand-cyan" />
+                  <span>Student Success Stories</span>
+                  <span className="text-[10px] bg-brand-elevated text-brand-cyan border border-brand-border px-1.5 py-0.2 rounded font-semibold">New</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/community/upload" className="text-brand-muted hover:text-brand-primary transition-colors flex items-center gap-1.5">
+                  <Video className="w-3.5 h-3.5 text-brand-cyan" />
+                  <span>Upload Video Journey</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/profile" className="text-brand-muted hover:text-brand-primary transition-colors">
+                  Student Profile & Milestones
                 </Link>
               </li>
               <li>
@@ -94,8 +111,8 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/resources" className="text-brand-muted hover:text-brand-primary transition-colors">
-                  Verified Government Portals
+                <Link to="/reviews" className="text-brand-muted hover:text-brand-primary transition-colors">
+                  Simulated Path Demos
                 </Link>
               </li>
             </ul>

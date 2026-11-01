@@ -72,18 +72,40 @@ export interface Career {
 }
 
 export interface StudentProfile {
+  id?: string;
+  userId?: string;
   name: string;
+  full_name?: string;
+  displayName?: string;
+  username?: string;
+  email?: string;
+  avatarUrl?: string;
+  avatar_url?: string;
+  bio?: string;
   educationLevel: string;
+  education_level?: string;
+  institutionName?: string;
   currentClass: string;
+  courseStream?: string;
   subjects: string[];
   interests: string[];
   existingSkills: string[];
+  learningSkills?: string[];
   workstyle: string;
   careerInterests: string[];
+  selectedCareerId?: string;
+  learningGoals?: string;
+  achievements?: string[];
+  githubUrl?: string;
+  linkedinUrl?: string;
+  portfolioUrl?: string;
+  profileVisibility?: 'public' | 'private';
   annualBudgetInr: number;
   preferredLanguage: Language;
   locationCity: string;
   locationState: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface RecommendationMatch {
@@ -175,6 +197,58 @@ export interface StudentReview {
   moderation_status: 'published' | 'pending' | 'rejected';
   helpful_count: number;
   created_at: string;
+}
+
+export interface StudentStory {
+  id: string;
+  user_id?: string;
+  author_name: string;
+  author_username?: string;
+  author_avatar?: string;
+  author_education?: string;
+  career_id: string;
+  career_name: string;
+  title: string;
+  description: string;
+  video_url: string;
+  thumbnail_url?: string;
+  duration_seconds?: number;
+  file_size_bytes?: number;
+  skills_learned: string[];
+  milestone_achievement?: string;
+  project_url?: string;
+  visibility: 'public' | 'unlisted' | 'private';
+  is_verified_student: boolean;
+  is_demo_seed?: boolean;
+  likes_count: number;
+  is_liked_by_me?: boolean;
+  created_at: string;
+  updated_at?: string;
+}
+
+export interface StoryReport {
+  id?: string;
+  story_id: string;
+  reporter_id?: string;
+  reason: 'spam' | 'inappropriate' | 'copyright' | 'harassment' | 'misleading';
+  details: string;
+}
+
+export interface AssessmentResponseItem {
+  educationLevel: string;
+  currentStream: string;
+  courseOrClass: string;
+  interests: string[];
+  problemsToSolve: string[];
+  strengths: string[];
+  skillsLearned: string[];
+  skillsToLearnNext: string[];
+  workstylePreference: string;
+  environmentPreference: string;
+  budgetInr: number;
+  weeklyHours: number;
+  relocationWillingness: string;
+  preferredLanguage: Language;
 }
 
 export interface Destination {

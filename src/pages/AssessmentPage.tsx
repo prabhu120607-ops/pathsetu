@@ -1,508 +1,742 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
-  ClipboardList,
-  PieChart,
-  Briefcase,
-  BookOpen,
+  GraduationCap,
+  Sparkles,
   ArrowLeft,
   ArrowRight,
-  User,
-  Target,
-  TrendingUp,
-  Save,
+  BookOpen,
+  Briefcase,
+  Layers,
+  Heart,
+  Sliders,
+  Wallet,
+  Clock,
+  Compass,
   CheckCircle2,
-  Sparkles,
-  Award
+  HelpCircle
 } from 'lucide-react';
-import { useAuthProgress } from '../context/AuthProgressContext';
+import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 import { computeRecommendations } from '../services/recommendationService';
-import { RecommendationMatch } from '../types';
-
-interface Question {
-  id: string;
-  category: 'interests' | 'subjects' | 'skills' | 'education' | 'workstyle';
-  statement: string;
-  statement_te: string;
-  associatedTrait: string;
-}
-
-const ASSESSMENT_QUESTIONS: Question[] = [
-  {
-    id: "q1",
-    category: "interests",
-    statement: "I enjoy working with data and solving complex problems.",
-    statement_te: "నేను డేటాతో పనిచేయడం మరియు సంక్లిష్ట సమస్యలను పరిష్కరించడం ఇష్టపడతాను.",
-    associatedTrait: "problem-solving"
-  },
-  {
-    id: "q2",
-    category: "interests",
-    statement: "I like building digital tools, coding, or working with computers and software.",
-    statement_te: "నేను డిజిటల్ ఉత్పత్తులను నిర్మించడం లేదా కోడింగ్ చేయడం ఆనందిస్తాను.",
-    associatedTrait: "technology"
-  },
-  {
-    id: "q3",
-    category: "interests",
-    statement: "I enjoy visual design, drawing, creating clean user interfaces, or sketching.",
-    statement_te: "నేను విజువల్ డిజైన్, డ్రాయింగ్ లేదా అందమైన వెబ్ పేజీలను డిజైన్ చేయడం ఇష్టపడతాను.",
-    associatedTrait: "creativity"
-  },
-  {
-    id: "q4",
-    category: "interests",
-    statement: "I am passionate about farming, crop health, soil, and rural community development.",
-    statement_te: "నాకు వ్యవసాయం, పంటల ఆరోగ్యం మరియు గ్రామీణ వికాసంపై ఆసక్తి ఉంది.",
-    associatedTrait: "agriculture"
-  },
-  {
-    id: "q5",
-    category: "interests",
-    statement: "I like working with electrical tools, solar panels, and fixing physical machinery.",
-    statement_te: "నేను ఎలక్ట్రికల్ పరికరాలు, సోలార్ ప్యానెల్స్ మరియు రిపేరింగ్ పనులను ఇష్టపడతాను.",
-    associatedTrait: "renewable energy"
-  },
-  {
-    id: "q6",
-    category: "interests",
-    statement: "I feel fulfilled when helping patients, caring for health, and assisting in clinics.",
-    statement_te: "ఆరోగ్య సమస్యలు ఉన్న రోగులకు సహాయం చేయడం నాకు సంతృప్తినిస్తుంది.",
-    associatedTrait: "healthcare"
-  },
-  {
-    id: "q7",
-    category: "subjects",
-    statement: "I have strong foundational aptitude in Mathematics and quantitative calculations.",
-    statement_te: "నాకు గణితం మరియు లెక్కలు చేయడంలో మంచి ప్రావీణ్యం ఉంది.",
-    associatedTrait: "Mathematics"
-  },
-  {
-    id: "q8",
-    category: "subjects",
-    statement: "I find Biology, living organisms, and medical/agricultural science fascinating.",
-    statement_te: "బయాలజీ, వృక్ష మరియు జంతు శాస్త్రాలు నాకు ఆసక్తికరంగా అనిపిస్తాయి.",
-    associatedTrait: "Biology"
-  },
-  {
-    id: "q9",
-    category: "skills",
-    statement: "I already have basic familiarity with writing computer programs or HTML/CSS.",
-    statement_te: "నాకు ప్రోగ్రామింగ్ లేదా వెబ్‌సైట్ కోడింగ్‌పై ప్రాథమిక అవగాహన ఉంది.",
-    associatedTrait: "JavaScript or Python"
-  },
-  {
-    id: "q10",
-    category: "workstyle",
-    statement: "I prefer deep, independent focus work rather than continuous large team meetings.",
-    statement_te: "నిరంతర సమావేశాల కంటే ప్రశాంతంగా ఒంటరిగా కూర్చుని పనిచేయడానికి ఇష్టపడతాను.",
-    associatedTrait: "Deep Focus (Solo analytical / coding focus)"
-  }
-];
-
-const LIKERT_OPTIONS = [
-  { label: "Strongly Disagree", label_te: "పూర్తిగా విభేదిస్తున్నాను", value: 1 },
-  { label: "Disagree", label_te: "విభేదిస్తున్నాను", value: 2 },
-  { label: "Neutral", label_te: "తటస్థం", value: 3 },
-  { label: "Agree", label_te: "ఏకీభవిస్తున్నాను", value: 4 },
-  { label: "Strongly Agree", label_te: "పూర్తిగా ఏకీభవిస్తున్నాను", value: 5 }
-];
+import { supabase, isSupabaseConfigured } from '../services/supabaseClient';
+import { FadeIn, TextReveal } from '../components/common/Motion';
 
 export const AssessmentPage: React.FC = () => {
-  const { profile, updateProfile, setActiveCareerId } = useAuthProgress();
+  const { profile, updateProfile, setActiveCareerId, user } = useAuth();
   const { language, t } = useLanguage();
   const navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const isOnboarding = searchParams.get('onboarding') === 'true';
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, number>>(() => {
-    try {
-      const saved = localStorage.getItem('pathsetu_assessment_answers');
-      return saved ? JSON.parse(saved) : {};
-    } catch {
-      return {};
-    }
-  });
-  const [isCompleted, setIsCompleted] = useState(false);
-  const [recommendations, setRecommendations] = useState<RecommendationMatch[]>([]);
+  const [currentStep, setCurrentStep] = useState(1);
+  const totalSteps = 5;
 
-  const currentQ = ASSESSMENT_QUESTIONS[currentIndex];
-  const progressPct = Math.round(((currentIndex + 1) / ASSESSMENT_QUESTIONS.length) * 100);
+  // Step 1: Education State
+  const [educationLevel, setEducationLevel] = useState(profile.educationLevel || 'Class 11–12 (Science / PCM)');
+  const [courseOrClass, setCourseOrClass] = useState(profile.currentClass || 'Class 12');
+  const [currentStream, setCurrentStream] = useState(profile.courseStream || 'MPC (Math, Physics, Chemistry)');
 
-  const handleSelectOption = (value: number) => {
-    const updated = { ...answers, [currentQ.id]: value };
-    setAnswers(updated);
-    try {
-      localStorage.setItem('pathsetu_assessment_answers', JSON.stringify(updated));
-    } catch (e) {
-      console.warn(e);
+  // Step 2: Interests State
+  const [selectedInterests, setSelectedInterests] = useState<string[]>(
+    profile.interests && profile.interests.length > 0 ? profile.interests : ['technology', 'problem-solving']
+  );
+  const [selectedProblems, setSelectedProblems] = useState<string[]>(['building digital tools', 'rural development']);
+
+  // Step 3: Strengths & Skills State
+  const [selectedStrengths, setSelectedStrengths] = useState<string[]>(['Analytical Thinking', 'Problem Solving']);
+  const [workPreferenceType, setWorkPreferenceType] = useState('coding');
+  const [existingSkills, setExistingSkills] = useState<string[]>(
+    profile.existingSkills && profile.existingSkills.length > 0 ? profile.existingSkills : ['JavaScript or Python', 'Web Fundamentals (HTML/CSS)']
+  );
+  const [skillsToLearn, setSkillsToLearn] = useState<string[]>(['React & Modern UI', 'Cloud & Database Basics']);
+
+  // Step 4: Preferred Work Style State
+  const [workstyle, setWorkstyle] = useState(profile.workstyle || 'Deep Focus (Solo analytical / coding focus)');
+  const [activityType, setActivityType] = useState('practical'); // practical, research, creative, problem-solving
+  const [workEnvironment, setWorkEnvironment] = useState('mixed'); // office, remote, field, mixed
+
+  // Step 5: Practical Constraints State
+  const [budgetInr, setBudgetInr] = useState(profile.annualBudgetInr || 35000);
+  const [weeklyHours, setWeeklyHours] = useState(12);
+  const [relocationWillingness, setRelocationWillingness] = useState('within_state'); // within_district, within_state, anywhere_india, remote_only
+  const [learningLanguage, setLearningLanguage] = useState<'en' | 'te' | 'both'>('both');
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const toggleItem = (list: string[], item: string, setter: (val: string[]) => void) => {
+    if (list.includes(item)) {
+      setter(list.filter(x => x !== item));
+    } else {
+      setter([...list, item]);
     }
   };
 
   const handleNext = () => {
-    if (currentIndex < ASSESSMENT_QUESTIONS.length - 1) {
-      setCurrentIndex(prev => prev + 1);
+    if (currentStep < totalSteps) {
+      setCurrentStep(prev => prev + 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       finishAssessment();
     }
   };
 
   const handlePrevious = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(prev => prev - 1);
+    if (currentStep > 1) {
+      setCurrentStep(prev => prev - 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
-  const finishAssessment = () => {
-    // Derive student interests and subjects from answers
-    const derivedInterests: string[] = [];
-    const derivedSubjects: string[] = [];
-    const derivedSkills: string[] = [];
-    let derivedWorkstyle = profile.workstyle;
+  const finishAssessment = async () => {
+    setIsSubmitting(true);
 
-    ASSESSMENT_QUESTIONS.forEach(q => {
-      const score = answers[q.id] || 3;
-      if (score >= 4) {
-        if (q.category === 'interests') derivedInterests.push(q.associatedTrait);
-        if (q.category === 'subjects') derivedSubjects.push(q.associatedTrait);
-        if (q.category === 'skills') derivedSkills.push(q.associatedTrait);
-        if (q.category === 'workstyle') derivedWorkstyle = q.associatedTrait;
-      }
-    });
-
-    const updatedProfile = {
-      ...profile,
-      interests: derivedInterests.length > 0 ? derivedInterests : profile.interests,
-      subjects: derivedSubjects.length > 0 ? derivedSubjects : profile.subjects,
-      existingSkills: derivedSkills.length > 0 ? derivedSkills : profile.existingSkills,
-      workstyle: derivedWorkstyle
+    // 1. Synthesize student profile updates
+    const updatedProfileUpdates = {
+      educationLevel,
+      currentClass: courseOrClass,
+      courseStream: currentStream,
+      interests: selectedInterests,
+      existingSkills,
+      learningSkills: skillsToLearn,
+      workstyle,
+      annualBudgetInr: budgetInr,
+      preferredLanguage: learningLanguage === 'te' ? 'te' : 'en' as any
     };
 
-    updateProfile(updatedProfile);
-    const recs = computeRecommendations(updatedProfile);
-    setRecommendations(recs);
-    setIsCompleted(true);
+    await updateProfile(updatedProfileUpdates);
+
+    // 2. Compute 5-factor recommendations
+    const matches = computeRecommendations({
+      ...profile,
+      ...updatedProfileUpdates
+    });
+
+    // 3. Save assessment session in localStorage for RecommendationsPage
+    try {
+      const assessmentRecord = {
+        timestamp: new Date().toISOString(),
+        step1: { educationLevel, courseOrClass, currentStream },
+        step2: { interests: selectedInterests, problems: selectedProblems },
+        step3: { strengths: selectedStrengths, workPreferenceType, existingSkills, skillsToLearn },
+        step4: { workstyle, activityType, workEnvironment },
+        step5: { budgetInr, weeklyHours, relocationWillingness, learningLanguage },
+        matches
+      };
+      localStorage.setItem('pathsetu_last_assessment', JSON.stringify(assessmentRecord));
+
+      // Also persist to Supabase if logged in and configured
+      if (isSupabaseConfigured && supabase && user) {
+        supabase.from('career_assessments').insert([{
+          user_id: user.id,
+          education_level: educationLevel,
+          current_stream: currentStream,
+          interest_tags: selectedInterests,
+          problem_solving_interests: selectedProblems,
+          strength_tags: selectedStrengths,
+          existing_skills: existingSkills,
+          skills_to_learn: skillsToLearn,
+          workstyle_preference: workstyle,
+          environment_preference: workEnvironment,
+          annual_budget_inr: budgetInr,
+          weekly_hours: weeklyHours,
+          relocation_willingness: relocationWillingness,
+          preferred_language: learningLanguage,
+          top_matches: matches.slice(0, 3).map((m: any) => ({
+            careerId: m.career.id,
+            careerName: m.career.name,
+            score: m.compatibilityScore
+          }))
+        }]).then();
+      }
+    } catch (e) {
+      console.warn('Failed to save assessment to database:', e);
+    }
+
+    setIsSubmitting(false);
+    navigate('/recommendations');
   };
 
   return (
-    <div className="py-6 sm:py-8 space-y-8">
-      {/* Top Banner Progress Bar (Mirrors Reference 1) */}
-      <div className="bg-brand-surface border border-brand-border rounded-brand p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex items-center space-x-3 w-full sm:w-auto">
-          <div className="w-8 h-8 rounded-lg bg-brand-primary flex items-center justify-center text-white">
-            <ClipboardList className="w-4 h-4 text-brand-secondary" />
-          </div>
-          <div>
-            <h2 className="text-sm font-bold text-brand-dark">Career Self-Assessment</h2>
-            <div className="text-xs text-brand-muted">
-              Question {currentIndex + 1} of {ASSESSMENT_QUESTIONS.length}
+    <div className="py-6 sm:py-10 space-y-8 max-w-3xl mx-auto">
+      {/* Top Banner Progress Bar */}
+      <FadeIn duration={0.3}>
+        <div className="bg-brand-surface border border-brand-border rounded-brand p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 rounded-brand-sm bg-brand-primary flex items-center justify-center text-white">
+              <Compass className="w-5 h-5 text-white" />
             </div>
-          </div>
-        </div>
-
-        {/* Linear progress bar */}
-        <div className="flex items-center gap-3 w-full sm:w-1/2">
-          <div className="flex-1 bg-brand-bg rounded-full h-2.5 overflow-hidden border border-brand-border">
-            <div
-              className="bg-brand-primary h-2.5 rounded-full transition-all duration-300"
-              style={{ width: `${progressPct}%` }}
-            />
-          </div>
-          <span className="text-xs font-bold text-brand-primary whitespace-nowrap">
-            {progressPct}% Complete
-          </span>
-        </div>
-
-        <button
-          onClick={() => navigate('/dashboard')}
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-brand-sm border border-brand-border text-brand-muted hover:text-brand-dark hover:bg-brand-elevated transition-colors"
-        >
-          <Save className="w-3.5 h-3.5" />
-          <span>Save & Exit</span>
-        </button>
-      </div>
-
-      {!isCompleted ? (
-        /* Reference 1 Layout: 3-column Grid (Sidebar, Main Assessment Card, Right Context Card) */
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          {/* Left Mini Sidebar */}
-          <aside className="lg:col-span-3 space-y-4">
-            <div className="bg-brand-surface border border-brand-border rounded-brand p-3 space-y-1">
-              <div className="flex items-center space-x-3 px-3 py-2.5 rounded-brand-sm bg-brand-elevated text-brand-primary border border-brand-border font-bold text-xs">
-                <ClipboardList className="w-4 h-4" />
-                <span>Assessment</span>
-              </div>
-              <button
-                onClick={() => finishAssessment()}
-                className="w-full flex items-center space-x-3 px-3 py-2.5 rounded-brand-sm text-brand-muted hover:text-brand-dark hover:bg-brand-elevated font-semibold text-xs transition-colors"
-              >
-                <PieChart className="w-4 h-4" />
-                <span>Results</span>
-              </button>
-              <Link
-                to="/careers"
-                className="flex items-center space-x-3 px-3 py-2.5 rounded-brand-sm text-brand-muted hover:text-brand-dark hover:bg-brand-elevated font-semibold text-xs transition-colors"
-              >
-                <Briefcase className="w-4 h-4" />
-                <span>Careers</span>
-              </Link>
-              <Link
-                to="/resources"
-                className="flex items-center space-x-3 px-3 py-2.5 rounded-brand-sm text-brand-muted hover:text-brand-dark hover:bg-brand-elevated font-semibold text-xs transition-colors"
-              >
-                <BookOpen className="w-4 h-4" />
-                <span>Resources</span>
-              </Link>
-            </div>
-
-            {/* Motivational Quote Card (Mirrors Reference 1 bottom-left quote) */}
-            <div className="bg-brand-elevated border border-brand-border rounded-brand p-4 text-xs space-y-2">
-              <span className="text-2xl text-brand-primary font-serif">“</span>
-              <p className="text-brand-dark/80 italic leading-relaxed -mt-2">
-                Your career is your journey. We're here to help you discover it with dignity and affordable opportunities.
-              </p>
-            </div>
-          </aside>
-
-          {/* Center Main Question Card */}
-          <main className="lg:col-span-6 bg-brand-surface border border-brand-border rounded-brand p-6 sm:p-8 space-y-6">
             <div>
-              <span className="text-xs font-bold text-brand-primary uppercase tracking-wider">
-                Career Self-Assessment
-              </span>
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-brand-dark mt-2 tracking-tight leading-snug">
-                {language === 'te' ? currentQ.statement_te : currentQ.statement}
-              </h1>
-              <p className="text-xs text-brand-muted mt-2">
-                Select the option that best describes you.
+              <h2 className="text-sm font-bold text-brand-dark">Career Discovery Questionnaire</h2>
+              <div className="text-xs text-brand-muted">
+                Step {currentStep} of {totalSteps} · {
+                  currentStep === 1 ? 'Education & Current Studies' :
+                  currentStep === 2 ? 'Natural Interests & Passions' :
+                  currentStep === 3 ? 'Strengths & Skills' :
+                  currentStep === 4 ? 'Preferred Work Style' :
+                  'Practical Constraints & Budget'
+                }
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 w-full sm:w-1/3">
+            <div className="flex-1 bg-brand-elevated rounded-full h-2.5 overflow-hidden border border-brand-border">
+              <div
+                className="bg-brand-primary h-2.5 rounded-full transition-all duration-300"
+                style={{ width: `${(currentStep / totalSteps) * 100}%` }}
+              />
+            </div>
+            <span className="text-xs font-bold text-brand-primary whitespace-nowrap">
+              {Math.round((currentStep / totalSteps) * 100)}%
+            </span>
+          </div>
+        </div>
+      </FadeIn>
+
+      {/* Onboarding Welcome Callout (when student arrives from signup/login) */}
+      {isOnboarding && (
+        <FadeIn delay={0.05}>
+          <div className="bg-brand-surface border border-brand-primary/60 rounded-brand p-5 flex items-start gap-3.5 shadow-xs">
+            <div className="w-9 h-9 rounded-brand-sm bg-brand-primary text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
+              <Sparkles className="w-5 h-5" />
+            </div>
+            <div className="space-y-1">
+              <h3 className="text-sm font-bold text-brand-dark">
+                {profile.full_name || profile.name ? `Welcome, ${profile.full_name || profile.name}!` : 'Welcome to PathSetu!'}
+              </h3>
+              <p className="text-xs text-brand-muted leading-relaxed">
+                Let's set up your student profile and map your career future. Share your education, natural interests, strengths, and budget across these 5 quick steps to get explainable pathway recommendations.
               </p>
             </div>
+          </div>
+        </FadeIn>
+      )}
 
-            {/* Likert Pill Options (Mirrors Reference 1 radio options) */}
-            <div className="space-y-3 pt-2">
-              {LIKERT_OPTIONS.map(opt => {
-                const isSelected = answers[currentQ.id] === opt.value;
-                return (
-                  <button
-                    key={opt.value}
-                    type="button"
-                    onClick={() => handleSelectOption(opt.value)}
-                    className={`w-full text-left p-4 rounded-brand border transition-all flex items-center justify-between group ${
-                      isSelected
-                        ? 'border-brand-primary bg-brand-elevated'
-                        : 'border-brand-border bg-brand-surface hover:border-brand-primary/50 hover:bg-brand-elevated/50'
-                    }`}
+      {/* Main Questionnaire Card */}
+      <FadeIn delay={0.1}>
+        <div className="bg-brand-surface border border-brand-border rounded-brand p-6 sm:p-8 space-y-6">
+          {/* STEP 1: EDUCATION */}
+          {currentStep === 1 && (
+            <div className="space-y-6">
+              <div>
+                <span className="text-[11px] font-bold tracking-wider uppercase text-brand-cyan">
+                  Step 01 · Academic Background
+                </span>
+                <h1 className="text-xl sm:text-2xl font-black text-brand-dark mt-1 tracking-tight">
+                  Tell us about your current education
+                </h1>
+                <p className="text-xs text-brand-muted mt-1 leading-relaxed">
+                  PathSetu customizes entry prerequisites, statutory entrance exams (EAMCET, CUET, NEET, JEE), and polytechnic routes based on your current stage.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-xs font-bold text-brand-dark mb-1.5">
+                    What is your current education level?
+                  </label>
+                  <select
+                    value={educationLevel}
+                    onChange={e => setEducationLevel(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-brand-sm border border-brand-border bg-brand-card text-brand-dark focus:outline-none focus:border-brand-primary"
                   >
-                    <div className="flex items-center space-x-3">
-                      <div
-                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${
-                          isSelected
-                            ? 'border-brand-primary bg-brand-primary'
-                            : 'border-brand-border group-hover:border-brand-muted'
+                    <option value="Class 10 (Secondary School)">Class 10 (Secondary School / SSC / CBSE)</option>
+                    <option value="Class 11–12 (Science / PCM)">Class 11–12 (Intermediate Science / MPC / PCM)</option>
+                    <option value="Class 11–12 (Science / PCB)">Class 11–12 (Intermediate Science / BiPC / PCB)</option>
+                    <option value="Class 11–12 (Commerce)">Class 11–12 (Intermediate Commerce / CEC / MEC)</option>
+                    <option value="Class 11–12 (Arts & Humanities)">Class 11–12 (Arts & Humanities / HEC)</option>
+                    <option value="Polytechnic / ITI Diploma">Polytechnic / ITI Diploma</option>
+                    <option value="Undergraduate Degree (B.Tech / B.E.)">Undergraduate Degree (B.Tech / B.E.)</option>
+                    <option value="Undergraduate Degree (B.Sc / B.Com / B.A.)">Undergraduate Degree (B.Sc / B.Com / B.A.)</option>
+                    <option value="Postgraduate Degree">Postgraduate Degree</option>
+                  </select>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-brand-dark mb-1.5">
+                      Which class, course, or year are you studying?
+                    </label>
+                    <input
+                      type="text"
+                      value={courseOrClass}
+                      onChange={e => setCourseOrClass(e.target.value)}
+                      placeholder="e.g. Class 12 / 1st Year Degree"
+                      className="w-full px-3 py-2 text-xs rounded-brand-sm border border-brand-border bg-brand-card text-brand-dark focus:outline-none focus:border-brand-primary"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-brand-dark mb-1.5">
+                      Which subjects or stream do you currently study?
+                    </label>
+                    <input
+                      type="text"
+                      value={currentStream}
+                      onChange={e => setCurrentStream(e.target.value)}
+                      placeholder="e.g. MPC (Maths, Physics, Chemistry)"
+                      className="w-full px-3 py-2 text-xs rounded-brand-sm border border-brand-border bg-brand-card text-brand-dark focus:outline-none focus:border-brand-primary"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* STEP 2: INTERESTS */}
+          {currentStep === 2 && (
+            <div className="space-y-6">
+              <div>
+                <span className="text-[11px] font-bold tracking-wider uppercase text-brand-cyan">
+                  Step 02 · Natural Curiosity & Passions
+                </span>
+                <h1 className="text-xl sm:text-2xl font-black text-brand-dark mt-1 tracking-tight">
+                  What activities and topics excite you the most?
+                </h1>
+                <p className="text-xs text-brand-muted mt-1 leading-relaxed">
+                  Select all that resonate with you. We weigh your natural curiosity at 35% of the overall recommendation score.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-xs font-bold text-brand-dark mb-2">
+                    Activities you naturally enjoy (Select multiple):
+                  </label>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                    {[
+                      { id: "technology", label: "💻 Technology & Coding" },
+                      { id: "problem-solving", label: "🧩 Problem-Solving & Math" },
+                      { id: "creativity", label: "🎨 Visual Design & UI" },
+                      { id: "agriculture", label: "🌾 Agriculture & Soil Health" },
+                      { id: "renewable energy", label: "☀️ Clean Energy & Solar" },
+                      { id: "healthcare", label: "🩺 Healthcare & Patient Care" },
+                      { id: "business", label: "📈 Business & Finance" },
+                      { id: "teaching", label: "📚 Education & Community" },
+                      { id: "machinery", label: "🔧 Fixing Hardware & Tools" },
+                    ].map(item => {
+                      const isSelected = selectedInterests.includes(item.id);
+                      return (
+                        <button
+                          key={item.id}
+                          type="button"
+                          onClick={() => toggleItem(selectedInterests, item.id, setSelectedInterests)}
+                          className={`p-3 text-left rounded-brand-sm border text-xs font-bold transition-colors ${
+                            isSelected
+                              ? 'border-brand-primary bg-brand-elevated text-brand-primary'
+                              : 'border-brand-border bg-brand-card text-brand-dark hover:border-brand-primary'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between">
+                            <span>{item.label}</span>
+                            {isSelected && <span className="text-brand-cyan text-xs">✓</span>}
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-brand-dark mb-2">
+                    Which real-world problems would you feel proud to solve?
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {[
+                      "Building digital tools for local businesses and schools",
+                      "Increasing crop yields & lowering farm fertilizer costs",
+                      "Deploying affordable solar microgrids for rural power",
+                      "Simplifying complex health diagnoses and telemedicine",
+                      "Designing intuitive, accessible mobile applications",
+                      "Automating data reporting for community public health"
+                    ].map(prob => {
+                      const isSelected = selectedProblems.includes(prob);
+                      return (
+                        <button
+                          key={prob}
+                          type="button"
+                          onClick={() => toggleItem(selectedProblems, prob, setSelectedProblems)}
+                          className={`p-3 text-left rounded-brand-sm border text-xs font-medium transition-colors ${
+                            isSelected
+                              ? 'border-brand-primary bg-brand-elevated text-brand-dark font-bold'
+                              : 'border-brand-border bg-brand-card text-brand-muted hover:border-brand-primary'
+                          }`}
+                        >
+                          <div className="flex items-start gap-2">
+                            <span className="text-brand-cyan">{isSelected ? '☑' : '☐'}</span>
+                            <span className="leading-snug">{prob}</span>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* STEP 3: STRENGTHS & SKILLS */}
+          {currentStep === 3 && (
+            <div className="space-y-6">
+              <div>
+                <span className="text-[11px] font-bold tracking-wider uppercase text-brand-cyan">
+                  Step 03 · Strengths & Skill Inventory
+                </span>
+                <h1 className="text-xl sm:text-2xl font-black text-brand-dark mt-1 tracking-tight">
+                  What are your strengths and current skills?
+                </h1>
+                <p className="text-xs text-brand-muted mt-1 leading-relaxed">
+                  You do not need to be an expert. Identifying where you are today allows us to compute actionable skill gaps and beginner-friendly milestones.
+                </p>
+              </div>
+
+              <div className="space-y-5">
+                <div>
+                  <label className="block text-xs font-bold text-brand-dark mb-2">
+                    When working on a project, which role suits you best?
+                  </label>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                    {[
+                      { id: "coding", label: "💻 Coding / Logic" },
+                      { id: "designing", label: "🎨 Visual Layouts" },
+                      { id: "analyzing", label: "📊 Data Analysis" },
+                      { id: "communicating", label: "🗣️ Public Speaking & People" },
+                      { id: "building", label: "🔨 Physical Hardware & Labs" },
+                      { id: "outdoor", label: "🌱 Field & Outdoor Tasks" }
+                    ].map(pref => (
+                      <button
+                        key={pref.id}
+                        type="button"
+                        onClick={() => setWorkPreferenceType(pref.id)}
+                        className={`p-3 text-left rounded-brand-sm border text-xs font-bold transition-colors ${
+                          workPreferenceType === pref.id
+                            ? 'border-brand-primary bg-brand-elevated text-brand-primary'
+                            : 'border-brand-border bg-brand-card text-brand-dark hover:border-brand-primary'
                         }`}
                       >
-                        {isSelected && <div className="w-2 h-2 rounded-full bg-brand-surface" />}
-                      </div>
-                      <span className={`text-sm font-semibold ${isSelected ? 'text-brand-primary' : 'text-brand-dark'}`}>
-                        {language === 'te' ? opt.label_te : opt.label}
-                      </span>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Bottom Navigation Buttons (Mirrors Reference 1 previous/next buttons) */}
-            <div className="flex items-center justify-between pt-6 border-t border-brand-border">
-              <button
-                type="button"
-                onClick={handlePrevious}
-                disabled={currentIndex === 0}
-                className="flex items-center gap-1.5 px-4 py-2.5 rounded-brand-sm border border-brand-border text-xs font-semibold text-brand-muted hover:text-brand-dark hover:bg-brand-elevated disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-              >
-                <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Previous</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={handleNext}
-                className="flex items-center gap-1.5 px-6 py-2.5 rounded-brand-sm bg-brand-primary text-white text-xs font-bold  hover:bg-brand-primary-hover transition-colors"
-              >
-                <span>{currentIndex === ASSESSMENT_QUESTIONS.length - 1 ? 'View Matches →' : 'Next →'}</span>
-              </button>
-            </div>
-          </main>
-
-          {/* Right Context Guidance Card (Mirrors Reference 1 right card with mountain illustration) */}
-          <aside className="lg:col-span-3 bg-brand-surface border border-brand-border rounded-brand p-5 space-y-6">
-            {/* Mountain Graphic Badge */}
-            <div className="h-40 rounded-brand-sm bg-brand-elevated flex items-center justify-center p-4 border border-brand-border">
-              <div className="text-center space-y-2">
-                <div className="w-14 h-14 mx-auto rounded-full bg-brand-surface border border-brand-border flex items-center justify-center text-brand-cyan">
-                  <Sparkles className="w-7 h-7" />
-                </div>
-                <div className="text-xs font-bold text-brand-primary tracking-wide">
-                  5-Factor Guidance Engine
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-brand-dark text-base">
-                {t('why_assessment_matters')}
-              </h3>
-              <p className="text-xs text-brand-muted mt-1 leading-relaxed">
-                {t('why_assessment_desc')}
-              </p>
-            </div>
-
-            {/* 3 Pillars */}
-            <div className="grid grid-cols-3 gap-2 pt-2 border-t border-brand-border text-center">
-              <div className="flex flex-col items-center">
-                <div className="w-8 h-8 rounded-full bg-brand-elevated border border-brand-border text-brand-primary flex items-center justify-center mb-1">
-                  <User className="w-4 h-4" />
-                </div>
-                <span className="text-[10px] font-semibold text-brand-dark">{t('self_awareness')}</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="w-8 h-8 rounded-full bg-brand-elevated border border-brand-border text-brand-cyan flex items-center justify-center mb-1">
-                  <Target className="w-4 h-4" />
-                </div>
-                <span className="text-[10px] font-semibold text-brand-dark">{t('better_choices')}</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="w-8 h-8 rounded-full bg-brand-elevated border border-brand-border text-brand-violet flex items-center justify-center mb-1">
-                  <TrendingUp className="w-4 h-4" />
-                </div>
-                <span className="text-[10px] font-semibold text-brand-dark">{t('stronger_future')}</span>
-              </div>
-            </div>
-          </aside>
-        </div>
-      ) : (
-        /* Results View */
-        <div className="space-y-6">
-          <div className="bg-brand-surface border border-brand-border rounded-brand p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-elevated text-brand-cyan border border-brand-border text-xs font-bold">
-                <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>Assessment Completed</span>
-              </div>
-              <h1 className="text-2xl sm:text-3xl font-black text-brand-dark mt-2 tracking-tight">
-                Your Personalized Career Matches
-              </h1>
-              <p className="text-xs sm:text-sm text-brand-muted mt-1 max-w-xl">
-                Scores are calculated using the 5-factor transparent heuristic (Interests: 35%, Subjects: 25%, Skills: 20%, Education: 15%, Workstyle: 5%).
-              </p>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => setIsCompleted(false)}
-                className="px-4 py-2.5 text-xs font-bold rounded-brand-sm border border-brand-border text-brand-dark hover:bg-brand-elevated transition-colors"
-              >
-                Retake Assessment
-              </button>
-              <Link
-                to="/dashboard"
-                className="px-5 py-2.5 text-xs font-bold rounded-brand-sm bg-brand-primary text-white  hover:bg-brand-primary-hover transition-colors"
-              >
-                Go to Dashboard →
-              </Link>
-            </div>
-          </div>
-
-          {/* Matched Careers Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {recommendations.slice(0, 6).map((match, idx) => {
-              const { career, compatibilityScore, breakdown, rationale, missingSkills } = match;
-              return (
-                <div
-                  key={career.id}
-                  className="bg-brand-surface border border-brand-border rounded-brand p-6 hover:border-brand-primary transition-colors flex flex-col justify-between"
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-start justify-between">
-                      <div className="text-3xl">{career.emoji}</div>
-                      <div className="text-right">
-                        <span className="text-2xl font-black text-brand-primary">
-                          {compatibilityScore}%
-                        </span>
-                        <div className="text-[10px] uppercase font-bold text-brand-muted tracking-wider">
-                          Match Score
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 className="text-base font-bold text-brand-dark">
-                        {career.name}
-                      </h3>
-                      <div className="text-xs text-brand-muted font-medium">
-                        {career.name_te}
-                      </div>
-                      <p className="text-xs text-brand-muted mt-2 leading-relaxed">
-                        {rationale}
-                      </p>
-                    </div>
-
-                    {/* Breakdown Pill Row */}
-                    <div className="bg-brand-elevated rounded-brand-sm p-2.5 text-[11px] grid grid-cols-2 gap-2 border border-brand-border">
-                      <div>
-                        <span className="text-brand-muted">Interests:</span>{' '}
-                        <span className="font-semibold text-brand-dark">{breakdown.interestScore}/35</span>
-                      </div>
-                      <div>
-                        <span className="text-brand-muted">Subjects:</span>{' '}
-                        <span className="font-semibold text-brand-dark">{breakdown.subjectScore}/25</span>
-                      </div>
-                      <div>
-                        <span className="text-brand-muted">Skills:</span>{' '}
-                        <span className="font-semibold text-brand-dark">{breakdown.skillScore}/20</span>
-                      </div>
-                      <div>
-                        <span className="text-brand-muted">Education:</span>{' '}
-                        <span className="font-semibold text-brand-dark">{breakdown.educationScore}/15</span>
-                      </div>
-                    </div>
-
-                    {missingSkills.length > 0 && (
-                      <div className="text-xs">
-                        <span className="font-semibold text-brand-muted">Recommended to learn:</span>
-                        <div className="flex flex-wrap gap-1 mt-1">
-                          {missingSkills.slice(0, 2).map(s => (
-                            <span key={s} className="px-2 py-0.5 rounded bg-brand-elevated text-brand-dark text-[10px] font-medium border border-brand-border">
-                              {s}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="pt-5 mt-4 border-t border-brand-border flex items-center gap-2">
-                    <Link
-                      to={`/careers/${career.id}`}
-                      onClick={() => setActiveCareerId(career.id)}
-                      className="flex-1 text-center py-2 px-3 rounded-brand-sm bg-brand-primary text-white text-xs font-bold hover:bg-brand-primary-hover transition-colors"
-                    >
-                      View Career Details
-                    </Link>
-                    <Link
-                      to="/roadmap"
-                      onClick={() => setActiveCareerId(career.id)}
-                      className="py-2 px-3 rounded-brand-sm border border-brand-border text-brand-dark text-xs font-semibold hover:bg-brand-elevated transition-colors"
-                    >
-                      Roadmap
-                    </Link>
+                        {pref.label}
+                      </button>
+                    ))}
                   </div>
                 </div>
-              );
-            })}
+
+                <div>
+                  <label className="block text-xs font-bold text-brand-dark mb-2">
+                    Skills you already have basic familiarity with (Select all that apply):
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "JavaScript or Python",
+                      "Web Fundamentals (HTML/CSS)",
+                      "SQL & Spreadsheets (Excel)",
+                      "Figma or Canva UI Design",
+                      "Soil Chemistry or Biology Lab",
+                      "Circuit Wiring & Multimeters",
+                      "Public Speaking & Presentation",
+                      "Mathematical Problem Solving"
+                    ].map(skill => {
+                      const isSelected = existingSkills.includes(skill);
+                      return (
+                        <button
+                          key={skill}
+                          type="button"
+                          onClick={() => toggleItem(existingSkills, skill, setExistingSkills)}
+                          className={`px-3 py-1.5 rounded-brand-sm border text-xs font-semibold transition-colors ${
+                            isSelected
+                              ? 'border-brand-primary bg-brand-elevated text-brand-primary'
+                              : 'border-brand-border bg-brand-card text-brand-muted hover:border-brand-primary'
+                          }`}
+                        >
+                          {isSelected ? `✓ ${skill}` : `+ ${skill}`}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-brand-dark mb-2">
+                    What would you most like to learn next?
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "React & Full-Stack Web Development",
+                      "Data Analytics with Python & Pandas",
+                      "UX Research & Accessibility Audits",
+                      "Solar PV Array & Inverter Sizing",
+                      "Precision Agriculture & Drone Diagnostics",
+                      "Cloud Infrastructure & Linux Basics"
+                    ].map(target => {
+                      const isSelected = skillsToLearn.includes(target);
+                      return (
+                        <button
+                          key={target}
+                          type="button"
+                          onClick={() => toggleItem(skillsToLearn, target, setSkillsToLearn)}
+                          className={`px-3 py-1.5 rounded-brand-sm border text-xs font-semibold transition-colors ${
+                            isSelected
+                              ? 'border-brand-cyan bg-brand-elevated text-brand-cyan'
+                              : 'border-brand-border bg-brand-card text-brand-muted hover:border-brand-primary'
+                          }`}
+                        >
+                          {isSelected ? `★ ${target}` : `+ ${target}`}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* STEP 4: PREFERRED WORK STYLE */}
+          {currentStep === 4 && (
+            <div className="space-y-6">
+              <div>
+                <span className="text-[11px] font-bold tracking-wider uppercase text-brand-cyan">
+                  Step 04 · Work Style & Rhythm
+                </span>
+                <h1 className="text-xl sm:text-2xl font-black text-brand-dark mt-1 tracking-tight">
+                  How do you prefer to spend your work days?
+                </h1>
+                <p className="text-xs text-brand-muted mt-1 leading-relaxed">
+                  Different careers demand different day-to-day work patterns. Finding a natural fit prevents early career burnout.
+                </p>
+              </div>
+
+              <div className="space-y-5">
+                <div>
+                  <label className="block text-xs font-bold text-brand-dark mb-2">
+                    Do you thrive in solo focus or team environments?
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {[
+                      {
+                        val: "Deep Focus (Solo analytical / coding focus)",
+                        title: "Deep Independent Focus",
+                        desc: "Long stretches of quiet uninterrupted work solving logic, debugging, or analyzing data."
+                      },
+                      {
+                        val: "Collaborative & People-Focused",
+                        title: "Collaborative & People-Oriented",
+                        desc: "Frequent collaboration, stakeholder meetings, mentoring, and team problem-solving."
+                      },
+                      {
+                        val: "Field & Practical (Hands-on outdoor)",
+                        title: "Field & Practical Action",
+                        desc: "Hands-on physical tools, site inspections, farms, laboratories, or testing setups."
+                      },
+                      {
+                        val: "Creative & Visual (Design / media)",
+                        title: "Creative & Visual Exploration",
+                        desc: "Brainstorming sketches, visual prototyping, media production, and usability critique."
+                      }
+                    ].map(style => (
+                      <button
+                        key={style.val}
+                        type="button"
+                        onClick={() => setWorkstyle(style.val)}
+                        className={`p-4 rounded-brand-sm border text-left transition-colors space-y-1 ${
+                          workstyle === style.val
+                            ? 'border-brand-primary bg-brand-elevated text-brand-dark'
+                            : 'border-brand-border bg-brand-card text-brand-muted hover:border-brand-primary'
+                        }`}
+                      >
+                        <div className="font-bold text-xs flex items-center justify-between text-brand-dark">
+                          <span>{style.title}</span>
+                          {workstyle === style.val && <span className="text-brand-cyan">✓</span>}
+                        </div>
+                        <p className="text-[11px] text-brand-muted leading-relaxed">
+                          {style.desc}
+                        </p>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-brand-dark mb-2">
+                    Preferred Workplace Environment:
+                  </label>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    {[
+                      { id: "office", label: "🏢 Office-Based" },
+                      { id: "remote", label: "🏡 Remote / WFH" },
+                      { id: "field", label: "🌾 Field & Outdoor" },
+                      { id: "mixed", label: "🔄 Hybrid / Mixed" }
+                    ].map(env => (
+                      <button
+                        key={env.id}
+                        type="button"
+                        onClick={() => setWorkEnvironment(env.id)}
+                        className={`p-3 text-center rounded-brand-sm border text-xs font-bold transition-colors ${
+                          workEnvironment === env.id
+                            ? 'border-brand-primary bg-brand-elevated text-brand-primary'
+                            : 'border-brand-border bg-brand-card text-brand-dark hover:border-brand-primary'
+                        }`}
+                      >
+                        {env.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* STEP 5: PRACTICAL CONSTRAINTS */}
+          {currentStep === 5 && (
+            <div className="space-y-6">
+              <div>
+                <span className="text-[11px] font-bold tracking-wider uppercase text-brand-cyan">
+                  Step 05 · Budget, Time & Language (Optional)
+                </span>
+                <h1 className="text-xl sm:text-2xl font-black text-brand-dark mt-1 tracking-tight">
+                  Practical constraints & learning preferences
+                </h1>
+                <p className="text-xs text-brand-muted mt-1 leading-relaxed">
+                  PathSetu matches you against affordable government colleges and statutory scholarships to ensure no dream is blocked by lack of funds.
+                </p>
+              </div>
+
+              <div className="space-y-5">
+                {/* Budget Slider */}
+                <div>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label className="text-xs font-bold text-brand-dark flex items-center gap-1.5">
+                      <Wallet className="w-3.5 h-3.5 text-brand-cyan" />
+                      <span>Approximate Annual Education Budget (INR):</span>
+                    </label>
+                    <span className="text-sm font-black text-brand-primary">
+                      ₹{budgetInr.toLocaleString('en-IN')} / year
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min="5000"
+                    max="150000"
+                    step="5000"
+                    value={budgetInr}
+                    onChange={e => setBudgetInr(Number(e.target.value))}
+                    className="w-full accent-brand-primary cursor-pointer"
+                  />
+                  <div className="flex justify-between text-[10px] text-brand-muted mt-1 font-semibold">
+                    <span>₹5,000 (Govt/ITI)</span>
+                    <span>₹35,000 (State Univ)</span>
+                    <span>₹1,50,000+ (Private)</span>
+                  </div>
+                </div>
+
+                {/* Weekly Learning Hours */}
+                <div>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label className="text-xs font-bold text-brand-dark flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-brand-cyan" />
+                      <span>Hours you can commit each week to skill learning:</span>
+                    </label>
+                    <span className="text-sm font-black text-brand-cyan">
+                      {weeklyHours} Hours / week
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min="4"
+                    max="30"
+                    step="2"
+                    value={weeklyHours}
+                    onChange={e => setWeeklyHours(Number(e.target.value))}
+                    className="w-full accent-brand-primary cursor-pointer"
+                  />
+                  <div className="flex justify-between text-[10px] text-brand-muted mt-1 font-semibold">
+                    <span>4h (Casual Explorer)</span>
+                    <span>12h (Recommended)</span>
+                    <span>30h (Full-Time Focus)</span>
+                  </div>
+                </div>
+
+                {/* Relocation */}
+                <div>
+                  <label className="block text-xs font-bold text-brand-dark mb-1.5">
+                    Are you willing to relocate for studies or internships?
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                    {[
+                      { id: "within_district", label: "Nearby / Home District Only" },
+                      { id: "within_state", label: "Anywhere in State (e.g. AP/TS)" },
+                      { id: "anywhere_india", label: "Open across India" }
+                    ].map(opt => (
+                      <button
+                        key={opt.id}
+                        type="button"
+                        onClick={() => setRelocationWillingness(opt.id)}
+                        className={`p-2.5 text-xs font-bold rounded-brand-sm border text-center transition-colors ${
+                          relocationWillingness === opt.id
+                            ? 'border-brand-primary bg-brand-elevated text-brand-primary'
+                            : 'border-brand-border bg-brand-card text-brand-muted hover:border-brand-primary'
+                        }`}
+                      >
+                        {opt.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Learning Language */}
+                <div>
+                  <label className="block text-xs font-bold text-brand-dark mb-1.5">
+                    Which learning medium do you feel most confident in?
+                  </label>
+                  <div className="grid grid-cols-3 gap-2">
+                    {[
+                      { id: "en", label: "English Only" },
+                      { id: "te", label: "తెలుగు (Telugu Only)" },
+                      { id: "both", label: "Bilingual (English + Telugu)" }
+                    ].map(langOpt => (
+                      <button
+                        key={langOpt.id}
+                        type="button"
+                        onClick={() => setLearningLanguage(langOpt.id as any)}
+                        className={`p-2.5 text-xs font-bold rounded-brand-sm border text-center transition-colors ${
+                          learningLanguage === langOpt.id
+                            ? 'border-brand-primary bg-brand-elevated text-brand-primary'
+                            : 'border-brand-border bg-brand-card text-brand-muted hover:border-brand-primary'
+                        }`}
+                      >
+                        {langOpt.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Navigation Controls */}
+          <div className="pt-6 border-t border-brand-border flex items-center justify-between">
+            <button
+              type="button"
+              onClick={handlePrevious}
+              disabled={currentStep === 1}
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-bold rounded-brand-sm border border-brand-border text-brand-muted hover:text-brand-dark disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Previous</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={handleNext}
+              disabled={isSubmitting}
+              className="inline-flex items-center gap-2 px-6 py-2.5 text-xs font-bold rounded-brand-sm bg-brand-primary text-white hover:bg-brand-primary-hover transition-colors shadow-sm"
+            >
+              <span>{isSubmitting ? 'Calculating Matches...' : currentStep === totalSteps ? 'View 5-Factor Recommendations →' : 'Next Step →'}</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
-      )}
+      </FadeIn>
     </div>
   );
 };
